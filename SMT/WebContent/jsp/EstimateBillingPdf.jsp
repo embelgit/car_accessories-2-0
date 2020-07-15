@@ -1068,7 +1068,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		infotable.setWidths(infoColumnWidths);
 
 		PdfPCell InfoTable_cell;
-		
+		//
 
 		InfoTable_cell = new PdfPCell(new Phrase("\n\nCustomer : " +name ));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
