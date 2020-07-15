@@ -578,6 +578,9 @@ function resOtherBill10(){
 	    var grossTotal=$('#grossTotal').val();
 	    var contactNo=$('#contactNo').val();
 	    var carNo=$('#carNo').val();
+	    if(carNo == "" || carNo == null){
+	    	carNo = "NA";
+	    }
 	    
 	    var description=$('#description').val();
 	    params["contactNo"] = contactNo;
@@ -588,7 +591,7 @@ function resOtherBill10(){
 		params["grossTotal"] = grossTotal;
 		params["description"] = description;
 		params["carNo"] = carNo;
-		params["vehicle"] = vehicle;
+//		params["vehicle"] = vehicle;
 		
 	    params["methodName"] = "registerOtherBill";
 	    

@@ -37,14 +37,14 @@ function validateRegGoodReceive(){
 								 if(pDate != null && pDate != "" && pDate != " ")
 									{
 										
-											 if(totalAmount != null && totalAmount != "" && totalAmount != " " )
-												{
+										//	 if(totalAmount != null && totalAmount != "" && totalAmount != " " )
+										//		{
 												 	//If validation is success than controller will go to regGoodReceive()
 												 	regGoodReceive();
-												}
-											 	else{
+										//		}
+											/* 	else{
 											 		alert(" Please select item from item list and modify into table by proper way. Total amount is not dispayed !");
-												}
+												}*/
 									       }
 									 	
 								 	else{

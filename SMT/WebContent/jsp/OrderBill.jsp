@@ -738,7 +738,7 @@ function calgrosstot(){
 						<!-- <div class="row"> -->
 							<div class="table-responsive">
 								<table id="listOil"></table>
-								<div id="jqGridPager"></div>
+								<div id="jqGridPager7"></div>
 							</div>
 						</div>
 					</div>

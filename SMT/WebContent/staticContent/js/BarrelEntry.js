@@ -807,14 +807,14 @@ function validateRegGoodReceiveOil(){
 						 if(pDate != null && pDate != "" && pDate != " ")
 							{
 								
-									 if(totalAmount != null && totalAmount != "" && totalAmount != " " )
-										{
+								//	 if(totalAmount != null && totalAmount != "" && totalAmount != " " )
+								//		{
 										 	//If validation is success than controller will go to regGoodReceive()
 										 	regGoodReceiveOil();
-										}
-									 	else{
+								//		}
+									 	/*else{
 									 		alert(" Please select item from item list and modify into table by proper way. Total amount is not dispayed !");
-										}
+										}*/
 							       }
 							 	
 						 	else{
@@ -1360,7 +1360,7 @@ function getProductInGridBillingOil()
              	
 	        	},
            
-			pager: "#jqGridPager",
+			pager: "#jqGridPager7",
 			
 			
 			
@@ -1373,7 +1373,7 @@ function getProductInGridBillingOil()
 			 // $("#list4").addRowData(i,jsonData[i]);
 			  $("#listOil").addRowData(0,jsonData.offer);
 		}
-		 $('#listOil').navGrid('#jqGridPager',
+		 $('#listOil').navGrid('#jqGridPager7',
 	                
 	                { edit: true, add: false, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: false },
 	                
