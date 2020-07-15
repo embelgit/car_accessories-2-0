@@ -24,6 +24,13 @@
 		column="CategoryName"
 		/>
 		
+		
+		<property
+		name="billtype" 
+		type="java.lang.String" 
+		column="billtype"
+		/>
+		
 		 <property
 		name="quantitydouble" 
 		type="java.lang.Double" 

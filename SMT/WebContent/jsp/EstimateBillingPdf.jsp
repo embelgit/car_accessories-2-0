@@ -853,17 +853,17 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smt_sc", "root", "root");
 		Statement stmt = conn.createStatement();
-
-		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst from estimatequotationbill where BillNo =" + billno);
+		String ss = "Estimate";
+		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst,carNo from estimatequotationbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
-		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount from service_billing  where BillNo =" + billno);
+		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount from service_billing  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
 		
 		
 		
 		Statement stmt1 = conn.createStatement();
 		//ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal from barreloilbilling where BillNo ="+billno+"  UNION select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt from service_billing where BillNo =" + billno);
-		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount from barreloilbilling  where BillNo =" + billno);
+		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount from barreloilbilling  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
 		 
 		
 		Font font17Bold = new Font(Font.FontFamily.TIMES_ROMAN, 17, Font.BOLD, BaseColor.BLACK);
@@ -907,7 +907,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 
 		String name = rs.getString("customerName");
 		String mono = rs.getString("contactNo");
-		//String carno = rs.getString("CarNo");
+		String car = rs.getString("carNo");
 		String saleDate = rs.getString("Date");
 		String grossTotal123 = rs.getString("GrossTotal");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
@@ -1061,23 +1061,26 @@ Long billno = (Long) session.getAttribute("carBillNO");
 
 		//information table
 
-		PdfPTable infotable = new PdfPTable(2);
+		PdfPTable infotable = new PdfPTable(3);
 		infotable.setWidthPercentage(100);
 
-		float[] infoColumnWidths = { 0.3f,0.3f };
+		float[] infoColumnWidths = { 0.3f,0.15f,0.3f };
 		infotable.setWidths(infoColumnWidths);
 
 		PdfPCell InfoTable_cell;
 		
 
-		InfoTable_cell = new PdfPCell(new Phrase("\n\nCustomerName: " +name ));
+		InfoTable_cell = new PdfPCell(new Phrase("\n\nCustomer : " +name ));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
 
-		
+		InfoTable_cell = new PdfPCell(new Phrase("\n\nCar No : " +car ));
+		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
+		infotable.addCell(InfoTable_cell);
 
-		InfoTable_cell = new PdfPCell(new Phrase("\n\nContact No: "+mono));
+		InfoTable_cell = new PdfPCell(new Phrase("\n\nContact No : "+mono));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
@@ -1399,12 +1402,19 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			table13.addCell(table_cell13);
 			
 			
-
+			if(disc>0){
 			table_cell13 = new PdfPCell(new Phrase(String.valueOf(disc), Normalfont12));
 			table_cell13.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			//table_cell5.setBorder(Rectangle.TOP);
 			table13.addCell(table_cell13);
-			 
+			}
+			else{
+				table_cell13 = new PdfPCell(new Phrase());
+				table_cell13.setHorizontalAlignment(Element.ALIGN_RIGHT);
+				//table_cell5.setBorder(Rectangle.TOP);
+				table13.addCell(table_cell13);
+				
+			}
 			
 			document.add(table13); 
 			
@@ -1582,7 +1592,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			table_cell1.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table1.addCell(table_cell1);
 			
-			//discService = rs2.getDouble("discount");
+			discService = rs2.getDouble("discount");
 			service_totalGrid = rs2.getDouble("service_totalGrid");
 			subtotal1=subtotal1+service_totalGrid;
 			//roudoffsubtotal=Math.round(subtotal * 100) / 100;
@@ -1619,6 +1629,38 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 		document.add(table6);	
 			
+		if(discService>0){
+//=======
+//>>>>>>> branch 'master' of https://github.com/embelgit/Car--Accessories-1.0.git
+	     PdfPTable table14 = new PdfPTable(2);
+		table14.setWidthPercentage(100);
+		
+		
+
+		float[] columnWidths14 = {2.0f,0.6f};
+
+		table14.setWidths(columnWidths14);
+
+		PdfPCell table_cell14;
+		
+
+		table_cell14 = new PdfPCell(new Phrase("Discount :"));
+
+		table_cell14.setHorizontalAlignment(Element.ALIGN_LEFT);
+		//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
+		table14.addCell(table_cell14);
+		 
+		
+
+		table_cell14 = new PdfPCell(new Phrase(String.valueOf(discService), Normalfont12));
+		table_cell14.setHorizontalAlignment(Element.ALIGN_RIGHT);
+		//table_cell5.setBorder(Rectangle.TOP);
+		table14.addCell(table_cell14);
+		 
+		
+		document.add(table14); 
+		}
+		
 	///////gross total///////
 	/*  PdfPTable infotable3 = new PdfPTable(2);
 	infotable3.setWidthPercentage(100);
@@ -1935,7 +1977,8 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 		 
 		//footer of service spares
-	     PdfPTable table15 = new PdfPTable(1);
+	 		if(discOil>0){
+		PdfPTable table15 = new PdfPTable(1);
 	     table15.setWidthPercentage(100);
 		
 		
@@ -1958,7 +2001,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		 
 		
 		document.add(table15); 
-		
+	}		
 			///whole gross total////
 			
 		 PdfPTable infotable3 = new PdfPTable(2);

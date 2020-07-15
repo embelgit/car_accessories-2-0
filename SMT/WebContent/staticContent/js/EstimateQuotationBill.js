@@ -1472,12 +1472,14 @@ function getproductgridEstimate(){
             		Total = +Total + +Total1;
             	}
                 }
+                
+                	document.getElementById("totalAmount").value = Math.round(Total);
                     document.getElementById("spareGrossTotal").value = Math.round(Total);
                     var totAmount = Math.round(Total);
                     var totalAmount = document.getElementById("spareGrossTotal").value;
                     var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
                      GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
-            		document.getElementById("grossTotal").value =GrandGrossTotal;
+            		document.getElementById("wholeTotal").value =GrandGrossTotal;
              	   /* var dis = document.getElementById("discount").value;
              	    if(dis != "0"){
              	    	document.getElementById("grossTotal").value = totAmount;
@@ -1682,12 +1684,13 @@ function getproductgridEstimate(){
 	                    		Total = +Total + +Total1;
 	                    	}
 	                        }
+	                        	document.getElementById("totalAmount").value = Math.round(Total);
 	                            document.getElementById("spareGrossTotal").value = Math.round(Total);
 	                            var totAmount = Math.round(Total);
 	                            var totalAmount = document.getElementById("spareGrossTotal").value;
 	                            var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
 	                             GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
-	                    		document.getElementById("grossTotal").value =GrandGrossTotal;
+	                    		document.getElementById("wholeTotal").value =GrandGrossTotal;
 	                     	   /* var dis = document.getElementById("discount").value;
 	                     	    if(dis != "0"){
 	                     	    	document.getElementById("grossTotal").value = totAmount;
@@ -1716,6 +1719,9 @@ var params= {};
 
 var contactNo = $('#contactNo').val();
 var ownerName=$('#ownerName').val();
+if(ownerName==undefined || ownerName==""){
+	ownerName="NA"
+}
 var carNo=$('#carNo').val();
 var totalAmount=$('#totalAmount').val();
 var carID=$('#carID').val();
@@ -1772,16 +1778,20 @@ var wholeTotal=$('#wholeTotal').val();
 		
 	  }
 	 var ServicetotalAmount=$('#ServicetotalAmount').val();
-	
-	 var discountservice = $('#discountservice').val();
-	 if(discountservice = "" || discountservice == null || discountservice == undefined){
-		 discountservice = 0;
-	 }
 	 
+//	 var discounts =document.getElementById("discountservicee").value;
+//	 alert(discounts);
+	 var discounts = $('#discountservicee').val();
+//	 var discountservice = $('#discountservice').val();
+	 alert(discounts);
+	 /*if(discounts = "" || discounts == null || discounts == undefined ){
+		 discounts = 0;
+	 }*/
+	 alert(discounts);
 	 params["count1"] = count1;
 		//alert("count second++++  " +count1)
 	params["ServicetotalAmount"] = ServicetotalAmount;
-	params["discountservice"] = discountservice;
+	params["discounts"] = discounts;
 
 
 
@@ -1799,7 +1809,7 @@ params["wholeTotal"] = wholeTotal;
 
 
 
-params["methodName"] = "registerBillService";
+params["methodName"] = "registerBillServiceqq";
 
 $.post('/SMT/jsp/utility/controller.jsp', params,
 		function(data) {
@@ -2765,7 +2775,7 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
          	
         	},
        
-		pager: "#jqGridPager",
+		pager: "#jqGridPager7",
 		
 		
 		
@@ -2778,7 +2788,7 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 		 // $("#list4").addRowData(i,jsonData[i]);
 		  $("#listOil").addRowData(0,jsonData.offer);
 	}
-	 $('#listOil').navGrid('#jqGridPager',
+	 $('#listOil').navGrid('#jqGridPager7',
                 
                 { edit: true, add: false, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: false },
                 
@@ -3065,7 +3075,7 @@ for (var i = 0; i < count; i++) {
 	params["grossTotal"] = grossTotal;
 	params["wholeTotal"] = wholeTotal;
 	
-    params["methodName"] = "registerOtherBill1";
+    params["methodName"] = "registerOtherBill1qq";
     
 	$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	    	{  

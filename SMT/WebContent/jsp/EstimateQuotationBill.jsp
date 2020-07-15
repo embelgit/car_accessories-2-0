@@ -58,14 +58,14 @@ String pattern = "dd-MM-yyyy";
 <script type="text/javascript">
 
 
-function grasstotal(){
+/* function grasstotal(){
 	
 	var total = document.getElementById("totalAmount").value;           
 	var discount = document.getElementById("discount").value;
 	var gross = +total - +discount;
 	
 	document.getElementById("grossTotal").value = gross;
-}
+} */
 
 
 function grasstotalSpare(){
@@ -81,7 +81,7 @@ function grasstotalSpare(){
 function grasstotalservice(){
 	
 	var total = document.getElementById("ServicetotalAmount").value;           
-	var discount = document.getElementById("discountservice").value;
+	var discount = document.getElementById("discountservicee").value;
 	var gross = +total - +discount;
 	
 	document.getElementById("grossTotal").value = gross;
@@ -214,14 +214,14 @@ function calgrosstot(){
 							<label class="control-label" >Contact No:</label>
 						</div>
 						<div class="col-md-2">
-							<input type="number" class="form-control" id="contactNo" placeholder="Contact Number">
+							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number">
 						</div>	
 							
 						<div class="col-md-2" align="right">
 							<label class="control-label" >Vehicle No:</label>
 						</div>
 						<div class="col-md-2">
-							<input type="number" class="form-control" id="carNo" placeholder="Vehicle Number">
+							<input type="text" class="form-control" id="carNo" placeholder="Vehicle Number">
 						</div>	
 						</div>
 						
@@ -236,19 +236,19 @@ function calgrosstot(){
 								<input type="text" class="form-control" id="description"  placeholder="Note"/>
 							</div> 
 						
-							<div class="col-md-2" align="right">
+							<!-- <div class="col-md-2" align="right">
 								<label class="control-label"> Discount: </label>
 							</div>
 							<div class="col-md-3">
 							
 								<input type="text" class="form-control" id="discount"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalSpare(); calgrosstot();return false;"/>
 									
-							</div> 
+							</div>  -->
 						
 					
 						
 						</div> 
-						<div class="row form-group" >
+						<!-- <div class="row form-group" >
 							<div class="col-md-2" align="right">
 								<label class="control-label"  >Total Amount: </label>
 							</div>
@@ -263,11 +263,11 @@ function calgrosstot(){
 							
 								<input type="text" class="form-control" id="spareGrossTotal"  placeholder="GrossTotal" style="font-size: 22px;" />
 							</div> 
-							</div>
+							</div> -->
 						</div>
 					 
 		
-				<div class="row" style="margin-top: 10px; margin-left: 10px; margin-right: 10px;">
+				<div class="row" style="margin-top: 10px;margin-bottom: 20px; margin-left:3%;">
 				
 					<div class="col-md-12">
 						<div class="row">
@@ -313,15 +313,31 @@ function calgrosstot(){
 						
 	                    <script src="/SMT/staticContent/js/calculator.js"></script>
 						
-						
 						<div class="row form-group" >
 							<div class="col-md-2" align="right">
 								<label class="control-label"  >Total Amount: </label>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-3">
 							
-								<input type="text" class="form-control" id="spareGrossTotal" style="font-size:22px;height:35px;" placeholder="Total Amout" style="font-size: 22px;" readonly="readonly"/>
+								<input type="text" class="form-control" id="totalAmount"  placeholder="Total Amout"  />
 							</div> 
+							<div class="col-md-2" align="right">
+								<label class="control-label" > Discount : </label>
+							</div>
+							<div class="col-md-3">
+							
+							<input type="text" class="form-control" id="discount"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalSpare(); calgrosstot();return false;"/>
+							</div> 
+							</div>
+						
+						 <div class="row form-group" >
+							<div class="col-md-2" align="right">
+								<label class="control-label"  >Spare Gross Total: </label>
+							</div>
+							<div class="col-md-3">
+							
+								<input type="text" class="form-control" id="spareGrossTotal"  placeholder="GrossTotal" style="font-size: 22px;" />
+							</div>  
 						
 						
 						 <!-- <div class="col-md-5">
@@ -336,7 +352,7 @@ function calgrosstot(){
 						</div>  -->
 						
 						
-						<label class="col-md-3 control-label" for="customerName">Services Name:<sup>*</sup></label>  
+						<label class="col-md-2 control-label" for="customerName">Services Name:<sup>*</sup></label>  
           					  <div class="col-md-3" >
 								<div class="input-group">
 									 <span class="input-group-addon">
@@ -369,7 +385,7 @@ function calgrosstot(){
 				
 						
 						
-						<div class="row" style="margin-top: 15px;">
+						<div class="row" style="margin-top: 15px;margin-bottom: 20px; margin-left:3%;">
 				
 					<div class="col-md-8">
 						<div class="row">
@@ -401,7 +417,7 @@ function calgrosstot(){
 							<div class="col-md-2">
 							 <div class="input-group">
 							  
-								<input type="text" class="form-control" id="discountservice"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalservice();calgrosstot(); return false;" />
+								<input type="text" class="form-control" id="discountservicee"  placeholder="Discount In Rs" onkeyup="grasstotalservice();calgrosstot(); return false;"/>
 							 </div> 
 							</div> 
 						  
@@ -467,7 +483,7 @@ function calgrosstot(){
 					
 							<div class="table-responsive">
 								<table id="listOil"></table>
-								<div id="jqGridPager"></div>
+								<div id="jqGridPager7"></div>
 							</div>
 						</div>
 					</div>
@@ -495,7 +511,7 @@ function calgrosstot(){
 							   <span class="input-group-addon">
 							     Rs
 						       </span>
-								<input type="text" class="form-control" id="discountOil"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalOil(); return false;" />
+								<input type="text" class="form-control" id="discountOil"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalOil();calgrosstot(); return false;" />
 							 </div> 
 							</div> 
 					</div>

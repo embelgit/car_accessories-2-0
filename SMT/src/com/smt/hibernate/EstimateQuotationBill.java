@@ -31,6 +31,7 @@ public class EstimateQuotationBill {
     private Double buyPriceEXTax;
     
     private String description;
+	private String carNo;
 	
 ////service///
 	
@@ -48,6 +49,12 @@ public class EstimateQuotationBill {
 	
 	
 	
+	public String getCarNo() {
+		return carNo;
+	}
+	public void setCarNo(String carNo) {
+		this.carNo = carNo;
+	}
 	public String getDescription() {
 		return description;
 	}

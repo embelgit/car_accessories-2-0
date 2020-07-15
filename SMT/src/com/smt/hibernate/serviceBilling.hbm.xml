@@ -81,6 +81,14 @@
 		column="service_item"
 		 />
 		
+		
+		<property
+		name="billtype" 
+		type="java.lang.String" 
+		column="billtype"
+		 />
+		 
+		 
 		 <property
 		name="service_hsn" 
 		type="java.lang.String" 

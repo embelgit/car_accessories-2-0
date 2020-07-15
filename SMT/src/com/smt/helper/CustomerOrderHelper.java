@@ -1078,6 +1078,120 @@ public class CustomerOrderHelper {
 
 		HttpSession session3 = request.getSession();
 		CustomerOrderDao data = new CustomerOrderDao();
+		List stkList = data.getLastBillNoServicebb();
+
+		for (int i = 0; i < stkList.size(); i++) {
+
+			BillBean st = (BillBean) stkList.get(i);
+			BillNo = st.getBillNo();
+
+			BillNo++;
+			
+
+		}
+		
+		System.out.println("BILLNUMBER++++++++++++++"+BillNo);
+
+		com.smt.hibernate.serviceHibernate cust = new com.smt.hibernate.serviceHibernate();
+
+		Integer count1 = Integer.parseInt(request.getParameter("count1"));
+		System.out.println("c111111" + count1);
+
+		for (int i = 0; i < count1; i++)
+
+		{
+
+			String itemName = request.getParameter("itemName1" + i);
+			cust.setService_item(itemName);
+
+			String hsnSacNo = request.getParameter("hsnSacNo1" + i);
+			cust.setService_hsn(hsnSacNo);
+
+			String quantity = request.getParameter("quantity1" + i);
+			System.out.println("quantity" + quantity);
+			cust.setService_quantity(Long.parseLong(quantity));
+
+			String salePrice = request.getParameter("salePrice1" + i);
+			cust.setService_saleprice(Double.parseDouble(salePrice));
+
+			String discountGrid = request.getParameter("discountGrid1" + i);
+			cust.setService_disc_grid(Double.parseDouble(discountGrid));
+
+			String discountAmt = request.getParameter("discountAmt1" + i);
+			cust.setService_discAmt(Double.parseDouble(discountAmt));
+
+			String vat = request.getParameter("vat1" + i);
+			String igst = request.getParameter("igst1" + i);
+			System.out.println("vat & igst  - " + vat + " & " + igst);
+
+			cust.setService_gst(Double.parseDouble(vat));
+			cust.setService_igst(Double.parseDouble(igst));
+
+			String taxAmount = request.getParameter("taxAmount1" + i);
+			System.out.println("taxAmount++++++++++++" + taxAmount);
+			cust.setService_taxAm(Double.parseDouble(taxAmount));
+			
+			
+			String TotalQuan = request.getParameter("TotalQuan" + i);
+			
+			cust.setTotalQuan(Double.parseDouble(TotalQuan));
+			
+
+			String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+			cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+			
+			String totalAmount = request.getParameter("totalAmount");
+			if (totalAmount == null) {
+				cust.setServiceTotalAmt(0d);
+			} else {
+				cust.setServiceTotalAmt(Double.parseDouble(totalAmount));
+			}
+			//cust.setServiceTotalAmt(Double.parseDouble(totalAmount));
+
+			String total = request.getParameter("total1" + i);
+			cust.setServicetotalPerItem(Double.parseDouble(total));
+
+			String bill = "Billing";
+			cust.setBilltype(bill);
+			String grossTotal = request.getParameter("grossTotal");
+			cust.setGrossamt(Double.parseDouble(grossTotal));
+			
+			String discountservice = request.getParameter("discountservice");
+			/*
+			 * if (discountservice == null) { cust.setDiscount(0d); } else {
+			 * cust.setDiscount(Double.parseDouble(discountservice)); }
+			 */
+			//cust.setDiscount(Double.parseDouble(discountservice));
+			if(!"".equals(discountservice)){
+				cust.setDiscount(Double.parseDouble(discountservice));
+		    } else
+		    {
+		    	cust.setDiscount(0.0);
+		    }
+			session3.setAttribute("BillNo", BillNo);
+			if (BillNo == null) {
+				cust.setBillNo(1l);
+			} else {
+				cust.setBillNo(BillNo);
+			}
+
+			CustomerOrderDao dao = new CustomerOrderDao();
+			dao.registerBillService(cust);
+
+		}
+		
+		/*
+		 * HttpSession billNoInSession = request.getSession();
+		 * billNoInSession.setAttribute("carBillNO", BillNo);
+		 */
+		
+	}
+	//
+	
+	public void registerBillServiceqq(HttpServletRequest request, HttpServletResponse response) {
+
+		HttpSession session3 = request.getSession();
+		CustomerOrderDao data = new CustomerOrderDao();
 		List stkList = data.getLastBillNoService();
 
 		for (int i = 0; i < stkList.size(); i++) {
@@ -1154,18 +1268,22 @@ public class CustomerOrderHelper {
 			String grossTotal = request.getParameter("grossTotal");
 			cust.setGrossamt(Double.parseDouble(grossTotal));
 			
-			String discountservice = request.getParameter("discountservice");
+			String discounts = request.getParameter("discounts");
 			/*
 			 * if (discountservice == null) { cust.setDiscount(0d); } else {
 			 * cust.setDiscount(Double.parseDouble(discountservice)); }
 			 */
 			//cust.setDiscount(Double.parseDouble(discountservice));
-			if(!"".equals(discountservice)){
-				cust.setDiscount(Double.parseDouble(discountservice));
+			System.out.println("discounts     " + discounts);
+			if(!"".equals(discounts)){
+				cust.setDiscount(Double.parseDouble(discounts));
 		    } else
 		    {
 		    	cust.setDiscount(0.0);
 		    }
+			String bill = "Estimate";
+			cust.setBilltype(bill);
+			
 			session3.setAttribute("BillNo", BillNo);
 			if (BillNo == null) {
 				cust.setBillNo(1l);
@@ -1184,6 +1302,8 @@ public class CustomerOrderHelper {
 		 */
 		
 	}
+	
+	
 	//service credit
 	public void registerBillServicecredit(HttpServletRequest request, HttpServletResponse response) {
 

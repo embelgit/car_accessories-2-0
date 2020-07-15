@@ -494,6 +494,9 @@ public class BarrelEntryHelper {
 			String totalAmount = request.getParameter("totalAmount");
 			cust.setTotalAmt(Double.parseDouble(totalAmount));
 
+			String bill = "Billing";
+			cust.setBilltype(bill);
+			
 			String discount = request.getParameter("discount");
 	//		double disAmt = Double.parseDouble(discount) / count;
 			cust.setDiscount(Double.parseDouble(discount));
@@ -577,6 +580,186 @@ public class BarrelEntryHelper {
 		}
 
 	}
+	
+	//
+	public void registerOtherBillqq(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		HttpSession session3 = request.getSession();
+		CustomerOrderDao data = new CustomerOrderDao();
+		List stkList  = data.getLastBillNoOil();
+		
+		for(int i=0;i<stkList.size();i++){
+			
+			BillBean st = (BillBean)stkList.get(i);
+			BillNo = st.getBillNo();
+			
+			BillNo++;
+			
+		}
+
+		BarrelBillingHibernate cust = new BarrelBillingHibernate();
+		Integer count = Integer.parseInt(request.getParameter("count"));
+		System.out.println("c111111" + count);
+
+		for (int i = 0; i < count; i++) {
+
+			String itemName = request.getParameter("itemName" + i);
+			cust.setItemName(itemName);
+
+			String categoryName = request.getParameter("categoryName" + i);
+			cust.setCategoryName(categoryName);
+
+			String quantity = request.getParameter("quantity" + i);
+			System.out.println("quantity" + quantity);
+			//cust.setQuantity(Long.parseLong(quantity));
+			
+			cust.setQuantitydouble(Double.parseDouble(quantity));
+
+			String salePrice = request.getParameter("salePrice" + i);
+
+			// cust.setSalePrice(Double.parseDouble(salePrice));
+
+			/*
+			 * String barcodeNo = request.getParameter("barcodeNo" + i);
+			 * System.out.println("unitinMl" + barcodeNo);
+			 * cust.setBarcodeNo(Long.parseLong(barcodeNo));
+			 * 
+			 * 
+			 */
+			String TotalQuan = request.getParameter("TotalQuan" + i);
+			cust.setTotalQuan(Double.parseDouble(TotalQuan));
+			
+
+			String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+			cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+			
+
+
+			String NumberofBarrel = request.getParameter("NumberofBarrel" + i);
+			cust.setNumberofBarrel(Double.parseDouble(NumberofBarrel));
+
+			String TotalLitre = request.getParameter("TotalLitre" + i);
+			cust.setTotalLitre(Double.parseDouble(TotalLitre));
+
+			String hsnSacNo = request.getParameter("hsnSacNo" + i);
+			cust.setHsnSacNo(hsnSacNo);
+
+			String discountGrid = request.getParameter("discountGrid" + i);
+			cust.setDiscountGrid(Double.parseDouble(discountGrid));
+
+			String discountAmt = request.getParameter("discountAmt" + i);
+			cust.setDiscountAmt(Double.parseDouble(discountAmt));
+
+			String vat = request.getParameter("vat" + i);
+			String igst = request.getParameter("igst" + i);
+
+			if (vat.equals("0")) {
+				cust.setVat(Double.parseDouble(igst));
+				double igstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(igst))));
+				double netPrice = Double.parseDouble(salePrice) - igstAmt;
+				cust.setSalePrice(netPrice);
+			} else {
+				cust.setVat(Double.parseDouble(vat));
+				double gstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(vat))));
+				double netPrice = Double.parseDouble(salePrice) - gstAmt;
+				cust.setSalePrice(netPrice);
+			}
+			cust.setIgst(0d);
+
+			String taxAmount = request.getParameter("taxAmount" + i);
+			cust.setTaxAmount(Double.parseDouble(taxAmount));
+
+			String totalAmount = request.getParameter("totalAmount");
+			cust.setTotalAmt(Double.parseDouble(totalAmount));
+
+			String bill = "Estimate";
+			cust.setBilltype(bill);
+			
+			String discount = request.getParameter("discount");
+	//		double disAmt = Double.parseDouble(discount) / count;
+			cust.setDiscount(Double.parseDouble(discount));
+
+			cust.setCarNo("NA");
+			cust.setContactNo(000l);
+			cust.setOwnerName("NA");
+
+			
+			String grossTotal = request.getParameter("grossTotal");
+			cust.setGrossamt(Double.parseDouble(grossTotal));
+			
+			String wholeTotal = request.getParameter("wholeTotal");
+			cust.setWholeTotal(Double.parseDouble(wholeTotal));
+			 
+			String total = request.getParameter("total" + i);
+			cust.setTotalperItem(Double.parseDouble(total));
+
+			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			Date dateobj = new Date();
+			System.out.println(df.format(dateobj));
+			String newDate = df.format(dateobj);
+			cust.setCurrent_date(dateobj);
+
+			session3.setAttribute("BillNo", BillNo);
+			if (BillNo == null) {
+				cust.setBillNo(1l);
+			} else {
+				cust.setBillNo(BillNo);
+			}
+
+			BarrelEntryDao dao = new BarrelEntryDao();
+			dao.registerBill(cust);
+
+			//stock code
+			  Long item_id = Long.parseLong(request.getParameter("item_id"+i));
+			  System.out.println("item_id" +item_id); 
+			  GoodReciveDao good = new GoodReciveDao(); 
+			  //good.updateQuantity(item_id,quantity);
+			  
+			  
+			  StockDao dao1 = new StockDao(); 
+			  List stkList2 =dao1.getAllStockEntry();
+			  
+			  for(int j=0;j<stkList2.size();j++){
+			  
+			  Stock st = (Stock)stkList2.get(j); 
+			  String ItemId =st.getItemName(); 
+			  String cat = st.getCatName();
+			  //Double TotalLitre1=st.getTotalLitre();
+			   
+			  //If ItemName Is Already Exists In Stock Table
+			  if(ItemId.equals(itemName) && cat.equals(categoryName))
+			  { 
+				  Long PkItemId = st.getPkStockId(); 
+				  //Long qunty = st.getQuantity();
+				  Double totalLitreStock=st.getTotalLitre();
+			  
+				  //Double updatequnty = (Double) (totalLitreStock - Long.parseLong(quantity));
+			  //double updateTotalLitre=(double) (totalLitreStock - Long.parseLong(TotalLitre));
+				  Double updatequnty = (Double) (totalLitreStock - Double.parseDouble(quantity));
+			  HibernateUtility hbu = HibernateUtility.getInstance(); 
+			  Session session = hbu.getHibernateSession(); 
+			  Transaction transaction =session.beginTransaction();
+			  
+			  
+			  Date date = new Date();
+			  
+			  Stock updateStock = (Stock) session.get(Stock.class, new Long(PkItemId)); 
+	//		  updateStock.setUpdateDate(date); 
+			  //updateStock.setQuantity(updatequnty);
+	//		  updateStock.setTotalLitre(updatequnty);
+			  
+	//		  session.saveOrUpdate(updateStock); 
+	//		  transaction.commit();
+			
+			  }
+			  
+			  }
+			 
+		}
+
+	}
+	
+	
 	//oil credit
 	
 	public void registerOtherBillcredit(HttpServletRequest request, HttpServletResponse response) {

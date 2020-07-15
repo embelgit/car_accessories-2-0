@@ -138,6 +138,8 @@ public class EstimateQuotHelper {
 			String grossTotal = request.getParameter("grossTotal");
 			cust.setGrossamt(Double.parseDouble(grossTotal));
 
+			String carNo = request.getParameter("carNo");
+			cust.setCarNo((carNo));
 			
 			String paidAmt = request.getParameter("paidAmt");
 

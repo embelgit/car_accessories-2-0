@@ -431,16 +431,50 @@ public void registerBill1(com.smt.hibernate.CustomerBill cust1) {
 	}
 	
 	// car Bill No in regBill
+	//
+	public List getLastBillNoServicebb()
+	{
+		HibernateUtility hbu=null;
+		Session session=null;
+		List<BillBean> saleList=null;
+		String ss = "Billing";
+		try
+		{
+			hbu = HibernateUtility.getInstance();
+		 session = hbu.getHibernateSession();
+		 Query query = session.createSQLQuery("SELECT BillNo, pkBillId FROM service_billing where billtype = '"+ss+"' ORDER BY BillNo desc LIMIT 1");
+			
+			List<Object[]> list = query.list();
+			 saleList= new ArrayList<BillBean>(0);
+			for (Object[] object : list) {
+				System.out.println(Arrays.toString(object));
+				BillBean reports = new BillBean();
+				reports.setBillNo(Long.parseLong(object[0].toString()));
+				saleList.add(reports);	 
+		}}
+		catch(Exception e)
+		{
+			e.printStackTrace();	
+		}finally
+		{if(session!=null){
+			session.close();	
+		}
+		}
+		return saleList;
+	}
+	
+	
 		public List getLastBillNoService()
 		{
 			HibernateUtility hbu=null;
 			Session session=null;
 			List<BillBean> saleList=null;
+			String ss = "Estimate";
 			try
 			{
 				hbu = HibernateUtility.getInstance();
 			 session = hbu.getHibernateSession();
-			 Query query = session.createSQLQuery("SELECT BillNo, pkBillId FROM service_billing ORDER BY BillNo desc LIMIT 1");
+			 Query query = session.createSQLQuery("SELECT BillNo, pkBillId FROM service_billing where billtype = '"+ss+"' ORDER BY BillNo desc LIMIT 1");
 				
 				List<Object[]> list = query.list();
 				 saleList= new ArrayList<BillBean>(0);

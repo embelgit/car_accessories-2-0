@@ -24,6 +24,12 @@
 		column="fkEstimCustId"
 		 />
 		
+				<property
+		name="carNo" 
+		type="java.lang.String" 
+		column="carNo"
+		 />
+		
 		<property
 		name="categoryName" 
 		type="java.lang.String" 

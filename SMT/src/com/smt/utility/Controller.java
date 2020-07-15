@@ -1626,6 +1626,14 @@ public class Controller {
 							return toJson("Data Added Successfully");
 
 						}
+						public String registerOtherBill1qq(HttpServletRequest request, HttpServletResponse response) {
+							System.out.println("IN CONTROLLER");
+							BarrelEntryHelper Helper = new BarrelEntryHelper();
+							Helper.registerOtherBillqq(request, response);
+							return toJson("Data Added Successfully");
+
+						}
+						
 						//
 						public String registerOtherBillcredit(HttpServletRequest request, HttpServletResponse response) {
 							System.out.println("IN CONTROLLER");
@@ -1675,6 +1683,14 @@ public class Controller {
 							System.out.println("IN CONTROLLER");
 							CustomerOrderHelper Helper = new CustomerOrderHelper();
 							Helper.registerBillService(request, response);
+							return toJson("Data Added Successfully");
+
+						}
+						//
+						public String registerBillServiceqq(HttpServletRequest request, HttpServletResponse response) {
+							System.out.println("IN CONTROLLER");
+							CustomerOrderHelper Helper = new CustomerOrderHelper();
+							Helper.registerBillServiceqq(request, response);
 							return toJson("Data Added Successfully");
 
 						}

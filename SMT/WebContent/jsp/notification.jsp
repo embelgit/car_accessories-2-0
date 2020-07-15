@@ -165,7 +165,8 @@
 					    window.location = '/SMT/jsp/OrderBill.jsp';
 					}
 					function goToHome1(){
-					    window.location = 'Credit_Customer_Bill.jsp';
+//					    window.location = 'Credit_Customer_Bill.jsp';
+					    window.location = '/SMT/jsp/OrderBill.jsp';
 					}
 					function goToDashBoard(){
 					    window.location = '/SMT/jsp/index.jsp';

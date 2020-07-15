@@ -12,9 +12,16 @@ public class serviceHibernate {
 	private String itemName;
 	private String paymentbill; 
 	
+	private String billtype;
 	
 	
 	
+	public String getBilltype() {
+		return billtype;
+	}
+	public void setBilltype(String billtype) {
+		this.billtype = billtype;
+	}
 	public String getPaymentbill() {
 		return paymentbill;
 	}

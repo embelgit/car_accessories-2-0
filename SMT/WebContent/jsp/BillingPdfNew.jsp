@@ -124,16 +124,17 @@
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smt_sc", "root", "root");
 		Statement stmt = conn.createStatement();
 
+		String ss = "Billing";
 		ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description,kmReading,vehiclecolor,gstNo,credit_desp,net_Amt,paymentMode from customerbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
-		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount from service_billing  where BillNo =" + billno);
+		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount from service_billing  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
 		
 		
 		
 		Statement stmt1 = conn.createStatement();
 		//ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal from barreloilbilling where BillNo ="+billno+"  UNION select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt from service_billing where BillNo =" + billno);
-		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount from barreloilbilling  where BillNo =" + billno);
+		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount from barreloilbilling  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
 		 
 		
 		Font font17Bold = new Font(Font.FontFamily.TIMES_ROMAN, 17, Font.BOLD, BaseColor.BLACK);

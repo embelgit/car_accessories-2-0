@@ -29,14 +29,26 @@ public class BarrelBillingHibernate {
 	private Double TotalLitre;
     private Double wholeTotal;
     private double quantitydouble;
-	
+	private String billtype;
     private String paymentbill;
 		 
 	private Double totalQuan;
     private Double buyPriceEXTax;
 
     
-    
+
+
+
+	public String getBilltype() {
+		return billtype;
+	}
+
+
+	public void setBilltype(String billtype) {
+		this.billtype = billtype;
+	}
+
+
 	public String getPaymentbill() {
 		return paymentbill;
 	}
