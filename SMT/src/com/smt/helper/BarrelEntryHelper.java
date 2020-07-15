@@ -586,7 +586,7 @@ public class BarrelEntryHelper {
 		// TODO Auto-generated method stub
 		HttpSession session3 = request.getSession();
 		CustomerOrderDao data = new CustomerOrderDao();
-		List stkList  = data.getLastBillNoOil();
+		List stkList  = data.getLastBillNoOilqq();
 		
 		for(int i=0;i<stkList.size();i++){
 			
