@@ -638,7 +638,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 			document.add(table5);
 			
 			
-			
+			if(disc>0){			
 			//footer of service spares
 		     PdfPTable table12 = new PdfPTable(2);
 			table12.setWidthPercentage(100);
@@ -649,29 +649,45 @@ Long billno = (Long) session.getAttribute("BillNo");
 
 			PdfPCell table_cell12;
 			
-			table_cell12 = new PdfPCell(new Phrase("Description:" +description));
+			table_cell12 = new PdfPCell(new Phrase("Discount : " +description));
 			table_cell12.setHorizontalAlignment(Element.ALIGN_LEFT);
 			//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 			table12.addCell(table_cell12);
 			
 			
-			if(disc>0){
+
 			table_cell12 = new PdfPCell(new Phrase(String.valueOf(disc), Normalfont12));
 			table_cell12.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			//table_cell5.setBorder(Rectangle.TOP);
 			table12.addCell(table_cell12);
-			}
-			else{
+
 				table_cell12 = new PdfPCell(new Phrase());
 				table_cell12.setHorizontalAlignment(Element.ALIGN_RIGHT);
 				//table_cell5.setBorder(Rectangle.TOP);
 				table12.addCell(table_cell12);
 					
-			}
 			
 			document.add(table12);
-			 
+			} 
 			
+		     PdfPTable table19 = new PdfPTable(1);
+			table19.setWidthPercentage(100);
+			
+			
+			float[] columnWidths19 = {2f};
+			table19.setWidths(columnWidths19);
+
+			PdfPCell table_cell19;
+			
+			table_cell19 = new PdfPCell(new Phrase("Description : " +description));
+			table_cell19.setHorizontalAlignment(Element.ALIGN_LEFT);
+			//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
+			table19.addCell(table_cell19);
+			
+
+			
+			document.add(table19);
+			 
 			 
 			//footer of service spares
 		    /*  PdfPTable table13 = new PdfPTable(1);

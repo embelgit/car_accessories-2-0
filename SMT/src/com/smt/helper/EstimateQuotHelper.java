@@ -46,7 +46,7 @@ public class EstimateQuotHelper {
 			BillNo++;
 
 		}
-
+		System.out.println("bill no - "+BillNo);
 		EstimateQuotationBill cust = new EstimateQuotationBill();
 		Integer count = Integer.parseInt(request.getParameter("count"));
 		System.out.println("c111111" + count);
@@ -167,7 +167,7 @@ public class EstimateQuotHelper {
 			} else {
 				cust.setBillNo(BillNo);
 			}
-
+			System.out.println("bill no set       - "+cust.getBillNo());
 			EstimateQuotDao dao = new EstimateQuotDao();
 			dao.regCreditCustomerBill(cust);
 			

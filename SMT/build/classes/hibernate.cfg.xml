@@ -52,6 +52,8 @@
        <mapping resource="com/smt/hibernate/CustomerOilBilling.hbm.xml"/> 
         <mapping resource="com/smt/hibernate/serviceBilling.hbm.xml"/> 
        
+        <mapping resource="com/smt/hibernate/barrelbillestimate.hbm.xml"/> 
+        <mapping resource="com/smt/hibernate/serviceestimatebilling.hbm.xml"/> 
        
     </session-factory>
 

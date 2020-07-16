@@ -114,8 +114,8 @@ public class OtherBillHelper {
 			
 
 			String discount = request.getParameter("discount");
-			double disAmt = Double.parseDouble(discount) / count;
-			cust.setDiscount(disAmt);
+	//		double disAmt = Double.parseDouble(discount) / count;
+			cust.setDiscount(Double.parseDouble(discount) );
 			
 			
 			String custName = request.getParameter("custName");

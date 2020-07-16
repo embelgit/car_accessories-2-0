@@ -469,12 +469,12 @@ public void registerBill1(com.smt.hibernate.CustomerBill cust1) {
 			HibernateUtility hbu=null;
 			Session session=null;
 			List<BillBean> saleList=null;
-			String ss = "Estimate";
+//			String ss = "Estimate";
 			try
 			{
 				hbu = HibernateUtility.getInstance();
 			 session = hbu.getHibernateSession();
-			 Query query = session.createSQLQuery("SELECT BillNo, pkBillId FROM service_billing where billtype = '"+ss+"' ORDER BY BillNo desc LIMIT 1");
+			 Query query = session.createSQLQuery("SELECT BillNo, pkBillId FROM estimate_service_bill ORDER BY BillNo desc LIMIT 1");
 				
 				List<Object[]> list = query.list();
 				 saleList= new ArrayList<BillBean>(0);
@@ -532,12 +532,12 @@ public void registerBill1(com.smt.hibernate.CustomerBill cust1) {
 			HibernateUtility hbu=null;
 			Session session=null;
 			List<BillBean> saleList=null;
-			String cc = "Estimate";
+		//	String cc = "Estimate";
 			try
 			{
 				hbu = HibernateUtility.getInstance();
 			 session = hbu.getHibernateSession();
-			 Query query = session.createSQLQuery("SELECT BillNo, pkOild FROM barreloilbilling where billtype = '"+cc+"' ORDER BY BillNo desc LIMIT 1");
+			 Query query = session.createSQLQuery("SELECT BillNo, pkOild FROM estimate_barrel_billing ORDER BY BillNo desc LIMIT 1");
 				
 				List<Object[]> list = query.list();
 				 saleList= new ArrayList<BillBean>(0);
@@ -2586,6 +2586,7 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 				
 		}
 ////service databse
+		
 		public void registerBillService(com.smt.hibernate.serviceHibernate cust) {
 			
 			HibernateUtility hbu = null ;
@@ -2619,7 +2620,41 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 				}
 			}
 	}
+	//
 		
+		public void registerBillServiceqq(com.smt.hibernate.serviceestimatehibernate cust) {
+			
+			HibernateUtility hbu = null ;
+			Session session  = null;
+			Transaction transaction = null;
+			
+			
+			try {
+				hbu = HibernateUtility.getInstance();
+				session = hbu.getHibernateSession();
+				transaction = session.beginTransaction();
+				
+				session.save(cust);
+				transaction.commit();
+				
+			
+			} catch (Exception e) {
+				try {
+					transaction.rollback();
+				} catch (RuntimeException ede) {
+				     
+				//	Log.error("Error in transaction", ede);
+				}
+			}
+			
+			finally
+			{
+				if (session!=null) {
+					hbu.closeSession(session);
+					
+				}
+			}
+	}
 	//
 		public void registerBillServicecredit(com.smt.hibernate.serviceHibernate cust) {
 			

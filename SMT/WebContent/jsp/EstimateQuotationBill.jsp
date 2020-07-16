@@ -116,7 +116,7 @@ function calgrosstot(){
 	 %>
 	 <%
 	    CreditCustBillDao data = new CreditCustBillDao();
-		List stkList  = data.getLastBillNo();
+		List stkList  = data.getLastBillNoqq();
 		
 		for(int i=0;i<stkList.size();i++){
 			

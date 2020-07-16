@@ -1206,7 +1206,7 @@ public class CustomerOrderHelper {
 		
 		System.out.println("BILLNUMBER++++++++++++++"+BillNo);
 
-		com.smt.hibernate.serviceHibernate cust = new com.smt.hibernate.serviceHibernate();
+		com.smt.hibernate.serviceestimatehibernate cust = new com.smt.hibernate.serviceestimatehibernate();
 
 		Integer count1 = Integer.parseInt(request.getParameter("count1"));
 		System.out.println("c111111" + count1);
@@ -1292,7 +1292,7 @@ public class CustomerOrderHelper {
 			}
 
 			CustomerOrderDao dao = new CustomerOrderDao();
-			dao.registerBillService(cust);
+			dao.registerBillServiceqq(cust);
 
 		}
 		

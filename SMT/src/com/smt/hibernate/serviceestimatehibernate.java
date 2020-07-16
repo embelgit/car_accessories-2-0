@@ -2,7 +2,8 @@ package com.smt.hibernate;
 
 import java.util.Date;
 
-public class serviceHibernate {
+public class serviceestimatehibernate {
+
 	
 	private Long pkBillId;
 	private Long catId;
@@ -34,34 +35,95 @@ public class serviceHibernate {
 	private Double taxAmount;
 	private Double discountGrid;
 	private Double discountAmt;
-		
-	public String getBilltype() {
-		return billtype;
-	}
-	public void setBilltype(String billtype) {
-		this.billtype = billtype;
-	}
-	public String getPaymentbill() {
-		return paymentbill;
-	}
-	public void setPaymentbill(String paymentbill) {
-		this.paymentbill = paymentbill;
-	}
-	public Double getTotalQuan() {
-		return totalQuan;
-	}
-	public void setTotalQuan(Double totalQuan) {
-		this.totalQuan = totalQuan;
-	}
-	public Double getBuyPriceEXTax() {
-		return buyPriceEXTax;
-	}
-	public void setBuyPriceEXTax(Double buyPriceEXTax) {
-		this.buyPriceEXTax = buyPriceEXTax;
-	}
-	////service///
 	
+	
+	private Double servicetotalPerItem;
+	private String service_item;
+	private String service_hsn;
+	private Long service_quantity;
+	private Double service_saleprice;
+	private Double service_disc_grid;
+	private Double service_discAmt;
+	private Double service_gst;
+	private Double service_igst;
+	private Double service_taxAm;
+	private Double wholeTotal;
 	private Double serviceTotalAmt;
+	
+	
+	
+	public Double getServiceTotalAmt() {
+		return serviceTotalAmt;
+	}
+	public void setServiceTotalAmt(Double serviceTotalAmt) {
+		this.serviceTotalAmt = serviceTotalAmt;
+	}
+	public Double getServicetotalPerItem() {
+		return servicetotalPerItem;
+	}
+	public void setServicetotalPerItem(Double servicetotalPerItem) {
+		this.servicetotalPerItem = servicetotalPerItem;
+	}
+	public String getService_item() {
+		return service_item;
+	}
+	public void setService_item(String service_item) {
+		this.service_item = service_item;
+	}
+	public String getService_hsn() {
+		return service_hsn;
+	}
+	public void setService_hsn(String service_hsn) {
+		this.service_hsn = service_hsn;
+	}
+	public Long getService_quantity() {
+		return service_quantity;
+	}
+	public void setService_quantity(Long service_quantity) {
+		this.service_quantity = service_quantity;
+	}
+	public Double getService_saleprice() {
+		return service_saleprice;
+	}
+	public void setService_saleprice(Double service_saleprice) {
+		this.service_saleprice = service_saleprice;
+	}
+	public Double getService_disc_grid() {
+		return service_disc_grid;
+	}
+	public void setService_disc_grid(Double service_disc_grid) {
+		this.service_disc_grid = service_disc_grid;
+	}
+	public Double getService_discAmt() {
+		return service_discAmt;
+	}
+	public void setService_discAmt(Double service_discAmt) {
+		this.service_discAmt = service_discAmt;
+	}
+	public Double getService_gst() {
+		return service_gst;
+	}
+	public void setService_gst(Double service_gst) {
+		this.service_gst = service_gst;
+	}
+	public Double getService_igst() {
+		return service_igst;
+	}
+	public void setService_igst(Double service_igst) {
+		this.service_igst = service_igst;
+	}
+	public Double getService_taxAm() {
+		return service_taxAm;
+	}
+	public void setService_taxAm(Double service_taxAm) {
+		this.service_taxAm = service_taxAm;
+	}
+	public Double getWholeTotal() {
+		return wholeTotal;
+	}
+	public void setWholeTotal(Double wholeTotal) {
+		this.wholeTotal = wholeTotal;
+	}
 	public Long getPkBillId() {
 		return pkBillId;
 	}
@@ -79,6 +141,30 @@ public class serviceHibernate {
 	}
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
+	}
+	public String getPaymentbill() {
+		return paymentbill;
+	}
+	public void setPaymentbill(String paymentbill) {
+		this.paymentbill = paymentbill;
+	}
+	public String getBilltype() {
+		return billtype;
+	}
+	public void setBilltype(String billtype) {
+		this.billtype = billtype;
+	}
+	public Double getTotalQuan() {
+		return totalQuan;
+	}
+	public void setTotalQuan(Double totalQuan) {
+		this.totalQuan = totalQuan;
+	}
+	public Double getBuyPriceEXTax() {
+		return buyPriceEXTax;
+	}
+	public void setBuyPriceEXTax(Double buyPriceEXTax) {
+		this.buyPriceEXTax = buyPriceEXTax;
 	}
 	public Long getQuantity() {
 		return quantity;
@@ -206,92 +292,9 @@ public class serviceHibernate {
 	public void setDiscountAmt(Double discountAmt) {
 		this.discountAmt = discountAmt;
 	}
-	public Double getServiceTotalAmt() {
-		return serviceTotalAmt;
-	}
-	public void setServiceTotalAmt(Double serviceTotalAmt) {
-		this.serviceTotalAmt = serviceTotalAmt;
-	}
-	public Double getServicetotalPerItem() {
-		return servicetotalPerItem;
-	}
-	public void setServicetotalPerItem(Double servicetotalPerItem) {
-		this.servicetotalPerItem = servicetotalPerItem;
-	}
-	public String getService_item() {
-		return service_item;
-	}
-	public void setService_item(String service_item) {
-		this.service_item = service_item;
-	}
-	public String getService_hsn() {
-		return service_hsn;
-	}
-	public void setService_hsn(String service_hsn) {
-		this.service_hsn = service_hsn;
-	}
-	public Long getService_quantity() {
-		return service_quantity;
-	}
-	public void setService_quantity(Long service_quantity) {
-		this.service_quantity = service_quantity;
-	}
-	public Double getService_saleprice() {
-		return service_saleprice;
-	}
-	public void setService_saleprice(Double service_saleprice) {
-		this.service_saleprice = service_saleprice;
-	}
-	public Double getService_disc_grid() {
-		return service_disc_grid;
-	}
-	public void setService_disc_grid(Double service_disc_grid) {
-		this.service_disc_grid = service_disc_grid;
-	}
-	public Double getService_discAmt() {
-		return service_discAmt;
-	}
-	public void setService_discAmt(Double service_discAmt) {
-		this.service_discAmt = service_discAmt;
-	}
-	public Double getService_gst() {
-		return service_gst;
-	}
-	public void setService_gst(Double service_gst) {
-		this.service_gst = service_gst;
-	}
-	public Double getService_igst() {
-		return service_igst;
-	}
-	public void setService_igst(Double service_igst) {
-		this.service_igst = service_igst;
-	}
-	public Double getService_taxAm() {
-		return service_taxAm;
-	}
-	public void setService_taxAm(Double service_taxAm) {
-		this.service_taxAm = service_taxAm;
-	}
-	public Double getWholeTotal() {
-		return wholeTotal;
-	}
-	public void setWholeTotal(Double wholeTotal) {
-		this.wholeTotal = wholeTotal;
-	}
-	private Double servicetotalPerItem;
-	private String service_item;
-	private String service_hsn;
-	private Long service_quantity;
-	private Double service_saleprice;
-	private Double service_disc_grid;
-	private Double service_discAmt;
-	private Double service_gst;
-	private Double service_igst;
-	private Double service_taxAm;
-	private Double wholeTotal;
 	
 	
 	
 	
-
+	
 }

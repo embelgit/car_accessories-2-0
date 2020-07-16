@@ -42,6 +42,7 @@ import com.smt.hibernate.GoodsReceiveBarrelHibernate;
 import com.smt.hibernate.OtherBill;
 import com.smt.hibernate.ProductRegister;
 import com.smt.hibernate.Stock;
+import com.smt.hibernate.barrelbillestimatehibernate;
 import com.smt.utility.HibernateUtility;
 
 public class BarrelEntryHelper {
@@ -600,7 +601,7 @@ public class BarrelEntryHelper {
 			
 		}
 
-		BarrelBillingHibernate cust = new BarrelBillingHibernate();
+		barrelbillestimatehibernate cust = new barrelbillestimatehibernate();
 		Integer count = Integer.parseInt(request.getParameter("count"));
 		System.out.println("c111111" + count);
 
@@ -710,7 +711,7 @@ public class BarrelEntryHelper {
 			}
 
 			BarrelEntryDao dao = new BarrelEntryDao();
-			dao.registerBill(cust);
+			dao.registerBillqq(cust);
 
 			//stock code
 			  Long item_id = Long.parseLong(request.getParameter("item_id"+i));

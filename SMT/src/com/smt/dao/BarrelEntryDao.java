@@ -19,6 +19,7 @@ import com.smt.hibernate.Category;
 import com.smt.hibernate.GoodReceive;
 import com.smt.hibernate.GoodsReceiveBarrelHibernate;
 import com.smt.hibernate.OtherBill;
+import com.smt.hibernate.barrelbillestimatehibernate;
 import com.smt.utility.HibernateUtility;
 
 public class BarrelEntryDao {
@@ -302,6 +303,42 @@ public class BarrelEntryDao {
 			}
 		}
 	}
+	//
+	
+	public void registerBillqq(barrelbillestimatehibernate cust) {
+		// TODO Auto-generated method stub
+		HibernateUtility hbu = null ;
+		Session session  = null;
+		Transaction transaction = null;
+		
+		
+		try {
+			hbu = HibernateUtility.getInstance();
+			session = hbu.getHibernateSession();
+			transaction = session.beginTransaction();
+			
+			session.save(cust);
+			transaction.commit();
+			
+		
+		} catch (Exception e) {
+			try {
+				transaction.rollback();
+			} catch (RuntimeException ede) {
+			     
+			//	Log.error("Error in transaction", ede);
+			}
+		}
+		
+		finally
+		{
+			if (session!=null) {
+				hbu.closeSession(session);
+				
+			}
+		}
+	}
+	
 	//oil
 	public void registerBillcredit(BarrelBillingHibernate cust) {
 		// TODO Auto-generated method stub

@@ -48,7 +48,38 @@ public class CreditCustBillDao {
 			}
 			return saleList;
 		}
-
+//
+		
+		public List getLastBillNoqq() {
+			// TODO Auto-generated method stub
+			HibernateUtility hbu=null;
+			Session session=null;
+			List<BillBean> saleList=null;
+			try
+			{
+				hbu = HibernateUtility.getInstance();
+			 session = hbu.getHibernateSession();
+			 Query query = session.createSQLQuery("SELECT BillNo,pkEstimId FROM estimatequotationbill ORDER BY BillNo DESC LIMIT 1");
+				
+				List<Object[]> list = query.list();
+				 saleList= new ArrayList<BillBean>(0);
+				for (Object[] object : list) {
+					System.out.println(Arrays.toString(object));
+					BillBean reports = new BillBean();
+					reports.setBillNo(Long.parseLong(object[0].toString()));
+					saleList.add(reports);	 
+			}}
+			catch(Exception e)
+			{
+				e.printStackTrace();	
+			}finally
+			{if(session!=null){
+				session.close();	
+			}
+			}
+			return saleList;
+		}
+		
 		public void regCreditCustomerBill(CreditCustomerBill cust) {
 			// TODO Auto-generated method stub
 			

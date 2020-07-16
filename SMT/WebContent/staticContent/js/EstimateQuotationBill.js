@@ -1787,7 +1787,7 @@ var wholeTotal=$('#wholeTotal').val();
 	 /*if(discounts = "" || discounts == null || discounts == undefined ){
 		 discounts = 0;
 	 }*/
-	 alert(discounts);
+//	 alert(discounts);
 	 params["count1"] = count1;
 		//alert("count second++++  " +count1)
 	params["ServicetotalAmount"] = ServicetotalAmount;
