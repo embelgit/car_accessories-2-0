@@ -867,7 +867,6 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
     	}
     	else
     	{
-
 	    	document.getElementById("totalAmount").value = 0;
 	    	document.getElementById("spareGrossTotal").value = 0;
 	    	document.getElementById("wholeTotal").value = 0;
