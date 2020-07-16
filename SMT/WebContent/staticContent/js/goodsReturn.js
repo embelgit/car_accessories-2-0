@@ -569,7 +569,7 @@ function getitems() {
 								datatype : "local",
 
 								colNames : [ "itemID","CategoryName", "Item Name",
-										 "Avail Quant", "Return Quant", "BuyPrice","BuyPriceEXTax",
+										 "Avail Quant", "Return Quant", "BuyPrice","BPExTax",
 										"GST", "IGST","Total","ContactPerson",
 										"BarcodeNo", "Date" ],
 
@@ -610,7 +610,7 @@ function getitems() {
 									
 								},
 								{
-									name : 'buyPriceEXTax',
+									name : 'buyPriceEx',
 									width : 100,
 									
 								},
@@ -785,7 +785,7 @@ function getitems10() {
 								datatype : "local",
 
 								colNames : [ "itemID","CategoryName", "Item Name",
-										 "Avail Quant", "Return Quant", "BuyPrice","BuyPriceEXTax",
+										 "Avail Quant", "Return Quant", "BuyPrice","BPEXTax",
 										"GST", "IGST","Total","ContactPerson",
 										"BarcodeNo", "OilPerBarel" ,"Date"],
 
@@ -825,7 +825,7 @@ function getitems10() {
 									
 								},
 								{
-									name : 'buyPriceEXTax',
+									name : 'buyPriceEx',
 									width : 100,
 									
 								},

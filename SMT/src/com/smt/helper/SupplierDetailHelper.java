@@ -347,7 +347,7 @@ public class SupplierDetailHelper {
 			/*bean.setTotalAmt(Double.parseDouble(o[0].toString()));*/
 			System.out.println("***************"+o[0]);
 			bean.setIgst(Double.parseDouble(o[11].toString()));
-			bean.setBuyPriceEXTax(Double.parseDouble(o[12].toString()));
+			bean.setBuyPriceEx(Double.parseDouble(o[12].toString()));
 			map.put(bean.getPkGoodRecId(),bean);
 		}
 		return map;
@@ -387,7 +387,7 @@ public class SupplierDetailHelper {
 			/*bean.setTotalAmt(Double.parseDouble(o[0].toString()));*/
 			System.out.println("***************"+o[0]);
 			bean.setIgst(Double.parseDouble(o[11].toString()));
-			bean.setBuyPriceEXTax(Double.parseDouble(o[12].toString()));
+			bean.setBuyPriceEx(Double.parseDouble(o[12].toString()));
 //			bean.setQuantity(Long.parseLong(o[12].toString()));
 			map.put(bean.getPkGoodRecId(),bean);
 		}

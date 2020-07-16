@@ -62,6 +62,14 @@
 		
 		
 		<property
+		name="buyPriceEx" 
+		type="java.lang.Double" 
+		column="buyPriceEx"
+		length="255" />
+		
+		
+		
+		<property
 		name="discount" 
 		type="java.lang.Double" 
 		column="discount"

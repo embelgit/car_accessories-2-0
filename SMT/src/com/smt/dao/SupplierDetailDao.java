@@ -418,7 +418,7 @@ public List getTotalItemByBillNo(String billNo, String supplierId) {
 		 session = hbu.getHibernateSession();
 		 System.out.println("BillNo :: "+billNo);
 		 System.out.println("supplierId :: "+supplierId);
-		Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.OrignalQuantity, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date, s.Quantity, s.igst,s.buyPriceEXTax  from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplierId");
+		Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.OrignalQuantity, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date, s.Quantity, s.igst,s.buyPriceEx  from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplierId");
 		query.setParameter("billNo",billNo);
 		query.setParameter("supplierId",supplierId);
 		list = query.list();
@@ -447,7 +447,7 @@ public List getTotalItemByBillNo10(String billNo, String supplierId) {
 		 session = hbu.getHibernateSession();
 		 System.out.println("BillNo :: "+billNo);
 		 System.out.println("supplierId :: "+supplierId);
-		Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.NoOfBarrel, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date, s.Quantity, s.igst,s.buyPriceEXTax,s.oilperlitre  from goodreceivebarrel s where s.BillNo='"+billNo+"' And s.FksuppId='"+supplierId+"'");
+		Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.NoOfBarrel, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date, s.Quantity, s.igst,s.buyPriceEx,s.oilperlitre  from goodreceivebarrel s where s.BillNo='"+billNo+"' And s.FksuppId='"+supplierId+"'");
 //		query.setParameter("billNo",billNo);
 //		query.setParameter("supplierId",supplierId);
 		list = query.list();

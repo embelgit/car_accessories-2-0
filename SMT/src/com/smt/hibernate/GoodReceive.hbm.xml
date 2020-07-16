@@ -60,6 +60,14 @@
 		column="BuyPrice"
 		length="255" />
 		
+		
+		<property
+		name="buyPriceEx" 
+		type="java.lang.Double" 
+		column="buyPriceEx"
+		length="255" />
+		
+		
 		<property
 		name="totalQuan" 
 		type="java.lang.Double" 

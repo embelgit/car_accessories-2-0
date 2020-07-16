@@ -32,8 +32,20 @@ public class GoodReceive {
 	private Double finalExpenses;
 	private Double discount;
 	private Double totalQuan;
+	private Double buyPriceEx;
 	
 	
+	
+	public Double getBuyPriceEx() {
+		return buyPriceEx;
+	}
+
+
+	public void setBuyPriceEx(Double buyPriceEx) {
+		this.buyPriceEx = buyPriceEx;
+	}
+
+
 	public Double getTotalQuan() {
 		return totalQuan;
 	}

@@ -193,6 +193,9 @@ public class BarrelEntryHelper {
 			String buyPrice = request.getParameter("buyPrice" + i);
 			gd.setBuyPrice(Double.parseDouble(buyPrice));
 
+			String buyPriceEx = request.getParameter("buyPriceEx" + i);
+			gd.setBuyPriceEx(Double.parseDouble(buyPriceEx));
+			
 			String salePrice = request.getParameter("salePrice" + i);
 			System.out.println("Saleprice++++++++++++++"+salePrice);
 			gd.setSalePrice(Double.parseDouble(salePrice));
