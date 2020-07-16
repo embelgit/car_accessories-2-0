@@ -1355,6 +1355,7 @@ function getProductInGridBillingOil()
              	   var spareGrossTotal = document.getElementById("spareGrossTotal").value;
              	   var grossTotal = document.getElementById("grossTotal").value;
                    var grossTotalOil = document.getElementById("grossTotalOil").value;
+                   
                    GrandGrossTotalOil =Number(spareGrossTotal) + Number(grossTotal) + Number(grossTotalOil);
            		document.getElementById("wholeTotal").value =GrandGrossTotalOil; 
              	

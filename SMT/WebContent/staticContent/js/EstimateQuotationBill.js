@@ -1783,7 +1783,7 @@ var wholeTotal=$('#wholeTotal').val();
 //	 alert(discounts);
 	 var discounts = $('#discountservicee').val();
 //	 var discountservice = $('#discountservice').val();
-	 alert(discounts);
+//	 alert(discounts);
 	 /*if(discounts = "" || discounts == null || discounts == undefined ){
 		 discounts = 0;
 	 }*/

@@ -79,6 +79,9 @@ top: 2%;
 	     <script src="/SMT/staticContent/y_js/jquery.jqgrid.min.js"></script>
 
     <script src="/SMT/staticContent/js/goodsReturn.js"></script>
+    
+    
+    
 <script type="text/javascript">
 function pageLoad(){	
 	$("#CashCustDetail").show();

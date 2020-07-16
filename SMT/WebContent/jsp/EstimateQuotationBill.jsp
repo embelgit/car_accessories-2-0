@@ -34,10 +34,8 @@
 	     <script src="/SMT/staticContent/js/jquery-ui.js"></script>
 	     <script src="/SMT/staticContent/js/jqueryUi.js"></script>
 	     <script src="/SMT/staticContent/y_js/jquery.jqgrid.min.js"></script>
-	       <!-- <script src="/SMT/staticContent/y_js/customerOrder.js"></script> --> 
+
          <script src="/SMT/staticContent/js/EstimateQuotationBill.js"></script>
-        <!--  <script src="/SMT/staticContent/js/BarrelEntry.js"></script> -->
-		  <!-- <script src="/SMT/staticContent/js/creditCustBill.js"></script>  -->
 
 <style type="text/css">
 

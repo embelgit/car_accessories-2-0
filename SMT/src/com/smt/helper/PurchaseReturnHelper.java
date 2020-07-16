@@ -50,8 +50,8 @@ public class PurchaseReturnHelper {
             String buyPrice= request.getParameter("buyPrice"+i);
 			gd.setBuyPrice(Double.parseDouble(buyPrice));
 			
-            String buyPriceEXTax= request.getParameter("buyPriceEXTax"+i);
-			gd.setBuyPriceEXTax(Double.parseDouble(buyPriceEXTax));
+            String buyPriceEx= request.getParameter("buyPriceEx"+i);
+			gd.setBuyPriceEXTax(Double.parseDouble(buyPriceEx));
 			
 			String vat = request.getParameter("vat"+i);
 			gd.setVat(Double.parseDouble(vat));
@@ -186,8 +186,8 @@ public class PurchaseReturnHelper {
 			gd.setBuyPrice(Double.parseDouble(buyPrice));
 			
 			
-			String buyPriceEXTax= request.getParameter("buyPriceEXTax"+i);
-			gd.setBuyPriceEXTax(Double.parseDouble(buyPriceEXTax));
+			String buyPriceEx= request.getParameter("buyPriceEx"+i);
+			gd.setBuyPriceEXTax(Double.parseDouble(buyPriceEx));
 				
 				
 				
