@@ -918,6 +918,7 @@ public class Controller {
 		}
 
 	// get items in purchase return Form
+		//
 
 	public String getTotalItemByBillNo(HttpServletRequest request, HttpServletResponse response) {
 		String billNo = request.getParameter("billNo");

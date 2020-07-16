@@ -2144,7 +2144,7 @@ function resBillService() {
 		params["carID"] = carID;
 		params["wholeTotal"] = wholeTotal;
 		
-		
+		//
 		
 	
 		params["methodName"] = "registerBillService";
