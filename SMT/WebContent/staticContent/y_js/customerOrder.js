@@ -852,6 +852,8 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
     
     $.each(jsonData,function(i,v)
     {
+    	//MULTIPLE GRID GROSS TOTAL CAHNGES BY SAGAR
+    	
     	var gTotal = 0;
     	
     	if(v.length > 0)
@@ -871,6 +873,8 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	    	document.getElementById("spareGrossTotal").value = 0;
 	    	document.getElementById("wholeTotal").value = 0;
     	}
+    	
+    	//MULTIPLE GRID GROSS TOTAL CAHNGES BY SAGAR
     	
     	 /*count = jQuery("#list4").jqGrid('getGridParam', 'records'); 
 		     var rowdata =$("#list4").jqGrid('getGridParam','data');
