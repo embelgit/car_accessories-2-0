@@ -687,7 +687,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 
 			
 			document.add(table19);
-			 
+			 //
 			 
 			//footer of service spares
 		    /*  PdfPTable table13 = new PdfPTable(1);
