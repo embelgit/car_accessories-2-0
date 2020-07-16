@@ -843,14 +843,35 @@ var newrow;
 var rowId;
 
 $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
-  {
+ {	
 	var jsonData = $.parseJSON(data);
 	
-   $("#list4").jqGrid("clearGridData", true).trigger("reloadGrid");
+	$("#list4").jqGrid("clearGridData", true);
+	//$("#list4").jqGrid("clearGridData", true).trigger("reloadGrid");
    //$("#list4").jqGrid("clearGridData", false);
     
     $.each(jsonData,function(i,v)
-	  {
+    {
+    	var gTotal = 0;
+    	
+    	if(v.length > 0)
+    	{
+	    	for (var p = 0; p < v.length; p++) 
+			{
+	    		gTotal = +gTotal + +v[p].total;
+			}
+	    	
+	    	document.getElementById("totalAmount").value = gTotal;
+	    	document.getElementById("spareGrossTotal").value = gTotal;
+	    	document.getElementById("wholeTotal").value = gTotal;
+    	}
+    	else
+    	{
+
+	    	document.getElementById("totalAmount").value = 0;
+	    	document.getElementById("spareGrossTotal").value = 0;
+	    	document.getElementById("wholeTotal").value = 0;
+    	}
     	
     	 /*count = jQuery("#list4").jqGrid('getGridParam', 'records'); 
 		     var rowdata =$("#list4").jqGrid('getGridParam','data');
