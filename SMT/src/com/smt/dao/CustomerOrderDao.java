@@ -1237,21 +1237,21 @@ public List<CustomerBean> getAllItemDetails1(String key) {
 		    System.out.println("shreemant");
 			hbu = HibernateUtility.getInstance();
 	 session = hbu.getHibernateSession();
-	 String sqlQuery = "SELECT ItemName , PkGoodRecId, CategoryName , BarcodeNo, hsnsacno, vat, igst,salePrice FROM GoodReceive WHERE quantity > 0 AND BarcodeNo ="+key;
+//	 String sqlQuery = "SELECT ItemName , PkGoodRecId, CategoryName , BarcodeNo, hsnsacno, vat, igst,salePrice FROM GoodReceive WHERE quantity > 0 AND BarcodeNo ="+key;
 
-	 Query query=session.createSQLQuery(sqlQuery);
-		List<Object[]> list = query.list();
+//	 Query query=session.createSQLQuery(sqlQuery);
+//		List<Object[]> list = query.list();
 
 		 itemlist = new ArrayList<CustomerBean>(0);
-	     for (Object[] objects : list) {
-		 System.out.println(Arrays.toString(objects));
+//	     for (Object[] objects : list) {
+//		 System.out.println(Arrays.toString(objects));
 		 CustomerBean bean = new CustomerBean();
 		  
-		 bean.setItemName(objects[0].toString());
+/*		 bean.setItemName(objects[0].toString());
 		 bean.setItem_id(Long.parseLong(objects[1].toString()));
-		 bean.setCategoryName(objects[2].toString());
-		 
-		 bean.setBarcodeNo(Long.parseLong(objects[3].toString()));
+		 bean.setCategoryName(objects[2].toString());*/
+		 System.out.println("````````````````````````````````````````````````  "+bean.getItemName()+bean.getItem_id()+bean.getCategoryName());
+	/*	 bean.setBarcodeNo(Long.parseLong(objects[3].toString()));
 		 bean.setHsnSacNo(objects[4].toString());
 		 bean.setQuantity(0l);
 		 //bean.setSalePrice(0d);
@@ -1261,9 +1261,25 @@ public List<CustomerBean> getAllItemDetails1(String key) {
 		 bean.setVat(Double.parseDouble(objects[5].toString()));
 		 bean.setIgst(Double.parseDouble(objects[6].toString()));
 		 bean.setTaxAmount(0d);
+		*/ 
+		 bean.setItemName(key);
+		 bean.setItem_id(0l);
+		 bean.setCategoryName("Product");
+		 System.out.println("````````````````````````````````````````````````  "+bean.getItemName()+bean.getItem_id()+bean.getCategoryName());
+		 
+		 bean.setBarcodeNo(0l);
+		 bean.setHsnSacNo("0");
+		 bean.setQuantity(0l);
+		 //bean.setSalePrice(0d);
+		 bean.setSalePrice(0d);
+		 bean.setDiscountGrid(0d);
+		 bean.setDiscountAmt(0d);
+		 bean.setVat(0d);
+		 bean.setIgst(0d);
+		 bean.setTaxAmount(0d);
 		 
 		 itemlist.add(bean);
-	     }
+	//     }
 	     }
 			catch(RuntimeException e)
 			{

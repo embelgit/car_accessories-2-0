@@ -142,7 +142,7 @@ function calgrosstot(){
 			      <div class="row  form-group">
 						<div class="col-md-2" align="right">
 
-							<label class="control-label" >Barcode no:</label>
+							<label class="control-label" >Custom Product Name :</label>
 						</div>
 						
 						<div class="col-md-3">
