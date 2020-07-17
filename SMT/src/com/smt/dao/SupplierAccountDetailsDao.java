@@ -93,7 +93,7 @@ public class SupplierAccountDetailsDao {
 		    	 try {
 		    		 hbu = HibernateUtility.getInstance();
 		    		 session = hbu.getHibernateSession();
-		 			Query query = session.createSQLQuery("select s.GrossTotal,s.Total from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplierId");
+		 			Query query = session.createSQLQuery("select s.GrossTotal,s.Total from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplierId union select b.GrossTotal,b.Total from goodreceivebarrel b  where b.BillNo=:billNo And b.FksuppId=:supplierId");
 		 			query.setParameter("billNo",billNo);
 		 			query.setParameter("supplierId",supplierId);
 		 			list = query.list();
@@ -152,7 +152,7 @@ public class SupplierAccountDetailsDao {
 		    	 try {
 		    		 hbu = HibernateUtility.getInstance();
 		    		 session = hbu.getHibernateSession();
-		 			Query query = session.createSQLQuery("select s.GrossTotal,s.Total from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplier");
+		 			Query query = session.createSQLQuery("select s.GrossTotal,s.Total from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplier UNION select b.GrossTotal,b.Total from goodreceivebarrel b where b.BillNo=:billNo And b.FksuppId=:supplier");
 		 			query.setParameter("billNo",billNo);
 		 			query.setParameter("supplier",supplier);
 		 			list = query.list();

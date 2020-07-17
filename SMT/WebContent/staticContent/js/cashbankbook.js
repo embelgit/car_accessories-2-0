@@ -544,7 +544,9 @@ function BillHelper()
 		
 		var billNo = $("#billNo").val();
 		$("#totalAmount").empty();
+		//$("#balanceAmount").empty();
 		$("#totalAmount").append($("<input/>").attr("value","").text());
+		//$("#balanceAmount").append($("<input/>").attr("value","").text());
 		var params= {};
 		params["billNo"]= billNo;
 		params["supplier"]= supplier;
@@ -557,6 +559,7 @@ function BillHelper()
 			$.each(jsonData,function(i,v)
 					{
 				document.getElementById("totalAmount").value = v.totalAmt;
+				//document.getElementById("balanceAmount").value = v.totalAmt;
 				
 					});
 				})
