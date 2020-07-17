@@ -225,13 +225,14 @@ function grasstotalSpare(){
     	    	  var carpkID = "<%=category.getPkCarEntryId()%>";
  					var color = "<%=category.getVehiclecolor()%>";
  					var kmm = "<%=category.getKmReader()%>";
-       	    	  
+       	    	  var vehname = "<%=category.getVehiclename()%>";
     	    	  document.getElementById("ownerName").value = onerName;
     	    	  document.getElementById("contactNo").value = contactNo;
     	    	  document.getElementById("carNo").value = ab;
     	    	  document.getElementById("carID").value = carpkID;
     	    	  document.getElementById("vehiclecolor").value = color;
     	    	  document.getElementById("KmReader").value = kmm;
+    	    	  document.getElementById("vehicleName").value = vehname;
     	    	  
     	    	  document.getElementById(ab).style.backgroundColor = "green";
     	    	  getitemDataByCarNo();
@@ -454,6 +455,8 @@ function calgrosstot(){
 						<input type="text" class="form-control" id="gstNo" name="" placeholder="GST No." />
 					</div>
 					</div>
+					
+					
 				   <div class="row" style="margin-top: 15px;">
 				
 					    <div class="col-md-2" align="right">
@@ -494,6 +497,14 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
+						
+						<div class="col-md-2" align="right">
+							<label class="control-label" >Vehicle Name:</label>
+						</div>
+						
+						<div class="col-md-2">
+							<input type="text" class="form-control" id="vehicleName" name="vehicleName" readonly="readonly"  />
+						</div>
 						
 				   </div>
 				<!--  -->

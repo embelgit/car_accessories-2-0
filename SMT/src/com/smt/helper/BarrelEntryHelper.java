@@ -480,17 +480,18 @@ public class BarrelEntryHelper {
 			String igst = request.getParameter("igst" + i);
 
 			if (vat.equals("0")) {
-				cust.setVat(Double.parseDouble(igst));
+//				cust.setVat(Double.parseDouble(igst));
 				double igstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(igst))));
 				double netPrice = Double.parseDouble(salePrice) - igstAmt;
 				cust.setSalePrice(netPrice);
 			} else {
-				cust.setVat(Double.parseDouble(vat));
+//				cust.setVat(Double.parseDouble(vat));
 				double gstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(vat))));
 				double netPrice = Double.parseDouble(salePrice) - gstAmt;
 				cust.setSalePrice(netPrice);
 			}
-			cust.setIgst(0d);
+			cust.setVat(Double.parseDouble(vat));
+			cust.setIgst(Double.parseDouble(igst));
 
 			String taxAmount = request.getParameter("taxAmount" + i);
 			cust.setTaxAmount(Double.parseDouble(taxAmount));
@@ -666,17 +667,18 @@ public class BarrelEntryHelper {
 			String igst = request.getParameter("igst" + i);
 
 			if (vat.equals("0")) {
-				cust.setVat(Double.parseDouble(igst));
+		//		cust.setVat(Double.parseDouble(igst));
 				double igstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(igst))));
 				double netPrice = Double.parseDouble(salePrice) - igstAmt;
 				cust.setSalePrice(netPrice);
 			} else {
-				cust.setVat(Double.parseDouble(vat));
+	//			cust.setVat(Double.parseDouble(vat));
 				double gstAmt = Double.parseDouble(salePrice) - (Double.parseDouble(salePrice) * (100 / (100 + Double.parseDouble(vat))));
 				double netPrice = Double.parseDouble(salePrice) - gstAmt;
 				cust.setSalePrice(netPrice);
 			}
-			cust.setIgst(0d);
+			cust.setVat(Double.parseDouble(vat));
+			cust.setIgst(Double.parseDouble(igst));
 
 			String taxAmount = request.getParameter("taxAmount" + i);
 			cust.setTaxAmount(Double.parseDouble(taxAmount));

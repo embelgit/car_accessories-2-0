@@ -102,16 +102,31 @@ public class EstimateQuotHelper {
 			String taxAmount = request.getParameter("taxAmount" + i);
 			cust.setTaxAmount(Double.parseDouble(taxAmount));
 			
+			String wholeTotal = request.getParameter("wholeTotal");
+	//		cust.set(Double.parseDouble(wholeTotal));
+			
 			  String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
-			  if(!"".equals(buyPriceExTax)) {
-			  cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+			  if((buyPriceExTax).equals("") || (buyPriceExTax).equals(null)) {
+	//		  cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+			  cust.setBuyPriceEXTax((0d));
 			  }
 			  else {
-				  cust.setBuyPriceEXTax((0d));
+				  cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+
 			  }
 
 				String TotalQuan = request.getParameter("TotalQuan" + i);
 				System.out.println("Total Quan- "+TotalQuan);
+				
+				 if((TotalQuan).equals("") || (TotalQuan).equals(null)) {
+						//		  cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+						cust.setTotalQuan(0d);
+								  }
+								  else {
+										cust.setTotalQuan(Double.parseDouble(TotalQuan));
+
+								  }
+				 
 				if(!"".equals(TotalQuan)) {
 				cust.setTotalQuan(Double.parseDouble(TotalQuan));
 				}
@@ -122,7 +137,13 @@ public class EstimateQuotHelper {
 
 
 			String totalAmount = request.getParameter("totalAmount");
-			cust.setTotalAmt(Double.parseDouble(totalAmount));
+			if((totalAmount).equals(null) || (totalAmount).equals("")) {
+				cust.setTotalAmt(0d);				
+			}
+			else {
+				cust.setTotalAmt(Double.parseDouble(totalAmount));
+			}
+
 
 			
 			String contactNo = request.getParameter("contactNo");
@@ -170,10 +191,22 @@ public class EstimateQuotHelper {
 			 // double disAmt= Double.parseDouble(discount) / count; cust.setDiscount(disAmt);
 			
 			String fkRootCustId = request.getParameter("fkRootCustId");
-			cust.setFkEstimCustId(Long.parseLong(fkRootCustId));
+			if((fkRootCustId).equals(null) || (fkRootCustId).equals("")) {
+				cust.setFkEstimCustId(0l);
+			}
+			else {
+				cust.setFkEstimCustId(Long.parseLong(fkRootCustId));
+			}
+
 
 			String grossTotal = request.getParameter("grossTotal");
-			cust.setGrossamt(Double.parseDouble(grossTotal));
+			if((grossTotal).equals(null) || (grossTotal).equals("")) {
+				cust.setGrossamt(0d);
+			}
+			else {
+				cust.setGrossamt(Double.parseDouble(grossTotal));
+			}
+
 
 			String carNo = request.getParameter("carNo");
 			if(!"".equals(carNo)) {
@@ -189,7 +222,14 @@ public class EstimateQuotHelper {
 			 * else { cust.setPaymentDone("y"); }
 			 */
 			String total = request.getParameter("total" + i);
-			cust.setTotalperItem(Double.parseDouble(total));
+			if((total).equals(null) || (total).equals("")) {
+				cust.setTotalperItem(0d);
+			}
+			else {
+				cust.setTotalperItem(Double.parseDouble(total));
+			}
+			
+
 
 			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			Date dateobj = new Date();

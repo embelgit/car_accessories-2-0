@@ -486,6 +486,10 @@ function regEstimateCustbill(){
 	for (var i = 0; i < count; i++) {
 	
 		var pk_temp_id = allRowsInGrid1[i].pk_temp_id;
+		if(pk_temp_id=="" || pk_temp_id==null || pk_temp_id==undefined){
+			pk_temp_id=0;
+		}
+		
      	params["pk_temp_id"+i] = pk_temp_id;
 		
 		var item_id = allRowsInGrid1[i].item_id;
@@ -529,10 +533,16 @@ function regEstimateCustbill(){
 		
 
 		var TotalQuan = allRowsInGrid1[i].TotalQuan;
+		if(TotalQuan=="" || TotalQuan==null || TotalQuan==undefined){
+			TotalQuan=0;
+		}
 		params["TotalQuan"+i] = TotalQuan;
 		
 		
 		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
+		if(buyPriceExTax=="" || buyPriceExTax == null || buyPriceExTax==undefined){
+			buyPriceExTax=0;
+		}
 		params["buyPriceExTax"+i] = buyPriceExTax;
 		
 		
@@ -552,14 +562,25 @@ function regEstimateCustbill(){
 	     }
 	    var input1 = document.getElementById('CustomerId').value;
 	    var totalAmount=$('#spareGrossTotal').val();
+		if(totalAmount=="" || totalAmount == null || totalAmount==undefined){
+			totalAmount=0;
+		}
+	    
 	    var discount=$('#discount').val();
 	    if(discount == ""){
 	    	discount = 0;
 	    }
 	    
 	    var grossTotal=$('#grossTotal').val();
+	    if(grossTotal=="" || grossTotal == null || grossTotal==undefined){
+	    	grossTotal=0;
+		}
 	    var contactNo=$('#contactNo').val();
+	    if(contactNo=="" || contactNo == null || contactNo==undefined){
+	    	contactNo=0;
+		}
 	    var CustomerId=$('#CustomerId').val();
+	    var wholeTotal=$('#wholeTotal').val();
 	    var carNo=$('#carNo').val();
 	  /* ///SERVICE GRID 
 	    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
@@ -620,7 +641,9 @@ function regEstimateCustbill(){
 		params["grossTotal"] = grossTotal;
 		*/
 	    var description=$('#description').val();
-	    
+	    if(description=="" || description == null || description==undefined){
+	    	description="NA";
+		}
 	    params["gstTinNo"] = gstTinNo;
 	    params["input1"] = input1;
 	    params["fkRootCustId"] = fkRootCustId;
@@ -630,6 +653,7 @@ function regEstimateCustbill(){
 		params["contactNo"] = contactNo;
 		params["CustomerId"] = CustomerId;
 		params["discount"] = discount;
+		params["wholeTotal"] = wholeTotal;
 		params["description"] = description;
 		params["carNo"] = carNo;
 	    params["methodName"] = "regEstimateQuotBill";
@@ -1765,6 +1789,9 @@ var wholeTotal=$('#wholeTotal').val();
 		params["discountAmt1"+i] = discountAmt1;
 		
 		var TotalQuan = allRowsInGrid1[i].TotalQuan;
+		if(TotalQuan == "" || TotalQuan == null || TotalQuan == undefined){
+			TotalQuan = 0;
+  		}
   		params["TotalQuan"+i] = TotalQuan;
   		
   		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
@@ -2999,6 +3026,9 @@ var AllRows=JSON.stringify(allRowsInGrid1);
 for (var i = 0; i < count; i++) {
 
 	var pk_temp_id = allRowsInGrid1[i].pk_temp_id;
+	if(pk_temp_id=="" || pk_temp_id==null || pk_temp_id==undefined){
+		pk_temp_id=0;
+	}
  	params["pk_temp_id"+i] = pk_temp_id;
 	
 	var item_id = allRowsInGrid1[i].pkProductId;
@@ -3048,6 +3078,9 @@ for (var i = 0; i < count; i++) {
 	params["TotalLitre"+i] = TotalLitre;
 	
 	var TotalQuan = allRowsInGrid1[i].TotalQuan;
+	if(TotalQuan == "" || TotalQuan == null || TotalQuan == undefined){
+		TotalQuan = 0;
+	}
 		params["TotalQuan"+i] = TotalQuan;
 		
 		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
