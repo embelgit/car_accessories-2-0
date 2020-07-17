@@ -127,7 +127,7 @@ public class SupplierAccountDetailsHelper {
 					
 				
 				//Double newBal1 = Double.valueOf(newBal);
-					System.out.println(newBal+"NEW BALANCE");
+					System.out.println(newBal+"NEWly BALANCE");
 					
 						bean.setBalance(newBal);
 					
