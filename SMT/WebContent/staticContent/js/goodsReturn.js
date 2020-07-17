@@ -49,10 +49,10 @@ function purchaseReturn() {
 		var buyPrice = allRowsInGrid[i].buyPrice;
 		params["buyPrice" + i] = buyPrice;
 
-		var buyPriceEXTax = allRowsInGrid[i].buyPriceEXTax;
-		params["buyPriceEXTax" + i] = buyPriceEXTax;
+		var buyPriceEx = allRowsInGrid[i].buyPriceEx;
+		params["buyPriceEx" + i] = buyPriceEx;
 		
-		
+	//	alert(buyPriceEx);
 		var vat = allRowsInGrid[i].vat;
 		params["vat" + i] = vat;
 
@@ -156,10 +156,10 @@ function purchaseReturno11() {
 		var buyPrice = allRowsInGrid[i].buyPrice;
 		params["buyPrice" + i] = buyPrice;
 
-		var buyPriceEXTax = allRowsInGrid[i].buyPriceEXTax;
-		params["buyPriceEXTax" + i] = buyPriceEXTax;
+		var buyPriceEx = allRowsInGrid[i].buyPriceEx;
+		params["buyPriceEx" + i] = buyPriceEx;
 		
-		
+	//	alert(buyPriceEx);
 		var vat = allRowsInGrid[i].vat;
 		params["vat" + i] = vat;
 

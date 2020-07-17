@@ -631,12 +631,20 @@ public class BarrelEntryHelper {
 			 * 
 			 */
 			String TotalQuan = request.getParameter("TotalQuan" + i);
+			if(!"".equals(TotalQuan)) {
 			cust.setTotalQuan(Double.parseDouble(TotalQuan));
-			
-
+			}
+			else {
+				cust.setTotalQuan(0d);
+				
+			}
 			String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+			if(!"".equals(buyPriceExTax)) {
 			cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
-			
+			}
+			else {
+				cust.setBuyPriceEXTax(0d);
+			}
 
 
 			String NumberofBarrel = request.getParameter("NumberofBarrel" + i);
@@ -674,29 +682,47 @@ public class BarrelEntryHelper {
 			cust.setTaxAmount(Double.parseDouble(taxAmount));
 
 			String totalAmount = request.getParameter("totalAmount");
+			if(!"".equals(totalAmount)) {
 			cust.setTotalAmt(Double.parseDouble(totalAmount));
-
+			}
+			else {
+				cust.setTotalAmt(0d);
+			}
 			String bill = "Estimate";
 			cust.setBilltype(bill);
 			
 			String discount = request.getParameter("discount");
 	//		double disAmt = Double.parseDouble(discount) / count;
+			
+			if(!"".equals(discount)) {
 			cust.setDiscount(Double.parseDouble(discount));
-
+			}
+			else {
+				cust.setDiscount(0d);
+			}
 			cust.setCarNo("NA");
 			cust.setContactNo(000l);
 			cust.setOwnerName("NA");
 
 			
 			String grossTotal = request.getParameter("grossTotal");
+			if(!"".equals(grossTotal)) {
 			cust.setGrossamt(Double.parseDouble(grossTotal));
-			
+			}
+			else {
+				cust.setGrossamt(0d);
+							
+			}
 			String wholeTotal = request.getParameter("wholeTotal");
 			cust.setWholeTotal(Double.parseDouble(wholeTotal));
 			 
 			String total = request.getParameter("total" + i);
+			if(!"".equals(total)) {
 			cust.setTotalperItem(Double.parseDouble(total));
-
+			}
+			else {
+				cust.setTotalperItem(0d);
+			}
 			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
 			Date dateobj = new Date();
 			System.out.println(df.format(dateobj));
@@ -714,50 +740,49 @@ public class BarrelEntryHelper {
 			dao.registerBillqq(cust);
 
 			//stock code
-			  Long item_id = Long.parseLong(request.getParameter("item_id"+i));
-			  System.out.println("item_id" +item_id); 
-			  GoodReciveDao good = new GoodReciveDao(); 
+//			  Long item_id = Long.parseLong(request.getParameter("item_id"+i));
+//			  System.out.println("item_id" +item_id); 
+//			  GoodReciveDao good = new GoodReciveDao(); 
 			  //good.updateQuantity(item_id,quantity);
 			  
 			  
-			  StockDao dao1 = new StockDao(); 
-			  List stkList2 =dao1.getAllStockEntry();
+			/*
+			 * StockDao dao1 = new StockDao(); List stkList2
+			 * =dao1.getAllStockEntry();
+			 * 
+			 * for(int j=0;j<stkList2.size();j++){
+			 * 
+			 * Stock st = (Stock)stkList2.get(j); String ItemId
+			 * =st.getItemName(); String cat = st.getCatName(); //Double
+			 * TotalLitre1=st.getTotalLitre();
+			 * 
+			 * //If ItemName Is Already Exists In Stock Table
+			 * if(ItemId.equals(itemName) && cat.equals(categoryName)) { Long
+			 * PkItemId = st.getPkStockId(); //Long qunty = st.getQuantity();
+			 * Double totalLitreStock=st.getTotalLitre();
+			 * 
+			 * //Double updatequnty = (Double) (totalLitreStock -
+			 * Long.parseLong(quantity)); //double updateTotalLitre=(double)
+			 * (totalLitreStock - Long.parseLong(TotalLitre)); Double
+			 * updatequnty = (Double) (totalLitreStock -
+			 * Double.parseDouble(quantity)); HibernateUtility hbu =
+			 * HibernateUtility.getInstance(); Session session =
+			 * hbu.getHibernateSession(); Transaction transaction
+			 * =session.beginTransaction();
+			 * 
+			 * 
+			 * Date date = new Date();
+			 * 
+			 * Stock updateStock = (Stock) session.get(Stock.class, new
+			 * Long(PkItemId)); // updateStock.setUpdateDate(date);
+			 * //updateStock.setQuantity(updatequnty); //
+			 * updateStock.setTotalLitre(updatequnty);
+			 * 
+			 * // session.saveOrUpdate(updateStock); // transaction.commit();
+			 */			
+		//	  }
 			  
-			  for(int j=0;j<stkList2.size();j++){
-			  
-			  Stock st = (Stock)stkList2.get(j); 
-			  String ItemId =st.getItemName(); 
-			  String cat = st.getCatName();
-			  //Double TotalLitre1=st.getTotalLitre();
-			   
-			  //If ItemName Is Already Exists In Stock Table
-			  if(ItemId.equals(itemName) && cat.equals(categoryName))
-			  { 
-				  Long PkItemId = st.getPkStockId(); 
-				  //Long qunty = st.getQuantity();
-				  Double totalLitreStock=st.getTotalLitre();
-			  
-				  //Double updatequnty = (Double) (totalLitreStock - Long.parseLong(quantity));
-			  //double updateTotalLitre=(double) (totalLitreStock - Long.parseLong(TotalLitre));
-				  Double updatequnty = (Double) (totalLitreStock - Double.parseDouble(quantity));
-			  HibernateUtility hbu = HibernateUtility.getInstance(); 
-			  Session session = hbu.getHibernateSession(); 
-			  Transaction transaction =session.beginTransaction();
-			  
-			  
-			  Date date = new Date();
-			  
-			  Stock updateStock = (Stock) session.get(Stock.class, new Long(PkItemId)); 
-	//		  updateStock.setUpdateDate(date); 
-			  //updateStock.setQuantity(updatequnty);
-	//		  updateStock.setTotalLitre(updatequnty);
-			  
-	//		  session.saveOrUpdate(updateStock); 
-	//		  transaction.commit();
-			
-			  }
-			  
-			  }
+		//	  }
 			 
 		}
 

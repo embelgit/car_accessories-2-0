@@ -1247,13 +1247,22 @@ public class CustomerOrderHelper {
 			
 			
 			String TotalQuan = request.getParameter("TotalQuan" + i);
-			
+			if(!"".equals(TotalQuan)) {
 			cust.setTotalQuan(Double.parseDouble(TotalQuan));
-			
+			}
+			else {
+				cust.setTotalQuan(0d);
+						
+			}
 
 			String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+			if(!"".equals(buyPriceExTax)) {
 			cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
-			
+			}
+			else {
+				cust.setBuyPriceEXTax(0d);
+						
+			}
 			String totalAmount = request.getParameter("totalAmount");
 			if (totalAmount == null) {
 				cust.setServiceTotalAmt(0d);
@@ -1263,10 +1272,20 @@ public class CustomerOrderHelper {
 			//cust.setServiceTotalAmt(Double.parseDouble(totalAmount));
 
 			String total = request.getParameter("total1" + i);
+			if(!"".equals(total)) {
 			cust.setServicetotalPerItem(Double.parseDouble(total));
-
+			}
+			else {
+				cust.setServicetotalPerItem(0d);
+			}
+			
 			String grossTotal = request.getParameter("grossTotal");
+			if(!"".equals(grossTotal)) {
 			cust.setGrossamt(Double.parseDouble(grossTotal));
+			}
+			else {
+				cust.setGrossamt(0d);
+			}
 			
 			String discounts = request.getParameter("discounts");
 			/*
@@ -1279,7 +1298,7 @@ public class CustomerOrderHelper {
 				cust.setDiscount(Double.parseDouble(discounts));
 		    } else
 		    {
-		    	cust.setDiscount(0.0);
+		    	cust.setDiscount(0d);
 		    }
 			String bill = "Estimate";
 			cust.setBilltype(bill);

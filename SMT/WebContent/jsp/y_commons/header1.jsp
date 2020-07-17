@@ -547,7 +547,7 @@ nav {
 			        	<li><a href="<%=path%>Car_Entry.jsp" >Vehicle Entry</a></li>
         				<li><a href="<%=path%>OrderBill.jsp" >Customer Bill</a></li>
         				<li><a href="<%=path%>Miscellaneous.jsp" >Miscellaneous Bill</a></li>
-        				<li><a href="<%=path%>Credit_Customer_Bill.jsp" >Credit Customer Bill</a></li>
+<%--         				<li><a href="<%=path%>Credit_Customer_Bill.jsp" >Credit Customer Bill</a></li> --%>
         				<li><a href="<%=path%>EstimateQuotationBill.jsp" >Estimate Quotation Bill</a></li>
         			
 						<li><a href="<%=path%>y_sale_return.jsp">Sale Return</a></li>

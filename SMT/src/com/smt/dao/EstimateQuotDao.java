@@ -48,7 +48,42 @@ public class EstimateQuotDao {
 			}
 		}
 	}
+	//
 	
+	public void regCreditCustomerBillee(EstimateQuotationBill cust) {
+		// TODO Auto-generated method stub
+		
+		HibernateUtility hbu = null ;
+		Session session  = null;
+		Transaction transaction = null;
+		
+		
+		try {
+			hbu = HibernateUtility.getInstance();
+			session = hbu.getHibernateSession();
+			transaction = session.beginTransaction();
+			
+			session.save(cust);
+			transaction.commit();
+			
+		
+		} catch (Exception e) {
+			try {
+				transaction.rollback();
+			} catch (RuntimeException ede) {
+			     
+			//	Log.error("Error in transaction", ede);
+			}
+		}
+		
+		finally
+		{
+			if (session!=null) {
+				hbu.closeSession(session);
+				
+			}
+		}
+	}
 	// get Last Bill No 
 			public List getLastBillNo() {
 				// TODO Auto-generated method stub

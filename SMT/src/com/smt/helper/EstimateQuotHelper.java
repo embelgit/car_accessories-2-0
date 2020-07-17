@@ -54,11 +54,21 @@ public class EstimateQuotHelper {
 		for (int i = 0; i < count; i++) {
 
 			String itemName = request.getParameter("itemName" + i);
+			
+			if(!"".equals(itemName)) {		
 			cust.setItemName(itemName);
-
+			}
+			else {
+				cust.setItemName("NA");
+			}
 			String categoryName = request.getParameter("categoryName" + i);
+			if(!"".equals(categoryName))
+			{
 			cust.setCategoryName(categoryName);
-
+			}
+			else {
+				cust.setCategoryName("NA");
+			}
 			String quantity = request.getParameter("quantity" + i);
 			System.out.println("quantity" + quantity);
 			cust.setQuantity(Long.parseLong(quantity));
@@ -68,8 +78,12 @@ public class EstimateQuotHelper {
 
 			String barcodeNo = request.getParameter("barcodeNo" + i);
 			System.out.println("unitinMl" + barcodeNo);
+			if(!"".equals(barcodeNo)) {
 			cust.setBarcodeNo(Long.parseLong(barcodeNo));
-
+			}
+			else {
+				cust.setBarcodeNo((0l));
+			}
 			String hsnSacNo = request.getParameter("hsnSacNo" + i);
 			cust.setHsnSacNo(hsnSacNo);
 
@@ -89,13 +103,21 @@ public class EstimateQuotHelper {
 			cust.setTaxAmount(Double.parseDouble(taxAmount));
 			
 			  String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+			  if(!"".equals(buyPriceExTax)) {
 			  cust.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
-
+			  }
+			  else {
+				  cust.setBuyPriceEXTax((0d));
+			  }
 
 				String TotalQuan = request.getParameter("TotalQuan" + i);
 				System.out.println("Total Quan- "+TotalQuan);
+				if(!"".equals(TotalQuan)) {
 				cust.setTotalQuan(Double.parseDouble(TotalQuan));
-
+				}
+				else {
+					cust.setTotalQuan((0d));
+				}
 
 
 
@@ -121,16 +143,31 @@ public class EstimateQuotHelper {
 			
 			String CustomerId = request.getParameter("CustomerId");
 			System.out.println("CustomerId- "+CustomerId);
-			cust.setCustomerName(CustomerId);
+				if(!"".equals(CustomerId)) {
+					cust.setCustomerName(CustomerId);				
+			}
+				else {
+					cust.setCustomerName("NA");			
+				}
 			
 			
 
 			String description = request.getParameter("description");
+			if(!"".equals(description)) {
 			cust.setDescription(description);
-			
+			}
+			else {
+				cust.setDescription("NA");
+			}
 			 String discount = request.getParameter("discount"); 
+			 if(!"".equals(discount)) {
 			 cust.setDiscount(Double.parseDouble(discount));
-			// double disAmt= Double.parseDouble(discount) / count; cust.setDiscount(disAmt);
+			}
+			else {
+				cust.setDiscount((0d));
+				}
+			 
+			 // double disAmt= Double.parseDouble(discount) / count; cust.setDiscount(disAmt);
 			
 			String fkRootCustId = request.getParameter("fkRootCustId");
 			cust.setFkEstimCustId(Long.parseLong(fkRootCustId));
@@ -139,9 +176,13 @@ public class EstimateQuotHelper {
 			cust.setGrossamt(Double.parseDouble(grossTotal));
 
 			String carNo = request.getParameter("carNo");
+			if(!"".equals(carNo)) {
 			cust.setCarNo((carNo));
-			
-			String paidAmt = request.getParameter("paidAmt");
+			}
+			else {
+				cust.setCarNo(("NA"));
+			}
+	//		String paidAmt = request.getParameter("paidAmt");
 
 			/*
 			 * if (paidAmt.equals(grossTotal)) { cust.setPaymentDone("n"); }
@@ -169,7 +210,7 @@ public class EstimateQuotHelper {
 			}
 			System.out.println("bill no set       - "+cust.getBillNo());
 			EstimateQuotDao dao = new EstimateQuotDao();
-			dao.regCreditCustomerBill(cust);
+			dao.regCreditCustomerBillee(cust);
 			
 		}
 		
