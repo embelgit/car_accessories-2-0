@@ -87,7 +87,7 @@
 			<fieldset>
 
 						<div class="row form-group">
-							 <label class="col-md-3 control-label" for="supplier">Supplier Name</label>  
+							 <label class="col-md-3 control-label" for="supplier">Supplier name</label>  
           					  <div class="col-md-3">
 								<div class="input-group">
 									<span class="input-group-addon">
