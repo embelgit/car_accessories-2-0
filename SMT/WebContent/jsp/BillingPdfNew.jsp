@@ -124,17 +124,17 @@
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smt_sc", "root", "root");
 		Statement stmt = conn.createStatement();
 
-		String ss = "Billing";
-		ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description,kmReading,vehiclecolor,gstNo,credit_desp,net_Amt,paymentMode from customerbill where BillNo =" + billno);
+	//	String ss = "Billing";
+		ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description,kmReading,vehiclecolor,gstNo,credit_desp,net_Amt,paymentMode,vehicleName from customerbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
-		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount from service_billing  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
+		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount,serdescription from service_billing  where BillNo ='"+billno+"'");
 		
 		
 		
 		Statement stmt1 = conn.createStatement();
 		//ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal from barreloilbilling where BillNo ="+billno+"  UNION select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt from service_billing where BillNo =" + billno);
-		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount from barreloilbilling  where BillNo ='"+billno+"' AND billtype = '"+ss+"'");
+		ResultSet rs1 = stmt1.executeQuery("SELECT  ItemName,HsnSacNo,Quantity,SalePrice,totalperitem,discountGrid,discountAmt,Gst,Igst,wholeTotal,TaxAmount,Discount,oildescription from barreloilbilling  where BillNo ='"+billno+"'");
 		 
 		
 		Font font17Bold = new Font(Font.FontFamily.TIMES_ROMAN, 17, Font.BOLD, BaseColor.BLACK);
@@ -185,16 +185,20 @@
 		String desp = rs.getString("credit_desp");
 		String netamt = rs.getString("net_Amt");
 		String paymode = rs.getString("paymentMode");
+		String vehname  = rs.getString("vehicleName");
+		
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
 		
 		String vehiclecolor = rs.getString("vehiclecolor");
 		String kmReading = String.valueOf(rs.getDouble("kmReading"));
 		rs1.next();
 		String wholegrossTotal = rs1.getString("wholeTotal");
+		String oildesp = rs1.getString("oildescription");
 		System.out.println("wholegrossTotal++++++"+wholegrossTotal);
 		
 		rs2.next();
 		discService = rs2.getDouble("discount");
+		String serdesp = rs2.getString("serdescription");
 		System.out.println("discService++++++"+discService);
 		/* String service_item2 = rs2.getString("service_item");
 		System.out.println("service_item++++++"+service_item2);
@@ -353,12 +357,12 @@
 		PdfPCell InfoTable_cell;
 		
 
-		InfoTable_cell = new PdfPCell(new Phrase("\n\nCustomerName: " +name));
+		InfoTable_cell = new PdfPCell(new Phrase("\nCustomerName: " +name));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
 
-		InfoTable_cell = new PdfPCell(new Phrase("\n\nVehicle No: "+ carno));
+		InfoTable_cell = new PdfPCell(new Phrase("\nVehicle No: "+ carno));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
@@ -369,15 +373,15 @@
 		infotable.addCell(InfoTable_cell);
  */
 
-		InfoTable_cell = new PdfPCell(new Phrase("\n\nContact No: "+ mono));
+		InfoTable_cell = new PdfPCell(new Phrase("\nContact No: "+ mono));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
 
-		 InfoTable_cell = new PdfPCell(new Phrase("KM Reading"));
+/* 		 InfoTable_cell = new PdfPCell(new Phrase("KM Reading"));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
-		infotable.addCell(InfoTable_cell); 
+		infotable.addCell(InfoTable_cell);  */
 		
  
 		document.add(infotable);
@@ -396,17 +400,17 @@
 		
 
 
-		InfoTable_cell21 = new PdfPCell(new Phrase("\n\nKM Reading: "+kmReading));
+		InfoTable_cell21 = new PdfPCell(new Phrase("\nKM Reading: "+kmReading));
 		InfoTable_cell21.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell21.setBorder(Rectangle.NO_BORDER);
 		infotable21.addCell(InfoTable_cell21);
 
-		InfoTable_cell21 = new PdfPCell(new Phrase("\n\nvehicle color: "+vehiclecolor));
+		InfoTable_cell21 = new PdfPCell(new Phrase("\nvehicle color: "+vehiclecolor));
 		InfoTable_cell21.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell21.setBorder(Rectangle.NO_BORDER);
 		infotable21.addCell(InfoTable_cell21); 
 		
-		InfoTable_cell21 = new PdfPCell(new Phrase("\n\nGST No:" +gstNo));
+		InfoTable_cell21 = new PdfPCell(new Phrase("\nVehicle Name: " +vehname));
 		InfoTable_cell21.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		InfoTable_cell21.setBorder(Rectangle.NO_BORDER);
 		infotable21.addCell(InfoTable_cell21); 
@@ -414,7 +418,24 @@
 		document.add(infotable21);
 		
 		
+		PdfPTable infotable22 = new PdfPTable(1);
+		infotable22.setWidthPercentage(100);
+
+		float[] infoColumnWidths22 = {2f};
+		infotable22.setWidths(infoColumnWidths22);
+
+		PdfPCell InfoTable_cell22;
 		
+
+
+		InfoTable_cell22 = new PdfPCell(new Phrase("\nGST No : "+gstNo));
+		InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
+		infotable22.addCell(InfoTable_cell22);
+
+
+		
+		document.add(infotable22);
 		
 		
  
@@ -642,7 +663,7 @@
 			table5.setWidthPercentage(100);
 			
 			
-			float[] columnWidths5 = {2f,0.6f};
+			float[] columnWidths5 = {2f,0.55f};
 			table5.setWidths(columnWidths5);
 
 			PdfPCell table_cell5;
@@ -695,7 +716,7 @@
 				table6.setWidthPercentage(100);
 				
 				
-				float[] columnWidths6 = {2.0f,0.6f};
+				float[] columnWidths6 = {2.0f,0.55f};
 				table6.setWidths(columnWidths6);
 
 				PdfPCell table_cell6;
@@ -716,33 +737,22 @@
 			 }
 			 
 			//footer of service spares
-		     PdfPTable table13 = new PdfPTable(2);
+		     PdfPTable table13 = new PdfPTable(1);
 			table13.setWidthPercentage(100);
-			
-			
-//<<<<<<< HE
-			float[] columnWidths13 = {0.2f,0.5f};
-//=======
-//			float[] columnWidths13 = {4.2f,0.5f};
+
+			float[] columnWidths13 = {0.2f};
+
 
 			table13.setWidths(columnWidths13);
 
 			PdfPCell table_cell13;
 			
-			table_cell13 = new PdfPCell(new Phrase("Description : "));
+			table_cell13 = new PdfPCell(new Phrase("Description :      "+description));
 			table_cell13.setHorizontalAlignment(Element.ALIGN_LEFT);
 			//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 			table13.addCell(table_cell13);
 			
-			
-	
-			table_cell13 = new PdfPCell(new Phrase(description));			
-			table_cell13.setHorizontalAlignment(Element.ALIGN_RIGHT);
-			//table_cell5.setBorder(Rectangle.TOP);
-			table13.addCell(table_cell13);
-			
-
-			
+						
 			document.add(table13); 
 			
 			
@@ -945,7 +955,7 @@
 		table6.setWidthPercentage(100);
 		
 		
-		float[] columnWidths6 = {2f,0.6f};
+		float[] columnWidths6 = {2f,0.47f};
 		table6.setWidths(columnWidths6);
 
 		PdfPCell table_cell6;
@@ -1039,26 +1049,17 @@
 		//footer of service spares
 //<<<<<<< HEAD
 		if(discService>0){
-//=======
-//>>>>>>> branch 'master' of https://github.com/embelgit/Car--Accessories-1.0.git
+
 	     PdfPTable table14 = new PdfPTable(2);
 		table14.setWidthPercentage(100);
-		
-		
-//<<<<<<< HEAD
-		float[] columnWidths14 = {2.0f,0.6f};
-//=======
-//		float[] columnWidths14 = {4.6f,0.5f};
-//>>>>>>> branch 'master' of https://github.com/embelgit/Car--Accessories-1.0.git
+		float[] columnWidths14 = {2.0f,0.47f};
+
 		table14.setWidths(columnWidths14);
 
 		PdfPCell table_cell14;
 		
-//<<<<<<< HEAD
+
 		table_cell14 = new PdfPCell(new Phrase("Discount :"));
-//=======
-//		 table_cell14 = new PdfPCell(new Phrase(""));
-//>>>>>>> branch 'master' of https://github.com/embelgit/Car--Accessories-1.0.git
 		table_cell14.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 		table14.addCell(table_cell14);
@@ -1073,6 +1074,25 @@
 		
 		document.add(table14); 
 		}
+		 
+		 
+		 
+	     PdfPTable table17 = new PdfPTable(1);
+		table17.setWidthPercentage(100);
+		float[] columnWidths17 = {2.0f};
+
+		table17.setWidths(columnWidths17);
+
+		PdfPCell table_cell17;
+		
+
+		table_cell17 = new PdfPCell(new Phrase("Description :     "+serdesp));
+		table_cell17.setHorizontalAlignment(Element.ALIGN_LEFT);
+		//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
+		table17.addCell(table_cell17);
+		 		
+		document.add(table17); 
+		 
 		 
 	///////oil tasks///////		
 			
@@ -1094,10 +1114,10 @@
 			
 			
 	//table for particulars for oil
-		PdfPTable table9 = new PdfPTable(9);
+		PdfPTable table9 = new PdfPTable(10);
 		table9.setWidthPercentage(100);
 
-		float[] columnWidths9 = {0.5f,0.6f,0.4f, 0.4f,0.4f,0.5f,0.4f,0.5f,0.5f};
+		float[] columnWidths9 = {0.4f,0.5f,0.6f,0.4f, 0.4f,0.4f,0.5f,0.4f,0.5f,0.5f};
 		table9.setWidths(columnWidths9);
 
 		PdfPCell table_cell10;
@@ -1109,7 +1129,11 @@
 		table_cell1.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table1.addCell(table_cell1);
 		  */
-		
+		  table_cell10 = new PdfPCell(new Phrase("Sr.No",font12));
+			 table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
+			 table_cell10.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
+			 table9.addCell(table_cell10);
+		  
 		 table_cell10 = new PdfPCell(new Phrase("Item Name",font12));
 		 table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
 		 table_cell10.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
@@ -1172,7 +1196,7 @@
 		table9.addCell(table_cell10); 
 
 		
-		//int srno2=1;
+		int srno2=1;
 		while (rs1.next()) {
 			
 			/*  table_cell1 = new PdfPCell(new Phrase(""+srno2, Normalfont12));
@@ -1181,7 +1205,12 @@
 			table1.addCell(table_cell1);
 			
 			srno2++; 	 */
-			 
+
+			table_cell10 = new PdfPCell(new Phrase(""+srno2, Normalfont12));
+			table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
+			table_cell10.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
+			table9.addCell(table_cell10);
+			 srno2++;
 			
 
 			String ItemName1 = rs1.getString("ItemName");
@@ -1279,7 +1308,7 @@
 	    table11.setWidthPercentage(100);
 		
 		
-		float[] columnWidths11 = {2f,0.6f};
+		float[] columnWidths11 = {2f,0.55f};
 		table11.setWidths(columnWidths11);
 
 		PdfPCell table_cell11;
@@ -1307,7 +1336,7 @@
 	     table15.setWidthPercentage(100);
 		
 		
-		float[] columnWidths15 = {2.0f,0.6f};
+		float[] columnWidths15 = {2.0f,0.55f};
 		table15.setWidths(columnWidths15);
 
 		PdfPCell table_cell15;
@@ -1332,6 +1361,22 @@
 		
 		
 		
+	     PdfPTable table20 = new PdfPTable(1);
+	     table20.setWidthPercentage(100);
+		
+		
+		float[] columnWidths20 = {2.0f};
+		table20.setWidths(columnWidths20);
+
+		PdfPCell table_cell20;
+		
+		 table_cell20 = new PdfPCell(new Phrase("Description :    " +oildesp));
+		table_cell20.setHorizontalAlignment(Element.ALIGN_LEFT);
+		//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
+			table20.addCell(table_cell20);
+		 
+		
+		document.add(table20); 
 		
 		
 		

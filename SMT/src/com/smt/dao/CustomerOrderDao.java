@@ -2394,7 +2394,67 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 					}
 			return itemlist;
 			}
+		//
 		
+		public List<CustomerBean> getAllItemDetailses(String productId) {
+			// TODO Auto-generated method stub
+			
+			HibernateUtility hbu=null;
+			Session session=null;
+			List<CategoryWisePurchase> categoryBean=null;
+			List<CustomerBean> itemlist=null;
+			try
+			{
+				
+				    System.out.println("shreemant");
+					hbu = HibernateUtility.getInstance();
+			 session = hbu.getHibernateSession();
+			 //String sqlQuery = "SELECT ItemName , PkGoodRecId, CategoryName , BarcodeNo, hsnsacno, vat, igst FROM GoodReceive WHERE quantity > 0 AND ItemName ="+productId;
+
+		//	 Query query=session.createSQLQuery("SELECT ItemName , PkGoodRecId, CategoryName , BarcodeNo, hsnsacno, vat, igst,salePrice FROM GoodReceive WHERE ItemName ='"+productId+"'");
+		
+			 Query query=session.createSQLQuery("SELECT g.ItemName , g.PkGoodRecId, g.CategoryName , g.BarcodeNo, g.hsnsacno, g.vat, g.igst,g.salePrice,s.Quantity FROM GoodReceive g join stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+"' GROUP BY g.ItemName");
+			 
+			 List<Object[]> list = query.list();
+
+				 itemlist = new ArrayList<CustomerBean>(0);
+			     for (Object[] objects : list) {
+				 System.out.println(Arrays.toString(objects));
+				 CustomerBean bean = new CustomerBean();
+				  //
+				 bean.setItemName(objects[0].toString());
+				 bean.setItem_id(Long.parseLong(objects[1].toString()));
+				 bean.setCategoryName(objects[2].toString());
+				 //ggg
+				 bean.setBarcodeNo(Long.parseLong(objects[3].toString()));
+				 bean.setHsnSacNo(objects[4].toString());
+				 bean.setQuantity(0l);
+				 //bean.setSalePrice(0d);
+				 bean.setSalePrice(Double.parseDouble(objects[7].toString()));
+				 bean.setDiscountGrid(0d);
+				 bean.setDiscountAmt(0d);
+				 bean.setVat(Double.parseDouble(objects[5].toString()));
+				 bean.setIgst(Double.parseDouble(objects[6].toString()));
+				 bean.setTaxAmount(0d);
+				 bean.setStock(Double.parseDouble(objects[8].toString()));
+				 Double dd = bean.getSalePrice();
+				 
+				 Double ds = dd * 1;
+				 bean.setTotalQuan(ds);
+				 
+				 itemlist.add(bean);
+			     }
+			     }
+					catch(RuntimeException e)
+					{
+						Log.error("Error in getAllItemDetails(String key)", e);	
+					}finally
+					{if(session!=null){
+						hbu.closeSession(session);	
+					}
+					}
+			return itemlist;
+			}
 		
 		//get Data On CustomerBill Using Barcode No amd in TempData Table		
 		public List getAllItemDetailGrid(String productId,String carNo){

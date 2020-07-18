@@ -10,7 +10,7 @@ public class serviceHibernate {
 	private String paymentbill; 
 	
 	private String billtype;
-
+	private String serdescription;
 	private Double totalQuan;
     private Double buyPriceEXTax;
 	private Long quantity;
@@ -34,7 +34,15 @@ public class serviceHibernate {
 	private Double taxAmount;
 	private Double discountGrid;
 	private Double discountAmt;
-		
+	
+	
+	
+	public String getSerdescription() {
+		return serdescription;
+	}
+	public void setSerdescription(String serdescription) {
+		this.serdescription = serdescription;
+	}
 	public String getBilltype() {
 		return billtype;
 	}

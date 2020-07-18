@@ -269,8 +269,42 @@ function getProdGrid()
                 		Total = +Total + +Total1;
                 	}
                     }
-                        document.getElementById("totalAmount").value = Math.round(Total);
-                      /*  var totAmount = Math.round(Total);
+                   //     document.getElementById("totalAmount").value = Math.round(Total);
+                      
+                    document.getElementById("totalAmount").value = Math.round(Total);
+               	 var totAmount = Math.round(Total); 
+               	var dis = document.getElementById("discount").value;
+                	                  	
+               	if(dis != "0"){
+            	    	document.getElementById("spareGrossTotal").value = totAmount;
+            	  //  	document.getElementById("wholeTotal").value = totAmount;
+            	    }
+            	    else{
+            	    	document.getElementById("spareGrossTotal").value = (+totAmount - +dis);
+            	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+            	    }
+               	
+    
+                  
+                   var totalAmount = document.getElementById("spareGrossTotal").value;
+                   
+                   var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+                   var grossoil = document.getElementById("grossTotalOil").value;
+                   if(ServicetotalAmount1=="" || ServicetotalAmount1==null || ServicetotalAmount1==undefined){
+                   	ServicetotalAmount1=0;
+                   }
+                   if(grossoil=="" || grossoil==null || grossoil==undefined){
+                   	  grossoil=0;
+                     }
+                   
+                   GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
+           		document.getElementById("wholeTotal").value =GrandGrossTotal;
+       
+                        
+                        
+                        
+                        
+                        /*  var totAmount = Math.round(Total);
 	             	    var dis = document.getElementById("discount").value;
 	             	    if(dis != "0"){
 	             	    	document.getElementById("grossTotal").value = totAmount;
@@ -444,8 +478,39 @@ function getProdGrid()
 		                    		Total = +Total + +Total1;
 		                    	}
 		                        }
-		                            document.getElementById("totalAmount").value = Math.round(Total);
-		                          /*  var totAmount = Math.round(Total);
+		                        //    document.getElementById("totalAmount").value = Math.round(Total);
+		                          
+		                        document.getElementById("totalAmount").value = Math.round(Total);
+		                   	 var totAmount = Math.round(Total); 
+		                   	var dis = document.getElementById("discount").value;
+		                    	                  	
+		                   	if(dis != "0"){
+		                	    	document.getElementById("spareGrossTotal").value = totAmount;
+		                	  //  	document.getElementById("wholeTotal").value = totAmount;
+		                	    }
+		                	    else{
+		                	    	document.getElementById("spareGrossTotal").value = (+totAmount - +dis);
+		                	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+		                	    }
+		                   	
+		        
+		                      
+		                       var totalAmount = document.getElementById("spareGrossTotal").value;
+		                       
+		                       var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+		                       var grossoil = document.getElementById("grossTotalOil").value;
+		                       if(ServicetotalAmount1=="" || ServicetotalAmount1==null || ServicetotalAmount1==undefined){
+		                       	ServicetotalAmount1=0;
+		                       }
+		                       if(grossoil=="" || grossoil==null || grossoil==undefined){
+		                       	  grossoil=0;
+		                         }
+		                       
+		                       GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
+		               		document.getElementById("wholeTotal").value =GrandGrossTotal;
+		        
+		                        
+		                        /*  var totAmount = Math.round(Total);
 		    	             	    var dis = document.getElementById("discount").value;
 		    	             	    if(dis != "0"){
 		    	             	    	document.getElementById("grossTotal").value = totAmount;
@@ -1181,7 +1246,8 @@ function getproductgridEstimate(){
 	var params= {};
 	
 	params["productId"]=productId1;
-	params["methodName"] ="fetchprod";
+	
+	params["methodName"] ="fetchprodes";
 	
 	document.getElementById('productId').value = null;
 	var count=0;
@@ -1498,12 +1564,39 @@ function getproductgridEstimate(){
                 }
                 
                 	document.getElementById("totalAmount").value = Math.round(Total);
-                    document.getElementById("spareGrossTotal").value = Math.round(Total);
-                    var totAmount = Math.round(Total);
+                	 var totAmount = Math.round(Total); 
+                	var dis = document.getElementById("discount").value;
+                 	                  	
+                	if(dis != "0"){
+             	    	document.getElementById("spareGrossTotal").value = totAmount;
+             	  //  	document.getElementById("wholeTotal").value = totAmount;
+             	    }
+             	    else{
+             	    	document.getElementById("spareGrossTotal").value = (+totAmount - +dis);
+             	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+             	    }
+                	
+     
+                   
                     var totalAmount = document.getElementById("spareGrossTotal").value;
-                    var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
-                     GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
+                    
+                    var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+                    var grossoil = document.getElementById("grossTotalOil").value;
+                    if(ServicetotalAmount1=="" || ServicetotalAmount1==null || ServicetotalAmount1==undefined){
+                    	ServicetotalAmount1=0;
+                    }
+                    if(grossoil=="" || grossoil==null || grossoil==undefined){
+                    	  grossoil=0;
+                      }
+                    
+                    GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
             		document.getElementById("wholeTotal").value =GrandGrossTotal;
+            
+            		///---------
+           
+            		 		
+            		
+            		
              	   /* var dis = document.getElementById("discount").value;
              	    if(dis != "0"){
              	    	document.getElementById("grossTotal").value = totAmount;
@@ -1708,13 +1801,33 @@ function getproductgridEstimate(){
 	                    		Total = +Total + +Total1;
 	                    	}
 	                        }
-	                        	document.getElementById("totalAmount").value = Math.round(Total);
-	                            document.getElementById("spareGrossTotal").value = Math.round(Total);
-	                            var totAmount = Math.round(Total);
-	                            var totalAmount = document.getElementById("spareGrossTotal").value;
-	                            var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
-	                             GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
-	                    		document.getElementById("wholeTotal").value =GrandGrossTotal;
+	                        document.getElementById("totalAmount").value = Math.round(Total);
+	                        var totAmount = Math.round(Total);	                        
+	                    	var dis = document.getElementById("discount").value;
+     	                  	
+	                    	if(dis != "0"){
+	                 	    	document.getElementById("spareGrossTotal").value = totAmount;
+	                 	  //  	document.getElementById("wholeTotal").value = totAmount;
+	                 	    }
+	                 	    else{
+	                 	    	document.getElementById("spareGrossTotal").value = (+totAmount - +dis);
+	                 	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+	                 	    }
+	                        
+	                        var totalAmount = document.getElementById("spareGrossTotal").value;
+	                        
+	                        var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+	                        var grossoil = document.getElementById("grossTotalOil").value;
+	                        if(ServicetotalAmount1=="" || ServicetotalAmount1==null || ServicetotalAmount1==undefined){
+	                        	ServicetotalAmount1=0;
+	                        }
+	                        if(grossoil=="" || grossoil==null || grossoil==undefined){
+	                        	  grossoil=0;
+	                          }
+	                        
+	                        GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
+	                		document.getElementById("wholeTotal").value =GrandGrossTotal;
+	                
 	                     	   /* var dis = document.getElementById("discount").value;
 	                     	    if(dis != "0"){
 	                     	    	document.getElementById("grossTotal").value = totAmount;
@@ -1806,6 +1919,11 @@ var wholeTotal=$('#wholeTotal').val();
 	  }
 	 var ServicetotalAmount=$('#ServicetotalAmount').val();
 	 
+	 var serdescription=$('#serdescription').val();
+	 if(serdescription==""|| serdescription==null || serdescription==undefined){
+		 serdescription="NA";
+	 }
+	 
 //	 var discounts =document.getElementById("discountservicee").value;
 //	 alert(discounts);
 	 var discounts = $('#discountservicee').val();
@@ -1828,7 +1946,7 @@ params["ownerName"] = ownerName;
 
 params["carNo"] = carNo;
 params["totalAmount"] = totalAmount;
-
+params["serdescription"] = serdescription;
 params["grossTotal"] = grossTotal;
 params["carID"] = carID;
 params["wholeTotal"] = wholeTotal;
@@ -1871,7 +1989,8 @@ var productId1 = splitText[0];
 var params= {};
 
 params["productIdService"]=productIdService;
-params["methodName"] ="fetchprodService";
+
+params["methodName"] ="fetchprodServicees";
 
 document.getElementById('productIdService').value = null;
 var count=0;
@@ -2185,10 +2304,42 @@ rowNum: 10,
 		Total = +Total + +Total1;
 	}
     }
-        document.getElementById("ServicetotalAmount").value = Math.round(Total);
+//        document.getElementById("ServicetotalAmount").value = Math.round(Total);
         
-        document.getElementById("grossTotal").value = Math.round(Total);
-       /* var totalAmount = document.getElementById("spareGrossTotal").value;
+//        document.getElementById("grossTotal").value = Math.round(Total);
+      
+        
+        //
+        	document.getElementById("ServicetotalAmount").value = Math.round(Total);
+      	 var totAmount = Math.round(Total); 
+      	var dis = document.getElementById("discountservicee").value;
+       	                  	
+      	if(dis != "0"){
+   	    	document.getElementById("grossTotal").value = totAmount;
+   	  //  	document.getElementById("wholeTotal").value = totAmount;
+   	    }
+   	    else{
+   	    	document.getElementById("grossTotal").value = (+totAmount - +dis);
+   	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+   	    }
+      	
+          var totalAmount = document.getElementById("spareGrossTotal").value;
+          var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+          var grossoil = document.getElementById("grossTotalOil").value;
+        
+          if(totalAmount=="" || totalAmount==null || totalAmount==undefined){
+        	  totalAmount=0;
+          }
+          if(grossoil=="" || grossoil==null || grossoil==undefined){
+          	  grossoil=0;
+            }
+          
+          GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
+  		document.getElementById("wholeTotal").value =GrandGrossTotal;
+
+        
+        
+        /* var totalAmount = document.getElementById("spareGrossTotal").value;
         var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
          GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
 		document.getElementById("grossTotal").value =GrandGrossTotal;*/ 
@@ -2413,10 +2564,40 @@ $('#list5').navGrid('#jqGridPager5',
             		Total = +Total + +Total1;
             	}
                 }
-                document.getElementById("ServicetotalAmount").value = Math.round(Total);
+         
+                //document.getElementById("ServicetotalAmount").value = Math.round(Total);
                 
-                document.getElementById("grossTotal").value = Math.round(Total);
-                    /*var totalAmount = document.getElementById("totalAmount").value;
+                //document.getElementById("grossTotal").value = Math.round(Total);
+                  
+            	document.getElementById("ServicetotalAmount").value = Math.round(Total);
+             	 var totAmount = Math.round(Total); 
+             	var dis = document.getElementById("discountservicee").value;
+              	                  	
+             	if(dis != "0"){
+          	    	document.getElementById("grossTotal").value = totAmount;
+          	  //  	document.getElementById("wholeTotal").value = totAmount;
+          	    }
+          	    else{
+          	    	document.getElementById("grossTotal").value = (+totAmount - +dis);
+          	    //	document.getElementById("wholeTotal").value = (+totAmount - +dis);
+          	    }
+             	
+                 var totalAmount = document.getElementById("spareGrossTotal").value;
+                 var ServicetotalAmount1 = document.getElementById("grossTotal").value;
+                 var grossoil = document.getElementById("grossTotalOil").value;
+               
+                 if(totalAmount=="" || totalAmount==null || totalAmount==undefined){
+               	  totalAmount=0;
+                 }
+                 if(grossoil=="" || grossoil==null || grossoil==undefined){
+                 	  grossoil=0;
+                   }
+                 
+                 GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1) + Number(grossoil);
+         		document.getElementById("wholeTotal").value =GrandGrossTotal;
+
+                
+                /*var totalAmount = document.getElementById("totalAmount").value;
                     var ServicetotalAmount1 = document.getElementById("ServicetotalAmount").value;
                      GrandGrossTotal =Number(totalAmount) + Number(ServicetotalAmount1);
             		document.getElementById("grossTotal").value =GrandGrossTotal; */
@@ -2463,7 +2644,7 @@ var productId1 = splitText[0];
 var params= {};
 
 params["productId"]=productId1;
-params["methodName"] ="getProductInGridBillingOil";
+params["methodName"] ="getProductInGridBillingOiles";
 
 document.getElementById('itemName1').value = null;
 var count=0;
@@ -2797,6 +2978,13 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
          	   var spareGrossTotal = document.getElementById("spareGrossTotal").value;
          	   var grossTotal = document.getElementById("grossTotal").value;
                var grossTotalOil = document.getElementById("grossTotalOil").value;
+               if(spareGrossTotal=="" || spareGrossTotal==null || spareGrossTotal==undefined){
+            	   spareGrossTotal=0;
+               }
+               if(grossTotal == "" || grossTotal == null || grossTotal==undefined){
+            	   grossTotal=0;
+               }
+               
                GrandGrossTotalOil =Number(spareGrossTotal) + Number(grossTotal) + Number(grossTotalOil);
        		document.getElementById("wholeTotal").value =GrandGrossTotalOil; 
          	
@@ -2986,22 +3174,28 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
                     		Total = +Total + +Total1;
                     	}
                         }
-                            document.getElementById("totalAmountOil").value = Math.round(Total);
-                            var totAmount = Math.round(Total);
-                     	    var dis = document.getElementById("discountOil").value;
-                     	    if(dis != "0"){
-                     	    	document.getElementById("grossTotalOil").value = totAmount;
-                     	    }
-                     	    else{
-                     	    	document.getElementById("grossTotalOil").value = (+totAmount - +dis);
-                     	    }
-                     	    
-                     	   var spareGrossTotal = document.getElementById("spareGrossTotal").value;
-                     	   var grossTotal = document.getElementById("grossTotal").value;
-                           var grossTotalOil = document.getElementById("grossTotalOil").value;
-                           GrandGrossTotalOil =Number(spareGrossTotal) + Number(grossTotal) + Number(grossTotalOil);
-                   		document.getElementById("wholeTotal").value =GrandGrossTotalOil; 
-                     	
+                        document.getElementById("totalAmountOil").value = Math.round(Total);
+                        var totAmount = Math.round(Total);
+                 	    var dis = document.getElementById("discountOil").value;
+                 	    if(dis != "0"){
+                 	    	document.getElementById("grossTotalOil").value = totAmount;
+                 	    }
+                 	    else{
+                 	    	document.getElementById("grossTotalOil").value = (+totAmount - +dis);
+                 	    }
+                 	   var spareGrossTotal = document.getElementById("spareGrossTotal").value;
+                 	   var grossTotal = document.getElementById("grossTotal").value;
+                       var grossTotalOil = document.getElementById("grossTotalOil").value;
+                       if(spareGrossTotal=="" || spareGrossTotal==null || spareGrossTotal==undefined){
+                    	   spareGrossTotal=0;
+                       }
+                       if(grossTotal == "" || grossTotal == null || grossTotal==undefined){
+                    	   grossTotal=0;
+                       }
+                       
+                       GrandGrossTotalOil =Number(spareGrossTotal) + Number(grossTotal) + Number(grossTotalOil);
+               		document.getElementById("wholeTotal").value =GrandGrossTotalOil; 
+                	
                      	
         	        	},
                 });
@@ -3101,7 +3295,11 @@ for (var i = 0; i < count; i++) {
     }
     var grossTotal=$('#grossTotalOil').val();
     var wholeTotal=$('#wholeTotal').val();
-    
+    var oildescription=$('#oildescription').val();
+    if(oildescription=="" || oildescription==null || oildescription==undefined){
+    	oildescription="NA";
+    }
+    params["oildescription"] = oildescription;
 	params["count"] = count;
 	params["totalAmount"] = totalAmount;
 	params["discount"] = discount;

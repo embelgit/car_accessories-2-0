@@ -32,7 +32,7 @@ public class CustomerBill {
 	private Double discountGrid;
 	private Double discountAmt;
 	////service///
-	
+	private String vehicleName;
 	private Double serviceTotalAmt;
 	private Double servicetotalPerItem;
 	private String service_item;
@@ -47,6 +47,16 @@ public class CustomerBill {
 	
 	
 	
+	public String getVehicleName() {
+		return vehicleName;
+	}
+
+
+	public void setVehicleName(String vehicleName) {
+		this.vehicleName = vehicleName;
+	}
+
+
 	public Double getNetamt() {
 		return netamt;
 	}

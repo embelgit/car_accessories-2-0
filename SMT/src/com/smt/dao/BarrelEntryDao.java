@@ -268,6 +268,64 @@ public class BarrelEntryDao {
 				}
 		return itemlist;
 		}
+	//
+	public List<BarrelEntryBean> getProductInGridBillingOiles(String productId) {
+		// TODO Auto-generated method stub
+		
+		HibernateUtility hbu=null;
+		Session session=null;
+		
+		List<BarrelEntryBean> itemlist=null;
+		try
+		{
+			
+			    System.out.println("priya");
+				hbu = HibernateUtility.getInstance();
+		        session = hbu.getHibernateSession();
+		
+
+//		 Query query=session.createSQLQuery("SELECT ItemName,PkGoodRecId, CategoryName ,hsnsacno, vat, igst,salePrice,TotalLitre,NoOfBarrel FROM goodreceivebarrel WHERE ItemName ='"+productId+"' AND NoOfBarrel > '0'");
+	
+		 
+		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+" ' ");
+		 List<Object[]> list = query.list();
+
+			 itemlist = new ArrayList<BarrelEntryBean>(0);
+		     for (Object[] objects : list) {
+			 System.out.println(Arrays.toString(objects));
+			 BarrelEntryBean bean = new BarrelEntryBean();
+			  
+			 bean.setItemName(objects[0].toString());
+			 bean.setPkProductId(Long.parseLong(objects[1].toString()));
+			 bean.setCategoryName(objects[2].toString());
+			 //bean.setBarcodeNo(Long.parseLong(objects[3].toString()));
+			 bean.setHsnsacno(objects[3].toString());
+			// bean.setQuantity(0l);
+			 bean.setQuantitydouble(0d);
+			 bean.setSalePrice(Double.parseDouble(objects[6].toString()));
+			 bean.setDiscount(0d);
+			 bean.setDiscountAmt(0d);
+			 bean.setVat(Double.parseDouble(objects[4].toString()));
+			 bean.setIgst(Double.parseDouble(objects[5].toString()));
+			 bean.setTaxAmt(0d);
+			 bean.setTotalLitre(Double.parseDouble(objects[7].toString()));
+			 bean.setNumberofBarrel(Double.parseDouble(objects[8].toString()));
+
+			 
+			 itemlist.add(bean);
+		     }
+		     }
+				catch(RuntimeException e)
+				{
+					Log.error("Error in getAllItemDetails(String key)", e);	
+				}finally
+				{if(session!=null){
+					hbu.closeSession(session);	
+				}
+				}
+		return itemlist;
+		}
+	
 	
 	///register in DB
 	public void registerBill(BarrelBillingHibernate cust) {

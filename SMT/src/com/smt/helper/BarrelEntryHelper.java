@@ -403,7 +403,24 @@ public class BarrelEntryHelper {
 		}
 		return cs;
 	}
+//
+	public BarrelEntryBean getProductInGridBillingOiles(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String productId = request.getParameter("productId");
 
+		System.out.println(productId + "productName");
+		Map<Long, BarrelEntryBean> map = new HashMap<Long, BarrelEntryBean>();
+
+		BarrelEntryDao dao = new BarrelEntryDao();
+		List<BarrelEntryBean> catList = dao.getProductInGridBillingOiles(productId);
+
+		BarrelEntryBean cs = null;
+		if (catList != null && catList.size() > 0) {
+			cs = (BarrelEntryBean) catList.get(0);
+		}
+		return cs;
+	}
+	
 	/////////////////// register oil in database////////////
 
 	Long BillNo = 1l;
@@ -513,6 +530,10 @@ public class BarrelEntryHelper {
 			
 			String grossTotal = request.getParameter("grossTotal");
 			cust.setGrossamt(Double.parseDouble(grossTotal));
+			
+			String oildescription = request.getParameter("oildescription");
+			cust.setOildescription((oildescription));
+			System.out.println("oildescription  "+oildescription);
 			
 			String wholeTotal = request.getParameter("wholeTotal");
 			cust.setWholeTotal(Double.parseDouble(wholeTotal));
@@ -692,6 +713,10 @@ public class BarrelEntryHelper {
 			}
 			String bill = "Estimate";
 			cust.setBilltype(bill);
+			
+			String oildescription = request.getParameter("oildescription");
+			cust.setOildescription(oildescription);
+			
 			
 			String discount = request.getParameter("discount");
 	//		double disAmt = Double.parseDouble(discount) / count;

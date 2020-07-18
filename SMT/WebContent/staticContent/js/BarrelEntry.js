@@ -1647,7 +1647,14 @@ function resOtherBill(){
 		
 	}
 	
+	    var oildescription=$('#oildescription').val();
+	    if(oildescription=="" || oildescription==null || oildescription==undefined){
+	    	oildescription="NA";
+	    }
+	    
+
 	    var totalAmount=$('#totalAmountOil').val();
+	    
 	    var discount=$('#discountOil').val();
 	    if(discount == "" || discount == null || discount == undefined){
 	    	discount = 0;
@@ -1660,6 +1667,7 @@ function resOtherBill(){
 		params["discount"] = discount;
 		params["grossTotal"] = grossTotal;
 		params["wholeTotal"] = wholeTotal;
+		params["oildescription"] = oildescription;
 		
 	    params["methodName"] = "registerOtherBill1";
 	    

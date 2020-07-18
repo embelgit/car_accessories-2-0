@@ -35,8 +35,18 @@ public class BarrelBillingHibernate {
 	private Double totalQuan;
     private Double buyPriceEXTax;
 
-    
+    private String oildescription;
 
+
+
+	public String getOildescription() {
+		return oildescription;
+	}
+
+
+	public void setOildescription(String oildescription) {
+		this.oildescription = oildescription;
+	}
 
 
 	public String getBilltype() {

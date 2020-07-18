@@ -66,7 +66,54 @@ public class ServiceDao {
 						}
 				return itemlist;
 				}
+			//
 			
+			public List<ServiceBean> getAllItemDetails1es(String productIdService) {
+				
+				
+				HibernateUtility hbu=null;
+				Session session=null;
+			    List<ServiceBean> itemlist=null;
+				try
+				{
+					
+					    System.out.println("shreemant");
+						hbu = HibernateUtility.getInstance();
+				 session = hbu.getHibernateSession();
+				 //String sqlQuery = "SELECT ItemName , PkGoodRecId, CategoryName , BarcodeNo, hsnsacno, vat, igst FROM GoodReceive WHERE quantity > 0 AND ItemName ="+productId;
+
+				 Query query=session.createSQLQuery("SELECT ItemName,hsnsacNo from service_detail WHERE ItemName ='"+productIdService+"'");
+					List<Object[]> list = query.list();
+
+					 itemlist = new ArrayList<ServiceBean>(0);
+				     for (Object[] objects : list) 
+				     {
+					 System.out.println(Arrays.toString(objects));
+					 ServiceBean bean = new ServiceBean();
+					  
+					 bean.setItemName(objects[0].toString());
+					bean.setHsnSacNo(objects[1].toString());
+					 bean.setQuantity(0l);
+					 bean.setSalePrice(0d);
+					 bean.setDiscountGrid(0d);
+					 bean.setDiscountAmt(0d);
+					 bean.setVat(0d);
+					 bean.setIgst(0d);
+					 bean.setTaxAmount(0d);
+					 
+					 itemlist.add(bean);
+				     }
+				     }
+						catch(RuntimeException e)
+						{
+							Log.error("Error in getAllItemDetails(String key)", e);	
+						}finally
+						{if(session!=null){
+							hbu.closeSession(session);	
+						}
+						}
+				return itemlist;
+				}
 
 	//////////////////////////register service bill/////////////
 			

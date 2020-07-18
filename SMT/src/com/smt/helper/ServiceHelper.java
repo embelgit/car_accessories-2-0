@@ -52,7 +52,26 @@ public class ServiceHelper {
 			}
 			return  sb;
 		}
+		//
 		
+		
+		public ServiceBean getDetailsByProd1es(HttpServletRequest request,HttpServletResponse response) {
+			// TODO Auto-generated method stub
+			String productIdService=request.getParameter("productIdService");
+			
+			System.out.println(productIdService+"Service Name");
+			Map<Long,ServiceBean> map = new HashMap<Long,ServiceBean>();
+			
+			ServiceDao dao = new ServiceDao();
+			List<ServiceBean> catList = dao.getAllItemDetails1es(productIdService);
+			
+			ServiceBean sb = null;
+			if(catList!= null && catList.size() > 0 )
+			{	
+				 sb = (ServiceBean)catList.get(0); 
+			}
+			return  sb;
+		}
 		
 	////////////////////////////////
 		

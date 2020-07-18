@@ -269,6 +269,9 @@ public class CustomerOrderHelper {
 			String ownerName = request.getParameter("ownerName");
 			cust.setOwnerName(ownerName);
 
+			String vehicleName = request.getParameter("vehicleName");
+			cust.setVehicleName(vehicleName);
+			System.out.println("vehicleName - "+vehicleName);
 			String carNo = request.getParameter("carNo");
 			cust.setCarNo(carNo);
 
@@ -1052,7 +1055,26 @@ public class CustomerOrderHelper {
 		return cs;
 		//ygh gg
 	}
+//
+	public CustomerBean getDetailsByProdes(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		String productId = request.getParameter("productId");
 
+		System.out.println(productId + "productName");
+		Map<Long, CustomerBean> map = new HashMap<Long, CustomerBean>();
+
+		CustomerOrderDao dao = new CustomerOrderDao();
+		List<CustomerBean> catList = dao.getAllItemDetailses(productId);
+
+		CustomerBean cs = null;
+		if (catList != null && catList.size() > 0) {
+			cs = (CustomerBean) catList.get(0);
+		}
+		return cs;
+		//ygh gg
+	}
+	
+	
 	// get Data On CustomerBill Using Barcode No
 
 	public CustomerBean getProdDetailsById(HttpServletRequest request, HttpServletResponse response) {
@@ -1157,6 +1179,9 @@ public class CustomerOrderHelper {
 			cust.setBilltype(bill);
 			String grossTotal = request.getParameter("grossTotal");
 			cust.setGrossamt(Double.parseDouble(grossTotal));
+			
+			String serdescription = request.getParameter("serdescription");
+			cust.setSerdescription((serdescription));
 			
 			String discountservice = request.getParameter("discountservice");
 			/*
@@ -1273,6 +1298,9 @@ public class CustomerOrderHelper {
 			}
 			//cust.setServiceTotalAmt(Double.parseDouble(totalAmount));
 
+			String serdescription = request.getParameter("serdescription");
+			cust.setSerdescription(serdescription);
+			
 			String total = request.getParameter("total1" + i);
 			if(!"".equals(total)) {
 			cust.setServicetotalPerItem(Double.parseDouble(total));
