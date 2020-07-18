@@ -228,7 +228,7 @@ public class GoodReciveDao {
 
 			 //CategoryName,TotalLitre,BuyPrice,vat,igst FROM goodreceivebarrel
 			 //Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo from GoodReceive where barcodeNo=:barcodeNo");
-			 Query query2 = session.createSQLQuery("select barcodeNo, itemName, CategoryName, quantity, buyPrice, Vat, igst from GoodReceive where FksuppId ="+ suppId +" AND Date between '"+ fDate +"' and '"+ eDate +"';");
+			 Query query2 = session.createSQLQuery("select barcodeNo, itemName, CategoryName, quantity, buyPrice, Vat, igst,buyPriceEXTax from GoodReceive where FksuppId ="+ suppId +" AND Date between '"+ fDate +"' and '"+ eDate +"';");
 			 //query2.setParameter("barcodeNo", barcodeNo);
 		        List<Object[]> list = query2.list();
 		        catList= new ArrayList<GoodReceive>(0);
@@ -251,6 +251,7 @@ public class GoodReciveDao {
 					if(igst.equals("0.0")){
 						reports.setVat(Double.parseDouble(gst));
 					}
+					reports.setBuyPriceEXTax(Double.parseDouble(object[7].toString()));
 					catList.add(reports); 
 			
 				}}
@@ -273,7 +274,7 @@ public class GoodReciveDao {
 
 			 //CategoryName,TotalLitre,BuyPrice,vat,igst FROM goodreceivebarrel
 			 //Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo from GoodReceive where barcodeNo=:barcodeNo");
-			 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, TotalLitre,buyPrice, Vat, igst from goodreceivebarrel where FksuppId ='"+suppId+"' AND Date BETWEEN '"+ fDate +"' and '"+ eDate +"'");
+			 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, TotalLitre,buyPrice, Vat, igst,buyPriceEXTax from goodreceivebarrel where FksuppId ='"+suppId+"' AND Date BETWEEN '"+ fDate +"' and '"+ eDate +"'");
 
 			 //query2.setParameter("barcodeNo", barcodeNo);
 		        List<Object[]> list = query2.list();
@@ -298,6 +299,7 @@ public class GoodReciveDao {
 					if(igst.equals("0.0")){
 						reports.setVat(Double.parseDouble(gst));
 					}
+					reports.setBuyPriceEXTax(Double.parseDouble(object[7].toString()));
 					catList.add(reports); 
 			
 				}}

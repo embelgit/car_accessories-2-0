@@ -155,6 +155,7 @@
 				<th>Quantity</th>
 				<th>Buy Price</th>
 				<th>Tax Percentage</th>
+				<th>Buy PriceExTax</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -163,7 +164,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
-		
+		<th></th>
 		</tr>
 		
 	</table>
@@ -269,6 +270,7 @@
 				<th>Total Litre</th>
 				<th>Buy Price</th>
 				<th>Tax Percentage</th>
+				<th>Buy PriceExTax</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -277,7 +279,7 @@
 		<th></th>
 		<th></th>
 		<th></th>
-		
+		<th></th>
 		</tr>
 		
 	</table>

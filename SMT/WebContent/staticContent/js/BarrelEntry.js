@@ -342,7 +342,7 @@ function getProductList1()
 			                    	
 			                    	//tota = quantity * buyPrice;
 			                    	totAmt = quantity * buyPrice;
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt);
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
 			                    	
 			                    	/*if(discount != "0"){
 			                    		discount1 = ((tota*discount)/100);
@@ -385,10 +385,10 @@ function getProductList1()
 			                    		
 			                    		}
 
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt);
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
 			                    	
 			                    	
 			                    	
@@ -398,13 +398,13 @@ function getProductList1()
 		                    		
 		                    		
 		                    			totAmt = quantity * buyPriceEx;
-				                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt);
+				                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
 		                    		
 				                    	if(discount != "0"){
 				                    		
 				                    		discount1 = ((totAmt*discount)/100);
 				                    		tota = +totAmt - +discount1;
-				                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
+				                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
 				                    		//finaltota = +BPExTax1 - +discount1;
 				                    		//totAmt = +tota;
 				                    	}
@@ -413,7 +413,7 @@ function getProductList1()
 				                    		
 				                    		discount1 = ((totAmt*discount)/100);
 				                    		tota = +totAmt - +discount1;
-				                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
+				                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
 				                    		//discount1 = (BPExTax1*(discount/100));
 				                    		//finaltota = +BPExTax1 - +discount1;
 				                    		
@@ -424,7 +424,7 @@ function getProductList1()
 				                    		
 				                    		taxAmount=((tota*(gst))/100);
 				                    		BPIncTax=taxAmount+tota;
-				                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax);
+				                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax.toFixed(2));
 				                    		
 				                    		
 				                    		
@@ -433,7 +433,7 @@ function getProductList1()
 				                    		
 				                    		taxAmount=((tota*igst)/100);
 				                    		BPIncTax=taxAmount+tota;
-				                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax);
+				                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax.toFixed(2));
 				                    		
 				                    	}
 				                    	
@@ -461,9 +461,9 @@ function getProductList1()
 			                    	
 			                    	
 			                    	
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax);
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount);
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 			                    	var Total = 0;
 			                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
@@ -586,7 +586,7 @@ function getProductList1()
 		                    	
 		                    	//tota = quantity * buyPrice;
 		                    	totAmt = quantity * buyPrice;
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt);
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
 		                    	
 		                    	/*if(discount != "0"){
 		                    		discount1 = ((tota*discount)/100);
@@ -629,10 +629,10 @@ function getProductList1()
 		                    		
 		                    		}
 
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt);
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
 		                    	
 		                    	
 		                    	
@@ -642,13 +642,13 @@ function getProductList1()
 	                    		
 	                    		
 	                    			totAmt = quantity * buyPriceEx;
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt);
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
 	                    		
 			                    	if(discount != "0"){
 			                    		
 			                    		discount1 = ((totAmt*discount)/100);
 			                    		tota = +totAmt - +discount1;
-			                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
+			                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
 			                    		//finaltota = +BPExTax1 - +discount1;
 			                    		//totAmt = +tota;
 			                    	}
@@ -657,7 +657,7 @@ function getProductList1()
 			                    		
 			                    		discount1 = ((totAmt*discount)/100);
 			                    		tota = +totAmt - +discount1;
-			                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
+			                    		$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
 			                    		//discount1 = (BPExTax1*(discount/100));
 			                    		//finaltota = +BPExTax1 - +discount1;
 			                    		
@@ -668,7 +668,7 @@ function getProductList1()
 			                    		
 			                    		taxAmount=((tota*(gst))/100);
 			                    		BPIncTax=taxAmount+tota;
-			                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax);
+			                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax.toFixed(2));
 			                    		
 			                    		
 			                    		
@@ -677,7 +677,7 @@ function getProductList1()
 			                    		
 			                    		taxAmount=((tota*igst)/100);
 			                    		BPIncTax=taxAmount+tota;
-			                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax);
+			                    		$("#jqGrid1").jqGrid("setCell", rowId, "Total", BPIncTax.toFixed(2));
 			                    		
 			                    	}
 			                    	
@@ -705,9 +705,9 @@ function getProductList1()
 		                    	
 		                    	
 		                    	
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax);
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount);
+		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 		                    	var Total = 0;
 		                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
