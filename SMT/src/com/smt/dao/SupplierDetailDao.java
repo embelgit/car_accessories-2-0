@@ -301,7 +301,7 @@ public List getAllBillBySuppliers(String supplierId) {
 		 String paymentdone = "y";
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where  s.paymentDone ='"+paymentdone+"' and s.FksuppId = '"+supplierId+"' AND s.Quantity > '0' ");
+			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where  s.paymentDone ='"+paymentdone+"' and s.FksuppId = '"+supplierId+"' AND s.Quantity > '0' union   select b.BillNo,b.FksuppId from goodreceivebarrel b where  b.paymentDone ='"+paymentdone+"' and b.FksuppId = '"+supplierId+"' ");
 		//	query.setParameter("paymentdone",paymentdone);
 			list = query.list();
 			System.out.println("in getAllBillBySuppliers() dao query size - "+query.list().size());

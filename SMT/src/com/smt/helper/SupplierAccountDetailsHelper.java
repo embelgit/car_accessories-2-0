@@ -88,6 +88,7 @@ public class SupplierAccountDetailsHelper {
 			String newTotal = (o[0].toString());
 			Double newTotal1 = Double.valueOf(newTotal);
 			bean.setTotalAmt(Double.parseDouble(o[0].toString()));
+			//bean.setBalance(Double.parseDouble(o[0].toString()));
 			System.out.println("***************"+o[0]);
 			map.put(bean.getTotalAmt(),bean);
 		}
