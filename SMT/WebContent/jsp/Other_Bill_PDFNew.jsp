@@ -649,7 +649,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 
 			PdfPCell table_cell12;
 			
-			table_cell12 = new PdfPCell(new Phrase("Discount : " +description));
+			table_cell12 = new PdfPCell(new Phrase("Discount : "));
 			table_cell12.setHorizontalAlignment(Element.ALIGN_LEFT);
 			//table_cell5.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 			table12.addCell(table_cell12);

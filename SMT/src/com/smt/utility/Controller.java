@@ -1516,6 +1516,16 @@ public class Controller {
 				System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
 				return toJson(returnMap);
 			}
+			//
+			public String fetchprodes(HttpServletRequest request, HttpServletResponse response) {
+
+				CustomerOrderHelper helper = new CustomerOrderHelper();
+				CustomerBean customer = helper.getDetailsByProdes(request, response);
+				Map<String, CustomerBean> returnMap = new HashMap<String, CustomerBean>();
+				returnMap.put("offer", customer);
+				System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
+				return toJson(returnMap);
+			}
 			
 			// To Fetch Data in OderBill after Barcode Enter
 			public String getProdGrid(HttpServletRequest request, HttpServletResponse response) {
@@ -1560,6 +1570,17 @@ public class Controller {
                             System.out.println("IN CONTROLLER++++++++++");
 							ServiceHelper helper = new ServiceHelper();
 							ServiceBean customer = helper.getDetailsByProd1(request, response);
+							Map<String, ServiceBean> returnMap = new HashMap<String, ServiceBean>();
+							returnMap.put("offer", customer);
+							System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
+							return toJson(returnMap);
+						}
+						//
+						public String fetchprodServicees(HttpServletRequest request, HttpServletResponse response) 
+						{
+                            System.out.println("IN CONTROLLER++++++++++");
+							ServiceHelper helper = new ServiceHelper();
+							ServiceBean customer = helper.getDetailsByProd1es(request, response);
 							Map<String, ServiceBean> returnMap = new HashMap<String, ServiceBean>();
 							returnMap.put("offer", customer);
 							System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
@@ -1619,6 +1640,17 @@ public class Controller {
 							System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
 							return toJson(returnMap);
 						}
+						//
+						public String getProductInGridBillingOiles(HttpServletRequest request, HttpServletResponse response) {
+
+							BarrelEntryHelper helper = new BarrelEntryHelper();
+							BarrelEntryBean customer = helper.getProductInGridBillingOiles(request, response);
+							Map<String, BarrelEntryBean> returnMap = new HashMap<String, BarrelEntryBean>();
+							returnMap.put("offer", customer);
+							System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
+							return toJson(returnMap);
+						}
+						
 						// reg oil bill to database
 						public String registerOtherBill1(HttpServletRequest request, HttpServletResponse response) {
 							System.out.println("IN CONTROLLER");

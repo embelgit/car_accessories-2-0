@@ -34,8 +34,19 @@ public class barrelbillestimatehibernate {
 	private String billtype;
     private String paymentbill;
 		 
+    private String oildescription;
+    
 	private Double totalQuan;
     private Double buyPriceEXTax;
+    
+    
+    
+	public String getOildescription() {
+		return oildescription;
+	}
+	public void setOildescription(String oildescription) {
+		this.oildescription = oildescription;
+	}
 	public Long getPkBillId() {
 		return pkBillId;
 	}

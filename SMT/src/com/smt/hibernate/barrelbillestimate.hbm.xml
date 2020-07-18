@@ -31,6 +31,14 @@
 		column="billtype"
 		/>
 		
+		
+		<property
+		name="oildescription" 
+		type="java.lang.String" 
+		column="oildescription"
+		/>
+		
+		
 		 <property
 		name="quantitydouble" 
 		type="java.lang.Double" 

@@ -88,6 +88,12 @@
 		column="billtype"
 		 />
 		 
+		 <property
+		name="serdescription" 
+		type="java.lang.String" 
+		column="serdescription"
+	     />
+	     
 		 
 		 <property
 		name="service_hsn" 

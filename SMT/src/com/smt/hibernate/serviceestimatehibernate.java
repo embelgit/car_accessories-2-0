@@ -11,7 +11,7 @@ public class serviceestimatehibernate {
 	private String paymentbill; 
 	
 	private String billtype;
-
+	private String serdescription;
 	private Double totalQuan;
     private Double buyPriceEXTax;
 	private Long quantity;
@@ -52,6 +52,12 @@ public class serviceestimatehibernate {
 	
 	
 	
+	public String getSerdescription() {
+		return serdescription;
+	}
+	public void setSerdescription(String serdescription) {
+		this.serdescription = serdescription;
+	}
 	public Double getServiceTotalAmt() {
 		return serviceTotalAmt;
 	}

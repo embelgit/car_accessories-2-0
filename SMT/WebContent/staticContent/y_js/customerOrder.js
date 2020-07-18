@@ -632,6 +632,8 @@ function resBill() {
 	    /*if(contactNo == ""){
 	    	contactNo = 0;
 	    }*/
+	    var vehicleName = $('#vehicleName').val();
+	    
 	    var ownerName=$('#ownerName').val();
 	    /*if(ownerName == ""){
 	    	ownerName = "NA";
@@ -692,8 +694,8 @@ function resBill() {
 	    params["kmReading"] = kmReading;
 	    params["vehiclecolor"] = vehiclecolor;
 	    params["gstNo"] = gstNo;
-		
-	    
+		params["vehicleName"]=vehicleName;
+	
 	    params["paymentMode"] = paymentMode;
 	    params["creditdescription"] = creditdescription;
 	    params["paidAmt"] = paidAmt;
@@ -2220,6 +2222,12 @@ function resBillService() {
 				
 				
 			  }
+			
+			 var serdescription=$('#serdescription').val();
+			 if(serdescription=="" || serdescription==null || serdescription==undefined){
+				 serdescription="NA";
+			 }
+			 
 			 var ServicetotalAmount=$('#ServicetotalAmount').val();
 			
 			 var discountservice = $('#discountservice').val();
@@ -2231,7 +2239,7 @@ function resBillService() {
 				//alert("count second++++  " +count1)
 			params["ServicetotalAmount"] = ServicetotalAmount;
 			params["discountservice"] = discountservice;
-	    
+			params["serdescription"] = serdescription;
 	    
 
 		params["contactNo"] = contactNo;

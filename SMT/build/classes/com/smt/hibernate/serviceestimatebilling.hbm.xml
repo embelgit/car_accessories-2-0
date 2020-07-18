@@ -82,6 +82,12 @@
 		 />
 		
 		
+		 <property
+		name="serdescription" 
+		type="java.lang.String" 
+		column="serdescription"
+		 />
+		
 		<property
 		name="billtype" 
 		type="java.lang.String" 

@@ -582,7 +582,7 @@ function calgrosstot(){
 					
 						
 							<div class="col-md-2" align="right">
-								<label class="control-label" > Description: </label>
+								<label class="control-label" >Product Description: </label>
 							</div>
 							<div class="col-md-2">
 							
@@ -632,6 +632,15 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
+                
+                <div class="col-md-2" align="right">
+								<label class="control-label" >Service Description: </label>
+							</div>
+							<div class="col-md-2">
+							
+								<input type="text" class="form-control" id="serdescription"  placeholder="Note"/>
+							</div> 
+							
 				</div>
 				
 						<!-- <div class="row" style="margin-top:10px;">
@@ -739,6 +748,13 @@ function calgrosstot(){
 						</datalist>     
 				    </div>
                </div>
+                               <div class="col-md-2" align="right">
+								<label class="control-label" >Oil Description: </label>
+							</div>
+							<div class="col-md-2">
+							
+								<input type="text" class="form-control" id="oildescription"  placeholder="Note"/>
+							</div> 
 					 
 					 </div>
 					 
