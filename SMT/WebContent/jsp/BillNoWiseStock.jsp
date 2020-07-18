@@ -30,7 +30,7 @@
 	
 		<div class="row header_margin_top">
 			<div align="center">
-				<h2 class="form-name style_heading">Bill No Wise Stock</h2>
+				<h2 class="form-name style_heading">Bill no Wise Stock</h2>
 			</div>
 		</div>
 		
