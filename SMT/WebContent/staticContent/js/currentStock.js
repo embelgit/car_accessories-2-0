@@ -319,7 +319,8 @@ for (i = 0; i < list.options.length; ++i) {
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
 	                      {"data": "vat", "width": "5%", "defaultContent": ""},
 	                      {"data": "barcodeNo", "width": "5%", "defaultContent": ""},
-				           
+	                      {"data": "buyPriceEXTax", "width": "5%", "defaultContent": ""},
+	                      
 				        ]
 				    } );
 				} );
