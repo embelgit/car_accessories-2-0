@@ -115,7 +115,7 @@
 				<th> Buy Price</th>
 				<th> Tax Percentage</th>
 				<th> Barcode No</th>
-				<th> Buy price Ex Tax </th>
+				<th> Buyprice Ex Tax </th>
 				
 				
 				
