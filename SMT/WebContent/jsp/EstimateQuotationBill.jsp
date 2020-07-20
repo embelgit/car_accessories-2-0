@@ -144,7 +144,7 @@ function calgrosstot(){
 
 							<label class="control-label" >Barcode No:</label>
 						</div>
-						<!-- onchange="return getProdGrid();"  -->
+						<!--ffff  onchange="return getProdGrid();"  -->
 						<div class="col-md-3">
 						    <input type="text" id="key" class="form-control text-border" autofocus="key" placeholder="Enter Item Barcode" />
 					     </div>	
