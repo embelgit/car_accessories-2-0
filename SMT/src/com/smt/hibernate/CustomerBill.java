@@ -9,7 +9,7 @@ public class CustomerBill {
 	private String itemName;
 
 
-
+	private String Customername;
 	private Long quantity;
 	private Double salePrice;
 	private Double grossamt;
@@ -47,6 +47,16 @@ public class CustomerBill {
 	
 	
 	
+	public String getCustomername() {
+		return Customername;
+	}
+
+
+	public void setCustomername(String customername) {
+		Customername = customername;
+	}
+
+
 	public String getVehicleName() {
 		return vehicleName;
 	}

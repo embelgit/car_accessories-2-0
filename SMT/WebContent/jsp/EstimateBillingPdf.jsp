@@ -227,7 +227,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 		// End	logo 
      
-		headerTable_cell = new PdfPCell(new Phrase("Bill No : A/"+saleDate+"/00" +billno+""));
+		headerTable_cell = new PdfPCell(new Phrase("Bill No : EQB/"+saleDate+"/00" +billno+""));
 		headerTable_cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		headerTable_cell.setColspan(2);
 		headerTable_cell.setBorder(0);
@@ -252,7 +252,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		headertable2.addCell(headerTable_cell2);
 		
 			
-		headerTable_cell2 = new PdfPCell(new Phrase("Date: "+ saleDate));
+		headerTable_cell2 = new PdfPCell(new Phrase(""));
 		headerTable_cell2.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		headerTable_cell2.setColspan(2);
 		headerTable_cell2.setBorder(Rectangle.NO_BORDER | Rectangle.NO_BORDER);
@@ -317,7 +317,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 			
 		
-		headerTable_cell4 = new PdfPCell(new Phrase("Yashodha nagar,Oppo.kalayani Girls Hostel,Higna Main Road,Nagpur.\n www.motorodi.com | info@motorodi.com", Normalfont12));
+		headerTable_cell4 = new PdfPCell(new Phrase("Yashodha nagar,Oppo.kalayani Girls Hostel,Higna Main Road,Nagpur.\n www.motorodi.com | info@motorodi.com \n GST No. 27AAKCM7628M1ZR", Normalfont12));
 		headerTable_cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		headerTable_cell4.setColspan(2);
 		headerTable_cell4.setBorder(Rectangle.BOTTOM);
@@ -421,7 +421,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		PdfPTable table = new PdfPTable(10);
 		table.setWidthPercentage(100);
 
-		float[] columnWidths = {0.4f,0.5f,0.6f,0.6f, 0.4f,0.4f,0.5f,0.4f,0.5f,0.5f};
+		float[] columnWidths = {0.3f,0.7f,0.5f,0.4f,0.3f,0.5f,0.5f,0.4f,0.5f,0.5f};
 		table.setWidths(columnWidths);
 
 		PdfPCell table_cell;
@@ -602,7 +602,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			//roudoffsubtotal=Math.round(subtotal * 100) / 100;
 			
 			table_cell = new PdfPCell(new Phrase(String.valueOf(totalperitem), Normalfont12));
-			table_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+			table_cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			table_cell.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table.addCell(table_cell);
 			
@@ -614,7 +614,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			table5.setWidthPercentage(100);
 			
 			
-			float[] columnWidths5 = {2.0f,0.52f};
+			float[] columnWidths5 = {2.0f,0.56f};
 			table5.setWidths(columnWidths5);
 
 			PdfPCell table_cell5;
@@ -672,7 +672,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 						
 						
 
-						float[] columnWidths16 = {2.0f,0.52f};
+						float[] columnWidths16 = {2.0f,0.56f};
 
 						table16.setWidths(columnWidths16);
 
@@ -737,7 +737,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		PdfPTable table1 = new PdfPTable(10);
 		table1.setWidthPercentage(100);
 
-		float[] columnWidths1 = {0.4f,0.5f,0.6f,0.6f, 0.6f,0.4f,0.5f,0.4f,0.5f,0.5f};
+		float[] columnWidths1 = {0.3f,0.7f,0.5f,0.4f,0.3f,0.5f,0.5f,0.4f,0.5f,0.5f};
 		table1.setWidths(columnWidths1);
 
 		PdfPCell table_cell1;
@@ -893,7 +893,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			//roudoffsubtotal=Math.round(subtotal * 100) / 100;
 			
 			table_cell1 = new PdfPCell(new Phrase(String.valueOf(service_totalGrid), Normalfont12));
-			table_cell1.setHorizontalAlignment(Element.ALIGN_LEFT);
+			table_cell1.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			table_cell1.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table1.addCell(table_cell1);
 			
@@ -906,7 +906,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		table6.setWidthPercentage(100);
 		
 		
-		float[] columnWidths6 = {2.0f,0.5f};
+		float[] columnWidths6 = {2.0f,0.56f};
 		table6.setWidths(columnWidths6);
 
 		PdfPCell table_cell6;
@@ -932,7 +932,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 		
 
-		float[] columnWidths14 = {2.0f,0.5f};
+		float[] columnWidths14 = {2.0f,0.56f};
 
 		table14.setWidths(columnWidths14);
 
@@ -1096,7 +1096,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		PdfPTable table9 = new PdfPTable(10);
 		table9.setWidthPercentage(100);
 
-		float[] columnWidths9 = {0.3f,0.5f,0.6f,0.4f, 0.4f,0.4f,0.5f,0.4f,0.5f,0.5f};
+		float[] columnWidths9 = {0.3f,0.7f,0.5f,0.4f,0.3f,0.5f,0.5f,0.4f,0.5f,0.5f};
 		table9.setWidths(columnWidths9);
 
 		PdfPCell table_cell10;
@@ -1129,7 +1129,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		table_cell10.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table9.addCell(table_cell10);
 		
-		table_cell10 = new PdfPCell(new Phrase("Qty",font12));
+		table_cell10 = new PdfPCell(new Phrase("Qty\n(ltr)",font12));
 		table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
 		table_cell10.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table9.addCell(table_cell10);
@@ -1262,7 +1262,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			//roudoffsubtotal=Math.round(subtotal * 100) / 100;
 			
 			table_cell10 = new PdfPCell(new Phrase(String.valueOf("\n"+totalperitem), Normalfont12));
-			table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
+			table_cell10.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			table_cell10.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table9.addCell(table_cell10);
 			
@@ -1275,7 +1275,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 	    table11.setWidthPercentage(100);
 		
 		
-		float[] columnWidths11 = {2.0f,0.57f};
+		float[] columnWidths11 = {2.0f,0.56f};
 		table11.setWidths(columnWidths11);
 
 		PdfPCell table_cell11;
@@ -1301,7 +1301,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 	     table15.setWidthPercentage(100);
 		
 		
-		float[] columnWidths15 = {2.0f,0.57f};
+		float[] columnWidths15 = {2.0f,0.56f};
 		table15.setWidths(columnWidths15);
 
 		PdfPCell table_cell15;
@@ -1377,6 +1377,33 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			
 			document.add(infotable3);
 		// step 5
+		
+		//
+			PdfPTable infotable23 = new PdfPTable(2);
+		infotable23.setWidthPercentage(100);
+
+		float[] infoColumnWidths23 = {2f,0.8f};
+		infotable23.setWidths(infoColumnWidths23);
+
+		PdfPCell InfoTable_cell23;
+		
+
+
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote : "));
+		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
+		infotable23.addCell(InfoTable_cell23);
+
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nMotorodi Authority : "));
+		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
+		infotable23.addCell(InfoTable_cell23);
+		
+		document.add(infotable23);
+			
+			
+		
+		
 		rs.close();
 		
 		rs2.close();
