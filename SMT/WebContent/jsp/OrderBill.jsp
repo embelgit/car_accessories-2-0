@@ -699,7 +699,7 @@ function calgrosstot(){
 						
 			           	<div class="row" style="margin-top: 10px; margin-left:3%;">
 				
-					<div class="col-md-8">
+					<div class="col-md-12">
 						<!-- <div class="row" style="margin-top: 15px;"> -->
 							<div class="table-responsive">
 								<table id="list5"></table>
