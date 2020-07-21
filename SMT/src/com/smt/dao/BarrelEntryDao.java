@@ -170,7 +170,7 @@ public class BarrelEntryDao {
 			session = hbu.getHibernateSession();
 			
 			//Query query = session.createSQLQuery("SELECT p.ItemName, p.PkProNameId, p.hsnsacNo, stock.Quntity, se.PricePerUnit from productname p  inner join stock INNER JOIN stockentry se   on p.PkProNameId = stock.Fk_ItemName_Id and se.fk_product_reg = p.PkProNameId AND p.PkProNameId="+ key);
-			Query query = session.createSQLQuery("SELECT ProductName,Vat,HsnSacNo,category_name,NoOfBarrel,perlitre,TotalLitre FROM barrelentry WHERE pkProductNameId="+key);
+			Query query = session.createSQLQuery("SELECT ProductName,Vat,HsnSacNo,category_name,NoOfBarrel,perlitre,TotalLitre,modelName FROM barrelentry WHERE pkProductNameId="+key);
 			 list = query.list();
 			itemlist = new ArrayList<BarrelEntryBean>(0);
 			for (Object[] objects : list) {
@@ -182,7 +182,7 @@ public class BarrelEntryDao {
 				bean.setNumberofBarrel(Double.parseDouble(objects[4].toString()));
 				bean.setOilperlitre(Double.parseDouble(objects[5].toString()));
 				bean.setTotalLitre(Double.parseDouble(objects[6].toString()));
-				
+				bean.setModelName(objects[7].toString());
 				
 				//System.out.println("Total Weight=======" +bean.getTotelWeight());
 				

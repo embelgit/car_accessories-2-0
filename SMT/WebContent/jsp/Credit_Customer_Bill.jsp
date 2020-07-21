@@ -153,7 +153,7 @@ function calgrosstot(){
 						    <input type="text" id="key" class="form-control text-border" onchange="return getitemData1();" autofocus="key" placeholder="Enter Item Barcode" />
 					     </div -->	
 					     
-					     <label class="col-md-3 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
+					     <label class="col-md-2 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
           					  <div class="col-md-3">
 								<div class="input-group">
 									<span class="input-group-addon">
@@ -180,7 +180,7 @@ function calgrosstot(){
 						</datalist> 
 				    </div>
                 </div>
-                 <div class="col-md-2" align="right">
+                 <div class="col-md-3" align="right">
 								<label class="control-label"  >Contact No.: </label>
 							</div>
 							<div class="col-md-3">
@@ -189,7 +189,7 @@ function calgrosstot(){
 		   </div>	
 					
 				  <div class="row form-group">	
-					 <label class="col-md-3 control-label" for="customerName">Product Name:<sup>*</sup></label>  
+					 <label class="col-md-2 control-label" for="customerName">Product Name:<sup>*</sup></label>  
           					  <div class="col-md-3" >
 								<div class="input-group">
 									 <span class="input-group-addon">
@@ -218,7 +218,7 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
-              <div class="col-md-2" align="right">
+              <div class="col-md-3" align="right">
 								<label class="control-label"  >Barcode no: </label>
 							</div>
 							<div class="col-md-3">
@@ -275,7 +275,7 @@ function calgrosstot(){
 						
 						
 						<div class="row form-group" >
-							<div class="col-md-3" align="right" style="margin-top:10px;">
+							<div class="col-md-2" align="right" style="margin-top:10px;">
 								<label class="control-label"  >Total Amount: </label>
 							</div>
 							<div class="col-md-3" style="margin-top:10px;">
@@ -298,7 +298,7 @@ function calgrosstot(){
 						
 						
 						<div class="row form-group" >
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
 								<label class="control-label"  > Gross Total: </label>
 							</div>
 							<div class="col-md-3">
@@ -322,7 +322,7 @@ function calgrosstot(){
 			
 			
 				<div class="row form-group">
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
 					 								<label class="control-label" > Service Name: </label>
 							</div>
 							<div class="col-md-3">
@@ -407,7 +407,7 @@ function calgrosstot(){
 		<!-- 	////////////oil billing//////////////////////	 -->	
 				
 					<div class="row form-group" style="margin-top:10px;">
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
 					 								<label class="control-label" > Oil Product Name: </label>
 							</div>
 							<div class="col-md-3">
@@ -528,7 +528,7 @@ function calgrosstot(){
 			
 			
 			<div class="row form-group">
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
 								<label class="control-label" > Description: </label>
 							</div>
 							<div class="col-md-3">
@@ -536,7 +536,7 @@ function calgrosstot(){
 								<input type="text" class="form-control" id="description"  placeholder="Note"/>
 							</div> 
 							
-							<div class="col-md-2" align="right">
+							<div class="col-md-3" align="right">
 								<label class="control-label"  >Net Paid Amount: </label>
 							</div>
 							<div class="col-md-3">

@@ -245,6 +245,9 @@ public class BarrelEntryHelper {
 
 			String TotalQuan = request.getParameter("TotalQuan" + i);
 			gd.setTotalQuan(Double.parseDouble(TotalQuan));
+			
+			String modelName = request.getParameter("modelName" + i);
+			gd.setModelName(modelName);
 
 
 			String extraDiscount = request.getParameter("extraDiscount");
@@ -318,6 +321,8 @@ public class BarrelEntryHelper {
 				newEntry.setTotalLitre(totalLitrePurchased);
 				newEntry.setCatName(catName);
 				//newEntry.setTotalpurchased(totalLitrePurchased);
+				newEntry.setModelName(modelName);
+				System.out.println("Stock++++++" + newEntry.getModelName());
 
 				StockDao dao2 = new StockDao();
 				dao2.registerStock(newEntry);
@@ -370,7 +375,7 @@ public class BarrelEntryHelper {
 							newEntry.setCatName(catName);
 							//newEntry.setTotalLitre(Double.parseDouble(TotalLitre));
 							newEntry.setTotalLitre(totalLitrePurchased);
-
+							newEntry.setModelName(modelName);
 							StockDao dao2 = new StockDao();
 							dao2.registerStock(newEntry);
 

@@ -92,14 +92,26 @@ function getProductList1()
     for (i = 0; i < list.options.length; ++i) {
     if (list.options[i].value === input.value) {
     	itemName = list.options[i].getAttribute('data-value');
+    	//model = list.options[i].getAttribute('data-value');
     	
     }
    }
-	
+    
+
+/*
+    var productId = $('#itemName1').val();
+    	
+    	var splitText = productId.split("  ");
+    	
+    	var proName = splitText[0];
+    	var catname = splitText[1];*/
+    //var itemName=itemName.split(",")[0];
+    	//var modelName=model.split(",")[1];
+    
     itemparams={};
 	//alert("ITEMID"+itemName)
 	itemparams["itemName"]= itemName;
-	//itemparams["catName"]= catName;
+	//itemparams["modelName"]= modelName;
 	//itemparams["hsnsacno"]= hsnsacno;
 	
 	document.getElementById('itemName1').value = null;
@@ -151,7 +163,7 @@ function getProductList1()
 				$("#jqGrid1").jqGrid({
 					datatype:"local",
 					editurl: 'clientArray',
-					colNames: ["ItemName","Category Name","HSN/SAC","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BuyPrice","BPETax","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
+					colNames: ["ItemName","Category Name","HSN/SAC","BrandName","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BuyPrice","BPETax","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
 
 					colModel: [
 					           { 	
@@ -168,6 +180,12 @@ function getProductList1()
 					           {
 					        	   name:  "hsnsacno",
 					        	   width: 120,
+					        	   
+					           },
+					           {
+					        	   name:  "modelName",
+					        	   width: 120,
+					        	   hidden: true
 					        	   
 					           },
 					           {
@@ -844,6 +862,25 @@ function validateRegGoodReceiveOil(){
 
 function regGoodReceiveOil(){
 document.getElementById("btnSubmit1").disabled = true; 
+
+
+/*var input1 = document.getElementById('itemName1'),
+list1 = document.getElementById('itemId_drop1'),
+i,itemId,catname;
+for (i = 0; i < list1.options.length; ++i) {
+if (list1.options[i].value === input1.value) {
+	//itemId = list1.options[i].getAttribute('data-value');
+	catname = list1.options[i].getAttribute('data-value');
+}
+}
+
+var purchaseId=itemId.split(",")[0];
+var prodId=itemId.split(",")[1];
+alert("BRANDNAME++++++"+prodId)*/
+
+
+
+
 var params= {};
 var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
 var allRowsInGrid1 = $('#jqGrid1').getGridParam('data');
@@ -934,6 +971,9 @@ if(Total == undefined){
 }
 params["Total"+i] = Total;
 
+var modelName = allRowsInGrid1[i].modelName;
+//alert("MDL++++++"+modelName)
+params["modelName"+i] = modelName;
 
 
 }
@@ -947,6 +987,9 @@ if (list.options[i].value === input.value) {
 	supplierId = list.options[i].getAttribute('data-value');
 }
 }
+
+
+
 
 var billNo = $('#billNo1').val();
 var contactPerson=$('#contactPerson1').val();

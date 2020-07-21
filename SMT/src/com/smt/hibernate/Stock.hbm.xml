@@ -47,6 +47,13 @@
 		type="java.lang.Double" 
 		column="totalLitre"
 		/> 
+        <property
+        name="modelName"
+        type="java.lang.String"
+        column="modelName"
+        
+        
+        /> 
         
 		</class>
     </hibernate-mapping>

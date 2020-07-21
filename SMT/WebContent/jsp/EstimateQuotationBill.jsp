@@ -140,17 +140,10 @@ function calgrosstot(){
 		     </div>	
     </div>	
 			      <div class="row  form-group">
-						<div class="col-md-2" align="right">
-
-							<label class="control-label" >Barcode No:</label>
-						</div>
-						<!--ffff  onchange="return getProdGrid();"  -->
-						<div class="col-md-3">
-						    <input type="text" id="key" class="form-control text-border" autofocus="key" placeholder="Enter Item Barcode" />
-					     </div>	
+						
 					     
 					     <label class="col-md-2 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
-          					  <div class="col-md-3">
+          					  <div class="col-md-2">
 								<div class="input-group">
 									<span class="input-group-addon">
 										<i class="glyphicon glyphicon-user"></i>
@@ -176,11 +169,32 @@ function calgrosstot(){
 						</datalist> 
 				    </div>
                 </div>
+                <div class="col-md-2" align="right">
+							<label class="control-label" >Contact No:</label>
+						</div>
+						<div class="col-md-2">
+							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number">
+						</div>	
+							
+						<div class="col-md-2" align="right">
+							<label class="control-label" >Vehicle No:</label>
+						</div>
+						<div class="col-md-2">
+							<input type="text" class="form-control" id="carNo" placeholder="Vehicle Number">
+						</div>	
 		   </div>	
 					  
-					    <div class="row form-group">	
+					    <div class="row form-group">
+					    <div class="col-md-2" align="right">
+
+							<label class="control-label" >Barcode No:</label>
+						</div>
+						<!--ffff  onchange="return getProdGrid();"  -->
+						<div class="col-md-3">
+						    <input type="text" id="key" class="form-control text-border" autofocus="key" placeholder="Enter Item Barcode" />
+					     </div>		
 					 <label class="col-md-2 control-label" align="right" for="customerName">Product Name:<sup>*</sup></label>  
-          					  <div class="col-md-2">
+          					  <div class="col-md-3">
 								<div class="input-group">
 									 <span class="input-group-addon">
 										<i class="glyphicon glyphicon-user"></i>
@@ -208,19 +222,7 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
-					 <div class="col-md-2" align="right">
-							<label class="control-label" >Contact No:</label>
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number">
-						</div>	
-							
-						<div class="col-md-2" align="right">
-							<label class="control-label" >Vehicle No:</label>
-						</div>
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="carNo" placeholder="Vehicle Number">
-						</div>	
+					 
 						</div>
 						<!--  style="display: none;"-->
 						<div class="row" >

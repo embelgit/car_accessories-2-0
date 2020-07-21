@@ -113,6 +113,46 @@ function grasstotal(){
 				
 				<div class="container">
 				
+					    <div class="row form-group">	
+					  <label class="col-md-3 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
+          					  <div class="col-md-3">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span>
+						
+							<%
+							CustomerDetailsDao cdd = new CustomerDetailsDao();
+           						List cList =cdd.getAllCustomer();
+							
+							%>
+						<input list="cust_drop" id="creditCustomer"  class="form-control">
+				         <datalist id="cust_drop">
+							
+							<%
+					           for(int i=0;i<cList.size();i++){
+					        	   CustomerDetailsBean cust =(CustomerDetailsBean)cList.get(i);
+							%>
+		
+						<option data-value="<%=cust.getCustId()%>" value="<%=cust.getFirstName() %> <%=cust.getLastName() %>" myvalue="<%=cust.getAadhar()%>">
+							<%
+				      			}
+				    		%>
+						</datalist> 
+					 	
+				    </div>
+                </div>
+                
+                
+                 <div class="col-md-2" align="right">
+							<label class="control-label" >Contact No:</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number"/>
+						</div>	
+					
+					    </div>
+					   
 				
 				  <div class="form-group">
 						<div class="col-sm-3 " align="right">
@@ -185,46 +225,6 @@ function grasstotal(){
 					   
 		
 		
-					    <div class="row form-group">	
-					  <label class="col-md-3 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
-          					  <div class="col-md-3">
-								<div class="input-group">
-									<span class="input-group-addon">
-										<i class="glyphicon glyphicon-user"></i>
-									</span>
-						
-							<%
-							CustomerDetailsDao cdd = new CustomerDetailsDao();
-           						List cList =cdd.getAllCustomer();
-							
-							%>
-						<input list="cust_drop" id="creditCustomer"  class="form-control">
-				         <datalist id="cust_drop">
-							
-							<%
-					           for(int i=0;i<cList.size();i++){
-					        	   CustomerDetailsBean cust =(CustomerDetailsBean)cList.get(i);
-							%>
-		
-						<option data-value="<%=cust.getCustId()%>" value="<%=cust.getFirstName() %> <%=cust.getLastName() %>" myvalue="<%=cust.getAadhar()%>">
-							<%
-				      			}
-				    		%>
-						</datalist> 
-					 	
-				    </div>
-                </div>
-                
-                
-                 <div class="col-md-2" align="right">
-							<label class="control-label" >Contact No:</label>
-						</div>
-						<div class="col-md-3">
-							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number"/>
-						</div>	
-					
-					    </div>
-					   
 					   
 					   
 					   

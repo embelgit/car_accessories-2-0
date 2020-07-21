@@ -199,5 +199,13 @@
 		column="buyPriceEXTax"
 		length="255" />
 		
+		
+		<property
+		name="modelName" 
+		type="java.lang.String" 
+		column="modelName"
+		length="255" />	
+		
+		
  </class>
    </hibernate-mapping> 		 

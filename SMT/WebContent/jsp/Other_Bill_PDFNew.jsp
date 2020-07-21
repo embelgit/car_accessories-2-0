@@ -124,7 +124,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 
 		//ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description  from customerbill where BillNo =" + billno);
 		
-		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount, Discount, GrossTotal, Date, totalperitem, TaxAmount,Gst,Igst,description,CarNo from otherbill where BillNo =" + billno);
+		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount, Discount, GrossTotal, Date, totalperitem, TaxAmount,Gst,Igst,description,CarNo,HsnSacNo from otherbill where BillNo =" + billno);
 		
 		Font font17Bold = new Font(Font.FontFamily.TIMES_ROMAN, 17, Font.BOLD, BaseColor.BLACK);
 		Font font16Bold = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD, BaseColor.BLACK);
@@ -420,10 +420,10 @@ Long billno = (Long) session.getAttribute("BillNo");
 		
 		
 		//table for particulars
-		PdfPTable table = new PdfPTable(9);
+		PdfPTable table = new PdfPTable(10);
 		table.setWidthPercentage(100);
 
-		float[] columnWidths = {0.3f,0.9f,0.4f,0.4f, 0.4f,0.4f,0.4f,0.5f,0.5f };
+		float[] columnWidths = {0.3f,0.9f,0.4f,0.4f, 0.4f,0.4f,0.4f,0.5f,0.5f,0.4f };
 		table.setWidths(columnWidths);
 
 		PdfPCell table_cell;
@@ -441,11 +441,11 @@ Long billno = (Long) session.getAttribute("BillNo");
 		table_cell.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table.addCell(table_cell);
 		
-		/* table_cell = new PdfPCell(new Phrase("HSN/SAC",font12));
+		 table_cell = new PdfPCell(new Phrase("HSN/SAC",font12));
 		table_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		table_cell.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table.addCell(table_cell);
- */
+ 
 		table_cell = new PdfPCell(new Phrase("Rate",font12));
 		table_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		table_cell.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
@@ -520,12 +520,12 @@ Long billno = (Long) session.getAttribute("BillNo");
 			table_cell.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table.addCell(table_cell);
 
-			/* String HsnSacNo = rs.getString("HsnSacNo");
+			 String HsnSacNo = rs.getString("HsnSacNo");
 			table_cell = new PdfPCell(new Phrase(HsnSacNo));
 			table_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 			table_cell.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table.addCell(table_cell);
- */
+ 
 			String SalePrice = String.valueOf(rs.getDouble("SalePrice"));
 			long taxamtl = Math.round(Double.valueOf(SalePrice));
 			String taxamts = String.valueOf(taxamtl);

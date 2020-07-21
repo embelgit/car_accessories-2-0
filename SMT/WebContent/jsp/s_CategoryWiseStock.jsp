@@ -109,11 +109,14 @@
 				<th>Available Quantity</th>
 				<th>Update Date</th>
 				<th>Total Litres</th>
+				<th>Brand Name</th>
 
 			</tr>
 		</thead>
 		<tfoot>
 		<tr>	
+		<th></th>
+		<th></th>
 		<th></th>
 		<th></th>
 		<th></th>
