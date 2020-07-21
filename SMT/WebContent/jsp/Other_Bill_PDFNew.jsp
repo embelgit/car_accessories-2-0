@@ -378,7 +378,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
 
-		 InfoTable_cell = new PdfPCell(new Phrase("\n\nVehicle No: "+carno));
+		 InfoTable_cell = new PdfPCell(new Phrase("\n\nLocation : "+carno));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);

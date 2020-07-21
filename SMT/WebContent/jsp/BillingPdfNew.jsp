@@ -420,10 +420,10 @@
 		String ccc= "Credit";
 		if(ccc.equals(paymode)){
 		
-		PdfPTable infotable22 = new PdfPTable(3);
+		PdfPTable infotable22 = new PdfPTable(2);
 		infotable22.setWidthPercentage(100);
 
-		float[] infoColumnWidths22 = {0.26f,0.22f,0.3f};
+		float[] infoColumnWidths22 = {0.3f,0.6f};
 		infotable22.setWidths(infoColumnWidths22);
 
 		PdfPCell InfoTable_cell22;
@@ -435,15 +435,15 @@
 		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
 		infotable22.addCell(InfoTable_cell22);
 
-		InfoTable_cell22 = new PdfPCell(new Phrase("\nCredit Customer Name : "));
+		InfoTable_cell22 = new PdfPCell(new Phrase("\nCC Name :   "+cust));
 		InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
 		infotable22.addCell(InfoTable_cell22);
 
-		InfoTable_cell22 = new PdfPCell(new Phrase("\n"+cust));
+/* 		InfoTable_cell22 = new PdfPCell(new Phrase("\n"));
 		InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
-		infotable22.addCell(InfoTable_cell22);
+		infotable22.addCell(InfoTable_cell22); */
 		
 		document.add(infotable22);
 		}
@@ -1478,7 +1478,7 @@
 			 PdfPTable infotable4 = new PdfPTable(2);
 				infotable4.setWidthPercentage(100);
 				
-				float[] infoColumnWidths4 = { 2.0f,0.5f};
+				float[] infoColumnWidths4 = { 2.0f,1f};
 				infotable4.setWidths(infoColumnWidths4);
 				
 				PdfPCell InfoTable_cell4;
@@ -1490,7 +1490,7 @@
 			String amtInWord = w.convert(intGrandTotalAmt);
 
 			InfoTable_cell4 = new PdfPCell(new Phrase("\n Rupees in words :  " + amtInWord + " Only/- "));
-			InfoTable_cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+			InfoTable_cell4.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			InfoTable_cell4.setBorder(Rectangle.NO_BORDER);
 			InfoTable_cell4.setColspan(7);
 			infotable4.addCell(InfoTable_cell4); 
