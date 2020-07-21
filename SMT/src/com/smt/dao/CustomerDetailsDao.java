@@ -76,6 +76,33 @@ public class CustomerDetailsDao {
 		
 	}
 	
+	//
+	public List<CustomerDetailsBean> getAllcreditCustomer()
+	{
+		HibernateUtility hbu = null;
+		Session session =  null;
+		Query query = null;
+		 List<CustomerDetailsBean> list = null;
+		 try {
+			 hbu = HibernateUtility.getInstance();
+			 session = hbu.getHibernateSession();
+			query = session.createQuery("from CustomerDetailsBean");
+			 /*query = session.createQuery("from CustomerDetailsBean");*/
+			 list = query.list(); 
+		} catch (Exception e) {
+			Log.error("Error in getAllCustomer", e);
+		}
+		 
+		 finally
+		 {
+			 if (session!=null) {
+				hbu.closeSession(session);
+			}
+		 }
+			
+				return list;
+		
+	}
 	
 	
 public List getVillageByCustomerName(String creditCustomerId) {

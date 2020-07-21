@@ -375,7 +375,7 @@ public List getBarcode() {
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
 //		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo, vat, igst from GoodReceive where billNo=:billno");
-		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst from GoodReceive where billNo='"+billno+"'");
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst,buyPriceEXTax from GoodReceive where billNo='"+billno+"'");
 //		 query2.setParameter("billno", billno);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodReceive>(0);
@@ -400,7 +400,7 @@ public List getBarcode() {
 				if(igst.equals("0.0")){
 					reports.setVat(Double.parseDouble(gst));
 				}
-				
+				reports.setBuyPriceEXTax(Double.parseDouble(object[3].toString()));
 				catList.add(reports); 
 		
 			}}
