@@ -126,12 +126,12 @@ public class CarEntryDao {
 		
 		List<BillCopy> billList=null;
 		 List<Object[]> list = null;
-		
+		String cc= "Cash";
 		try
 		{
 				hbu = HibernateUtility.getInstance();
 				session = hbu.getHibernateSession();
-				Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill group by BillNo order by BillNo desc;");
+				Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill where paymentMode = '"+cc+"' group by BillNo order by BillNo desc;");
 				list = query.list();
 				billList = new ArrayList<BillCopy>(0);
 				

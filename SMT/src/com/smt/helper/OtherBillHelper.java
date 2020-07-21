@@ -221,7 +221,7 @@ public class OtherBillHelper {
 		System.out.println("----------------Bill No before session create::"+billNo);
 		HttpSession session3 = request.getSession();
 		Long billNo2 = Long.parseLong(billNo);
-		session3.setAttribute("OtherBillNo", billNo2);
+		session3.setAttribute("BillNo", billNo2);
 	}
 
 	// get single date Miscellaneos customer Sale

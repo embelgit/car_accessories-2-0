@@ -222,8 +222,18 @@ function calgrosstot(){
 							<input type="text" class="form-control" id="carNo" placeholder="Vehicle Number">
 						</div>	
 						</div>
+						<!--  style="display: none;"-->
+						<div class="row" >
+						<div class="col-md-2" align="right">
+
+							<label class="control-label" >Bill No:</label>
+						</div>
 						
-						
+						<div class="col-md-2">
+						    <input type="text" id="billl" class="form-control text-border" value="<%out.println(BillNo);%>" readonly="readonly"/>
+					     </div>	
+				</div>
+				     
 				
 						<div class="row form-group" >
 							<div class="col-md-2" align="right">

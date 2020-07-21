@@ -47,10 +47,12 @@
 					               		for(int i=0;i<list.size();i++){
 					               			BillCopy billList=(BillCopy)list.get(i);
 									%>
-									<option data-value="<%=billList.getBillNo()%>" value="<%=billList.getBillNo()%>                        <%=billList.getCustName()%>" value1="<%=billList.getCustName()%>" myvalue="<%=billList.getGstNo()%>">
+									<option data-value="<%=billList.getBillNo()%>" value="<%=billList.getBillNo()%>                        <%=billList.getCustName()%>">
 									<%
 										}
+
 									%>
+<%-- 									/* value1="<%=billList.getCustName()%>" myvalue="<%=billList.getGstNo()%> */ --%>
 									</datalist>
 								 </div>
 							</div>

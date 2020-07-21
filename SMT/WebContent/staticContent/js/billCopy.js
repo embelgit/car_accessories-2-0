@@ -47,7 +47,8 @@ params["billNo"] = billNo;
 			function(data) {
 				location.reload(true);
 				//window.open("Car_bill_PDF_COPY.jsp");
-				window.open("BillingPdfNew.jsp");
+		//		window.open("BillingPdfNew.jsp");
+				window.open("customerbillcopy.jsp");
 			}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
@@ -103,7 +104,9 @@ function generateBillCOPY1() {
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
 				location.reload(true);
-				window.open("Other_Bill_CopyPDF.jsp");
+			//	window.open("Other_Bill_CopyPDF.jsp");
+				window.open("otherbillcopy.jsp");
+				
 			}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
@@ -117,8 +120,8 @@ function generateBillCOPY1() {
 function validateGenerateBillCOPYForCreditBill() {
 
 	var input = document.getElementById('BillNo'), 
-	list = document.getElementById('seedBillNo'), i, billNo,custName,gstTinNo;
-
+	list = document.getElementById('seedBillNo'), i, billNo,custName;
+//,gstTinNo
 	for (i = 0; i < list.options.length; ++i) {
 	if (list.options[i].value === input.value) {
 		billNo = list.options[i].getAttribute('data-value');
@@ -130,7 +133,7 @@ function validateGenerateBillCOPYForCreditBill() {
 	
 	var params = {};
 	params["billNo"] = billNo;
-	params["gstTinNo"] = gstTinNo;
+//	params["gstTinNo"] = gstTinNo;
 	params["custName"] = custName;
 
 	params["methodName"] = "BillCOPYForCreditBill";
@@ -138,8 +141,9 @@ function validateGenerateBillCOPYForCreditBill() {
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
 				location.reload(true);
-				window.open("CreditCustomerBillCopy.jsp");
-			}).error(function(jqXHR, textStatus, errorThrown) {
+//				window.open("CreditCustomerBillCopy.jsp");
+				window.open("customerbillcopy.jsp");
+	}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
 			$(loaderObj).find('#errorDiv').show();
