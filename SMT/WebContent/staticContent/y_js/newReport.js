@@ -969,8 +969,9 @@ function getSupplierWiseStockBetweenTwoDate(){
                       {"data": "catName", "width": "5%", "defaultContent": ""},
                       {"data": "quantity", "width": "5%", "defaultContent": ""},
                       {"data": "buyPrice", "width": "5%", "defaultContent": ""},
+                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
                       {"data": "vat", "width": "5%", "defaultContent": ""},
-                      {"data": "buyPriceEXTax", "width": "5%", "defaultContent": ""}
+                     
 			        ]
 			    } );
 			} );
@@ -1109,11 +1110,13 @@ function getSupplierWiseStockBetweenTwoDate10(){
 
                       {"data": "itemName", "width": "5%", "defaultContent": ""},
                       {"data": "categoryName", "width": "5%", "defaultContent": ""},
+                      {"data": "modelName", "width": "5%", "defaultContent": ""},
                       {"data": "NumberofBarrel", "width": "5%", "defaultContent": ""},
 			          {"data": "TotalLitre", "width": "5%", "defaultContent": ""},
                       {"data": "buyPrice", "width": "5%", "defaultContent": ""},
+                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
                       {"data": "vat", "width": "5%", "defaultContent": ""},
-                      {"data": "buyPriceEXTax", "width": "5%", "defaultContent": ""}
+                     
 			        ]
 			    } );
 			} );
