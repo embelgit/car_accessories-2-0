@@ -97,7 +97,7 @@ function grasstotal(){
 
 		<div class="row">
 			<%-- <h4 align="right" style="color: red; margin-right: 130px;">Bill No :: <%out.println(BillNo); %></h4> --%>
-			<h4 align="right" style="color: red; margin-right: 50px;">A/ <%out.println(todayDate); %>/00<%out.println(BillNo); %></h4>
+			<h4 align="right" style="color: red; margin-right: 50px;">MB/ <%out.println(todayDate); %>/00<%out.println(BillNo); %></h4>
 		</div>
 
 		<div class="row">

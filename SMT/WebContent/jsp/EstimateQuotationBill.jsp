@@ -133,7 +133,7 @@ function calgrosstot(){
 	<div class="container-fluid">
 		<h2 align="center" class="form-heading style_heading" style="margin-top: 50px;">Estimate Quotation Bill</h2>
 		<%--   <h3 align="right" style="color: red; margin-right: 50px;">Bill No :: <%out.println(BillNo); %></h3> --%>
-		<h4 align="right" style="color: red; margin-right: 50px;">A/ <%out.println(todayDate); %>/E00<%out.println(BillNo); %></h4>
+		<h4 align="right" style="color: red; margin-right: 50px;">EQB/ <%out.println(todayDate); %>/E00<%out.println(BillNo); %></h4>
 					 <div class="row">
 		     <div class="col-sm-offset-1 col-md-10">
 				  		<hr style="border-top-color:#c1b1b1;">
@@ -225,7 +225,7 @@ function calgrosstot(){
 					 
 						</div>
 						<!--  style="display: none;"-->
-						<div class="row" >
+						<div class="row" style="display: none;">
 						<div class="col-md-2" align="right">
 
 							<label class="control-label" >Bill No:</label>

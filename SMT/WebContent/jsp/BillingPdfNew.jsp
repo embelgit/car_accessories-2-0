@@ -320,7 +320,7 @@
 		PdfPCell headerTable_cell4;
 		
 		
-		headerTable_cell4 = new PdfPCell(new Phrase("", font12));
+		headerTable_cell4 = new PdfPCell(new Phrase("\n\nMob No. 7758863322", font12));
 		headerTable_cell4.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//headerTable_cell.setPadding(10);
 		headerTable_cell4.setBorder(Rectangle.BOTTOM);
@@ -960,7 +960,7 @@
 
 		PdfPCell table_cell6;
 		
-		table_cell6 = new PdfPCell(new Phrase("Service Tasks"));
+		table_cell6 = new PdfPCell(new Phrase("Service Total"));
 		table_cell6.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//table_cell6.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 		table6.addCell(table_cell6);
@@ -1313,7 +1313,7 @@
 
 		PdfPCell table_cell11;
 		
-		table_cell11 = new PdfPCell(new Phrase("Oil Sub Total"));
+		table_cell11 = new PdfPCell(new Phrase("Oil Total"));
 		table_cell11.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//table_cell6.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 		table11.addCell(table_cell11);
@@ -1482,12 +1482,12 @@
 		
 
 
-		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote : "));
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nNote : "));
 		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 		infotable23.addCell(InfoTable_cell23);
 
-		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nMotorodi Authority : "));
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nMotorodi Authority : "));
 		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 		infotable23.addCell(InfoTable_cell23);

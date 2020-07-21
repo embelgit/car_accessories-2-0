@@ -25,6 +25,12 @@
 		 />
 		
 		<property
+		name="Customername" 
+		type="java.lang.String" 
+		column="Customername"
+		 />
+		
+		<property
 		name="vehicleName" 
 		type="java.lang.String" 
 		column="vehicleName"

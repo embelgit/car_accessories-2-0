@@ -309,7 +309,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		PdfPCell headerTable_cell4;
 		
 		
-		headerTable_cell4 = new PdfPCell(new Phrase("", font12));
+		headerTable_cell4 = new PdfPCell(new Phrase("\n\nMob No. 7758863322", font12));
 		headerTable_cell4.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//headerTable_cell.setPadding(10);
 		headerTable_cell4.setBorder(Rectangle.BOTTOM);
@@ -724,7 +724,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 	
 	PdfPCell InfoTable_cell2;
 
-	InfoTable_cell2 = new PdfPCell(new Phrase("\n\nService tasks",font12));
+	InfoTable_cell2 = new PdfPCell(new Phrase("\n\nService Tasks",font12));
 	InfoTable_cell2.setHorizontalAlignment(Element.ALIGN_LEFT);
 	InfoTable_cell2.setBorder(Rectangle.BOTTOM);
 	infotable2.addCell(InfoTable_cell2);
@@ -911,7 +911,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 
 		PdfPCell table_cell6;
 		
-		table_cell6 = new PdfPCell(new Phrase("Service Tasks"));
+		table_cell6 = new PdfPCell(new Phrase("Service Total"));
 		table_cell6.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//table_cell6.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 		table6.addCell(table_cell6);
@@ -1280,7 +1280,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 
 		PdfPCell table_cell11;
 		
-		table_cell11 = new PdfPCell(new Phrase("Oil sub total"));
+		table_cell11 = new PdfPCell(new Phrase("Oil Total"));
 		table_cell11.setHorizontalAlignment(Element.ALIGN_LEFT);
 		//table_cell6.setBorder(Rectangle.RIGHT|Rectangle.TOP);
 		table11.addCell(table_cell11);

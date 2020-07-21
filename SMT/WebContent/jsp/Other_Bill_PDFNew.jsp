@@ -345,7 +345,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 				PdfPCell headerTable_cell4;
 				
 				
-				headerTable_cell4 = new PdfPCell(new Phrase("", font12));
+				headerTable_cell4 = new PdfPCell(new Phrase("\n\nMob No. 7758863322", font12));
 				headerTable_cell4.setHorizontalAlignment(Element.ALIGN_LEFT);
 				//headerTable_cell.setPadding(10);
 				headerTable_cell4.setBorder(Rectangle.BOTTOM);
@@ -423,7 +423,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		PdfPTable table = new PdfPTable(10);
 		table.setWidthPercentage(100);
 
-		float[] columnWidths = {0.3f,0.9f,0.4f,0.4f, 0.4f,0.4f,0.4f,0.5f,0.5f,0.4f };
+		float[] columnWidths = {0.3f,0.7f,0.5f,0.4f,0.3f,0.5f,0.5f,0.4f,0.5f,0.5f};
 		table.setWidths(columnWidths);
 
 		PdfPCell table_cell;
@@ -618,7 +618,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 			table5.setWidthPercentage(100);
 			
 			
-			float[] columnWidths5 = {3.7f,0.5f};
+			float[] columnWidths5 = {3.7f,0.45f};
 			table5.setWidths(columnWidths5);
 
 			PdfPCell table_cell5;
@@ -644,7 +644,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 			table12.setWidthPercentage(100);
 			
 			
-			float[] columnWidths12 = {3.7f,0.5f};
+			float[] columnWidths12 = {3.7f,0.45f};
 			table12.setWidths(columnWidths12);
 
 			PdfPCell table_cell12;
