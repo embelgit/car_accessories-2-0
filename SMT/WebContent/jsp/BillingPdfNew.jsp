@@ -125,7 +125,7 @@
 		Statement stmt = conn.createStatement();
 
 	//	String ss = "Billing";
-		ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description,kmReading,vehiclecolor,gstNo,credit_desp,net_Amt,paymentMode,vehicleName from customerbill where BillNo =" + billno);
+		ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description,kmReading,vehiclecolor,gstNo,credit_desp,net_Amt,paymentMode,vehicleName,Customername from customerbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
 		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount,serdescription from service_billing  where BillNo ='"+billno+"'");
@@ -186,7 +186,7 @@
 		String netamt = rs.getString("net_Amt");
 		String paymode = rs.getString("paymentMode");
 		String vehname  = rs.getString("vehicleName");
-		
+		String cust = rs.getString("Customername");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
 		
 		String vehiclecolor = rs.getString("vehiclecolor");
@@ -417,11 +417,13 @@
 		
 		document.add(infotable21);
 		
+		String ccc= "Credit";
+		if(ccc.equals(paymode)){
 		
-		PdfPTable infotable22 = new PdfPTable(1);
+		PdfPTable infotable22 = new PdfPTable(3);
 		infotable22.setWidthPercentage(100);
 
-		float[] infoColumnWidths22 = {2f};
+		float[] infoColumnWidths22 = {0.26f,0.22f,0.3f};
 		infotable22.setWidths(infoColumnWidths22);
 
 		PdfPCell InfoTable_cell22;
@@ -433,11 +435,37 @@
 		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
 		infotable22.addCell(InfoTable_cell22);
 
+		InfoTable_cell22 = new PdfPCell(new Phrase("\nCredit Customer Name : "));
+		InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
+		infotable22.addCell(InfoTable_cell22);
 
+		InfoTable_cell22 = new PdfPCell(new Phrase("\n"+cust));
+		InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
+		InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
+		infotable22.addCell(InfoTable_cell22);
 		
 		document.add(infotable22);
-		
-		
+		}
+		else{
+			PdfPTable infotable22 = new PdfPTable(1);
+			infotable22.setWidthPercentage(100);
+
+			float[] infoColumnWidths22 = {3f};
+			infotable22.setWidths(infoColumnWidths22);
+
+			PdfPCell InfoTable_cell22;
+			//
+////
+
+			InfoTable_cell22 = new PdfPCell(new Phrase("\nGST No : "+gstNo));
+			InfoTable_cell22.setHorizontalAlignment(Element.ALIGN_LEFT);
+			InfoTable_cell22.setBorder(Rectangle.NO_BORDER);
+			infotable22.addCell(InfoTable_cell22);
+
+			
+			document.add(infotable22);
+		}
  
     PdfPTable infotable1 = new PdfPTable(1);
 	infotable1.setWidthPercentage(100);
