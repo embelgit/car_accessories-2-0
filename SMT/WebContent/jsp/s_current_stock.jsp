@@ -72,6 +72,7 @@
 							<th>Quantity</th>
 							<th>Update Date</th>
 							<th>Total Litres</th>
+							<th>Brand Name</th>
 							
 
 						</tr>

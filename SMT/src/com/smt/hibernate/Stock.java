@@ -14,9 +14,19 @@ public class Stock {
 	private double totalLitre;
 	private Double totalQuan;
 	private Double totalpurchased;
+	private String modelName;
 	
 	
-	
+	public String getModelName() {
+		return modelName;
+	}
+
+
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
+
+
 	public Double getTotalpurchased() {
 		return totalpurchased;
 	}
