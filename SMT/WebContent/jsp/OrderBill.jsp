@@ -4,6 +4,9 @@
  <% boolean isHome=false; %>
 <%@include file="y_commons/header1.jsp"%>
 <%@page import="com.smt.dao.ProductDetailDao"%>
+<%@page import="com.smt.dao.CustomerDetailsDao"%>
+<%@page import="com.smt.hibernate.CustomerDetailsBean"%>
+
 <%@page import="com.smt.hibernate.ProductRegister"%>
 <%@page import="com.smt.helper.CarEntryHelper"%>
 <%@page import="com.smt.hibernate.CarEntry"%>
@@ -379,6 +382,36 @@ function calgrosstot(){
 								</select>	
 	           				</div>
 						</div>
+						
+						<div id="ccname">
+						 <label class="col-md-2 control-label" align="right" for="customerName">Credit Customer Name:<sup>*</sup></label>  
+          					  <div class="col-md-3">
+								<div class="input-group">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span>
+						
+							<%
+								CustomerDetailsDao cdd = new CustomerDetailsDao();
+           						List cList =cdd.getAllcreditCustomer();
+							
+							%>
+						<input list="cust_drop" id="CustomerId"  class="form-control">
+				         <datalist id="cust_drop">
+							
+							<%
+					           for(int i=0;i<cList.size();i++){
+					        	   CustomerDetailsBean cust =(CustomerDetailsBean)cList.get(i);
+							%>
+		
+						<option data-value="<%=cust.getCustId()%>" value="<%=cust.getFirstName() %> <%=cust.getMiddleName() %> <%=cust.getLastName() %>" myvalue="<%=cust.getAadhar()%>">
+							<%
+				      			}
+				    		%>
+						</datalist> 
+				    </div>
+                </div>
+						</div>
 				</div>
 				
 				<script>
@@ -388,14 +421,14 @@ function calgrosstot(){
 	           	if($(this).attr("value")=="Cash"){
 	           	
 	           	$("#ccc").hide(); 
-	           	
+				$("#ccname").hide();	           	
 
 	   
 	           	}
 	          	 else if($(this).attr("value")=="Credit"){
 	           	
 	          		$("#ccc").show(); 	
-	          		
+	          		$("#ccname").show();
 
 	           }
 	          	
@@ -406,7 +439,19 @@ function calgrosstot(){
 		});	
 		</script>
 		
-				</div>      
+				</div> 
+				
+				<div class="row">
+						<div class="col-md-2" align="right">
+
+							<label class="control-label" >Bill No:</label>
+						</div>
+						
+						<div class="col-md-2">
+						    <input type="text" id="bill" class="form-control text-border" value="<%out.println(BillNo);%>" readonly="readonly"/>
+					     </div>	
+				</div>
+				     
 			      <div class="row">
 						<div class="col-md-2" align="right">
 
@@ -654,7 +699,7 @@ function calgrosstot(){
 						
 			           	<div class="row" style="margin-top: 10px; margin-left:3%;">
 				
-					<div class="col-md-8">
+					<div class="col-md-12">
 						<!-- <div class="row" style="margin-top: 15px;"> -->
 							<div class="table-responsive">
 								<table id="list5"></table>

@@ -1121,7 +1121,7 @@ function getProductInGridBillingOil()
 		$("#listOil").jqGrid({
 			datatype: "local",
 			
-			colNames:['pk_temp_id','item_id','CatName','ItemName','HSN/SAC','No.of.barrels','Total litres','Quantity','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
+			colNames:['pk_temp_id','item_id','CatName','ItemName','HSN/SAC','No.of.barrels','Total litres','Qty in ltr','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
 			colModel:[ 
 			          
 			          
@@ -1149,7 +1149,7 @@ function getProductInGridBillingOil()
 					
 				},
 				 {	name:'hsnsacno',
-			    	 width:100,
+			    	 width:90,
 					
 				},
 				 {	name:'NumberofBarrel',
@@ -1163,7 +1163,7 @@ function getProductInGridBillingOil()
 				},
 				
 				{	name:'quantitydouble',
-					width:70,
+					width:100,
 					editable: true
 					
 				},
@@ -1181,14 +1181,14 @@ function getProductInGridBillingOil()
 				
 				{
 		        	   name: "TotalQuan",
-		        	   width: 150,
+		        	   width: 130,
 		        	   //editable: true,
 		        	 
 		           },
 		           
 		           {
 		        	   name: "buyPriceExTax",
-		        	   width: 150,
+		        	   width: 130,
 		        	   //editable: true,
 		        	 
 		           },

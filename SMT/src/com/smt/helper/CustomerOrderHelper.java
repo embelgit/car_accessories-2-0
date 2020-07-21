@@ -278,6 +278,13 @@ public class CustomerOrderHelper {
 			String totalAmount = request.getParameter("totalAmount");
 			cust.setTotalAmt(Double.parseDouble(totalAmount));
 
+			String Customername = request.getParameter("Customername");
+			if(!"".equals(Customername)) {
+				cust.setCustomername(Customername);
+			}
+			else {
+				cust.setCustomername("NA");
+			}
 			
 			String kmReading = request.getParameter("kmReading");
 //			cust.setTotalAmt(Double.parseDouble(kmReading));

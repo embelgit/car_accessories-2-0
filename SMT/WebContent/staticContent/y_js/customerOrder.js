@@ -620,12 +620,16 @@ function resBill() {
     var creditdescription = $('#creditdescription').val();
     var paidAmt = $('#paidAmt').val();
     
+    var Customername = $('#CustomerId').val();
     
     if(creditdescription == "" || creditdescription == null || creditdescription == undefined){
     	creditdescription="NA";
     }
     if(paidAmt == "" || paidAmt == null || paidAmt == undefined){
     	paidAmt = 0;
+    }
+    if(Customername == "" || Customername == null || Customername == undefined){
+    	Customername="NA";
     }
     
 	    var contactNo = $('#contactNo').val();
@@ -690,7 +694,7 @@ function resBill() {
 	    if(gstNo == "" || gstNo == null || gstNo == undefined){
 	    	gstNo = "0";
   		}
-	    
+	    params["Customername"] = Customername;
 	    params["kmReading"] = kmReading;
 	    params["vehiclecolor"] = vehiclecolor;
 	    params["gstNo"] = gstNo;
@@ -700,54 +704,6 @@ function resBill() {
 	    params["creditdescription"] = creditdescription;
 	    params["paidAmt"] = paidAmt;
 	    
-	    
-	    //var params= {};
-			/*var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
-			var allRowsInGrid1 = $('#list5').getGridParam('data');
-			var AllRows=JSON.stringify(allRowsInGrid1);
-			for (var i = 0; i < count1; i++) 
-			{
-			
-				var itemName1 = allRowsInGrid1[i].itemName;
-				params["itemName1"+i] = itemName1;
-				
-				var quantity1 = allRowsInGrid1[i].quantity;
-				params["quantity1"+i] = quantity1;
-				
-				var salePrice1 = allRowsInGrid1[i].salePrice;
-				params["salePrice1"+i] = salePrice1;
-				
-				var total1 = allRowsInGrid1[i].total;
-				params["total1"+i] = total1;
-				
-				var hsnSacNo1 = allRowsInGrid1[i].hsnSacNo;
-				params["hsnSacNo1"+i] = hsnSacNo1;
-				
-				var vat1 = allRowsInGrid1[i].vat;
-				params["vat1"+i] = vat1;
-				
-				var igst1 = allRowsInGrid1[i].igst;
-				params["igst1"+i] = igst1;
-				
-				var taxAmount1 = allRowsInGrid1[i].taxAmount;
-				params["taxAmount1"+i] = taxAmount1;
-				
-				var discountGrid1 = allRowsInGrid1[i].discountGrid;
-				params["discountGrid1"+i] = discountGrid1;
-				
-				var discountAmt1 = allRowsInGrid1[i].discountAmt;
-				params["discountAmt1"+i] = discountAmt1;
-				
-			  }
-			 var ServicetotalAmount=$('#ServicetotalAmount').val();
-			
-			 params["count1"] = count1;
-				//alert("count second++++  " +count1)
-			params["ServicetotalAmount"] = ServicetotalAmount;
-		*/
-	    
-	    
-
 		params["contactNo"] = contactNo;
 		params["ownerName"] = ownerName;
 		params["count"] = count;

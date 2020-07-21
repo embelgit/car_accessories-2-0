@@ -612,6 +612,7 @@ function getitems() {
 								{
 									name : 'buyPriceEx',
 									width : 100,
+									background: 'aqua',
 									
 								},
 								
@@ -711,22 +712,22 @@ function getitems() {
 										}
 									},
 									
-									{},
+									//{},
 
 									// options for the Delete Dailog
 									{
-										closeAfterdel : true,
-										refreshAfterdel : true,
-										recreateForm : true,
-										checkOnUpdate : true,
-										checkOnSubmit : true,
+										//closeAfterdel : true,
+										//refreshAfterdel : true,
+										//recreateForm : true,
+										//checkOnUpdate : true,
+										//checkOnSubmit : true,
 										
-										errorTextFormat : function(data) {
-											return 'Error: '
-													+ data.responseText
+										//errorTextFormat : function(data) {
+										//	return 'Error: '
+										//			+ data.responseText
+										//			
 													
-													
-										},
+									//	},
 									});
 
 				});
@@ -931,23 +932,22 @@ function getitems10() {
 										}
 									},
 									
-									{},
+									//{},
 
 									// options for the Delete Dailog
-									{
-										closeAfterdel : true,
-										refreshAfterdel : true,
-										recreateForm : true,
-										checkOnUpdate : true,
-										checkOnSubmit : true,
+								{
+									//	closeAfterdel : true,
+										//refreshAfterdel : true,
+									//	recreateForm : true,
+										//checkOnUpdate : true,
+										//checkOnSubmit : true,
 										
-										errorTextFormat : function(data) {
-											return 'Error: '
-													+ data.responseText
+										//errorTextFormat : function(data) {
+											//return 'Error: '
+												//	+ data.responseText
 													
 													
-										},
-									});
+								});
 
 				});
 

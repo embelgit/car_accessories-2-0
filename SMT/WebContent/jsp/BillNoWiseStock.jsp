@@ -53,8 +53,13 @@
 				<hr style="border-top-color: #c1b1b1;">
 			</div>
 		</div>
-		
-		
+		<ul class="nav nav-tabs">
+	    <li class="active"><a data-toggle="tab" href="#"><h4 style="color:blue">Regular</h4></a></li>
+	    <li><a data-toggle="tab" href="#"><h4 style="color:blue">Oil</h4></a></li>
+	   
+ 	 </ul>
+ 	 <div class="tab-content" style="float: left">
+	<div id="" class="tab-pane fade in active">		
 <form  method="post" class="form-horizontal">
 
 			<div class="row">
@@ -136,7 +141,13 @@
 	</div></div>
 
 </form>
+</div>
 
+<div id="home2" class="tab-pane">
+<form action="">
+</form>
+</div>		
+</div>
 		<div class="row footer_margin_top" align="center">
 			<%@include file="y_commons/footer.jsp"%>
 		</div>
