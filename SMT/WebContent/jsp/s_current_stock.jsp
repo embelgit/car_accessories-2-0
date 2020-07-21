@@ -70,7 +70,7 @@
 							<th>Category Name</th>
 							<th>Item Name</th>
 							<th>Quantity</th>
-							<th>Update Date</th>
+							<th>Update date</th>
 							<th>Total Litres</th>
 							<th>Brand Name</th>
 							
