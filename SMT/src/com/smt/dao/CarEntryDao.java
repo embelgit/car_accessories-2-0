@@ -155,6 +155,42 @@ public class CarEntryDao {
 		return billList;
 	}
 	
+	//
+	public List getBillNoAndNameses()
+	{
+		HibernateUtility hbu=null;
+		Session session=null;
+		
+		List<BillCopy> billList=null;
+		 List<Object[]> list = null;
+		String cc= "Cash";
+		try
+		{
+				hbu = HibernateUtility.getInstance();
+				session = hbu.getHibernateSession();
+				Query query=session.createSQLQuery("select BillNo, customerName from estimatequotationbill group by BillNo order by BillNo desc;");
+				list = query.list();
+				billList = new ArrayList<BillCopy>(0);
+				
+		 for (Object[] objects : list) {
+			 BillCopy bean = new BillCopy();
+			
+			bean.setBillNo(Long.parseLong(objects[0].toString()));
+			bean.setCustName((String) objects[1]);
+			 
+			billList.add(bean);
+			}
+		 }
+		catch(RuntimeException  e)
+		{
+				
+		}finally
+		{if(session!=null){
+			hbu.closeSession(session);	
+		}
+		}
+		return billList;
+	}
 	public List getcarDetailReports() {
 
 		HibernateUtility hbu = null;

@@ -26,7 +26,7 @@ public class OtherBill {
 	private Double taxAmount;
 	private Double discountGrid;
 	private Double discountAmt;
-
+	private String location;
 	private Double totalQuan;
     private Double buyPriceEXTax;
     private String description;
@@ -38,6 +38,16 @@ public class OtherBill {
 
 	public String getDescription() {
 		return description;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 

@@ -166,7 +166,14 @@ function grasstotal(){
 							</span> 
 										<input type="text" class="form-control" id="carNo" name="carNo" placeholder="Vehicle No" />
 					     </div>	
-					     </div></div>
+					     </div>
+					      <div class="col-md-2" align="right">
+							<label class="control-label" >Location :</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="location" placeholder="Location"/>
+						</div>
+					     </div>
 				
 			      <div class="row">
 			      

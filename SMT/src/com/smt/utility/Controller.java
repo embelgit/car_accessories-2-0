@@ -739,7 +739,16 @@ public class Controller {
 		System.out.println("Start In regProfarmaDetail Controller");
 		return toJson("Data Added Successsfully");
 	}
-
+//
+	public String CustBillCOPYess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Start In regProfarmaDetail Controller");
+		CarEntryHelper helper = new CarEntryHelper();
+		helper.CustomerBillCopyess(request, response);
+		System.out.println("Start In regProfarmaDetail Controller");
+		return toJson("Data Added Successsfully");
+	}
+	
+	
 	// Fetching Product Details To Edit
 	public String getProductDetailsToEdit(HttpServletRequest request, HttpServletResponse response) {
 		String productId = request.getParameter("productId");

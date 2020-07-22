@@ -574,7 +574,11 @@ function resOtherBill10(){
 	    	discount = 0;
 	    }
 	    
-
+	    var location=$('#location').val();
+	    if(location=="" || location==null || location==undefined){
+	    	location="NA";
+	    }
+	    
 	    var grossTotal=$('#grossTotal').val();
 	    var contactNo=$('#contactNo').val();
 	    var carNo=$('#carNo').val();
@@ -583,6 +587,11 @@ function resOtherBill10(){
 	    }
 	    
 	    var description=$('#description').val();
+	    if(description=="" || description==null || description==undefined){
+	    	description="NA";
+	    }
+	    
+	    params["location"] = location;
 	    params["contactNo"] = contactNo;
 	    params["custName"] = custName;
 		params["count"] = count;
