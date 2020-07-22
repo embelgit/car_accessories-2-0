@@ -753,7 +753,7 @@ function resBill() {
 		}*/
 		
 		///////////////////////
-		
+		//
 	
 		params["methodName"] = "registerBill";
 		
