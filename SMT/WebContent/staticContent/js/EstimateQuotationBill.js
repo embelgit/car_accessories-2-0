@@ -1903,6 +1903,8 @@ var totalAmount=$('#totalAmount').val();
 var carID=$('#carID').val();
 var grossTotal=$('#grossTotal').val();
 var wholeTotal=$('#wholeTotal').val();
+var billl=$('#billl').val();
+
 //var params= {};
 	var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 	var allRowsInGrid1 = $('#list5').getGridParam('data');
@@ -2018,7 +2020,7 @@ var wholeTotal=$('#wholeTotal').val();
 params["contactNo"] = contactNo;
 params["ownerName"] = ownerName;
 
-
+params["billl"] = billl;
 params["carNo"] = carNo;
 params["totalAmount"] = totalAmount;
 params["serdescription"] = serdescription;

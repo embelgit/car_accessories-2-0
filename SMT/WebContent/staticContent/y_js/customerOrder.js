@@ -2161,6 +2161,8 @@ function resBillService() {
 	   var carID=$('#carID').val();
 	    var grossTotal=$('#grossTotal').val();
 	   var wholeTotal=$('#wholeTotal').val();
+		 var bill = $('#bill').val();
+	   
 		//var params= {};
 			var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 			var allRowsInGrid1 = $('#list5').getGridParam('data');
@@ -2260,12 +2262,13 @@ function resBillService() {
 				 discountservice = 0;
 			 }
 			 
+			 
 			 params["count1"] = count1;
 				//alert("count second++++  " +count1)
 			params["ServicetotalAmount"] = ServicetotalAmount;
 			params["discountservice"] = discountservice;
 			params["serdescription"] = serdescription;
-	    
+	    params["bill"] = bill;
 
 		params["contactNo"] = contactNo;
 		params["ownerName"] = ownerName;

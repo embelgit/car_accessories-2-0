@@ -1210,19 +1210,23 @@ public class CustomerOrderHelper {
 			 * cust.setDiscount(Double.parseDouble(discountservice)); }
 			 */
 			//cust.setDiscount(Double.parseDouble(discountservice));
+			
+			String billnoo = request.getParameter("bill");
+			System.out.println("bill from ui - "+billnoo);
+			
 			if(!"".equals(discountservice)){
 				cust.setDiscount(Double.parseDouble(discountservice));
 		    } else
 		    {
 		    	cust.setDiscount(0.0);
 		    }
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			session3.setAttribute("BillNo", billnoo);
+			if (billnoo == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo(BillNo);
+				cust.setBillNo(Long.parseLong(billnoo));
 			}
-
+			System.out.println("bill set - "+cust.getBillNo());
 			CustomerOrderDao dao = new CustomerOrderDao();
 			dao.registerBillService(cust);
 
@@ -1355,15 +1359,15 @@ public class CustomerOrderHelper {
 			cust.setBilltype(bill);
 			
 			String billl = request.getParameter("billl");
-			
+			System.out.println("bill from ui - "+billl);
 	//		session3.setAttribute(billl, billl);
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			session3.setAttribute("BillNo", billl);
+			if (billl == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo((BillNo));
+				cust.setBillNo(Long.parseLong(billl));
 			}
-
+			System.out.println("bil set - serv "+cust.getBillNo());
 			CustomerOrderDao dao = new CustomerOrderDao();
 			dao.registerBillServiceqq(cust);
 
