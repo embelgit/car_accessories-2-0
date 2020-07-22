@@ -132,6 +132,9 @@ public class OtherBillHelper {
 			System.out.println("description"+description);
 			cust.setDescription(description);
 			
+			String location = request.getParameter("location");
+			cust.setLocation(location);
+			
 			String carNo = request.getParameter("carNo");
 			cust.setCarNo(carNo);
 			//cust.setContactNo(000l);

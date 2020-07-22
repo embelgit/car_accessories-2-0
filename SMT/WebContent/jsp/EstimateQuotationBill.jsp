@@ -187,11 +187,11 @@ function calgrosstot(){
 					    <div class="row form-group">
 					    <div class="col-md-2" align="right">
 
-							<label class="control-label" >Barcode No:</label>
+							<label class="control-label" >Custom Product:</label>
 						</div>
 						<!--ffff  onchange="return getProdGrid();"  -->
 						<div class="col-md-3">
-						    <input type="text" id="key" class="form-control text-border" autofocus="key" placeholder="Enter Item Barcode" />
+						    <input type="text" id="key" class="form-control text-border"  autofocus="key" placeholder="Enter Product" onchange="return getProdGrid();" />
 					     </div>		
 					 <label class="col-md-2 control-label" align="right" for="customerName">Product Name:<sup>*</sup></label>  
           					  <div class="col-md-3">

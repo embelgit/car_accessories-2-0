@@ -183,7 +183,7 @@ function barcodewisestock(){
 					 "footerCallback": function ( row, data, start, end, display ) {
 				            var api = this.api(), data;
 				 
-				            // Remove the formatting to get integer data for summation
+				     
 				            var intVal = function ( i ) {
 				                return typeof i === 'string' ?
 				                    i.replace(/[\$,]/g, '')*1 :
@@ -272,7 +272,7 @@ for (i = 0; i < list.options.length; ++i) {
 						 "footerCallback": function ( row, data, start, end, display ) {
 					            var api = this.api(), data;
 					 
-					            // Remove the formatting to get integer data for summation
+					 
 					            var intVal = function ( i ) {
 					                return typeof i === 'string' ?
 					                    i.replace(/[\$,]/g, '')*1 :
@@ -287,7 +287,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				               // Update footer
+			
 				                $( api.column( 3 ).footer() ).html(
 				                ' '+ parseFloat(pageTotal).toFixed(2));
 				            
@@ -300,7 +300,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				            // Update footer
+			
 				            $( api.column( 4 ).footer() ).html(
 				                'Rs'+' '+ parseFloat(pageTotal).toFixed(2));
 				            
@@ -405,7 +405,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				               // Update footer
+			
 				                $( api.column( 3 ).footer() ).html(
 				                ' '+ parseFloat(pageTotal).toFixed(2));
 				            
@@ -418,7 +418,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				            // Update footer
+			
 				            $( api.column( 4 ).footer() ).html(
 				                'Rs'+' '+ parseFloat(pageTotal).toFixed(2));
 				            

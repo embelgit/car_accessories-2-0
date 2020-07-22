@@ -506,7 +506,7 @@ public class CustomerOrderHelper {
 
 	// category Wise Stock
 	public List getCategoryWiseStock(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String catId = request.getParameter("catId");
 		Map<Long, Stock> map = new HashMap<Long, Stock>();
 
@@ -519,7 +519,7 @@ public class CustomerOrderHelper {
 
 	// Barcode Wise Stock
 	public List getBarcodeWiseStock(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 
 		Long barcodeNo = Long.parseLong(request.getParameter("barcodeNo"));
 		System.out.println("barcode : " + barcodeNo);
@@ -566,7 +566,7 @@ public class CustomerOrderHelper {
 	
 	// bill no wise stock
 	public List getBillNoWiseStock(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String Billno = (request.getParameter("Billno"));
 		System.out.println("barcode : " + Billno);
 		Map<Long, GoodReceive> map = new HashMap<Long, GoodReceive>();
@@ -580,7 +580,7 @@ public class CustomerOrderHelper {
 	
 	// bill no wise oil stock
 		public List getBillNoWiseStock1(HttpServletRequest request, HttpServletResponse response) {
-			// TODO Auto-generated method stub
+
 			String Billno = (request.getParameter("Billno"));
 			System.out.println("billNo+++++++ : " + Billno);
 			Map<Long, GoodReceive> map = new HashMap<Long, GoodReceive>();
@@ -593,7 +593,7 @@ public class CustomerOrderHelper {
 
 	// single date purchase
 	public List singleDatePurchase(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fDate = request.getParameter("fDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -601,7 +601,7 @@ public class CustomerOrderHelper {
 		try {
 			adate = format.parse(fDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, PurchaseReportBean> map = new HashMap<Long, PurchaseReportBean>();
@@ -625,7 +625,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fisDate);
 			bdate = format.parse(endDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, PurchaseReportBean> map = new HashMap<Long, PurchaseReportBean>();
@@ -638,7 +638,7 @@ public class CustomerOrderHelper {
 
 	// single date sale
 	public List singleDateSale(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fDate = request.getParameter("fDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -646,7 +646,7 @@ public class CustomerOrderHelper {
 		try {
 			adate = format.parse(fDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -659,7 +659,7 @@ public class CustomerOrderHelper {
 
 	// get Category Wise sale report
 	public List CategoryWiseSaleReport(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String catName = request.getParameter("catName");
 
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -673,7 +673,7 @@ public class CustomerOrderHelper {
 	// sale between two dates
 
 	public List getSaleDetailsBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fisDate = request.getParameter("fisDate");
 		String endDate = request.getParameter("endDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -685,7 +685,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fisDate);
 			bdate = format.parse(endDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -698,7 +698,7 @@ public class CustomerOrderHelper {
 
 	// day closing report
 	public List dayCloseReport(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
 
 		CustomerOrderDao dao = new CustomerOrderDao();
@@ -708,7 +708,7 @@ public class CustomerOrderHelper {
 	}
 
 	public Map getSaleItemByBillNo(String billNo) {
-		// TODO Auto-generated method stub
+
 		CustomerOrderDao dao = new CustomerOrderDao();
 		List list = dao.getSaleItemByBillNo(billNo);
 		Map map = new HashMap();
@@ -741,7 +741,7 @@ public class CustomerOrderHelper {
 	}
 //credit
 	public Map getSaleItemByBillNocc(String billNo) {
-		// TODO Auto-generated method stub
+
 		CustomerOrderDao dao = new CustomerOrderDao();
 		List list = dao.getSaleItemByBillNocc(billNo);
 		Map map = new HashMap();
@@ -776,7 +776,7 @@ public class CustomerOrderHelper {
 	//
 	
 	public Map getSaleItemByBillNomiss(String billNo) {
-		// TODO Auto-generated method stub
+
 		CustomerOrderDao dao = new CustomerOrderDao();
 		List list = dao.getSaleItemByBillNomiss(billNo);
 		Map map = new HashMap();
@@ -811,7 +811,7 @@ public class CustomerOrderHelper {
 	
 	// other bill
 	public CustomerBean getDetailsById1(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String key = request.getParameter("key");
 
 		System.out.println(key + "barcode");
@@ -834,7 +834,7 @@ public class CustomerOrderHelper {
 
 	/*
 	 * public List CategoryWiseSaleReport(HttpServletRequest request,
-	 * HttpServletResponse response) { // TODO Auto-generated method stub return
+
 	 * null; }
 	 */
 
@@ -851,7 +851,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fisDate);
 			bdate = format.parse(endDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, GstReportBean> map = new HashMap<Long, GstReportBean>();
@@ -864,7 +864,7 @@ public class CustomerOrderHelper {
 
 	// Single Date Sale Report
 	public List singleDateSaleReport(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fisDate = request.getParameter("fisDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -875,7 +875,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fisDate);
 
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -888,7 +888,7 @@ public class CustomerOrderHelper {
 
 	// Two Date Sale Report
 	public List twoDateSaleReport(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fisDate = request.getParameter("fisDate");
 		String endDate = request.getParameter("endDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -900,7 +900,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fisDate);
 			bdate = format.parse(endDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -913,7 +913,7 @@ public class CustomerOrderHelper {
 
 	// Category Wise Sale Report
 	public List categorySaleWise(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String catName = request.getParameter("catName");
 
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -926,7 +926,7 @@ public class CustomerOrderHelper {
 
 	// Single Date Vehicle Customer Sale Report
 	public List vehicleSingleDate(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		String fDate = request.getParameter("fDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -934,7 +934,7 @@ public class CustomerOrderHelper {
 		try {
 			adate = format.parse(fDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -947,7 +947,7 @@ public class CustomerOrderHelper {
 
 	// get Two date Vehicle customer Sale
 	public List vehicleTwoDate(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String fDate = request.getParameter("fDate");
 		String eDate = request.getParameter("eDate");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -958,7 +958,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(fDate);
 			bdate = format.parse(eDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+	
 			e1.printStackTrace();
 		}
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -971,7 +971,7 @@ public class CustomerOrderHelper {
 
 	// get Category Wise Vehicle customer Sale
 	public List categorySaleWiseCustomer(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String catId = request.getParameter("catId");
 
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -984,7 +984,7 @@ public class CustomerOrderHelper {
 
 	// get Category Wise Vehicle customer Sale
 	public List billnowiseVehiclesell(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String BillNo = request.getParameter("BillNocust");
 
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -997,7 +997,7 @@ public class CustomerOrderHelper {
 
 	// get Barcode Wise Vehicle customer Sale
 	public List barcodewiseVehicleSale(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String barcodeVehicle = request.getParameter("barcodeVehicle");
 
 		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
@@ -1010,7 +1010,7 @@ public class CustomerOrderHelper {
 
 	// CA Sale Report Two Date
 	public List caSaleReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String pFisDate = request.getParameter("fisDate1");
 		String pEndDate = request.getParameter("endDate1");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -1021,7 +1021,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(pFisDate);
 			bdate = format.parse(pEndDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+	
 			e1.printStackTrace();
 		}
 
@@ -1035,7 +1035,7 @@ public class CustomerOrderHelper {
 
 	// TALLY Sale Report Two Date
 	public List tallySaleReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String pFisDate = request.getParameter("fisDatetally");
 		String pEndDate = request.getParameter("endDatetally");
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -1046,7 +1046,7 @@ public class CustomerOrderHelper {
 			adate = format.parse(pFisDate);
 			bdate = format.parse(pEndDate);
 		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
+	
 			e1.printStackTrace();
 		}
 
@@ -1060,7 +1060,7 @@ public class CustomerOrderHelper {
 
 	// other bill
 	public CustomerBean getDetailsByProd(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String productId = request.getParameter("productId");
 
 		System.out.println(productId + "productName");
@@ -1078,7 +1078,7 @@ public class CustomerOrderHelper {
 	}
 //
 	public CustomerBean getDetailsByProdes(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+	
 		String productId = request.getParameter("productId");
 
 		System.out.println(productId + "productName");
@@ -1210,19 +1210,23 @@ public class CustomerOrderHelper {
 			 * cust.setDiscount(Double.parseDouble(discountservice)); }
 			 */
 			//cust.setDiscount(Double.parseDouble(discountservice));
+			
+			String billnoo = request.getParameter("bill");
+			System.out.println("bill from ui - "+billnoo);
+			
 			if(!"".equals(discountservice)){
 				cust.setDiscount(Double.parseDouble(discountservice));
 		    } else
 		    {
 		    	cust.setDiscount(0.0);
 		    }
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			session3.setAttribute("BillNo", billnoo);
+			if (billnoo == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo(BillNo);
+				cust.setBillNo(Long.parseLong(billnoo));
 			}
-
+			System.out.println("bill set - "+cust.getBillNo());
 			CustomerOrderDao dao = new CustomerOrderDao();
 			dao.registerBillService(cust);
 
@@ -1355,15 +1359,15 @@ public class CustomerOrderHelper {
 			cust.setBilltype(bill);
 			
 			String billl = request.getParameter("billl");
-			
+			System.out.println("bill from ui - "+billl);
 	//		session3.setAttribute(billl, billl);
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			session3.setAttribute("BillNo", billl);
+			if (billl == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo((BillNo));
+				cust.setBillNo(Long.parseLong(billl));
 			}
-
+			System.out.println("bil set - serv "+cust.getBillNo());
 			CustomerOrderDao dao = new CustomerOrderDao();
 			dao.registerBillServiceqq(cust);
 
@@ -1629,7 +1633,7 @@ public class CustomerOrderHelper {
 	//
 	public void updateGridDataGridDelete(HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 
 
 		String delTempID = request.getParameter("pkTempId");

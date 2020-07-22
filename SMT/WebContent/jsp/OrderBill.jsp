@@ -440,7 +440,7 @@ function calgrosstot(){
 		</script>
 		
 				</div> 
-				
+				<!--  -->
 				<div class="row" style="display: none;">
 						<div class="col-md-2" align="right">
 

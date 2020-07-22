@@ -1757,7 +1757,9 @@ function resOtherBill(){
 	    	grossTotal = 0;
 	    }
 	    var wholeTotal=$('#wholeTotal').val();
+	    var bill=$('#bill').val();
 	    
+	    params["bill"] = bill;
 		params["count"] = count;
 		params["totalAmount"] = totalAmount;
 		params["discount"] = discount;

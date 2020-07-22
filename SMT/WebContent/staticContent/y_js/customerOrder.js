@@ -763,7 +763,7 @@ function resBill() {
 					//window.open("Car_bill_PDF.jsp");
 					window.open("BillingPdfNew.jsp");
 					location.reload(true);
-					
+
 				}).error(function(jqXHR, textStatus, errorThrown) {
 			if (textStatus === "timeout") {
 				$(loaderObj).hide();
@@ -1818,7 +1818,7 @@ function getproductgrid1(){
             	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", totalWithVatAmtTot.toFixed(2));
             	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
             	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal.toFixed(2));
-            	$("#list5").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+            	$("#list5").jqGrid("setCell", rowId, "taxAmount", BpIncTax.toFixed(2));
              	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal.toFixed(2));
 		
              	var Total = 0;
@@ -2070,7 +2070,7 @@ function getproductgrid1(){
 	                    	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
 	                    	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal.toFixed(2));
 	                    	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
-	                    	$("#list5").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+	                    	$("#list5").jqGrid("setCell", rowId, "taxAmount", BpIncTax.toFixed(2));
 	                     	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal.toFixed(2));
 	        		
 	                     	var Total = 0;
@@ -2161,6 +2161,8 @@ function resBillService() {
 	   var carID=$('#carID').val();
 	    var grossTotal=$('#grossTotal').val();
 	   var wholeTotal=$('#wholeTotal').val();
+		 var bill = $('#bill').val();
+	   
 		//var params= {};
 			var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 			var allRowsInGrid1 = $('#list5').getGridParam('data');
@@ -2260,12 +2262,13 @@ function resBillService() {
 				 discountservice = 0;
 			 }
 			 
+			 
 			 params["count1"] = count1;
 				//alert("count second++++  " +count1)
 			params["ServicetotalAmount"] = ServicetotalAmount;
 			params["discountservice"] = discountservice;
 			params["serdescription"] = serdescription;
-	    
+	    params["bill"] = bill;
 
 		params["contactNo"] = contactNo;
 		params["ownerName"] = ownerName;

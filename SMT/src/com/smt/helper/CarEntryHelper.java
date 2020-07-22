@@ -97,6 +97,16 @@ public class CarEntryHelper {
 		System.out.println("----------------Bill No After session create::"+session3.getAttribute("CustomerBillNo"));
 	
 	}
+	//
+	public void CustomerBillCopyess(HttpServletRequest request, HttpServletResponse response) {
+		String billNo = request.getParameter("billNo");
+		System.out.println("----------------Bill No before session create::"+billNo);
+		HttpSession session3 = request.getSession();
+		Long billNo2 = Long.parseLong(billNo);
+		session3.setAttribute("carBillNO", billNo2);
+		System.out.println("----------------Bill No After session create::"+session3.getAttribute("carBillNO"));
+	
+	}
 	
 	//Delete of vehicle Entry
 public void deleteVehicle(HttpServletRequest request, HttpServletResponse response ) {

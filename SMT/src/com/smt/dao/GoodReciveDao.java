@@ -25,7 +25,7 @@ import com.smt.utility.HibernateUtility;
 public class GoodReciveDao {
 
 	public void regGoodReceive(GoodReceive gd) {
-		// TODO Auto-generated method stub
+		
 		
 		
 		HibernateUtility hbu = null ;
@@ -127,7 +127,7 @@ public class GoodReciveDao {
 
 
 	public void updateQuantity(Long item_id,String quantity) {
-		// TODO Auto-generated method stub
+		
 		
 		HibernateUtility hbu=null;
 		Session session=null;
@@ -171,7 +171,7 @@ public class GoodReciveDao {
 
     //BarcodeWise Stock
 	public List<GoodReceive> getCategoryWiseStock(Long barcodeNo) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<GoodReceive> catList=null;
@@ -370,7 +370,7 @@ public List getBarcode() {
 
     // bill no wise stock
 	public List<GoodReceive> getBillNoWiseStock(String billno) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<GoodReceive> catList=null;
@@ -418,7 +418,7 @@ public List getBarcode() {
 
 
 	public List<PurchaseReportBean> singleDatePurchase(Date adate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReportBean> catList=null;
@@ -769,7 +769,7 @@ public List getBarcode() {
 	
 	 //  get Previous Good Receive
 	public List<PreviousGoodReceive> getPreGoodReceive(String billNo) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PreviousGoodReceive> catList=null;
@@ -815,7 +815,7 @@ public List getBarcode() {
 
 // get all main barcode no
 	public List getAllMainBarcodeNo() {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List list=null;
@@ -840,7 +840,7 @@ public List getBarcode() {
 	
 	//Barcode wise report
 	public List<BarcodeReportBean> BarcodeWiseReport(Long barcodeId) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<BarcodeReportBean> catList=null;
@@ -882,7 +882,7 @@ public List getBarcode() {
 
 // Deactive the PaymentMode
 	public void DeActivePaymentDone(String billNo, String supplier) {
-		// TODO Auto-generated method stub
+
 		
 		com.smt.utility.HibernateUtility hbu=null;
 		Session session=null;
@@ -929,7 +929,7 @@ public List getBarcode() {
 
 	//Supplier Wise Purchase Report 
 	public List<PurchaseReport> supplierAllPurchase(long supplier) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -985,7 +985,7 @@ public List getBarcode() {
 
 //Purchase Report Supplier Bill No Wise
 	public List<PurchaseReport> supplierBillWisePurchaseReport(long supplier, String billNo) {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1042,7 +1042,7 @@ public List getBarcode() {
 
 	//Purchase Report Category Wise
 	public List<PurchaseReport> categoryWisePurchaseReport(String catName) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1092,7 +1092,7 @@ public List getBarcode() {
 
 	//Purchase Report Barcode No Wise
 	public List<PurchaseReport> barcodeWisePurchaseReport(String barcodeNoOurchase) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1142,7 +1142,7 @@ public List getBarcode() {
 	//Purchase Report Single Date
 
 	public List<PurchaseReport> singleDatePurchase45(Date adate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1198,7 +1198,7 @@ public List getBarcode() {
 
 	//Purchase Report Two Date
 	public List<PurchaseReport> twoDatePurchase45(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1254,7 +1254,7 @@ public List getBarcode() {
 
 	//CA Purchase Report Two Date
 	public List<PurchaseReport> caReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1298,7 +1298,7 @@ public List getBarcode() {
 
 	//TALLY Purchase Report Two Date
 	public List<TallyPurchaseReport> tallyReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<TallyPurchaseReport> catList=null;
@@ -1356,7 +1356,7 @@ public List getBarcode() {
 
 	// Between Two Dates Tally Reports
 	public List<TallyPurchaseReport> tallyPurchaseReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<TallyPurchaseReport> catList=null;
@@ -1576,7 +1576,7 @@ return list;
 	
 // bill no wise stock
 	public List<GoodsReceiveBarrelHibernate> getBillNoWiseStock1(String billno) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<GoodsReceiveBarrelHibernate> catList=null;
