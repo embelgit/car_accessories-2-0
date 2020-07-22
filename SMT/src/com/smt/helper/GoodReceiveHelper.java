@@ -40,7 +40,7 @@ public class GoodReceiveHelper {
 
 	public void regGoodReceive(HttpServletRequest request,
 			HttpServletResponse response) {
-		// TODO Auto-generated method stub
+
 		
 		 GoodReciveDao dao3=new GoodReciveDao(); 
 		  List listtxid=dao3.getSupplierPaymentTxid();
@@ -217,7 +217,7 @@ public class GoodReceiveHelper {
 			try {
 				adate = format.parse(pDate);
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
+
 				e1.printStackTrace();
 			}
 			gd.setDate(adate);
@@ -421,7 +421,7 @@ public class GoodReceiveHelper {
 		}
        // print barcode
 		public void printBarcode(HttpServletRequest request, HttpServletResponse response) {
-			// TODO Auto-generated method stub
+	
 			String barcodeId = request.getParameter("barcodeId");
 			String quantity = request.getParameter("quantity");
 			long bar = Long.parseLong(barcodeId);
@@ -547,7 +547,7 @@ public class GoodReceiveHelper {
 		//get Barcode Wise report
 				public List BarcodeWiseReport(HttpServletRequest request,
 						HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					String catName = request.getParameter("catName");
 					Long barcodeId = Long.parseLong(catName);
 				
@@ -562,7 +562,7 @@ public class GoodReceiveHelper {
 				
 				//Supplier Wise Purchase Report 
 				public List supplierAllPurchase(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					long supplier = Long.parseLong(request.getParameter("supplier"));
 					System.out.println("Supplier Id : "+supplier);
 					 Map<Long,PurchaseReport> map = new HashMap<Long,PurchaseReport>();
@@ -575,7 +575,7 @@ public class GoodReceiveHelper {
 
 				//Purchase Report Supplier Bill No Wise
 				public List supplierBillWisePurchaseReport(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					long supplier = Long.parseLong(request.getParameter("supplier"));
 					String billNo = request.getParameter("billNo");
 					 Map<Long,PurchaseReport> map = new HashMap<Long,PurchaseReport>();
@@ -588,7 +588,7 @@ public class GoodReceiveHelper {
 
 				 //Purchase Report Category Wise
 				public List categoryWisePurchaseReport(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					 String catName = request.getParameter("catName");
 					 Map<Long,PurchaseReport> map = new HashMap<Long,PurchaseReport>();
 						
@@ -599,7 +599,7 @@ public class GoodReceiveHelper {
 				}
 				//Purchase Report Barcode No Wise
 				public List barcodeWisePurchaseReport(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					 String barcodeNoOurchase = request.getParameter("barcodeNoOurchase");
 					 Map<Long,PurchaseReport> map = new HashMap<Long,PurchaseReport>();
 						
@@ -611,7 +611,7 @@ public class GoodReceiveHelper {
 
 				//Purchase Report Single Date
 				public List singleDatePurchase45(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+		
 					String fDate = request.getParameter("purDate");
 			        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 					
@@ -619,7 +619,7 @@ public class GoodReceiveHelper {
 					try {
 					 adate=	format.parse(fDate);
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
+
 						e1.printStackTrace();
 					}
 					
@@ -633,7 +633,7 @@ public class GoodReceiveHelper {
 
 				//Purchase Report Two Date
 				public List twoDatePurchase45(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					String pFisDate = request.getParameter("pFisDate");
 					String pEndDate = request.getParameter("pEndDate");
 			        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -644,7 +644,7 @@ public class GoodReceiveHelper {
 					 adate=	format.parse(pFisDate);
 					 bdate=	format.parse(pEndDate);
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
+
 						e1.printStackTrace();
 					}
 					
@@ -659,7 +659,7 @@ public class GoodReceiveHelper {
 				
 				//CA Purchase Report Two Date
 				public List caReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					String pFisDate = request.getParameter("fisDate1");
 					String pEndDate = request.getParameter("endDate1");
 			        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -670,7 +670,7 @@ public class GoodReceiveHelper {
 					 adate=	format.parse(pFisDate);
 					 bdate=	format.parse(pEndDate);
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
+
 						e1.printStackTrace();
 					}
 					
@@ -684,7 +684,7 @@ public class GoodReceiveHelper {
 
 				//TALLY Purchase Report Two Date
 				public List tallyReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					String pFisDate = request.getParameter("fisDatetally");
 					String pEndDate = request.getParameter("endDatetally");
 			        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -695,7 +695,7 @@ public class GoodReceiveHelper {
 					 adate=	format.parse(pFisDate);
 					 bdate=	format.parse(pEndDate);
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
+
 						e1.printStackTrace();
 					}
 					
@@ -709,7 +709,7 @@ public class GoodReceiveHelper {
            
 				// Between Two Dates Tally Reports
 				public List tallyPurchaseReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
-					// TODO Auto-generated method stub
+
 					String pFisDate = request.getParameter("fisDatetally");
 					String pEndDate = request.getParameter("endDatetally");
 			        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -720,7 +720,7 @@ public class GoodReceiveHelper {
 					 adate=	format.parse(pFisDate);
 					 bdate=	format.parse(pEndDate);
 					} catch (ParseException e1) {
-						// TODO Auto-generated catch block
+
 						e1.printStackTrace();
 					}
 					
@@ -730,6 +730,12 @@ public class GoodReceiveHelper {
 						List<TallyPurchaseReport> exp1List = dao.tallyPurchaseReportBetweenTwoDates(adate,bdate);
 						
 						return exp1List;
+				}
+				
+				// get all purchase bill no
+				public List getBillNo1() {
+					GoodReciveDao dao = new GoodReciveDao();
+					return dao.getBillNo1();
 				}
 
 }

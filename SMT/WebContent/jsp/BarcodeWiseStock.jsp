@@ -119,6 +119,7 @@
 				<th> Item Name</th>
 				<th> Available Quantity</th>
 				<th> Buy Price</th>
+				<th> Buy PriceEx</th>
 				<th> Tax Percentage</th>
 				<th> Bill No</th>
 				<th> Barcode No</th>

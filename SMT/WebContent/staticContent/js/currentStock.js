@@ -183,7 +183,7 @@ function barcodewisestock(){
 					 "footerCallback": function ( row, data, start, end, display ) {
 				            var api = this.api(), data;
 				 
-				            // Remove the formatting to get integer data for summation
+				     
 				            var intVal = function ( i ) {
 				                return typeof i === 'string' ?
 				                    i.replace(/[\$,]/g, '')*1 :
@@ -203,6 +203,7 @@ function barcodewisestock(){
                       {"data": "itemName", "width": "5%", "defaultContent": ""},
                       {"data": "quantity", "width": "5%", "defaultContent": ""},
                       {"data": "buyPrice", "width": "5%", "defaultContent": ""},
+                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
                       {"data": "vat", "width": "5%", "defaultContent": ""},
                       {"data": "billNo", "width": "5%", "defaultContent": ""},
                       {"data": "barcodeNo", "width": "5%", "defaultContent": ""},
@@ -271,7 +272,7 @@ for (i = 0; i < list.options.length; ++i) {
 						 "footerCallback": function ( row, data, start, end, display ) {
 					            var api = this.api(), data;
 					 
-					            // Remove the formatting to get integer data for summation
+					 
 					            var intVal = function ( i ) {
 					                return typeof i === 'string' ?
 					                    i.replace(/[\$,]/g, '')*1 :
@@ -286,7 +287,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				               // Update footer
+			
 				                $( api.column( 3 ).footer() ).html(
 				                ' '+ parseFloat(pageTotal).toFixed(2));
 				            
@@ -299,7 +300,7 @@ for (i = 0; i < list.options.length; ++i) {
 				                    return intVal(a) + intVal(b);
 				                }, 0 );
 				 
-				            // Update footer
+			
 				            $( api.column( 4 ).footer() ).html(
 				                'Rs'+' '+ parseFloat(pageTotal).toFixed(2));
 				            
@@ -318,9 +319,10 @@ for (i = 0; i < list.options.length; ++i) {
 	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
 	                      {"data": "quantity", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
+	                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
 	                      {"data": "vat", "width": "5%", "defaultContent": ""},
 	                      {"data": "barcodeNo", "width": "5%", "defaultContent": ""},
-	                      {"data": "buyPriceEXTax", "width": "5%", "defaultContent": ""},
+	                     
 	                      
 				        ]
 				    } );
@@ -328,6 +330,124 @@ for (i = 0; i < list.options.length; ++i) {
 				
 			var mydata = catmap;
 			$('#example').dataTable().fnAddData(mydata);
+				
+				}).error(function(jqXHR, textStatus, errorThrown){
+					if(textStatus==="timeout") {
+						$(loaderObj).hide();
+						$(loaderObj).find('#errorDiv').show();
+					
+					}
+				});
+		
+}
+
+
+
+
+
+function billwisestock1(){
+	
+	var input = document.getElementById('catId1'),
+    list = document.getElementById('catId_drop1'),
+    i,Billno;
+for (i = 0; i < list.options.length; ++i) {
+    if (list.options[i].value === input.value) {
+    	Billno = list.options[i].getAttribute('data-value');
+    
+    }
+}
+   
+	
+	var Billno =Billno;
+	
+	   
+	   var params = {};
+		params["methodName"] = "getBillNoWiseStock1";
+		params["Billno"] = Billno;
+		
+		
+
+
+		$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
+				{
+			$('#example1').dataTable().fnClearTable();
+			var jsonData = $.parseJSON(data);
+			var catmap = jsonData.list;
+				
+				$(document).ready(function() {
+				    $('#example1').DataTable( {
+				    	
+				    	 dom: 'Bfrtip',
+				         buttons: [
+				             'copy', 'csv', 'excel', 'pdf', 'print'
+				         ],
+				    	
+				    	 fnRowCallback : function(nRow, aData, iDisplayIndex){
+				                $("th:first", nRow).html(iDisplayIndex +1);
+				               return nRow;
+				            },
+						
+						 "footerCallback": function ( row, data, start, end, display ) {
+					            var api = this.api(), data;
+					 
+					            // Remove the formatting to get integer data for summation
+					            var intVal = function ( i ) {
+					                return typeof i === 'string' ?
+					                    i.replace(/[\$,]/g, '')*1 :
+					                    typeof i === 'number' ?
+					                        i : 0;
+					            };
+				
+					            pageTotal = api
+				                .column( 3 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				 
+			
+				                $( api.column( 3 ).footer() ).html(
+				                ' '+ parseFloat(pageTotal).toFixed(2));
+				            
+				                console.log( pageTotal);
+				                
+				                pageTotal = api
+				                .column( 4 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				 
+			
+				            $( api.column( 4 ).footer() ).html(
+				                'Rs'+' '+ parseFloat(pageTotal).toFixed(2));
+				            
+				            console.log( pageTotal);
+				                
+					        },
+				    	
+				    	
+				    	destroy: true,
+				        searching: false,
+				      
+				columns: [  
+                          
+                          {"data": "billNo", "width": "5%", "defaultContent": ""},
+	                      {"data": "categoryName", "width": "5%", "defaultContent": ""},
+	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
+	                      {"data": "quantity", "width": "5%", "defaultContent": ""},
+	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
+	                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
+	                      {"data": "vat", "width": "5%", "defaultContent": ""},
+	                      {"data": "modelName", "width": "5%", "defaultContent": ""},
+	                     
+	                      
+				        ]
+				    } );
+				} );
+				
+			var mydata = catmap;
+			$('#example1').dataTable().fnAddData(mydata);
 				
 				}).error(function(jqXHR, textStatus, errorThrown){
 					if(textStatus==="timeout") {
