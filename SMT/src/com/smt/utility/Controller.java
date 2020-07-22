@@ -1770,7 +1770,7 @@ public class Controller {
 						}
 						
 
-						// update product details
+
 						public String updateProductDetailsService(HttpServletRequest request, HttpServletResponse response) {
 							System.out.println("In controller update Supplier Details");
 							ServiceHelper helper = new ServiceHelper();
