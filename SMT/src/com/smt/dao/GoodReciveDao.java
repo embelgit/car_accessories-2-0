@@ -179,7 +179,7 @@ public class GoodReciveDao {
 		{
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, billNo, barcodeNo, vat, igst,total from GoodReceive where barcodeNo=:barcodeNo");
+		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, billNo, barcodeNo, vat, igst,total,buyPriceEx from GoodReceive where barcodeNo=:barcodeNo");
 		 query2.setParameter("barcodeNo", barcodeNo);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodReceive>(0);
@@ -204,6 +204,8 @@ public class GoodReciveDao {
 					reports.setVat(Double.parseDouble(gst));
 				}
 				reports.setTotal(Double.parseDouble(object[8].toString()));
+				reports.setBuyPriceEx(Double.parseDouble(object[9].toString()));
+				
 				catList.add(reports); 
 		
 			}}
@@ -377,7 +379,7 @@ public List getBarcode() {
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
 //		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo, vat, igst from GoodReceive where billNo=:billno");
-		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst,buyPriceEXTax from GoodReceive where billNo='"+billno+"'");
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst,buyPriceEx  from GoodReceive where billNo='"+billno+"'");
 //		 query2.setParameter("billno", billno);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodReceive>(0);
@@ -402,7 +404,7 @@ public List getBarcode() {
 				if(igst.equals("0.0")){
 					reports.setVat(Double.parseDouble(gst));
 				}
-				reports.setBuyPriceEXTax(Double.parseDouble(object[3].toString()));
+				reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
 				catList.add(reports); 
 		
 			}}
@@ -1545,8 +1547,80 @@ public List getBarcode() {
 	}	
 	
 	
+//get purchase oil bill no
+public List getBillNo1() {
 	
+	HibernateUtility hbu=null;
+	Session session=null;
+	List list=null;
+	try{
+	 hbu = HibernateUtility.getInstance();
+	 session = hbu.getHibernateSession();
+	 Query query = session.createQuery("from GoodsReceiveBarrelHibernate group by billNo");
+	 list = query.list();
+	 System.out.println("get bill no - "+query.list().size());
+	}
+		catch(RuntimeException e){	
+			Log.error("Error in getAllMainCategories()", e);
+	}
+		finally
+		{
+				if(session!=null){
+				hbu.closeSession(session);
+			}
+		}
 	
+return list;
+	
+}
+	
+// bill no wise stock
+	public List<GoodsReceiveBarrelHibernate> getBillNoWiseStock1(String billno) {
+		// TODO Auto-generated method stub
+		HibernateUtility hbu=null;
+		Session session=null;
+		List<GoodsReceiveBarrelHibernate> catList=null;
+		try
+		{
+			hbu = HibernateUtility.getInstance();
+		 session = hbu.getHibernateSession();
+
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, modelName, vat, igst,buyPriceEx  from goodreceivebarrel where billNo='"+billno+"'");
+//		 query2.setParameter("billno", billno);
+	        List<Object[]> list = query2.list();
+	        catList= new ArrayList<GoodsReceiveBarrelHibernate>(0);
+			
+			
+			for (Object[] object : list) {
+					
+				GoodsReceiveBarrelHibernate reports = new GoodsReceiveBarrelHibernate();
+				System.out.println("result - "+Arrays.toString(object));
+				reports.setItemName(object[0].toString());
+				reports.setCategoryName(object[1].toString());
+				reports.setQuantity(Long.parseLong(object[2].toString()));
+				reports.setBuyPrice(Double.parseDouble(object[3].toString()));
+	
+				reports.setBillNo(object[4].toString());
+				reports.setModelName(object[5].toString());
+				String gst = object[6].toString();
+				String igst = object[7].toString();
+				if(gst.equals("0.0")){
+					reports.setVat(Double.parseDouble(igst));
+				}
+				if(igst.equals("0.0")){
+					reports.setVat(Double.parseDouble(gst));
+				}
+				reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
+				catList.add(reports); 
+		
+			}}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return catList;
+	}
+
 	
 	
 }

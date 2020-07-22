@@ -731,5 +731,11 @@ public class GoodReceiveHelper {
 						
 						return exp1List;
 				}
+				
+				// get all purchase bill no
+				public List getBillNo1() {
+					GoodReciveDao dao = new GoodReciveDao();
+					return dao.getBillNo1();
+				}
 
 }

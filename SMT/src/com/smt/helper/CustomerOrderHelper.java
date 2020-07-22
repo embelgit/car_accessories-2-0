@@ -576,6 +576,20 @@ public class CustomerOrderHelper {
 
 		return exp1List;
 	}
+	
+	
+	// bill no wise oil stock
+		public List getBillNoWiseStock1(HttpServletRequest request, HttpServletResponse response) {
+			// TODO Auto-generated method stub
+			String Billno = (request.getParameter("Billno"));
+			System.out.println("billNo+++++++ : " + Billno);
+			Map<Long, GoodReceive> map = new HashMap<Long, GoodReceive>();
+
+			GoodReciveDao dao = new GoodReciveDao();
+			List<GoodsReceiveBarrelHibernate> exp1List = dao.getBillNoWiseStock1(Billno);
+
+			return exp1List;
+		}
 
 	// single date purchase
 	public List singleDatePurchase(HttpServletRequest request, HttpServletResponse response) {
