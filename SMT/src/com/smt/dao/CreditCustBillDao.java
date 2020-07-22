@@ -125,21 +125,22 @@ public class CreditCustBillDao {
 				
 				List<BillCopy> billList=null;
 				 List<Object[]> list = null;
-				
+				String cc = "Credit";
 				try
 				{
 						hbu = HibernateUtility.getInstance();
 						session = hbu.getHibernateSession();
-						Query query=session.createSQLQuery("select c.BillNo, s.first_name, s.aadhar_no from creditcustomerbill c left join customer_details s on c.fkCrediCustId=s.pk_customer_id group by c.BillNo order by c.BillNo desc;");
+//						Query query=session.createSQLQuery("select c.BillNo, s.first_name, s.aadhar_no from creditcustomerbill c left join customer_details s on c.fkCrediCustId=s.pk_customer_id group by c.BillNo order by c.BillNo desc;");
+						Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill where paymentMode = '"+cc+"' group by BillNo order by BillNo desc;");	
 						list = query.list();
 						billList = new ArrayList<BillCopy>(0);
 						
 				 for (Object[] objects : list) {
 					 BillCopy bean = new BillCopy();
-					
+					System.out.println("rrr - "+Arrays.toString(objects));
 					bean.setBillNo(Long.parseLong(objects[0].toString()));
 					bean.setCustName(objects[1].toString());
-					bean.setGstNo(objects[2].toString());
+		//			bean.setGstNo(objects[2].toString());
 					billList.add(bean);
 					}
 				 }

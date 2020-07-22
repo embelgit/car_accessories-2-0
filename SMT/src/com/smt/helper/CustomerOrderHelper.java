@@ -1354,11 +1354,14 @@ public class CustomerOrderHelper {
 			String bill = "Estimate";
 			cust.setBilltype(bill);
 			
+			String billl = request.getParameter("billl");
+			
+	//		session3.setAttribute(billl, billl);
 			session3.setAttribute("BillNo", BillNo);
 			if (BillNo == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo(BillNo);
+				cust.setBillNo((BillNo));
 			}
 
 			CustomerOrderDao dao = new CustomerOrderDao();

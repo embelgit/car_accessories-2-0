@@ -441,7 +441,7 @@ function calgrosstot(){
 		
 				</div> 
 				
-				<div class="row">
+				<div class="row" style="display: none;">
 						<div class="col-md-2" align="right">
 
 							<label class="control-label" >Bill No:</label>

@@ -1917,6 +1917,9 @@ var wholeTotal=$('#wholeTotal').val();
 		
 		
 	  }
+	
+	 var billl = $('#billl').val();
+	
 	 var ServicetotalAmount=$('#ServicetotalAmount').val();
 	 
 	 var serdescription=$('#serdescription').val();
@@ -1935,7 +1938,8 @@ var wholeTotal=$('#wholeTotal').val();
 //	 alert(discounts);
 	 params["count1"] = count1;
 		//alert("count second++++  " +count1)
-	params["ServicetotalAmount"] = ServicetotalAmount;
+	params["billl"] = billl;
+	 params["ServicetotalAmount"] = ServicetotalAmount;
 	params["discounts"] = discounts;
 
 
@@ -3288,6 +3292,8 @@ for (var i = 0; i < count; i++) {
 	
 }
 
+var billl=$('#billl').val();
+
     var totalAmount=$('#totalAmountOil').val();
     var discount=$('#discountOil').val();
     if(discount == "" || discount == null || discount == undefined){
@@ -3299,6 +3305,7 @@ for (var i = 0; i < count; i++) {
     if(oildescription=="" || oildescription==null || oildescription==undefined){
     	oildescription="NA";
     }
+    params["billl"] = billl;
     params["oildescription"] = oildescription;
 	params["count"] = count;
 	params["totalAmount"] = totalAmount;

@@ -1628,55 +1628,103 @@ function resOtherBill(){
 	for (var i = 0; i < count; i++) {
 	
 		var pk_temp_id = allRowsInGrid1[i].pk_temp_id;
+		if(pk_temp_id=="" || pk_temp_id==null || pk_temp_id==undefined){
+			pk_temp_id=0;
+		 }
      	params["pk_temp_id"+i] = pk_temp_id;
 		
 		var item_id = allRowsInGrid1[i].pkProductId;
-     	params["item_id"+i] = item_id;
+		if(item_id=="" || item_id==null || item_id==undefined){
+			item_id=0;
+		 }
+		params["item_id"+i] = item_id;
      	
 		var itemName = allRowsInGrid1[i].itemName;
+		if(itemName=="" || itemName==null || itemName==undefined){
+			itemName="NA";
+		 }
 		params["itemName"+i] = itemName;
 		
 		var quantity = allRowsInGrid1[i].quantitydouble;
+		if(quantity=="" || quantity==null || quantity==undefined){
+			quantity=0;
+		 }
 		params["quantity"+i] = quantity;
 		
 		/*var barcodeNo = allRowsInGrid1[i].barcodeNo;
 		params["barcodeNo"+i] = barcodeNo;
 		*/
 		var categoryName = allRowsInGrid1[i].categoryName;
+		if(categoryName=="" || categoryName==null || categoryName==undefined){
+			categoryName="NA";
+		 }
 		params["categoryName"+i] = categoryName;
 
 		var salePrice = allRowsInGrid1[i].salePrice;
 		//alert("salePrice++++"+salePrice)
+		if(salePrice=="" || salePrice==null || salePrice==undefined){
+			salePrice=0;
+		 }
 		params["salePrice"+i] = salePrice;
 		
 		var total = allRowsInGrid1[i].total;
+		if(total=="" || total==null || total==undefined){
+			total=0;
+		 }
 		params["total"+i] = total;
 		
 		var hsnSacNo = allRowsInGrid1[i].hsnsacno;
+		if(hsnSacNo=="" || hsnSacNo==null || hsnSacNo==undefined){
+			hsnSacNo=0;
+		 }
 		params["hsnSacNo"+i] = hsnSacNo;
 		
 		var vat = allRowsInGrid1[i].vat;
+		if(vat=="" || vat==null || vat==undefined){
+			vat=0;
+		 }
 		params["vat"+i] = vat;
 		
 		var igst = allRowsInGrid1[i].igst;
+		if(igst=="" || igst==null || igst==undefined){
+			igst=0;
+		 }
 		params["igst"+i] = igst;
 		
 		var taxAmount = allRowsInGrid1[i].taxAmt;
+		if(taxAmount=="" || taxAmount==null || taxAmount==undefined){
+			taxAmount=0;
+		 }
 		params["taxAmount"+i] = taxAmount;
 		
 		var discountGrid = allRowsInGrid1[i].discount;
+		if(discountGrid=="" || discountGrid==null || discountGrid==undefined){
+			discountGrid=0;
+		 }
 		params["discountGrid"+i] = discountGrid;
 		
 		var discountAmt = allRowsInGrid1[i].discountAmt;
+		if(discountAmt=="" || discountAmt==null || discountAmt==undefined){
+			discountAmt=0;
+		 }
 		params["discountAmt"+i] = discountAmt;
 		
 		var NumberofBarrel = allRowsInGrid1[i].NumberofBarrel;
+		if(NumberofBarrel=="" || NumberofBarrel==null || NumberofBarrel==undefined){
+			NumberofBarrel=0;
+		 }
 		params["NumberofBarrel"+i] = NumberofBarrel;
 		
 		var TotalLitre = allRowsInGrid1[i].TotalLitre;
+		if(TotalLitre=="" || TotalLitre==null || TotalLitre==undefined){
+			TotalLitre=0;
+		 }
 		params["TotalLitre"+i] = TotalLitre;
 		
 		var TotalQuan = allRowsInGrid1[i].TotalQuan;
+		if(TotalQuan=="" || TotalQuan==null || TotalQuan==undefined){
+			TotalQuan=0;
+		 }
   		params["TotalQuan"+i] = TotalQuan;
   		
   		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
@@ -1697,12 +1745,17 @@ function resOtherBill(){
 	    
 
 	    var totalAmount=$('#totalAmountOil').val();
-	    
+	    if(totalAmount == "" || totalAmount == null || totalAmount == undefined){
+	    	totalAmount = 0;
+	    }
 	    var discount=$('#discountOil').val();
 	    if(discount == "" || discount == null || discount == undefined){
 	    	discount = 0;
 	    }
 	    var grossTotal=$('#grossTotalOil').val();
+	    if(grossTotal == "" || grossTotal == null || grossTotal == undefined){
+	    	grossTotal = 0;
+	    }
 	    var wholeTotal=$('#wholeTotal').val();
 	    
 		params["count"] = count;

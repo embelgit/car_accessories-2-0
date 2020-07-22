@@ -505,9 +505,16 @@ function resBill() {
 	for (var i = 0; i < count; i++) {
 	
 		var pk_temp_id = allRowsInGrid1[i].pk_temp_id;
+		
+		if(pk_temp_id=="" || pk_temp_id==null || pk_temp_id==undefined){
+			pk_temp_id=0;
+		}
 		params["pk_temp_id"+i] = pk_temp_id;
 		
 		var item_id = allRowsInGrid1[i].item_id;
+		if(item_id=="" || item_id==null || item_id==undefined){
+			item_id=0;
+		}
      	params["item_id"+i] = item_id;
      	
      	
@@ -515,13 +522,18 @@ function resBill() {
 		/*if(itemName == undefined){
 			itemName = "NA";
 		}*/
+		if(itemName=="" || itemName==null || itemName==undefined){
+			itemName="NA";
+		}
 		params["itemName"+i] = itemName;
 		
 		var quantity = allRowsInGrid1[i].quantity;
 		/*if(quantity == undefined){
 			quantity = 0;
 		}*/
-
+		if(quantity=="" || quantity==null || quantity==undefined){
+			quantity=0;
+		}
 		var stock = allRowsInGrid1[i].stock;
 		
 
@@ -532,18 +544,27 @@ function resBill() {
 		/*if(barcodeNo == undefined){
 			barcodeNo = 0;
 		}*/
+		if(barcodeNo=="" || barcodeNo==null || barcodeNo==undefined){
+			barcodeNo=0;
+		}
 		params["barcodeNo"+i] = barcodeNo;
 		
 		var categoryName = allRowsInGrid1[i].categoryName;
 		/*if(categoryName == undefined){
 			categoryName = "NA";
 		}*/
+		if(categoryName=="" || categoryName==null || categoryName==undefined){
+			categoryName="NA";
+		}
 		params["categoryName"+i] = categoryName;
 
 		var salePrice = allRowsInGrid1[i].salePrice;
 		/*if(salePrice == undefined){
 			salePrice = 0;
 		}*/
+		if(salePrice=="" || salePrice==null || salePrice==undefined){
+			salePrice=0;
+		}
 		params["salePrice"+i] = salePrice;
 		
 		var total = allRowsInGrid1[i].total;
@@ -559,6 +580,9 @@ function resBill() {
 		/*if(hsnSacNo == undefined){
 			hsnSacNo = 0;
 		}*/
+		if(hsnSacNo=="" || hsnSacNo==null || hsnSacNo==undefined){
+			hsnSacNo=0;
+		}
 		params["hsnSacNo"+i] = hsnSacNo;
 		
 
@@ -581,12 +605,18 @@ function resBill() {
 		/*if(vat == undefined){
 			vat = 0;
 		}*/
+		if(vat=="" || vat==null || vat==undefined){
+			vat=0;
+		}
 		params["vat"+i] = vat;
 		
 		var igst = allRowsInGrid1[i].igst;
 		/*if(igst == undefined){
 			igst = 0;
 		}*/
+		if(igst=="" || igst==null || igst==undefined){
+			igst=0;
+		}
 		params["igst"+i] = igst;
 		
 		var taxAmount = allRowsInGrid1[i].taxAmount;
@@ -677,7 +707,9 @@ function resBill() {
 	    
 	    var discount=$('#discount').val();
 	    //alert("++++++++++++D"+discount)
-	    
+	    if(discount == "" || discount == null || discount == undefined){
+	    	discount = 0;
+  		}
 	    	 params["discount"] = discount;
 	    	//alert("discount"+discount)
 	    	
@@ -694,6 +726,7 @@ function resBill() {
 	    if(gstNo == "" || gstNo == null || gstNo == undefined){
 	    	gstNo = "0";
   		}
+	    //
 	    params["Customername"] = Customername;
 	    params["kmReading"] = kmReading;
 	    params["vehiclecolor"] = vehiclecolor;
@@ -720,7 +753,7 @@ function resBill() {
 		}*/
 		
 		///////////////////////
-		
+		//
 	
 		params["methodName"] = "registerBill";
 		
@@ -2136,36 +2169,69 @@ function resBillService() {
 			{
 			
 				var itemName1 = allRowsInGrid1[i].itemName;
+				if(itemName1=="" || itemName1==null || itemName1==undefined){
+					itemName1="NA";
+				}
 				params["itemName1"+i] = itemName1;
 				
 				var quantity1 = allRowsInGrid1[i].quantity;
+				if(quantity1=="" || quantity1==null || quantity1==undefined){
+					quantity1=0;
+				}
 				params["quantity1"+i] = quantity1;
 				
 				var salePrice1 = allRowsInGrid1[i].salePrice;
+				if(salePrice1=="" || salePrice1==null || salePrice1==undefined){
+					salePrice1=0;
+				}
 				params["salePrice1"+i] = salePrice1;
 				
 				var total1 = allRowsInGrid1[i].total;
+				if(total1=="" || total1==null || total1==undefined){
+					total1=0;
+				}
 				params["total1"+i] = total1;
 				
 				var hsnSacNo1 = allRowsInGrid1[i].hsnSacNo;
+				if(hsnSacNo1=="" || hsnSacNo1==null || hsnSacNo1==undefined){
+					hsnSacNo1=0;
+				}
 				params["hsnSacNo1"+i] = hsnSacNo1;
 				
 				var vat1 = allRowsInGrid1[i].vat;
+				if(vat1=="" || vat1==null || vat1==undefined){
+					vat1=0;
+				}
 				params["vat1"+i] = vat1;
 				
 				var igst1 = allRowsInGrid1[i].igst;
+				if(igst1=="" || igst1==null || igst1==undefined){
+					igst1=0;
+				}
 				params["igst1"+i] = igst1;
 				
 				var taxAmount1 = allRowsInGrid1[i].taxAmount;
+				if(taxAmount1=="" || taxAmount1==null || taxAmount1==undefined){
+					taxAmount1=0;
+				}
 				params["taxAmount1"+i] = taxAmount1;
 				
 				var discountGrid1 = allRowsInGrid1[i].discountGrid;
+				if(discountGrid1=="" || discountGrid1==null || discountGrid1==undefined){
+					discountGrid1=0;
+				}
 				params["discountGrid1"+i] = discountGrid1;
 				
 				var discountAmt1 = allRowsInGrid1[i].discountAmt;
+				if(discountAmt1=="" || discountAmt1==null || discountAmt1==undefined){
+					discountAmt1=0;
+				}
 				params["discountAmt1"+i] = discountAmt1;
 				
 				var TotalQuan = allRowsInGrid1[i].TotalQuan;
+				if(TotalQuan=="" || TotalQuan==null || TotalQuan==undefined){
+					TotalQuan=0;
+				}
 		  		params["TotalQuan"+i] = TotalQuan;
 		  		
 		  		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
@@ -2185,11 +2251,14 @@ function resBillService() {
 			 }
 			 
 			 var ServicetotalAmount=$('#ServicetotalAmount').val();
-			
+			 if(ServicetotalAmount=="" || ServicetotalAmount==null || ServicetotalAmount==undefined){
+				 ServicetotalAmount=0;
+			 }
+			 
 			 var discountservice = $('#discountservice').val();
-			/* if(discountservice = "" || discountservice == null || discountservice == undefined){
+			 if(discountservice == "" || discountservice == null || discountservice == undefined){
 				 discountservice = 0;
-			 }*/
+			 }
 			 
 			 params["count1"] = count1;
 				//alert("count second++++  " +count1)

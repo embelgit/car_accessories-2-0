@@ -739,7 +739,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 	float[] infoColumnWidths3 = { 2.0f,0.5f};
 	infotable3.setWidths(infoColumnWidths3);
 	
-	PdfPCell InfoTable_cell3;
+	PdfPCell InfoTable_cell3;mmmm
 
 	InfoTable_cell3 = new PdfPCell(new Phrase("\nGross Total",font14));
 	InfoTable_cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
