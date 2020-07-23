@@ -792,7 +792,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		document.close();
 		
 		////////email functionality/////// 
-		try{
+ 		try{
 	          Session mailSession = Session.getInstance(System.getProperties());
 	          Transport transport = new SMTPTransport(mailSession,new URLName("smtp.gmail.com"));
 	          transport = mailSession.getTransport("smtps");
@@ -827,11 +827,11 @@ Long billno = (Long) session.getAttribute("BillNo");
 	          transport.close();
 	          out.println("Thanks for sending mail!");
 	        }
-	        catch(Exception e){
+	         
+        	catch(Exception e){
 	          out.println(e.getMessage());
 	          e.printStackTrace();
 	        }
-
 		
 
 	} catch (DocumentException de) {

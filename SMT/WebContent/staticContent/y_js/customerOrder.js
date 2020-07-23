@@ -2269,7 +2269,7 @@ function resBillService() {
 			params["discountservice"] = discountservice;
 			params["serdescription"] = serdescription;
 	    params["bill"] = bill;
-//
+
 		params["contactNo"] = contactNo;
 		params["ownerName"] = ownerName;
 		
