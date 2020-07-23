@@ -1107,7 +1107,7 @@ public List<SaleReport> dayCloseReport() {
        
 		
 		for (Object[] object : list) {
-			System.out.println("kjhhv "+Arrays.toString(object));
+			System.out.println("priya "+Arrays.toString(object));
 			SaleReport reports = new SaleReport();
 			k++;
 			reports.setSrNo(k);
