@@ -321,6 +321,7 @@ public class GoodReceiveHelper {
 				newEntry.setItemName(itemName);
 				newEntry.setQuantity(Long.parseLong(quantity));
 				newEntry.setCatName(catName);
+				newEntry.setModelName("NA");
 
 				StockDao dao2 = new StockDao();
 				dao2.registerStock(newEntry);
@@ -366,6 +367,7 @@ public class GoodReceiveHelper {
 							newEntry.setItemName(itemName);
 							newEntry.setQuantity(Long.parseLong(quantity));
 							newEntry.setCatName(catName);
+							newEntry.setModelName("NA");
 
 							StockDao dao2 = new StockDao();
 							dao2.registerStock(newEntry);

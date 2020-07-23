@@ -149,6 +149,11 @@ public List<Stock> getAllCurrentStock() {
 			reports.setQuantity(Long.parseLong(object[2].toString()));
 			reports.setDate(object[3].toString());
 			reports.setTotalLitre(Double.parseDouble(object[4].toString()));
+			/*
+			 * String model = object[5].toString(); if(model.equals("")){
+			 * reports.setModelName("NA1"); } else {
+			 * reports.setModelName(object[5].toString()); }
+			 */			//
 			reports.setModelName(object[5].toString());
 			
 			catList.add(reports); 
@@ -185,6 +190,7 @@ public List<Stock> getCategoryWiseStock(String catId) {
 			reports.setQuantity(Long.parseLong(object[2].toString()));
 			reports.setDate(object[3].toString());
 			reports.setTotalLitre(Double.parseDouble(object[4].toString()));
+			
 			reports.setModelName(object[5].toString());
 			catList.add(reports); 
 	
