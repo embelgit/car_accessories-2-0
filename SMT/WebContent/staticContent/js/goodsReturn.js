@@ -666,11 +666,17 @@ function getitems() {
 				              	   var quantity = rowData['quantity'];
 				              	   var availquantity = rowData['availquantity'];
 				              	   var buyPrice = rowData['buyPrice'];
-				              	   
+				              	   var buyPriceEx = rowData['buyPriceEx'];				              	   
+				              	   var tota = 0;
 				              	   var afterquantity = quantity - availquantity;
 				              	   
-				              	   var tota = afterquantity * buyPrice;
-				              	
+				              	   if(buyPrice!=0 && buyPriceEx==0){
+				              	   tota = afterquantity * buyPrice;
+				              	   }
+				              	   else{
+				              		 tota = afterquantity * buyPriceEx;
+				              	   }
+				              	   
 				              	   $("#jqGrid").jqGrid("setCell", rowId, "total", tota);
 				              	    var parseTotal=  $(this).jqGrid('getCol', 'total', false, 'sum');
 				                	$(this).jqGrid('footerData', 'set', { vat: "Total :" });
@@ -886,11 +892,17 @@ function getitems10() {
 				              	   var quantity = rowData['noofBarrel'];
 				              	   var availquantity = rowData['availquantity'];
 				              	   var buyPrice = rowData['buyPrice'];
-				              	   
+				              	   var buyPriceEx = rowData['buyPriceEx'];
+				              	   var tota = 0;
 				              	   var afterquantity = quantity - availquantity;
 				              	   
-				              	   var tota = afterquantity * buyPrice;
-				              	
+				              	   if(buyPrice != 0 && buyPriceEx==0){
+				              	   tota = afterquantity * buyPrice;
+				              	   }
+				              	   else{
+				              		 tota = afterquantity * buyPriceEx;
+				              	   }
+				              	   
 				              	   $("#jqGrid1").jqGrid("setCell", rowId, "total", tota);
 				              	    var parseTotal=  $(this).jqGrid('getCol', 'total', false, 'sum');
 				                	$(this).jqGrid('footerData', 'set', { vat: "Total :" });

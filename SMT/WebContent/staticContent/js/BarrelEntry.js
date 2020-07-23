@@ -163,7 +163,7 @@ function getProductList1()
 				$("#jqGrid1").jqGrid({
 					datatype:"local",
 					editurl: 'clientArray',
-					colNames: ["ItemName","Category Name","HSN/SAC","BrandName","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BuyPrice","BPETax","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
+					colNames: ["ItemName","Category Name","HSN/SAC","BrandName","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BPETax","BuyPrice","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
 
 					colModel: [
 					           { 	
@@ -218,12 +218,7 @@ function getProductList1()
 					        	   hidden: true
 					           },
 
-					           {
-					        	   name: "buyPrice",
-					        	   width: 150,
-					        	   editable: true,
-					        	 
-					           },
+					           
 					           
 					           {
 					        	   name: "buyPriceEx",
@@ -231,7 +226,12 @@ function getProductList1()
 					        	   editable: true,
 					        	 
 					           },
-					           
+					           {
+					        	   name: "buyPrice",
+					        	   width: 150,
+					        	   editable: true,
+					        	 
+					           },
 					           {
 					        	   name: "TotalQuan",
 					        	   width: 150,
