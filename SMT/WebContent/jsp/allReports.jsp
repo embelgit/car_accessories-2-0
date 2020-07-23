@@ -42,7 +42,7 @@
               <!--   <li><a href="#stock" data-toggle="tab">Stock Reports</a></li> -->
                 <li><a href="#vehicle" data-toggle="tab">Vehicle Bill Reports</a></li>
                 <li><a href="#miscellaneous" data-toggle="tab">Miscellaneous Bill Reports</a></li>
-                <li><a href="#credit" data-toggle="tab">Credit Customer Bill Reports</a></li>
+                <li><a href="#credit" data-toggle="tab">Credit Customer Bill Report</a></li>
             </ul>
         </div>
   <div class="col-xs-9">
