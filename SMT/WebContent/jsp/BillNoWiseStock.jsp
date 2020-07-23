@@ -205,11 +205,12 @@
 				<th> Bill No</th>
 				<th> Category Name</th>
 				<th> Item Name</th>
-				<th> Available Quantity</th>
+				<th>Brand Name</th>
+				<th> No of barrels</th>
 				<th> Buy Price</th>
 				<th> Buyprice Ex</th>
 				<th> Tax Percentage</th>
-				<th>Brand Name</th>
+				
 				
 				
 				

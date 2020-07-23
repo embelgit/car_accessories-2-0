@@ -435,11 +435,12 @@ for (i = 0; i < list.options.length; ++i) {
                           {"data": "billNo", "width": "5%", "defaultContent": ""},
 	                      {"data": "categoryName", "width": "5%", "defaultContent": ""},
 	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
-	                      {"data": "quantity", "width": "5%", "defaultContent": ""},
+	                      {"data": "modelName", "width": "5%", "defaultContent": ""},
+	                      {"data": "NumberofBarrel", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
 	                      {"data": "vat", "width": "5%", "defaultContent": ""},
-	                      {"data": "modelName", "width": "5%", "defaultContent": ""},
+	                     
 	                     
 	                      
 				        ]

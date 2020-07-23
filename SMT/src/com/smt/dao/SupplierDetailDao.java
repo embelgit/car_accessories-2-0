@@ -357,7 +357,7 @@ public List getAllUnPaidBillAmount(String supplierId) {
 		 Long supId = Long.parseLong(supplierId);
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-			Query query = session.createSQLQuery("select s.BillNo,s.GrossTotal from GoodReceive s where  s.paymentDone =:paymentdone and s.FksuppId=:supId GROUP  by s.BillNo");
+			Query query = session.createSQLQuery("select s.BillNo,s.GrossTotal from GoodReceive s where  s.paymentDone =:paymentdone and s.FksuppId=:supId GROUP  by s.BillNo UNION select sb.BillNo,sb.GrossTotal from goodreceivebarrel sb  where sb.paymentDone =:paymentdone and sb.FksuppId=:supId GROUP  by sb.BillNo");
 			query.setParameter("paymentdone",paymentdone);
 			query.setParameter("supId",supId);
 			 List<Object[]> list = query.list();
