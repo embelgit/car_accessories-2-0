@@ -202,7 +202,7 @@ public class CarEntryDao {
 			session = hbu.getHibernateSession();
 
 			
-			Query query=session.createSQLQuery("select  Car_No,Owner_Name,Contact_No,ActiveYN,OnDate,KmReader,vehiclecolor FROM carentry");
+			Query query=session.createSQLQuery("select  Car_No,Owner_Name,Contact_No,ActiveYN,OnDate,KmReader,vehiclecolor,vehiclename FROM carentry");
 			List<Object[]> list = query.list();
 
 			saleList = new ArrayList<CarEntryBean>(0);
@@ -220,6 +220,7 @@ public class CarEntryDao {
 				reports.setDate(object[4].toString());
 				reports.setKmReader1(Double.parseDouble(object[5].toString()));
 				reports.setVehiclecolor(object[6].toString());
+				reports.setVehicleName(object[7].toString());
 				
 				saleList.add(reports); 
 
