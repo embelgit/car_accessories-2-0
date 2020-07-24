@@ -48,8 +48,16 @@ public class SaleReport {
 	private String additionalLedger;
 	private String gstLedger;
 	private String vchRef;
+	private Double quan;
 	
 	
+	
+	public Double getQuan() {
+		return quan;
+	}
+	public void setQuan(Double quan) {
+		this.quan = quan;
+	}
 	public Double getTransportExpenses() {
 		return transportExpenses;
 	}

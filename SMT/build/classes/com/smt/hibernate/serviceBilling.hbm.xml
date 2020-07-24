@@ -182,6 +182,11 @@
 		column="discount"
 		 /> 
 		 
+		  <property
+		name="current_date" 
+		type="java.sql.Date" 
+		column="Date"
+		 />
 		
     </class>
    </hibernate-mapping> 

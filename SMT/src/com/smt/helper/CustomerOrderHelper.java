@@ -1220,6 +1220,12 @@ public class CustomerOrderHelper {
 		    {
 		    	cust.setDiscount(0.0);
 		    }
+			DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+			Date dateobj = new Date();
+			System.out.println(df.format(dateobj));
+			String newDate = df.format(dateobj);
+			cust.setCurrent_date(dateobj);
+
 			session3.setAttribute("BillNo", billnoo);
 			if (billnoo == null) {
 				cust.setBillNo(1l);
@@ -1458,6 +1464,7 @@ public class CustomerOrderHelper {
 			
 			String discountservice = request.getParameter("discountservice");
 			cust.setDiscount(Double.parseDouble(discountservice));
+			
 			
 			session3.setAttribute("BillNo", BillNo);
 			if (BillNo == null) {
