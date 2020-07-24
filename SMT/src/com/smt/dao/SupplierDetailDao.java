@@ -390,7 +390,7 @@ public List getAllBillBySuppliers1(String supplierId) {
 		
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where s.FksuppId="+supplierId);
+			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where s.FksuppId='"+supplierId+"' UNION select gb.BillNo,gb.FksuppId from goodreceivebarrel gb where gb.FksuppId='"+supplierId+"'");
 			
 			list = query.list();
 			
