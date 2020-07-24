@@ -144,7 +144,9 @@ public class EstimateQuotHelper {
 				cust.setTotalAmt(Double.parseDouble(totalAmount));
 			}
 
-
+			String note = request.getParameter("note");
+			cust.setNote(note);
+			
 			
 			String contactNo = request.getParameter("contactNo");
 			

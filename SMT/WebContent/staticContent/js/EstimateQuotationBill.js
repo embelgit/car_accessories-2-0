@@ -64,7 +64,7 @@ function getProdGrid()
 			$("#list4").jqGrid({
 				datatype: "local",
 				
-				colNames:['pk_temp_id','item_id','BarcodeNO','CatName','ItemName','HSN/SAC','Quantity','SalePrice','Discount','DiscountAmt','GST%','IGST%','Tax Amt','Total Amt'],
+				colNames:['pk_temp_id','item_id','BarcodeNO','CatName','ItemName','HSN/SAC','Quantity','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Total Amt'],
 				colModel:[ 
 				          
 				          
@@ -108,7 +108,7 @@ function getProdGrid()
 						
 					},
 					
-					{	name:'discountGrid',
+					/*{	name:'discountGrid',
 						width:100,
 						editable: true
 						
@@ -118,7 +118,20 @@ function getProdGrid()
 						width:100,
 						
 						
-					},
+					},*/
+					 {
+			        	   name: "TotalQuan",
+			        	   width: 150,
+			        	   //editable: true,
+			        	 
+			           },
+			           
+			           {
+			        	   name: "buyPriceExTax",
+			        	   width: 150,
+			        	   //editable: true,
+			        	 
+			           },
 					
 					{	name:'vat',
 						width:80,
@@ -166,6 +179,8 @@ function getProdGrid()
                 	var tota = 0;
                 	var vatAmt = 0;
                 	var totAmt = 0;
+                	var BPExTax=0;
+                	var taxAmount=0;
                 	
                 	
                 	if(gst != "")
@@ -225,6 +240,9 @@ function getProdGrid()
 					$("#list4").jqGrid("setCell",rowId, "gst", abc);
 					return false;
 					}
+                	
+                	
+                	
                 	tota = quantity * salePrice;
                 	totAmt = quantity * salePrice;
                 	
@@ -245,19 +263,36 @@ function getProdGrid()
                 	if(igst ==null || igst==0 || igst==""){
                 		
                     	
-                    	var calculateVatTotal = (gst / 100)*finalTotal;
-                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+                  //  	var calculateVatTotal = (gst / 100)*finalTotal;
+      //              	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+                    	
+                    	BPExTax=totAmt/(1+(gst/100));
+                		taxAmount=totAmt-BPExTax;
+                		
+                		
+                    	
+                    	
                     	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
                     	}
                     	else if(igst !=null || igst!=0|| igst!=""){
                     		
-                    		var calculateVatTotal = (igst / 100)*finalTotal;
-	                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+//                    		var calculateVatTotal = (igst / 100)*finalTotal;
+	//                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+	                    	
+                    		BPExTax=totAmt/(1+(igst/100));
+                    		taxAmount=totAmt-BPExTax;
+	                    	
 	                    	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
                     	}
+                 	
+                 	
+                	$("#list4").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+                  	$("#list4").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));             
+                	$("#list4").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+                   	$("#list4").jqGrid("setCell", rowId, "total", totAmt.toFixed(2));              	
                 	
-                	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
-	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
+//                	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
+//	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
 	             	var Total = 0;
                 	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
     				var allRowsInGrid1 = $('#list4').getGridParam('data');
@@ -454,19 +489,35 @@ function getProdGrid()
 		                    	if(igst ==null || igst==0 || igst==""){
 		                    		
 		                        	
-		                        	var calculateVatTotal = (gst / 100)*finalTotal;
-		                        	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		           //             	var calculateVatTotal = (gst / 100)*finalTotal;
+		                 //       	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal);
+		            //            	
+		                        	
+		                           	BPExTax=totAmt/(1+(gst/100));
+		                    		taxAmount=totAmt-BPExTax;
+		         
+		                        	
 		                        	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
 		                        	}
 		                        	else if(igst !=null || igst!=0|| igst!=""){
 		                        		
-		                        		var calculateVatTotal = (igst / 100)*finalTotal;
-		    	                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		                //        		var calculateVatTotal = (igst / 100)*finalTotal;
+		    	       //             	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		    	                    	
+		    	                  		BPExTax=totAmt/(1+(igst/100));
+		                        		taxAmount=totAmt-BPExTax;
+		    	          
+		                        		
 		    	                    	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
 		                        	}
-		                    	
-		                    	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
-		    	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
+		                 
+		                     	$("#list4").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+		                      	$("#list4").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));             
+		                    	$("#list4").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+		                       	$("#list4").jqGrid("setCell", rowId, "total", totAmt.toFixed(2));              	
+		       	    	        
+		               //     	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
+		    	       //      	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
 		    	             	var Total = 0;
 		                    	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
 		        				var allRowsInGrid1 = $('#list4').getGridParam('data');
@@ -686,7 +737,13 @@ function regEstimateCustbill(){
 	    var CustomerId=$('#CustomerId').val();
 	    var wholeTotal=$('#wholeTotal').val();
 	    var carNo=$('#carNo').val();
-	  /* ///SERVICE GRID 
+	  
+	    var note=$('#note').val();
+	    if(note=="" || note == null || note==undefined){
+	    	note="NA";
+		}
+	    
+	    /* ///SERVICE GRID 
 	    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 		var allRowsInGrid1 = $('#list5').getGridParam('data');
 		var AllRows=JSON.stringify(allRowsInGrid1);
@@ -748,6 +805,9 @@ function regEstimateCustbill(){
 	    if(description=="" || description == null || description==undefined){
 	    	description="NA";
 		}
+	    
+	    
+	    params["note"] = note;
 	    params["gstTinNo"] = gstTinNo;
 	    params["input1"] = input1;
 	    params["fkRootCustId"] = fkRootCustId;
@@ -2038,6 +2098,8 @@ $.post('/SMT/jsp/utility/controller.jsp', params,
 			alert(data);
 			//window.open("Car_bill_PDF.jsp");
 			//window.open("BillingPdfNew.jsp");
+			
+	           window.open("EstimateBillingPdf.jsp");
 			location.reload(true);
 			
 		}).error(function(jqXHR, textStatus, errorThrown) {

@@ -127,7 +127,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smt_sc", "root", "root");
 		Statement stmt = conn.createStatement();
 	
-		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst,carNo from estimatequotationbill where BillNo =" + billno);
+		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst,carNo,note from estimatequotationbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
 		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount,serdescription from estimate_service_bill  where BillNo ='"+billno+"'");
@@ -183,6 +183,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		String car = rs.getString("carNo");
 		String saleDate = rs.getString("Date");
 		String grossTotal123 = rs.getString("GrossTotal");
+		String note = rs.getString("note");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
 		
 		//String vehiclecolor = rs.getString("vehiclecolor");
@@ -340,7 +341,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		PdfPTable infotable = new PdfPTable(3);
 		infotable.setWidthPercentage(100);
 
-		float[] infoColumnWidths = { 0.3f,0.15f,0.3f };
+		float[] infoColumnWidths = { 0.2f,0.2f,0.2f };
 		infotable.setWidths(infoColumnWidths);
 
 		PdfPCell InfoTable_cell;
@@ -1156,7 +1157,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		table9.addCell(table_cell10);
 		
 		
-		table_cell10 = new PdfPCell(new Phrase("Igst%",font12));
+		table_cell10 = new PdfPCell(new Phrase("IGST%",font12));
 		table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
 		table_cell10.setBorder(Rectangle.BOTTOM|Rectangle.LEFT | Rectangle.RIGHT);
 		table9.addCell(table_cell10);
@@ -1389,7 +1390,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 
 
-		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote : "));
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote : "+note));
 		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 		infotable23.addCell(InfoTable_cell23);

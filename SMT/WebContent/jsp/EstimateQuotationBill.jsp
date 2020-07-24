@@ -563,8 +563,15 @@ function calgrosstot(){
 		</div>
 	</div>				
 				
-					
-				
+					<div class="row form-group" >
+							<div class="col-md-3" align="right">
+								<label class="control-label" > Note: </label>
+							</div>
+							<div class="col-md-3">
+							
+								<input type="text" class="form-control" id="note"  placeholder="Note"/>
+							</div> 
+				</div>
 	
 		      
 					

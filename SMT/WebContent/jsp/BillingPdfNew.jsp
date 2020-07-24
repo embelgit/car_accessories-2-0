@@ -1448,13 +1448,13 @@
 				
 				PdfPCell InfoTable_cell6;
 
-				InfoTable_cell6 = new PdfPCell(new Phrase(" \n Description : "));
+				InfoTable_cell6 = new PdfPCell(new Phrase(""));
 				InfoTable_cell6.setHorizontalAlignment(Element.ALIGN_LEFT);
 				InfoTable_cell6.setBorder(Rectangle.NO_BORDER);
 				infotable6.addCell(InfoTable_cell6);
 				
 				
-				InfoTable_cell6 = new PdfPCell(new Phrase("\n "+desp));
+				InfoTable_cell6 = new PdfPCell(new Phrase(""));
 				InfoTable_cell6.setHorizontalAlignment(Element.ALIGN_CENTER);
 				InfoTable_cell6.setBorder(Rectangle.NO_BORDER);
 				infotable6.addCell(InfoTable_cell6);
@@ -1510,7 +1510,7 @@
 		
 
 
-		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nNote : "));
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nNote :   "+desp));
 		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 		infotable23.addCell(InfoTable_cell23);

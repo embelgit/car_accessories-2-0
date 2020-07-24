@@ -124,7 +124,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 
 		//ResultSet rs = stmt.executeQuery("select CarNo, ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount,GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,Igst,totalQuan,buyPriceEXTax,Discount,description  from customerbill where BillNo =" + billno);
 		
-		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount, Discount, GrossTotal, Date, totalperitem, TaxAmount,Gst,Igst,description,CarNo,HsnSacNo,location from otherbill where BillNo =" + billno);
+		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice, ContactNo, OwnerName, TotalAmount, Discount, GrossTotal, Date, totalperitem, TaxAmount,Gst,Igst,description,CarNo,HsnSacNo,location,note from otherbill where BillNo =" + billno);
 		
 		Font font17Bold = new Font(Font.FontFamily.TIMES_ROMAN, 17, Font.BOLD, BaseColor.BLACK);
 		Font font16Bold = new Font(Font.FontFamily.TIMES_ROMAN, 16, Font.BOLD, BaseColor.BLACK);
@@ -171,6 +171,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		String saleDate = rs.getString("Date");
 		String grossTotal123 = rs.getString("GrossTotal");
 		String location = rs.getString("location");
+		String note = rs.getString("note");
 		
 //		String vehicle = rs.getString("vehicle");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
@@ -765,7 +766,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 				
 
 
-				InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote  "));
+				InfoTable_cell23 = new PdfPCell(new Phrase("\n \n \n\nNote :  "+note));
 				InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 				InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 				infotable23.addCell(InfoTable_cell23);

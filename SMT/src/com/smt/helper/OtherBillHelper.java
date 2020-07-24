@@ -132,6 +132,9 @@ public class OtherBillHelper {
 			System.out.println("description"+description);
 			cust.setDescription(description);
 			
+			String note = request.getParameter("note");
+			cust.setNote(note);
+			
 			String location = request.getParameter("location");
 			cust.setLocation(location);
 			

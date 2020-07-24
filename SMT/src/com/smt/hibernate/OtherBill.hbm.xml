@@ -30,6 +30,13 @@
 		column="location"
 		/>
 		
+		
+		<property
+		name="note" 
+		type="java.lang.String" 
+		column="note"
+		/>
+		
 		 <property
 		name="quantity" 
 		type="java.lang.Long" 

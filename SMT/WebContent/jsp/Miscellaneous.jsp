@@ -309,7 +309,12 @@ function grasstotal(){
 							  </div> 
 							</div>
 							
-							
+							<div class="col-md-2" align="right">
+							<label class="control-label" >Description :</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="description" placeholder="Description"/>
+						</div>
 							<!-- <div class="col-md-2" align="right">
 							<label class="control-label" >Vehicle No:</label>
 						</div>
@@ -357,11 +362,11 @@ function grasstotal(){
 						
  						<div class="row form-group" >
 							<div class="col-md-3" align="right">
-								<label class="control-label" > Description: </label>
+								<label class="control-label" > Note : </label>
 							</div>
 							<div class="col-md-3">
 							
-								<input type="text" class="form-control" id="description"  placeholder="Note"/>
+								<input type="text" class="form-control" id="note"  placeholder="Note"/>
 							</div> 
 						</div> 
 						 </div> 

@@ -591,6 +591,12 @@ function resOtherBill10(){
 	    	description="NA";
 	    }
 	    
+	    var note=$('#note').val();
+	    if(note=="" || note==null || note==undefined){
+	    	note="NA";
+	    }
+	    
+	    params["note"] = note;
 	    params["location"] = location;
 	    params["contactNo"] = contactNo;
 	    params["custName"] = custName;
