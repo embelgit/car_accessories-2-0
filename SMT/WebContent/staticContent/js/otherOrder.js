@@ -614,7 +614,7 @@ function resOtherBill10(){
 //						document.getElementById("btnSubmit").disabled = false; 
 				
     							alert(data);
-    				
+  //  				
 							  // window.open("Other_Bill_PDF.jsp");
 					           window.open("Other_Bill_PDFNew.jsp");
 						//	   location.reload(true);
