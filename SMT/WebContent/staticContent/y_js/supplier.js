@@ -622,7 +622,7 @@ function editsuppli(){
 	$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	    	{
 				alert(data);
-				
+				location.reload(true);
 			}
 	    	).error(function(jqXHR, textStatus, errorThrown){
 	    		if(textStatus==="timeout") {

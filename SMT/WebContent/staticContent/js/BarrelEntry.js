@@ -357,11 +357,17 @@ function getProductList1()
 			                    	var taxAmount=0;
 			                    	
 			                    	
-			                    	
+			                    	if(buyPrice != "0" && buyPriceEx ==0){
 			                    	//tota = quantity * buyPrice;
 			                    	totAmt = quantity * buyPrice;
 			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-			                    	
+			                    	}
+			                    	else{
+			                    		totAmt = quantity * buyPriceEx;
+				                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
+		                    		
+			                    		
+			                    	}
 			                    	/*if(discount != "0"){
 			                    		discount1 = ((tota*discount)/100);
 			                    		tota = +tota - +discount1;
@@ -412,7 +418,7 @@ function getProductList1()
 			                    	
 			                    	//buy price ex tax user
 		                    		
-		                    		if(buyPriceEx != "0" && buyPrice == 0){
+/*		                    		if(buyPriceEx != "0" && buyPrice == 0){
 		                    		
 		                    		
 		                    			totAmt = quantity * buyPriceEx;
@@ -466,7 +472,7 @@ function getProductList1()
 
 				                    	
 		                    		
-		                    		}
+		                    		}*/
 		                    		
 		                    		if(buyPriceEx !=0 && buyPrice !=0){
 			                    		alert("please enter either BP or BPExtax");
@@ -479,9 +485,9 @@ function getProductList1()
 			                    	
 			                    	
 			                    	
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
+			              //      	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+			              //      	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 			                    	var Total = 0;
 			                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
@@ -600,12 +606,20 @@ function getProductList1()
 		                    	var BPExTax1 = 0;
 		                    	var taxAmount=0;
 		                    	
-		                    	
+		                    	if(buyPrice != "0" && buyPriceEx ==0){
+			                    	
 		                    	
 		                    	//tota = quantity * buyPrice;
 		                    	totAmt = quantity * buyPrice;
 		                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-		                    	
+		                   
+		                    	}
+		                    	else{
+		                    		
+		                    		totAmt = quantity * buyPriceEx;
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
+	                    		
+		                    	}
 		                    	/*if(discount != "0"){
 		                    		discount1 = ((tota*discount)/100);
 		                    		tota = +tota - +discount1;
@@ -656,7 +670,7 @@ function getProductList1()
 		                    	
 		                    	//buy price ex tax user
 	                    		
-	                    		if(buyPriceEx != "0" && buyPrice == 0){
+	    /*                		if(buyPriceEx != "0" && buyPrice == 0){
 	                    		
 	                    		
 	                    			totAmt = quantity * buyPriceEx;
@@ -699,18 +713,11 @@ function getProductList1()
 			                    		
 			                    	}
 			                    	
-			                    	/*if(gst !=0 && igst !=0){
-			                    		alert("please enter either gst or igst");
-			                    		var abc = 0;
-				                    	$("#jqGrid1").jqGrid("setCell", rowId, "vat", abc);
-				                    	$("#jqGrid1").jqGrid("setCell", rowId, "igst", abc);
-				                    	return false;
-			                    	}
-			                    	*/
+			                    	
 
 			                    	
 	                    		
-	                    		}
+	                    		}*/
 	                    		
 	                    		/*if(buyPriceEx !=0 && buyPrice !=0){
 		                    		alert("please enter either BP or BPExtax");
@@ -723,9 +730,9 @@ function getProductList1()
 		                    	
 		                    	
 		                    	
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
+		           //         	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+		           //         	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 		                    	var Total = 0;
 		                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');

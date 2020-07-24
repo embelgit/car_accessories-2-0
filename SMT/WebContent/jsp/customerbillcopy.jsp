@@ -82,7 +82,7 @@
 <%
 	response.setContentType("application/pdf");
 	Long billno = (Long) session.getAttribute("CustomerBillNo");
-
+		System.out.println("bill no - -  -- -   "+billno);									   
 
 	
 	int itemCount = 0;

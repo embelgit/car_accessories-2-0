@@ -94,7 +94,7 @@ public class CarEntryHelper {
 		HttpSession session3 = request.getSession();
 		Long billNo2 = Long.parseLong(billNo);
 		session3.setAttribute("CustomerBillNo", billNo2);
-		System.out.println("----------------Bill No After session create::"+session3.getAttribute("CustomerBillNo"));
+		System.out.println("----------------Bill No After session create:: "+session3.getAttribute("CustomerBillNo"));
 	
 	}
 	//

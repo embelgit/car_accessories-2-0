@@ -45,11 +45,14 @@ params["billNo"] = billNo;
 
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
-				location.reload(true);
+
 				//window.open("Car_bill_PDF_COPY.jsp");
 		//		window.open("BillingPdfNew.jsp");
-				window.open("customerbillcopy.jsp");
-			}).error(function(jqXHR, textStatus, errorThrown) {
+
+			window.open("customerbillcopy.jsp");
+				location.reload(true);
+		
+	}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
 			$(loaderObj).find('#errorDiv').show();
@@ -103,10 +106,11 @@ function generateBillCOPY1() {
 
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
-				location.reload(true);
+	
 			//	window.open("Other_Bill_CopyPDF.jsp");
 				window.open("otherbillcopy.jsp");
-
+				location.reload(true);
+				
 			}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
@@ -140,9 +144,11 @@ function validateGenerateBillCOPYForCreditBill() {
 
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
-				location.reload(true);
+
 //				window.open("CreditCustomerBillCopy.jsp");
 				window.open("customerbillcopy.jsp");
+				location.reload(true);
+	
 	}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();
@@ -201,12 +207,15 @@ params["billNo"] = billNo;
 
 	$.post('/SMT/jsp/utility/controller.jsp', params,
 			function(data) {
-				location.reload(true);
+		
+
 				//window.open("Car_bill_PDF_COPY.jsp");
 		//		window.open("BillingPdfNew.jsp");
 //				window.open("customerbillcopy.jsp");
 				window.open("estimatebillcopypdf.jsp");
-	
+				location.reload(true);
+				
+				
 	}).error(function(jqXHR, textStatus, errorThrown) {
 		if (textStatus === "timeout") {
 			$(loaderObj).hide();

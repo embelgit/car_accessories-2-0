@@ -81,9 +81,9 @@
 
 <%
 response.setContentType("application/pdf");
-Long billno = (Long) session.getAttribute("BillNo");
-
-
+//Long billno = (Long) session.getAttribute("BillNo");
+	Long billno = (Long) session.getAttribute("BillNo");
+	System.out.println("bill in pdf - "+billno);
 	
 	int itemCount = 0;
 	int quantCount = 0;
