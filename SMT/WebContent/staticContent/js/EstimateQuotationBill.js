@@ -2100,7 +2100,8 @@ $.post('/SMT/jsp/utility/controller.jsp', params,
 			//window.open("BillingPdfNew.jsp");
 			
 	           window.open("EstimateBillingPdf.jsp");
-			location.reload(true);
+			
+	           location.reload(true);
 			
 		}).error(function(jqXHR, textStatus, errorThrown) {
 	if (textStatus === "timeout") {
@@ -3496,6 +3497,7 @@ var billl=$('#billl').val();
 	    	{  
 		           alert(data);
 				   //window.open("Other_Bill_PDF.jsp");
+		           window.open("EstimateBillingPdf.jsp");
 				   location.reload(true);
 		
 			 }
