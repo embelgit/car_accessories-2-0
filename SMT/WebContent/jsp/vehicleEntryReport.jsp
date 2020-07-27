@@ -179,7 +179,7 @@
 					<th>Date</th>
 					<th>Kilometer Reading</th>
 					<th>Vehicle Color</th>
-					
+					<th>Vehicle Name</th>
 					
 					
 				</tr>
@@ -212,7 +212,7 @@
 					<td class="align"><%=sr.getDate()%></td>
 					<td class="align"><%=sr.getKmReader1()%></td>	
 					<td class="align"><%=sr.getVehiclecolor()%></td>	
-						
+						<td class="align"><%=sr.getVehicleName()%></td>
 					
 					
 				</tr>

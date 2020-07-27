@@ -16,8 +16,15 @@ public class CarEntryBean {
 	private String active;
 	private String date;
 	private Double KmReader1;
+	private String vehicleName;
 	
 	
+	public String getVehicleName() {
+		return vehicleName;
+	}
+	public void setVehicleName(String vehicleName) {
+		this.vehicleName = vehicleName;
+	}
 	public Double getKmReader1() {
 		return KmReader1;
 	}

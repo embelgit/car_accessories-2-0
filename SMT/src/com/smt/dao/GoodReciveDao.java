@@ -1382,7 +1382,7 @@ public List getBarcode() {
 	         System.out.println("supplier id:: "+suppId);
 	         System.out.println("Bill No : "+billNo1 +"   Count Of Bill No : " + billCount);
 	         
-	         Query query4 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice, BarcodeNo, FinalExpense, BillNo, Date, TaxAmount, GrossTotal, supplier_name from goodreceive left join supplier_details on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId");
+	         Query query4 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice, BarcodeNo, FinalExpense, BillNo, Date, TaxAmount, GrossTotal, supplier_name from goodreceive left join supplier_details on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice,COALESCE(sum(BarcodeNo),0), FinalExpense, BillNo, Date,TaxAmount, GrossTotal, supplier_name from goodreceivebarrel g left join supplier_details s on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId");
 	         query4.setParameter("billNo1", billNo1);
 	         query4.setParameter("suppId", suppId);
 		        List<Object[]> list5 = query4.list();
