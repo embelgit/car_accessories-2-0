@@ -92,14 +92,26 @@ function getProductList1()
     for (i = 0; i < list.options.length; ++i) {
     if (list.options[i].value === input.value) {
     	itemName = list.options[i].getAttribute('data-value');
+    	//model = list.options[i].getAttribute('data-value');
     	
     }
    }
-	
+    
+
+/*
+    var productId = $('#itemName1').val();
+    	
+    	var splitText = productId.split("  ");
+    	
+    	var proName = splitText[0];
+    	var catname = splitText[1];*/
+    //var itemName=itemName.split(",")[0];
+    	//var modelName=model.split(",")[1];
+    
     itemparams={};
 	//alert("ITEMID"+itemName)
 	itemparams["itemName"]= itemName;
-	//itemparams["catName"]= catName;
+	//itemparams["modelName"]= modelName;
 	//itemparams["hsnsacno"]= hsnsacno;
 	
 	document.getElementById('itemName1').value = null;
@@ -151,7 +163,7 @@ function getProductList1()
 				$("#jqGrid1").jqGrid({
 					datatype:"local",
 					editurl: 'clientArray',
-					colNames: ["ItemName","Category Name","HSN/SAC","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BuyPrice","BPETax","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
+					colNames: ["ItemName","Category Name","HSN/SAC","BrandName","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BPETax","BuyPrice","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
 
 					colModel: [
 					           { 	
@@ -168,6 +180,12 @@ function getProductList1()
 					           {
 					        	   name:  "hsnsacno",
 					        	   width: 120,
+					        	   
+					           },
+					           {
+					        	   name:  "modelName",
+					        	   width: 120,
+					        	   hidden: true
 					        	   
 					           },
 					           {
@@ -200,12 +218,7 @@ function getProductList1()
 					        	   hidden: true
 					           },
 
-					           {
-					        	   name: "buyPrice",
-					        	   width: 150,
-					        	   editable: true,
-					        	 
-					           },
+					           
 					           
 					           {
 					        	   name: "buyPriceEx",
@@ -213,7 +226,12 @@ function getProductList1()
 					        	   editable: true,
 					        	 
 					           },
-					           
+					           {
+					        	   name: "buyPrice",
+					        	   width: 150,
+					        	   editable: true,
+					        	 
+					           },
 					           {
 					        	   name: "TotalQuan",
 					        	   width: 150,
@@ -339,11 +357,17 @@ function getProductList1()
 			                    	var taxAmount=0;
 			                    	
 			                    	
-			                    	
+			                    	if(buyPrice != "0" && buyPriceEx ==0){
 			                    	//tota = quantity * buyPrice;
 			                    	totAmt = quantity * buyPrice;
 			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-			                    	
+			                    	}
+			                    	else{
+			                    		totAmt = quantity * buyPriceEx;
+				                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
+		                    		
+			                    		
+			                    	}
 			                    	/*if(discount != "0"){
 			                    		discount1 = ((tota*discount)/100);
 			                    		tota = +tota - +discount1;
@@ -394,7 +418,7 @@ function getProductList1()
 			                    	
 			                    	//buy price ex tax user
 		                    		
-		                    		if(buyPriceEx != "0" && buyPrice == 0){
+/*		                    		if(buyPriceEx != "0" && buyPrice == 0){
 		                    		
 		                    		
 		                    			totAmt = quantity * buyPriceEx;
@@ -448,7 +472,7 @@ function getProductList1()
 
 				                    	
 		                    		
-		                    		}
+		                    		}*/
 		                    		
 		                    		if(buyPriceEx !=0 && buyPrice !=0){
 			                    		alert("please enter either BP or BPExtax");
@@ -461,9 +485,9 @@ function getProductList1()
 			                    	
 			                    	
 			                    	
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
+			              //      	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-			                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+			              //      	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 			                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 			                    	var Total = 0;
 			                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
@@ -582,12 +606,20 @@ function getProductList1()
 		                    	var BPExTax1 = 0;
 		                    	var taxAmount=0;
 		                    	
-		                    	
+		                    	if(buyPrice != "0" && buyPriceEx ==0){
+			                    	
 		                    	
 		                    	//tota = quantity * buyPrice;
 		                    	totAmt = quantity * buyPrice;
 		                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-		                    	
+		                   
+		                    	}
+		                    	else{
+		                    		
+		                    		totAmt = quantity * buyPriceEx;
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
+	                    		
+		                    	}
 		                    	/*if(discount != "0"){
 		                    		discount1 = ((tota*discount)/100);
 		                    		tota = +tota - +discount1;
@@ -638,7 +670,7 @@ function getProductList1()
 		                    	
 		                    	//buy price ex tax user
 	                    		
-	                    		if(buyPriceEx != "0" && buyPrice == 0){
+	    /*                		if(buyPriceEx != "0" && buyPrice == 0){
 	                    		
 	                    		
 	                    			totAmt = quantity * buyPriceEx;
@@ -681,18 +713,11 @@ function getProductList1()
 			                    		
 			                    	}
 			                    	
-			                    	/*if(gst !=0 && igst !=0){
-			                    		alert("please enter either gst or igst");
-			                    		var abc = 0;
-				                    	$("#jqGrid1").jqGrid("setCell", rowId, "vat", abc);
-				                    	$("#jqGrid1").jqGrid("setCell", rowId, "igst", abc);
-				                    	return false;
-			                    	}
-			                    	*/
+			                    	
 
 			                    	
 	                    		
-	                    		}
+	                    		}*/
 	                    		
 	                    		/*if(buyPriceEx !=0 && buyPrice !=0){
 		                    		alert("please enter either BP or BPExtax");
@@ -705,9 +730,9 @@ function getProductList1()
 		                    	
 		                    	
 		                    	
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
+		           //         	$("#jqGrid1").jqGrid("setCell", rowId, "buyPriceIncTax", BPIncTax.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "discountAmt", discount1);
-		                    	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
+		           //         	$("#jqGrid1").jqGrid("setCell", rowId, "gstamt", taxAmount.toFixed(2));
 		                    	//$("#jqGrid1").jqGrid("setCell", rowId, "Total", finaltota);
 		                    	var Total = 0;
 		                    	var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
@@ -844,6 +869,25 @@ function validateRegGoodReceiveOil(){
 
 function regGoodReceiveOil(){
 document.getElementById("btnSubmit1").disabled = true; 
+
+
+/*var input1 = document.getElementById('itemName1'),
+list1 = document.getElementById('itemId_drop1'),
+i,itemId,catname;
+for (i = 0; i < list1.options.length; ++i) {
+if (list1.options[i].value === input1.value) {
+	//itemId = list1.options[i].getAttribute('data-value');
+	catname = list1.options[i].getAttribute('data-value');
+}
+}
+
+var purchaseId=itemId.split(",")[0];
+var prodId=itemId.split(",")[1];
+alert("BRANDNAME++++++"+prodId)*/
+
+
+
+
 var params= {};
 var count = jQuery("#jqGrid1").jqGrid('getGridParam', 'records');
 var allRowsInGrid1 = $('#jqGrid1').getGridParam('data');
@@ -934,6 +978,9 @@ if(Total == undefined){
 }
 params["Total"+i] = Total;
 
+var modelName = allRowsInGrid1[i].modelName;
+//alert("MDL++++++"+modelName)
+params["modelName"+i] = modelName;
 
 
 }
@@ -947,6 +994,9 @@ if (list.options[i].value === input.value) {
 	supplierId = list.options[i].getAttribute('data-value');
 }
 }
+
+
+
 
 var billNo = $('#billNo1').val();
 var contactPerson=$('#contactPerson1').val();
@@ -1585,55 +1635,103 @@ function resOtherBill(){
 	for (var i = 0; i < count; i++) {
 	
 		var pk_temp_id = allRowsInGrid1[i].pk_temp_id;
+		if(pk_temp_id=="" || pk_temp_id==null || pk_temp_id==undefined){
+			pk_temp_id=0;
+		 }
      	params["pk_temp_id"+i] = pk_temp_id;
 		
 		var item_id = allRowsInGrid1[i].pkProductId;
-     	params["item_id"+i] = item_id;
+		if(item_id=="" || item_id==null || item_id==undefined){
+			item_id=0;
+		 }
+		params["item_id"+i] = item_id;
      	
 		var itemName = allRowsInGrid1[i].itemName;
+		if(itemName=="" || itemName==null || itemName==undefined){
+			itemName="NA";
+		 }
 		params["itemName"+i] = itemName;
 		
 		var quantity = allRowsInGrid1[i].quantitydouble;
+		if(quantity=="" || quantity==null || quantity==undefined){
+			quantity=0;
+		 }
 		params["quantity"+i] = quantity;
 		
 		/*var barcodeNo = allRowsInGrid1[i].barcodeNo;
 		params["barcodeNo"+i] = barcodeNo;
 		*/
 		var categoryName = allRowsInGrid1[i].categoryName;
+		if(categoryName=="" || categoryName==null || categoryName==undefined){
+			categoryName="NA";
+		 }
 		params["categoryName"+i] = categoryName;
 
 		var salePrice = allRowsInGrid1[i].salePrice;
 		//alert("salePrice++++"+salePrice)
+		if(salePrice=="" || salePrice==null || salePrice==undefined){
+			salePrice=0;
+		 }
 		params["salePrice"+i] = salePrice;
 		
 		var total = allRowsInGrid1[i].total;
+		if(total=="" || total==null || total==undefined){
+			total=0;
+		 }
 		params["total"+i] = total;
 		
 		var hsnSacNo = allRowsInGrid1[i].hsnsacno;
+		if(hsnSacNo=="" || hsnSacNo==null || hsnSacNo==undefined){
+			hsnSacNo=0;
+		 }
 		params["hsnSacNo"+i] = hsnSacNo;
 		
 		var vat = allRowsInGrid1[i].vat;
+		if(vat=="" || vat==null || vat==undefined){
+			vat=0;
+		 }
 		params["vat"+i] = vat;
 		
 		var igst = allRowsInGrid1[i].igst;
+		if(igst=="" || igst==null || igst==undefined){
+			igst=0;
+		 }
 		params["igst"+i] = igst;
 		
 		var taxAmount = allRowsInGrid1[i].taxAmt;
+		if(taxAmount=="" || taxAmount==null || taxAmount==undefined){
+			taxAmount=0;
+		 }
 		params["taxAmount"+i] = taxAmount;
 		
 		var discountGrid = allRowsInGrid1[i].discount;
+		if(discountGrid=="" || discountGrid==null || discountGrid==undefined){
+			discountGrid=0;
+		 }
 		params["discountGrid"+i] = discountGrid;
 		
 		var discountAmt = allRowsInGrid1[i].discountAmt;
+		if(discountAmt=="" || discountAmt==null || discountAmt==undefined){
+			discountAmt=0;
+		 }
 		params["discountAmt"+i] = discountAmt;
 		
 		var NumberofBarrel = allRowsInGrid1[i].NumberofBarrel;
+		if(NumberofBarrel=="" || NumberofBarrel==null || NumberofBarrel==undefined){
+			NumberofBarrel=0;
+		 }
 		params["NumberofBarrel"+i] = NumberofBarrel;
 		
 		var TotalLitre = allRowsInGrid1[i].TotalLitre;
+		if(TotalLitre=="" || TotalLitre==null || TotalLitre==undefined){
+			TotalLitre=0;
+		 }
 		params["TotalLitre"+i] = TotalLitre;
 		
 		var TotalQuan = allRowsInGrid1[i].TotalQuan;
+		if(TotalQuan=="" || TotalQuan==null || TotalQuan==undefined){
+			TotalQuan=0;
+		 }
   		params["TotalQuan"+i] = TotalQuan;
   		
   		var buyPriceExTax = allRowsInGrid1[i].buyPriceExTax;
@@ -1654,14 +1752,21 @@ function resOtherBill(){
 	    
 
 	    var totalAmount=$('#totalAmountOil').val();
-	    
+	    if(totalAmount == "" || totalAmount == null || totalAmount == undefined){
+	    	totalAmount = 0;
+	    }
 	    var discount=$('#discountOil').val();
 	    if(discount == "" || discount == null || discount == undefined){
 	    	discount = 0;
 	    }
 	    var grossTotal=$('#grossTotalOil').val();
+	    if(grossTotal == "" || grossTotal == null || grossTotal == undefined){
+	    	grossTotal = 0;
+	    }
 	    var wholeTotal=$('#wholeTotal').val();
+	    var bill=$('#bill').val();
 	    
+	    params["bill"] = bill;
 		params["count"] = count;
 		params["totalAmount"] = totalAmount;
 		params["discount"] = discount;

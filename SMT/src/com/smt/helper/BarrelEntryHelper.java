@@ -245,6 +245,9 @@ public class BarrelEntryHelper {
 
 			String TotalQuan = request.getParameter("TotalQuan" + i);
 			gd.setTotalQuan(Double.parseDouble(TotalQuan));
+			
+			String modelName = request.getParameter("modelName" + i);
+			gd.setModelName(modelName);
 
 
 			String extraDiscount = request.getParameter("extraDiscount");
@@ -318,6 +321,8 @@ public class BarrelEntryHelper {
 				newEntry.setTotalLitre(totalLitrePurchased);
 				newEntry.setCatName(catName);
 				//newEntry.setTotalpurchased(totalLitrePurchased);
+				newEntry.setModelName(modelName);
+				System.out.println("Stock++++++" + newEntry.getModelName());
 
 				StockDao dao2 = new StockDao();
 				dao2.registerStock(newEntry);
@@ -370,7 +375,7 @@ public class BarrelEntryHelper {
 							newEntry.setCatName(catName);
 							//newEntry.setTotalLitre(Double.parseDouble(TotalLitre));
 							newEntry.setTotalLitre(totalLitrePurchased);
-
+							newEntry.setModelName(modelName);
 							StockDao dao2 = new StockDao();
 							dao2.registerStock(newEntry);
 
@@ -547,13 +552,16 @@ public class BarrelEntryHelper {
 			String newDate = df.format(dateobj);
 			cust.setCurrent_date(dateobj);
 
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			String billnoo = request.getParameter("bill");
+			System.out.println("bill from ui - "+billnoo);
+			
+			session3.setAttribute("BillNo", billnoo);
+			if (billnoo == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo(BillNo);
+				cust.setBillNo(Long.parseLong(billnoo));
 			}
-
+			System.out.println("bill - "+cust.getBillNo());
 			BarrelEntryDao dao = new BarrelEntryDao();
 			dao.registerBill(cust);
 
@@ -756,13 +764,15 @@ public class BarrelEntryHelper {
 			String newDate = df.format(dateobj);
 			cust.setCurrent_date(dateobj);
 
-			session3.setAttribute("BillNo", BillNo);
-			if (BillNo == null) {
+			String billl = request.getParameter("billl");
+			System.out.println("bill fro ui   - "+billl);
+			session3.setAttribute("BillNo", billl);
+			if (billl == null) {
 				cust.setBillNo(1l);
 			} else {
-				cust.setBillNo(BillNo);
+				cust.setBillNo(Long.parseLong(billl));
 			}
-
+			System.out.println("bil set oil  - "+cust.getBillNo());
 			BarrelEntryDao dao = new BarrelEntryDao();
 			dao.registerBillqq(cust);
 

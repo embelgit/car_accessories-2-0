@@ -1099,7 +1099,7 @@ public List<SaleReport> dayCloseReport() {
 		System.out.println(df.format(dateobj));
 		String newDate = df.format(dateobj);
 		 Long k = 0l;
-	 Query query2 = session.createSQLQuery("select s.BillNo, s.BarcodeNo, s.ItemName, s.CategoryName, s.SalePrice, s.totalperitem, s.Discount, s.Quantity from customerbill s where s.Date =:newDate UNION select o.BillNo, o.BarcodeNo, o.ItemName, o.CategoryName, o.SalePrice, o.totalperitem, o.Discount, o.Quantity from otherbill o where o.Date =:newDate UNION select c.BillNo, c.BarcodeNo, c.ItemName, c.CategoryName, c.SalePrice, c.totalperitem, c.Discount, c.Quantity from creditcustomerbill c where c.Date =:newDate");
+	 Query query2 = session.createSQLQuery("select s.BillNo, s.BarcodeNo, s.ItemName, s.CategoryName, s.SalePrice, s.totalperitem, s.Discount, s.Quantity from customerbill s where s.Date =:newDate UNION select o.BillNo, o.BarcodeNo, o.ItemName, o.CategoryName, o.SalePrice, o.totalperitem, o.Discount, o.Quantity from otherbill o where o.Date =:newDate UNION select c.BillNo, c.BarcodeNo, c.ItemName, c.CategoryName, c.SalePrice, c.totalperitem, c.Discount, c.Quantity from creditcustomerbill c where c.Date =:newDate   UNION select b.BillNo,COALESCE(sum(b.BarcodeNo),0), b.ItemName, b.CategoryName, b.SalePrice, b.totalperitem, b.Discount , b.Quantity from barreloilbilling b where b.Date =:newDate UNION select sb.BillNo, COALESCE(sum(sb.BarcodeNo),0),sb.service_item, COALESCE(sum(sb.CategoryName),0),sb.service_saleprice, sb.service_totalGrid,sb.service_disc_grid, sb.service_quantity from service_billing sb where sb.Date =:newDate");
 	 query2.setParameter("newDate", newDate);
 	
         List<Object[]> list = query2.list();
@@ -1107,11 +1107,14 @@ public List<SaleReport> dayCloseReport() {
        
 		
 		for (Object[] object : list) {
-			System.out.println("kjhhv "+Arrays.toString(object));
+			System.out.println("priya "+Arrays.toString(object));
 			SaleReport reports = new SaleReport();
 			k++;
 			reports.setSrNo(k);
 			reports.setBillNo(Long.parseLong(object[0].toString()));
+			
+		
+			
 			reports.setBarcodeNo(Long.parseLong(object[1].toString()));
 			reports.setItemName(object[2].toString());
 			reports.setCategoryName(object[3].toString());

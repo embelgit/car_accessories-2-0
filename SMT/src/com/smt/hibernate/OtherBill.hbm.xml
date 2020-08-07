@@ -24,7 +24,18 @@
 		column="CategoryName"
 		/>
 		
+		<property
+		name="location" 
+		type="java.lang.String" 
+		column="location"
+		/>
 		
+		
+		<property
+		name="note" 
+		type="java.lang.String" 
+		column="note"
+		/>
 		
 		 <property
 		name="quantity" 

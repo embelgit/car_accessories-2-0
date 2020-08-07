@@ -81,8 +81,9 @@
 
 <%
 response.setContentType("application/pdf");
-Long billno = (Long) session.getAttribute("BillNo");
-
+//Long billno = (Long) session.getAttribute("BillNo");
+	Long billno = (Long) session.getAttribute("BillNo");
+	System.out.println("bill in pdf - "+billno);
 	
 	int itemCount = 0;
 	int quantCount = 0;
@@ -171,8 +172,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		String saleDate = rs.getString("Date");
 		String grossTotal123 = rs.getString("GrossTotal");
 		String location = rs.getString("location");
-		String note = rs.getString("note");
-		
+		String note=rs.getString("note");
 //		String vehicle = rs.getString("vehicle");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
 		
@@ -793,7 +793,7 @@ Long billno = (Long) session.getAttribute("BillNo");
 		document.close();
 		
 		////////email functionality/////// 
- 		try{
+		try{
 	          Session mailSession = Session.getInstance(System.getProperties());
 	          Transport transport = new SMTPTransport(mailSession,new URLName("smtp.gmail.com"));
 	          transport = mailSession.getTransport("smtps");
@@ -828,11 +828,11 @@ Long billno = (Long) session.getAttribute("BillNo");
 	          transport.close();
 	          out.println("Thanks for sending mail!");
 	        }
-	         
-        	catch(Exception e){
+	        catch(Exception e){
 	          out.println(e.getMessage());
 	          e.printStackTrace();
 	        }
+
 		
 
 	} catch (DocumentException de) {

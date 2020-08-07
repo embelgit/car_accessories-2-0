@@ -81,7 +81,8 @@
 
 <%
 	response.setContentType("application/pdf");
-	 Long billno = (Long) session.getAttribute("carBillNO");
+	Long billno = (Long) session.getAttribute("CustomerBillNo");
+		System.out.println("bill no - -  -- -   "+billno);									   
 
 	
 	int itemCount = 0;
@@ -1510,7 +1511,7 @@
 		
 
 
-		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nNote :   "+desp));
+		InfoTable_cell23 = new PdfPCell(new Phrase("\n \nNote :  "+desp));
 		InfoTable_cell23.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell23.setBorder(Rectangle.NO_BORDER);
 		infotable23.addCell(InfoTable_cell23);

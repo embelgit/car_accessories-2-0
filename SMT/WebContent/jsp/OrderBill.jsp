@@ -238,8 +238,9 @@ function grasstotalSpare(){
     	    	  document.getElementById("vehicleName").value = vehname;
     	    	  
     	    	  document.getElementById(ab).style.backgroundColor = "green";
+    	    	  
     	    	  getitemDataByCarNo();
-    	    	 
+    	    
     	    	  }
     	    	  else{
     	    		  document.getElementById(ab).style.backgroundColor = "red";
@@ -440,8 +441,8 @@ function calgrosstot(){
 		</script>
 		
 				</div> 
-				
-				<div class="row">
+				<!--  -->
+				<div class="row" style="display: none;">
 						<div class="col-md-2" align="right">
 
 							<label class="control-label" >Bill No:</label>
@@ -888,22 +889,23 @@ function calgrosstot(){
 		</div>
 			</div>
 	
-						<div class="row form-group" id="ccc">
+						<div class="row form-group" >
 							<div class="col-md-3" align="right">
-								<label class="control-label" > Description: </label>
+								<label class="control-label" > Note: </label>
 							</div>
 							<div class="col-md-3">
 							
 								<input type="text" class="form-control" id="creditdescription"  placeholder="Note"/>
 							</div> 
 							
-							<div class="col-md-2" align="right">
+							<div id="ccc">
+							<div class="col-md-2" align="right" >
 								<label class="control-label"  >Net Paid Amount: </label>
 							</div>
 							<div class="col-md-3">
 								<input type="text" class="form-control" id="paidAmt"  placeholder="Paid Amount" />
 							</div> 
-							
+							</div>
 							
 						</div> 
 		      

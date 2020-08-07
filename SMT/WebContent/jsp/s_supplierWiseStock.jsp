@@ -154,8 +154,9 @@
 				<th>Item Name</th>
 				<th>Quantity</th>
 				<th>Buy Price</th>
+				<th>Buy PriceEx </th>
 				<th>Tax Percentage</th>
-				<th>Buy PriceExTax</th>
+				
 			</tr>
 		</thead>
 		<tfoot>
@@ -266,16 +267,19 @@
 
 				<th>Item Name</th>
 				<th>Category Name</th>
+				<th>Model Name</th>
 				<th>No of Barrel</th>
 				<th>Total Litre</th>
 				<th>Buy Price</th>
+				<th>Buy PriceEx</th>
 				<th>Tax Percentage</th>
-				<th>Buy PriceExTax</th>
+				
 			</tr>
 		</thead>
 		<tfoot>
 		<tr>	
 		 <th colspan="3" style="text-align: right">Total:</th>
+		<th></th>
 		<th></th>
 		<th></th>
 		<th></th>

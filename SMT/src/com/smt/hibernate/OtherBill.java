@@ -26,18 +26,39 @@ public class OtherBill {
 	private Double taxAmount;
 	private Double discountGrid;
 	private Double discountAmt;
-
+	private String location;
 	private Double totalQuan;
     private Double buyPriceEXTax;
     private String description;
 
  //   private String vehicle;
 	
+    private String note;
     
 	
 
+	public String getNote() {
+		return note;
+	}
+
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+
 	public String getDescription() {
 		return description;
+	}
+
+
+	public String getLocation() {
+		return location;
+	}
+
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 

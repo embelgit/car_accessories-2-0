@@ -23,6 +23,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Order Bill</title>
 	
+	<!--      <script src="/SMT/staticContent/js/jquery-1.12.3.min.js"></script>
+	     <link rel="stylesheet" href="/SMT/staticContent/css/shree.css">
+	     <link rel="stylesheet" href="/SMT/staticContent/y_css/ui.jqgrid.min.css">
+	     <link rel="stylesheet" href="/SMT/staticContent/y_css/jquery-ui.css">
+	     <link rel="stylesheet" href="/SMT/staticContent/y_css/ui.jqgrid.css">
+	     <script src="/SMT/staticContent/y_js/jquery-ui.min.js"></script>
+	     <script src="/SMT/staticContent/js/jquery-ui.js"></script>
+	     <script src="/SMT/staticContent/js/jqueryUi.js"></script>
+	     <script src="/SMT/staticContent/y_js/jquery.jqgrid.min.js"></script>
+	       
+         <script src="/SMT/staticContent/js/otherOrder.js"></script>
+          <script src="/SMT/staticContent/js/creditCustBill.js"></script> --> 
+
+
 	     <script src="/SMT/staticContent/js/jquery-1.12.3.min.js"></script>
 	     <link rel="stylesheet" href="/SMT/staticContent/css/shree.css">
 	     <link rel="stylesheet" href="/SMT/staticContent/y_css/ui.jqgrid.min.css">
@@ -35,7 +49,6 @@
 	       
          <script src="/SMT/staticContent/js/otherOrder.js"></script>
           <script src="/SMT/staticContent/js/creditCustBill.js"></script> 
-
 
 <style type="text/css">
 
@@ -97,7 +110,7 @@ function grasstotal(){
 
 		<div class="row">
 			<%-- <h4 align="right" style="color: red; margin-right: 130px;">Bill No :: <%out.println(BillNo); %></h4> --%>
-			<h4 align="right" style="color: red; margin-right: 50px;">A/ <%out.println(todayDate); %>/00<%out.println(BillNo); %></h4>
+			<h4 align="right" style="color: red; margin-right: 50px;">MB/ <%out.println(todayDate); %>/00<%out.println(BillNo); %></h4>
 		</div>
 
 		<div class="row">
@@ -166,7 +179,14 @@ function grasstotal(){
 							</span> 
 										<input type="text" class="form-control" id="carNo" name="carNo" placeholder="Vehicle No" />
 					     </div>	
-					     </div></div>
+					     </div>
+					      <div class="col-md-2" align="right">
+							<label class="control-label" >Location :</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="location" placeholder="Location"/>
+						</div>
+					     </div>
 				
 			      <div class="row">
 			      
@@ -289,7 +309,12 @@ function grasstotal(){
 							  </div> 
 							</div>
 							
-							
+							<div class="col-md-2" align="right">
+							<label class="control-label" >Description :</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="description" placeholder="Description"/>
+						</div>
 							<!-- <div class="col-md-2" align="right">
 							<label class="control-label" >Vehicle No:</label>
 						</div>
@@ -337,11 +362,11 @@ function grasstotal(){
 						
  						<div class="row form-group" >
 							<div class="col-md-3" align="right">
-								<label class="control-label" > Description: </label>
+								<label class="control-label" > Note : </label>
 							</div>
 							<div class="col-md-3">
 							
-								<input type="text" class="form-control" id="description"  placeholder="Note"/>
+								<input type="text" class="form-control" id="note"  placeholder="Note"/>
 							</div> 
 						</div> 
 						 </div> 
@@ -351,7 +376,7 @@ function grasstotal(){
 				<div class="row" style="margin-top:20px;">
 				  <div class="form-group">
 					<div align="center" class="margin-top-10">
-						<button type='button' class="btn btn-success btn-lg bottomButtons btn-md button_hw button_margin_right" id="btnSubmit"  onclick=" return resotherbill10();" >Save</button>
+						<button type='button' class="btn btn-success btn-lg bottomButtons btn-md button_hw button_margin_right" id="btnSubmit"  onclick="resotherbill10()" >Save</button>
 						<button type='button' class="btn btn-danger btn-lg bottomButtons btn-md button_hw button_margin_right">Cancel</button>
 					</div>
 				  </div>	

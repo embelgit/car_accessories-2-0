@@ -25,7 +25,7 @@ import com.smt.utility.HibernateUtility;
 public class GoodReciveDao {
 
 	public void regGoodReceive(GoodReceive gd) {
-		// TODO Auto-generated method stub
+		
 		
 		
 		HibernateUtility hbu = null ;
@@ -127,7 +127,7 @@ public class GoodReciveDao {
 
 
 	public void updateQuantity(Long item_id,String quantity) {
-		// TODO Auto-generated method stub
+		
 		
 		HibernateUtility hbu=null;
 		Session session=null;
@@ -171,7 +171,7 @@ public class GoodReciveDao {
 
     //BarcodeWise Stock
 	public List<GoodReceive> getCategoryWiseStock(Long barcodeNo) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<GoodReceive> catList=null;
@@ -179,7 +179,7 @@ public class GoodReciveDao {
 		{
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, billNo, barcodeNo, vat, igst,total from GoodReceive where barcodeNo=:barcodeNo");
+		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, billNo, barcodeNo, vat, igst,total,buyPriceEx from GoodReceive where barcodeNo=:barcodeNo");
 		 query2.setParameter("barcodeNo", barcodeNo);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodReceive>(0);
@@ -204,6 +204,8 @@ public class GoodReciveDao {
 					reports.setVat(Double.parseDouble(gst));
 				}
 				reports.setTotal(Double.parseDouble(object[8].toString()));
+				reports.setBuyPriceEx(Double.parseDouble(object[9].toString()));
+				
 				catList.add(reports); 
 		
 			}}
@@ -228,7 +230,7 @@ public class GoodReciveDao {
 
 			 //CategoryName,TotalLitre,BuyPrice,vat,igst FROM goodreceivebarrel
 			 //Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo from GoodReceive where barcodeNo=:barcodeNo");
-			 Query query2 = session.createSQLQuery("select barcodeNo, itemName, CategoryName, quantity, buyPrice, Vat, igst,buyPriceEXTax from GoodReceive where FksuppId ="+ suppId +" AND Date between '"+ fDate +"' and '"+ eDate +"';");
+			 Query query2 = session.createSQLQuery("select barcodeNo, itemName, CategoryName, quantity, buyPrice, Vat, igst,buyPriceEXTax,buyPriceEx from GoodReceive where FksuppId ="+ suppId +" AND Date between '"+ fDate +"' and '"+ eDate +"';");
 			 //query2.setParameter("barcodeNo", barcodeNo);
 		        List<Object[]> list = query2.list();
 		        catList= new ArrayList<GoodReceive>(0);
@@ -252,6 +254,7 @@ public class GoodReciveDao {
 						reports.setVat(Double.parseDouble(gst));
 					}
 					reports.setBuyPriceEXTax(Double.parseDouble(object[7].toString()));
+					reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
 					catList.add(reports); 
 			
 				}}
@@ -274,7 +277,7 @@ public class GoodReciveDao {
 
 			 //CategoryName,TotalLitre,BuyPrice,vat,igst FROM goodreceivebarrel
 			 //Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo from GoodReceive where barcodeNo=:barcodeNo");
-			 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, TotalLitre,buyPrice, Vat, igst,buyPriceEXTax from goodreceivebarrel where FksuppId ='"+suppId+"' AND Date BETWEEN '"+ fDate +"' and '"+ eDate +"'");
+			 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, TotalLitre,buyPrice, Vat, igst,buyPriceEx,modelName from goodreceivebarrel where FksuppId ='"+suppId+"' AND Date BETWEEN '"+ fDate +"' and '"+ eDate +"'");
 
 			 //query2.setParameter("barcodeNo", barcodeNo);
 		        List<Object[]> list = query2.list();
@@ -299,7 +302,8 @@ public class GoodReciveDao {
 					if(igst.equals("0.0")){
 						reports.setVat(Double.parseDouble(gst));
 					}
-					reports.setBuyPriceEXTax(Double.parseDouble(object[7].toString()));
+					reports.setBuyPriceEx(Double.parseDouble(object[7].toString()));
+					reports.setModelName(object[8].toString());
 					catList.add(reports); 
 			
 				}}
@@ -366,7 +370,7 @@ public List getBarcode() {
 
     // bill no wise stock
 	public List<GoodReceive> getBillNoWiseStock(String billno) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<GoodReceive> catList=null;
@@ -375,7 +379,7 @@ public List getBarcode() {
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
 //		 Query query2 = session.createQuery("select itemName, catName, quantity, buyPrice, salePrice, billNo, barcodeNo, vat, igst from GoodReceive where billNo=:billno");
-		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst,buyPriceEXTax from GoodReceive where billNo='"+billno+"'");
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, quantity, buyPrice,  billNo, barcodeNo, vat, igst,buyPriceEx  from GoodReceive where billNo='"+billno+"'");
 //		 query2.setParameter("billno", billno);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodReceive>(0);
@@ -400,7 +404,7 @@ public List getBarcode() {
 				if(igst.equals("0.0")){
 					reports.setVat(Double.parseDouble(gst));
 				}
-				reports.setBuyPriceEXTax(Double.parseDouble(object[3].toString()));
+				reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
 				catList.add(reports); 
 		
 			}}
@@ -414,7 +418,7 @@ public List getBarcode() {
 
 
 	public List<PurchaseReportBean> singleDatePurchase(Date adate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReportBean> catList=null;
@@ -765,7 +769,7 @@ public List getBarcode() {
 	
 	 //  get Previous Good Receive
 	public List<PreviousGoodReceive> getPreGoodReceive(String billNo) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PreviousGoodReceive> catList=null;
@@ -811,7 +815,7 @@ public List getBarcode() {
 
 // get all main barcode no
 	public List getAllMainBarcodeNo() {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List list=null;
@@ -836,7 +840,7 @@ public List getBarcode() {
 	
 	//Barcode wise report
 	public List<BarcodeReportBean> BarcodeWiseReport(Long barcodeId) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<BarcodeReportBean> catList=null;
@@ -878,7 +882,7 @@ public List getBarcode() {
 
 // Deactive the PaymentMode
 	public void DeActivePaymentDone(String billNo, String supplier) {
-		// TODO Auto-generated method stub
+
 		
 		com.smt.utility.HibernateUtility hbu=null;
 		Session session=null;
@@ -925,7 +929,7 @@ public List getBarcode() {
 
 	//Supplier Wise Purchase Report 
 	public List<PurchaseReport> supplierAllPurchase(long supplier) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -981,7 +985,7 @@ public List getBarcode() {
 
 //Purchase Report Supplier Bill No Wise
 	public List<PurchaseReport> supplierBillWisePurchaseReport(long supplier, String billNo) {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1038,7 +1042,7 @@ public List getBarcode() {
 
 	//Purchase Report Category Wise
 	public List<PurchaseReport> categoryWisePurchaseReport(String catName) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1088,7 +1092,7 @@ public List getBarcode() {
 
 	//Purchase Report Barcode No Wise
 	public List<PurchaseReport> barcodeWisePurchaseReport(String barcodeNoOurchase) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1138,7 +1142,7 @@ public List getBarcode() {
 	//Purchase Report Single Date
 
 	public List<PurchaseReport> singleDatePurchase45(Date adate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1194,7 +1198,7 @@ public List getBarcode() {
 
 	//Purchase Report Two Date
 	public List<PurchaseReport> twoDatePurchase45(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1250,7 +1254,7 @@ public List getBarcode() {
 
 	//CA Purchase Report Two Date
 	public List<PurchaseReport> caReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReport> catList=null;
@@ -1294,7 +1298,7 @@ public List getBarcode() {
 
 	//TALLY Purchase Report Two Date
 	public List<TallyPurchaseReport> tallyReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<TallyPurchaseReport> catList=null;
@@ -1352,7 +1356,7 @@ public List getBarcode() {
 
 	// Between Two Dates Tally Reports
 	public List<TallyPurchaseReport> tallyPurchaseReportBetweenTwoDates(Date adate, Date bdate) {
-		// TODO Auto-generated method stub
+		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<TallyPurchaseReport> catList=null;
@@ -1378,7 +1382,7 @@ public List getBarcode() {
 	         System.out.println("supplier id:: "+suppId);
 	         System.out.println("Bill No : "+billNo1 +"   Count Of Bill No : " + billCount);
 	         
-	         Query query4 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice, BarcodeNo, FinalExpense, BillNo, Date, TaxAmount, GrossTotal, supplier_name from goodreceive left join supplier_details on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId");
+	         Query query4 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice, BarcodeNo, FinalExpense, BillNo, Date, TaxAmount, GrossTotal, supplier_name from goodreceive left join supplier_details on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst, BuyPrice,COALESCE(sum(BarcodeNo),0), FinalExpense, BillNo, Date,TaxAmount, GrossTotal, supplier_name from goodreceivebarrel g left join supplier_details s on FksuppId = supplier_id where BillNo=:billNo1 AND FksuppId=:suppId");
 	         query4.setParameter("billNo1", billNo1);
 	         query4.setParameter("suppId", suppId);
 		        List<Object[]> list5 = query4.list();
@@ -1543,8 +1547,80 @@ public List getBarcode() {
 	}	
 	
 	
+//get purchase oil bill no
+public List getBillNo1() {
 	
+	HibernateUtility hbu=null;
+	Session session=null;
+	List list=null;
+	try{
+	 hbu = HibernateUtility.getInstance();
+	 session = hbu.getHibernateSession();
+	 Query query = session.createQuery("from GoodsReceiveBarrelHibernate group by billNo");
+	 list = query.list();
+	 System.out.println("get bill no - "+query.list().size());
+	}
+		catch(RuntimeException e){	
+			Log.error("Error in getAllMainCategories()", e);
+	}
+		finally
+		{
+				if(session!=null){
+				hbu.closeSession(session);
+			}
+		}
 	
+return list;
+	
+}
+	
+// bill no wise stock
+	public List<GoodsReceiveBarrelHibernate> getBillNoWiseStock1(String billno) {
+		
+		HibernateUtility hbu=null;
+		Session session=null;
+		List<GoodsReceiveBarrelHibernate> catList=null;
+		try
+		{
+			hbu = HibernateUtility.getInstance();
+		 session = hbu.getHibernateSession();
+
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, buyPrice,  billNo, modelName, vat, igst,buyPriceEx  from goodreceivebarrel where billNo='"+billno+"'");
+//		 query2.setParameter("billno", billno);
+	        List<Object[]> list = query2.list();
+	        catList= new ArrayList<GoodsReceiveBarrelHibernate>(0);
+			
+			
+			for (Object[] object : list) {
+					
+				GoodsReceiveBarrelHibernate reports = new GoodsReceiveBarrelHibernate();
+				System.out.println("result - "+Arrays.toString(object));
+				reports.setItemName(object[0].toString());
+				reports.setCategoryName(object[1].toString());
+				reports.setNumberofBarrel(Double.parseDouble(object[2].toString()));
+				reports.setBuyPrice(Double.parseDouble(object[3].toString()));
+	
+				reports.setBillNo(object[4].toString());
+				reports.setModelName(object[5].toString());
+				String gst = object[6].toString();
+				String igst = object[7].toString();
+				if(gst.equals("0.0")){
+					reports.setVat(Double.parseDouble(igst));
+				}
+				if(igst.equals("0.0")){
+					reports.setVat(Double.parseDouble(gst));
+				}
+				reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
+				catList.add(reports); 
+		
+			}}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return catList;
+	}
+
 	
 	
 }

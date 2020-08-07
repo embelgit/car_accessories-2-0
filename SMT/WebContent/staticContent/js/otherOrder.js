@@ -506,7 +506,7 @@ function resotherbill10(){
 	}
 
 function resOtherBill10(){
-	document.getElementById("btnSubmit").disabled = true; 
+//	document.getElementById("btnSubmit").disabled = true; 
 	var params= {};
 	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
 	var allRowsInGrid1 = $('#list4').getGridParam('data');
@@ -574,7 +574,11 @@ function resOtherBill10(){
 	    	discount = 0;
 	    }
 	    
-
+	    var location=$('#location').val();
+	    if(location=="" || location==null || location==undefined){
+	    	location="NA";
+	    }
+	    
 	    var grossTotal=$('#grossTotal').val();
 	    var contactNo=$('#contactNo').val();
 	    var carNo=$('#carNo').val();
@@ -583,6 +587,17 @@ function resOtherBill10(){
 	    }
 	    
 	    var description=$('#description').val();
+	    if(description=="" || description==null || description==undefined){
+	    	description="NA";
+	    }
+	    
+	    var note=$('#note').val();
+	    if(note=="" || note==null || note==undefined){
+	    	note="NA";
+	    }
+	    
+	    params["note"] = note;
+	    params["location"] = location;
 	    params["contactNo"] = contactNo;
 	    params["custName"] = custName;
 		params["count"] = count;
@@ -595,19 +610,28 @@ function resOtherBill10(){
 		
 	    params["methodName"] = "registerOtherBill";
 	    
-		$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
-		    	{  
-			           alert(data);
+//		$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
+    	$.post('/SMT/jsp/utility/controller.jsp',params,function(data)		
+				{  
+//			           alert(data);
 					  // window.open("Other_Bill_PDF.jsp");
-			           window.open("Other_Bill_PDFNew.jsp");
-					   location.reload(true);
-			
-				 }
-		    	).error(function(jqXHR, textStatus, errorThrown){
-		    		if(textStatus==="timeout") {
-		    			$(loaderObj).hide();
-		    			$(loaderObj).find('#errorDiv').show();
-		    		}
-		    	});
-	
+//			           window.open("Other_Bill_PDFNew.jsp");
+//					   location.reload();
+//						document.getElementById("btnSubmit").disabled = false; 
+				
+    							alert(data);
+  //  				
+							  // window.open("Other_Bill_PDF.jsp");
+					           window.open("Other_Bill_PDFNew.jsp");
+						//	   location.reload(true);
+					           window.location.reload(true);
+				}
+    	
+
+	).error(function(jqXHR, textStatus, errorThrown){
+		if(textStatus==="timeout") {
+			$(loaderObj).hide();
+			$(loaderObj).find('#errorDiv').show();
+		}
+	});
 }

@@ -64,7 +64,7 @@ function getProdGrid()
 			$("#list4").jqGrid({
 				datatype: "local",
 				
-				colNames:['pk_temp_id','item_id','BarcodeNO','CatName','ItemName','HSN/SAC','Quantity','SalePrice','Discount','DiscountAmt','GST%','IGST%','Tax Amt','Total Amt'],
+				colNames:['pk_temp_id','item_id','BarcodeNO','CatName','ItemName','HSN/SAC','Quantity','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Total Amt'],
 				colModel:[ 
 				          
 				          
@@ -108,7 +108,7 @@ function getProdGrid()
 						
 					},
 					
-					{	name:'discountGrid',
+					/*{	name:'discountGrid',
 						width:100,
 						editable: true
 						
@@ -118,7 +118,20 @@ function getProdGrid()
 						width:100,
 						
 						
-					},
+					},*/
+					 {
+			        	   name: "TotalQuan",
+			        	   width: 150,
+			        	   //editable: true,
+			        	 
+			           },
+			           
+			           {
+			        	   name: "buyPriceExTax",
+			        	   width: 150,
+			        	   //editable: true,
+			        	 
+			           },
 					
 					{	name:'vat',
 						width:80,
@@ -166,6 +179,8 @@ function getProdGrid()
                 	var tota = 0;
                 	var vatAmt = 0;
                 	var totAmt = 0;
+                	var BPExTax=0;
+                	var taxAmount=0;
                 	
                 	
                 	if(gst != "")
@@ -225,6 +240,9 @@ function getProdGrid()
 					$("#list4").jqGrid("setCell",rowId, "gst", abc);
 					return false;
 					}
+                	
+                	
+                	
                 	tota = quantity * salePrice;
                 	totAmt = quantity * salePrice;
                 	
@@ -245,19 +263,36 @@ function getProdGrid()
                 	if(igst ==null || igst==0 || igst==""){
                 		
                     	
-                    	var calculateVatTotal = (gst / 100)*finalTotal;
-                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+                  //  	var calculateVatTotal = (gst / 100)*finalTotal;
+      //              	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+                    	
+                    	BPExTax=totAmt/(1+(gst/100));
+                		taxAmount=totAmt-BPExTax;
+                		
+                		
+                    	
+                    	
                     	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
                     	}
                     	else if(igst !=null || igst!=0|| igst!=""){
                     		
-                    		var calculateVatTotal = (igst / 100)*finalTotal;
-	                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+//                    		var calculateVatTotal = (igst / 100)*finalTotal;
+	//                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+	                    	
+                    		BPExTax=totAmt/(1+(igst/100));
+                    		taxAmount=totAmt-BPExTax;
+	                    	
 	                    	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
                     	}
+                 	
+                 	
+                	$("#list4").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+                  	$("#list4").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));             
+                	$("#list4").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+                   	$("#list4").jqGrid("setCell", rowId, "total", totAmt.toFixed(2));              	
                 	
-                	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
-	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
+//                	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
+//	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
 	             	var Total = 0;
                 	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
     				var allRowsInGrid1 = $('#list4').getGridParam('data');
@@ -454,19 +489,35 @@ function getProdGrid()
 		                    	if(igst ==null || igst==0 || igst==""){
 		                    		
 		                        	
-		                        	var calculateVatTotal = (gst / 100)*finalTotal;
-		                        	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		           //             	var calculateVatTotal = (gst / 100)*finalTotal;
+		                 //       	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal);
+		            //            	
+		                        	
+		                           	BPExTax=totAmt/(1+(gst/100));
+		                    		taxAmount=totAmt-BPExTax;
+		         
+		                        	
 		                        	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
 		                        	}
 		                        	else if(igst !=null || igst!=0|| igst!=""){
 		                        		
-		                        		var calculateVatTotal = (igst / 100)*finalTotal;
-		    	                    	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		                //        		var calculateVatTotal = (igst / 100)*finalTotal;
+		    	       //             	var totalWithVatAmt = Number(finalTotal)+Number(calculateVatTotal)
+		    	                    	
+		    	                  		BPExTax=totAmt/(1+(igst/100));
+		                        		taxAmount=totAmt-BPExTax;
+		    	          
+		                        		
 		    	                    	//var totalWithVatAmtTot= Math.round(totalWithVatAmt * 100.0) / 100.0;
 		                        	}
-		                    	
-		                    	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
-		    	             	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
+		                 
+		                     	$("#list4").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+		                      	$("#list4").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));             
+		                    	$("#list4").jqGrid("setCell", rowId, "taxAmount", taxAmount.toFixed(2));
+		                       	$("#list4").jqGrid("setCell", rowId, "total", totAmt.toFixed(2));              	
+		       	    	        
+		               //     	$("#list4").jqGrid("setCell", rowId, "taxAmount", calculateVatTotal);
+		    	       //      	$("#list4").jqGrid("setCell", rowId, "total", totalWithVatAmt);
 		    	             	var Total = 0;
 		                    	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
 		        				var allRowsInGrid1 = $('#list4').getGridParam('data');
@@ -558,42 +609,81 @@ function regEstimateCustbill(){
      	params["pk_temp_id"+i] = pk_temp_id;
 		
 		var item_id = allRowsInGrid1[i].item_id;
+		if(item_id=="" || item_id==null || item_id==undefined){
+			item_id=0;
+		}
      	params["item_id"+i] = item_id;
      	
 		var itemName = allRowsInGrid1[i].itemName;
+		if(itemName=="" || itemName==null || itemName==undefined){
+			itemName="NA";
+		}
 		params["itemName"+i] = itemName;
 		
 		var quantity = allRowsInGrid1[i].quantity;
+		if(quantity=="" || quantity==null || quantity==undefined){
+			quantity=0;
+		}
 		params["quantity"+i] = quantity;
 		
 		var barcodeNo = allRowsInGrid1[i].barcodeNo;
+		if(barcodeNo=="" || barcodeNo==null || barcodeNo==undefined){
+			barcodeNo=0;
+		}
 		params["barcodeNo"+i] = barcodeNo;
 		
 		var categoryName = allRowsInGrid1[i].categoryName;
+		if(categoryName=="" || categoryName==null || categoryName==undefined){
+			categoryName="NA";
+		}
 		params["categoryName"+i] = categoryName;
 
 		var salePrice = allRowsInGrid1[i].salePrice;
+		if(salePrice=="" || salePrice==null || salePrice==undefined){
+			salePrice=0;
+		}
 		params["salePrice"+i] = salePrice;
 		
 		var total = allRowsInGrid1[i].total;
+		if(total=="" || total==null || total==undefined){
+			total=0;
+		}
 		params["total"+i] = total;
 		
 		var hsnSacNo = allRowsInGrid1[i].hsnSacNo;
+		if(hsnSacNo=="" || hsnSacNo==null || hsnSacNo==undefined){
+			hsnSacNo=0;
+		}
 		params["hsnSacNo"+i] = hsnSacNo;
 		
 		var vat = allRowsInGrid1[i].vat;
+		if(vat=="" || vat==null || vat==undefined){
+			vat=0;
+		}
 		params["vat"+i] = vat;
 		
 		var igst = allRowsInGrid1[i].igst;
+		if(igst=="" || igst==null || igst==undefined){
+			igst=0;
+		}
 		params["igst"+i] = igst;
 		
 		var taxAmount = allRowsInGrid1[i].taxAmount;
+		if(taxAmount=="" || taxAmount==null || taxAmount==undefined){
+			taxAmount=0;
+		}
 		params["taxAmount"+i] = taxAmount;
 		
 		var discountGrid = allRowsInGrid1[i].discountGrid;
+		if(discountGrid=="" || discountGrid==null || discountGrid==undefined){
+			discountGrid=0;
+		}
 		params["discountGrid"+i] = discountGrid;
 		
 		var discountAmt = allRowsInGrid1[i].discountAmt;
+		if(discountAmt=="" || discountAmt==null || discountAmt==undefined){
+			discountAmt=0;
+		}
 		params["discountAmt"+i] = discountAmt;
 		
 
@@ -647,7 +737,13 @@ function regEstimateCustbill(){
 	    var CustomerId=$('#CustomerId').val();
 	    var wholeTotal=$('#wholeTotal').val();
 	    var carNo=$('#carNo').val();
-	  /* ///SERVICE GRID 
+	  
+	    var note=$('#note').val();
+	    if(note=="" || note == null || note==undefined){
+	    	note="NA";
+		}
+	    
+	    /* ///SERVICE GRID 
 	    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 		var allRowsInGrid1 = $('#list5').getGridParam('data');
 		var AllRows=JSON.stringify(allRowsInGrid1);
@@ -709,6 +805,9 @@ function regEstimateCustbill(){
 	    if(description=="" || description == null || description==undefined){
 	    	description="NA";
 		}
+	    
+	    
+	    params["note"] = note;
 	    params["gstTinNo"] = gstTinNo;
 	    params["input1"] = input1;
 	    params["fkRootCustId"] = fkRootCustId;
@@ -1864,6 +1963,8 @@ var totalAmount=$('#totalAmount').val();
 var carID=$('#carID').val();
 var grossTotal=$('#grossTotal').val();
 var wholeTotal=$('#wholeTotal').val();
+var billl=$('#billl').val();
+
 //var params= {};
 	var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 	var allRowsInGrid1 = $('#list5').getGridParam('data');
@@ -1872,33 +1973,63 @@ var wholeTotal=$('#wholeTotal').val();
 	{
 	
 		var itemName1 = allRowsInGrid1[i].itemName;
+		if(itemName1=="" || itemName1==null || itemName1==undefined){
+			itemName1="NA";
+		}
 		params["itemName1"+i] = itemName1;
 		
 		var quantity1 = allRowsInGrid1[i].quantity;
+		if(quantity1=="" || quantity1==null || quantity1==undefined){
+			quantity1=0;
+		}
 		params["quantity1"+i] = quantity1;
 		
 		var salePrice1 = allRowsInGrid1[i].salePrice;
+		if(salePrice1=="" || salePrice1==null || salePrice1==undefined){
+			salePrice1=0;
+		}
 		params["salePrice1"+i] = salePrice1;
 		
 		var total1 = allRowsInGrid1[i].total;
+		if(total1=="" || total1==null || total1==undefined){
+			total1=0;
+		}
 		params["total1"+i] = total1;
 		
 		var hsnSacNo1 = allRowsInGrid1[i].hsnSacNo;
+		if(hsnSacNo1=="" || hsnSacNo1==null || hsnSacNo1==undefined){
+			hsnSacNo1=0;
+		}
 		params["hsnSacNo1"+i] = hsnSacNo1;
 		
 		var vat1 = allRowsInGrid1[i].vat;
+		if(vat1=="" || vat1==null || vat1==undefined){
+			vat1=0;
+		}
 		params["vat1"+i] = vat1;
 		
 		var igst1 = allRowsInGrid1[i].igst;
+		if(igst1=="" || igst1==null || igst1==undefined){
+			igst1=0;
+		}
 		params["igst1"+i] = igst1;
 		
 		var taxAmount1 = allRowsInGrid1[i].taxAmount;
+		if(taxAmount1=="" || taxAmount1==null || taxAmount1==undefined){
+			taxAmount1=0;
+		}
 		params["taxAmount1"+i] = taxAmount1;
 		
 		var discountGrid1 = allRowsInGrid1[i].discountGrid;
+		if(discountGrid1=="" || discountGrid1==null || discountGrid1==undefined){
+			discountGrid1=0;
+		}
 		params["discountGrid1"+i] = discountGrid1;
 		
 		var discountAmt1 = allRowsInGrid1[i].discountAmt;
+		if(discountAmt1=="" || discountAmt1==null || discountAmt1==undefined){
+			discountAmt1=0;
+		}
 		params["discountAmt1"+i] = discountAmt1;
 		
 		var TotalQuan = allRowsInGrid1[i].TotalQuan;
@@ -1917,8 +2048,13 @@ var wholeTotal=$('#wholeTotal').val();
 		
 		
 	  }
+	
+	 var billl = $('#billl').val();
+	
 	 var ServicetotalAmount=$('#ServicetotalAmount').val();
-	 
+	 if(ServicetotalAmount==""|| ServicetotalAmount==null || ServicetotalAmount==undefined){
+		 ServicetotalAmount=0;
+	 }
 	 var serdescription=$('#serdescription').val();
 	 if(serdescription==""|| serdescription==null || serdescription==undefined){
 		 serdescription="NA";
@@ -1935,7 +2071,8 @@ var wholeTotal=$('#wholeTotal').val();
 //	 alert(discounts);
 	 params["count1"] = count1;
 		//alert("count second++++  " +count1)
-	params["ServicetotalAmount"] = ServicetotalAmount;
+	params["billl"] = billl;
+	 params["ServicetotalAmount"] = ServicetotalAmount;
 	params["discounts"] = discounts;
 
 
@@ -1943,7 +2080,7 @@ var wholeTotal=$('#wholeTotal').val();
 params["contactNo"] = contactNo;
 params["ownerName"] = ownerName;
 
-
+params["billl"] = billl;
 params["carNo"] = carNo;
 params["totalAmount"] = totalAmount;
 params["serdescription"] = serdescription;
@@ -1961,7 +2098,10 @@ $.post('/SMT/jsp/utility/controller.jsp', params,
 			alert(data);
 			//window.open("Car_bill_PDF.jsp");
 			//window.open("BillingPdfNew.jsp");
-			location.reload(true);
+			
+	           window.open("EstimateBillingPdf.jsp");
+			
+	           location.reload(true);
 			
 		}).error(function(jqXHR, textStatus, errorThrown) {
 	if (textStatus === "timeout") {
@@ -2284,11 +2424,11 @@ rowNum: 10,
 		finaltota = +BPExTax - +discount1;
 		
 		}
-	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", totalWithVatAmtTot);
-	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1);
-	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal);
-	$("#list5").jqGrid("setCell", rowId, "taxAmount", taxAmount);
- 	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal);
+	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", totalWithVatAmtTot.toFixed(2));
+	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
+	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal.toFixed(2));
+	$("#list5").jqGrid("setCell", rowId, "taxAmount", BpIncTax.toFixed(2));
+ 	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal.toFixed(2));
 
  	var Total = 0;
 	var count = jQuery("#list5").jqGrid('getGridParam', 'records');
@@ -2544,11 +2684,11 @@ $('#list5').navGrid('#jqGridPager5',
             		finaltota = +BPExTax - +discount1;
             		
             		}
-            	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax);
-            	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal);
-            	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1);
-            	$("#list5").jqGrid("setCell", rowId, "taxAmount", taxAmount);
-             	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal);
+            	$("#list5").jqGrid("setCell", rowId, "buyPriceExTax", BPExTax.toFixed(2));
+            	$("#list5").jqGrid("setCell", rowId, "buyPriceIncxTax", BPIncTaxFinal.toFixed(2));
+            	$("#list5").jqGrid("setCell", rowId, "discountAmt", discount1.toFixed(2));
+            	$("#list5").jqGrid("setCell", rowId, "taxAmount", BpIncTax.toFixed(2));
+             	$("#list5").jqGrid("setCell", rowId, "total", BPIncTaxFinal.toFixed(2));
 		
              	var Total = 0;
             	var count = jQuery("#list5").jqGrid('getGridParam', 'records');
@@ -3226,49 +3366,91 @@ for (var i = 0; i < count; i++) {
  	params["pk_temp_id"+i] = pk_temp_id;
 	
 	var item_id = allRowsInGrid1[i].pkProductId;
- 	params["item_id"+i] = item_id;
+	if(item_id=="" || item_id==null || item_id==undefined){
+		item_id=0;
+	}
+	params["item_id"+i] = item_id;
  	
 	var itemName = allRowsInGrid1[i].itemName;
+	if(itemName=="" || itemName==null || itemName==undefined){
+		itemName="NA";
+	}
 	params["itemName"+i] = itemName;
 	
 	var quantity = allRowsInGrid1[i].quantitydouble;
+	if(quantity=="" || quantity==null || quantity==undefined){
+		quantity=0;
+	}
 	params["quantity"+i] = quantity;
 	
 	/*var barcodeNo = allRowsInGrid1[i].barcodeNo;
 	params["barcodeNo"+i] = barcodeNo;
 	*/
 	var categoryName = allRowsInGrid1[i].categoryName;
+	if(categoryName=="" || categoryName==null || categoryName==undefined){
+		categoryName="NA";
+	}
 	params["categoryName"+i] = categoryName;
 
 	var salePrice = allRowsInGrid1[i].salePrice;
 	//alert("salePrice++++"+salePrice)
+	if(salePrice=="" || salePrice==null || salePrice==undefined){
+		salePrice=0;
+	}
 	params["salePrice"+i] = salePrice;
 	
 	var total = allRowsInGrid1[i].total;
+	if(total=="" || total==null || total==undefined){
+		total=0;
+	}
 	params["total"+i] = total;
 	
 	var hsnSacNo = allRowsInGrid1[i].hsnsacno;
+	if(hsnSacNo=="" || hsnSacNo==null || hsnSacNo==undefined){
+		hsnSacNo=0;
+	}
 	params["hsnSacNo"+i] = hsnSacNo;
 	
 	var vat = allRowsInGrid1[i].vat;
+	if(vat=="" || vat==null || vat==undefined){
+		vat=0;
+	}
 	params["vat"+i] = vat;
 	
 	var igst = allRowsInGrid1[i].igst;
+	if(igst=="" || igst==null || igst==undefined){
+		igst=0;
+	}
 	params["igst"+i] = igst;
 	
 	var taxAmount = allRowsInGrid1[i].taxAmt;
+	if(taxAmount=="" || taxAmount==null || taxAmount==undefined){
+		taxAmount=0;
+	}
 	params["taxAmount"+i] = taxAmount;
 	
 	var discountGrid = allRowsInGrid1[i].discount;
+	if(discountGrid=="" || discountGrid==null || discountGrid==undefined){
+		discountGrid=0;
+	}
 	params["discountGrid"+i] = discountGrid;
 	
 	var discountAmt = allRowsInGrid1[i].discountAmt;
+	if(discountAmt=="" || discountAmt==null || discountAmt==undefined){
+		discountAmt=0;
+	}
 	params["discountAmt"+i] = discountAmt;
 	
 	var NumberofBarrel = allRowsInGrid1[i].NumberofBarrel;
+	if(NumberofBarrel=="" || NumberofBarrel==null || NumberofBarrel==undefined){
+		NumberofBarrel=0;
+	}
 	params["NumberofBarrel"+i] = NumberofBarrel;
 	
 	var TotalLitre = allRowsInGrid1[i].TotalLitre;
+	if(TotalLitre=="" || TotalLitre==null || TotalLitre==undefined){
+		TotalLitre=0;
+	}
 	params["TotalLitre"+i] = TotalLitre;
 	
 	var TotalQuan = allRowsInGrid1[i].TotalQuan;
@@ -3288,6 +3470,8 @@ for (var i = 0; i < count; i++) {
 	
 }
 
+var billl=$('#billl').val();
+
     var totalAmount=$('#totalAmountOil').val();
     var discount=$('#discountOil').val();
     if(discount == "" || discount == null || discount == undefined){
@@ -3299,6 +3483,7 @@ for (var i = 0; i < count; i++) {
     if(oildescription=="" || oildescription==null || oildescription==undefined){
     	oildescription="NA";
     }
+    params["billl"] = billl;
     params["oildescription"] = oildescription;
 	params["count"] = count;
 	params["totalAmount"] = totalAmount;
@@ -3312,6 +3497,7 @@ for (var i = 0; i < count; i++) {
 	    	{  
 		           alert(data);
 				   //window.open("Other_Bill_PDF.jsp");
+		           window.open("EstimateBillingPdf.jsp");
 				   location.reload(true);
 		
 			 }

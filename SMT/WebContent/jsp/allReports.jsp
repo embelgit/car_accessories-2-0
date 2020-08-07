@@ -39,10 +39,10 @@
             <ul class="nav nav-tabs tabs-left">
                 <li class="active"><a href="#purchase" data-toggle="tab">Purchase Reports</a></li>
                 <li><a href="#sell" data-toggle="tab">Sale Reports</a></li>
-                <li><a href="#stock" data-toggle="tab">Stock Reports</a></li>
+              <!--   <li><a href="#stock" data-toggle="tab">Stock Reports</a></li> -->
                 <li><a href="#vehicle" data-toggle="tab">Vehicle Bill Reports</a></li>
                 <li><a href="#miscellaneous" data-toggle="tab">Miscellaneous Bill Reports</a></li>
-                <li><a href="#credit" data-toggle="tab">Credit Customer Bill Reports</a></li>
+                <li><a href="#credit" data-toggle="tab">Credit Customer Bill Report</a></li>
             </ul>
         </div>
   <div class="col-xs-9">

@@ -159,6 +159,16 @@ public class Controller {
 		System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
 		return toJson(returnMap);
 	}
+	
+	// get bill No Wise oil Stock
+		public String getBillNoWiseStock1(HttpServletRequest request, HttpServletResponse response) {
+			CustomerOrderHelper helper = new CustomerOrderHelper();
+			List categories = helper.getBillNoWiseStock1(request, response);
+			Map<String, List> returnMap = new HashMap<String, List>();
+			returnMap.put("list", categories);
+			System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
+			return toJson(returnMap);
+		}
 
 	// get single date purchase
 	public String singleDatePurchase(HttpServletRequest request, HttpServletResponse response) {
@@ -739,7 +749,16 @@ public class Controller {
 		System.out.println("Start In regProfarmaDetail Controller");
 		return toJson("Data Added Successsfully");
 	}
-
+//
+	public String CustBillCOPYess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("Start In regProfarmaDetail Controller");
+		CarEntryHelper helper = new CarEntryHelper();
+		helper.CustomerBillCopyess(request, response);
+		System.out.println("Start In regProfarmaDetail Controller");
+		return toJson("Data Added Successsfully");
+	}
+	
+	
 	// Fetching Product Details To Edit
 	public String getProductDetailsToEdit(HttpServletRequest request, HttpServletResponse response) {
 		String productId = request.getParameter("productId");
@@ -1751,7 +1770,7 @@ public class Controller {
 						}
 						
 
-						// update product details
+
 						public String updateProductDetailsService(HttpServletRequest request, HttpServletResponse response) {
 							System.out.println("In controller update Supplier Details");
 							ServiceHelper helper = new ServiceHelper();

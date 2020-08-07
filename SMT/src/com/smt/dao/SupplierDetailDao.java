@@ -332,7 +332,7 @@ public List getAllBillBySuppliers10(String supplierId) {
 			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId,s.PkGoodRecId from goodreceivebarrel s where  s.paymentDone ='"+paymentdone+"' AND s.FksuppId='"+supplierId+"' AND s.NoOfBarrel > '0'");
 		//	query.setParameter("paymentdone",paymentdone);
 			list = query.list();
-			System.out.println("in getAllBillBySuppliers() dao query size - "+query.list().size());
+			System.out.println("in getAllBillBySuppliers() dao query size priya - "+query.list().size());
 	} catch (Exception e) {
 		e.printStackTrace();
 		// TODO: handle exception
@@ -357,7 +357,7 @@ public List getAllUnPaidBillAmount(String supplierId) {
 		 Long supId = Long.parseLong(supplierId);
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-			Query query = session.createSQLQuery("select s.BillNo,s.GrossTotal from GoodReceive s where  s.paymentDone =:paymentdone and s.FksuppId=:supId GROUP  by s.BillNo");
+			Query query = session.createSQLQuery("select s.BillNo,s.GrossTotal from GoodReceive s where  s.paymentDone =:paymentdone and s.FksuppId=:supId GROUP  by s.BillNo UNION select sb.BillNo,sb.GrossTotal from goodreceivebarrel sb  where sb.paymentDone =:paymentdone and sb.FksuppId=:supId GROUP  by sb.BillNo");
 			query.setParameter("paymentdone",paymentdone);
 			query.setParameter("supId",supId);
 			 List<Object[]> list = query.list();
@@ -390,7 +390,7 @@ public List getAllBillBySuppliers1(String supplierId) {
 		
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where s.FksuppId="+supplierId);
+			Query query = session.createSQLQuery("select s.BillNo,s.FksuppId from GoodReceive s where s.FksuppId='"+supplierId+"' UNION select gb.BillNo,gb.FksuppId from goodreceivebarrel gb where gb.FksuppId='"+supplierId+"'");
 			
 			list = query.list();
 			

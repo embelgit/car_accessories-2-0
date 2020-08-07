@@ -132,6 +132,12 @@ public class OtherBillHelper {
 			System.out.println("description"+description);
 			cust.setDescription(description);
 			
+			String note = request.getParameter("note");
+			cust.setNote(note);
+			
+			String location = request.getParameter("location");
+			cust.setLocation(location);
+			
 			String carNo = request.getParameter("carNo");
 			cust.setCarNo(carNo);
 			//cust.setContactNo(000l);
@@ -221,7 +227,8 @@ public class OtherBillHelper {
 		System.out.println("----------------Bill No before session create::"+billNo);
 		HttpSession session3 = request.getSession();
 		Long billNo2 = Long.parseLong(billNo);
-		session3.setAttribute("OtherBillNo", billNo2);
+		session3.setAttribute("BillNo", billNo2);
+		System.out.println("----------------Bill No after  session create::"+billNo2);
 	}
 
 	// get single date Miscellaneos customer Sale

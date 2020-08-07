@@ -126,12 +126,12 @@ public class CarEntryDao {
 		
 		List<BillCopy> billList=null;
 		 List<Object[]> list = null;
-		
+		String cc= "Cash";
 		try
 		{
 				hbu = HibernateUtility.getInstance();
 				session = hbu.getHibernateSession();
-				Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill group by BillNo order by BillNo desc;");
+				Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill where paymentMode = '"+cc+"' group by BillNo order by BillNo desc;");
 				list = query.list();
 				billList = new ArrayList<BillCopy>(0);
 				
@@ -155,6 +155,42 @@ public class CarEntryDao {
 		return billList;
 	}
 	
+	//
+	public List getBillNoAndNameses()
+	{
+		HibernateUtility hbu=null;
+		Session session=null;
+		
+		List<BillCopy> billList=null;
+		 List<Object[]> list = null;
+		String cc= "Cash";
+		try
+		{
+				hbu = HibernateUtility.getInstance();
+				session = hbu.getHibernateSession();
+				Query query=session.createSQLQuery("select BillNo, customerName from estimatequotationbill group by BillNo order by BillNo desc;");
+				list = query.list();
+				billList = new ArrayList<BillCopy>(0);
+				
+		 for (Object[] objects : list) {
+			 BillCopy bean = new BillCopy();
+			
+			bean.setBillNo(Long.parseLong(objects[0].toString()));
+			bean.setCustName((String) objects[1]);
+			 
+			billList.add(bean);
+			}
+		 }
+		catch(RuntimeException  e)
+		{
+				
+		}finally
+		{if(session!=null){
+			hbu.closeSession(session);	
+		}
+		}
+		return billList;
+	}
 	public List getcarDetailReports() {
 
 		HibernateUtility hbu = null;
@@ -166,7 +202,7 @@ public class CarEntryDao {
 			session = hbu.getHibernateSession();
 
 			
-			Query query=session.createSQLQuery("select  Car_No,Owner_Name,Contact_No,ActiveYN,OnDate,KmReader,vehiclecolor FROM carentry");
+			Query query=session.createSQLQuery("select  Car_No,Owner_Name,Contact_No,ActiveYN,OnDate,KmReader,vehiclecolor,vehiclename FROM carentry");
 			List<Object[]> list = query.list();
 
 			saleList = new ArrayList<CarEntryBean>(0);
@@ -184,6 +220,7 @@ public class CarEntryDao {
 				reports.setDate(object[4].toString());
 				reports.setKmReader1(Double.parseDouble(object[5].toString()));
 				reports.setVehiclecolor(object[6].toString());
+				reports.setVehicleName(object[7].toString());
 				
 				saleList.add(reports); 
 

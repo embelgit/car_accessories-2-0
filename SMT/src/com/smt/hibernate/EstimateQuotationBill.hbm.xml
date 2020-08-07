@@ -48,6 +48,14 @@
 		column="PaymentDone"
 		 /> -->
 		
+		<property
+		name="note" 
+		type="java.lang.String" 
+		column="note"
+		 />
+		 
+		 
+		
 		 <property
 		name="salePrice" 
 		type="java.lang.Double" 

@@ -216,7 +216,7 @@ public class CreditCustomerBillHelper {
 		System.out.println("----------------Bill No before session create::"+billNo);
 		HttpSession session3 = request.getSession();
 		Long billNo2 = Long.parseLong(billNo);
-		session3.setAttribute("BillNo", billNo2);
+		session3.setAttribute("CustomerBillNo", billNo2);
 		session3.setAttribute("creditCustomerName", custName);
 		session3.setAttribute("gstTinNo", gstTinNo);
 	}

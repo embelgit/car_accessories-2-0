@@ -46,9 +46,15 @@ public class EstimateQuotationBill {
 	private Double service_gst;
 	private Double service_igst;
 	private Double service_taxAm;
+	private String note;
 	
 	
-	
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public String getCarNo() {
 		return carNo;
 	}
