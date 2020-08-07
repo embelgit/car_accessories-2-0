@@ -514,7 +514,18 @@ function calgrosstot(){
 						</div>	
 						
 						
-						 <label class="col-md-2 control-label" for="customerName">Product Name:<sup>*</sup></label>  
+						
+						<div class="col-md-2" align="right">
+							<label class="control-label" >Vehicle Name:</label>
+						</div>
+						
+						<div class="col-md-2">
+							<input type="text" class="form-control" id="vehicleName" name="vehicleName" readonly="readonly"  />
+						</div>
+						
+				   </div>
+				   <div class="row" style="margin-top: 15px;">
+				   <label class="col-md-2 control-label" for="customerName">Product Name:<sup>*</sup></label>  
           					  <div class="col-md-2">
 								<div class="input-group">
 									 <span class="input-group-addon">
@@ -543,15 +554,13 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
-						
-						<div class="col-md-2" align="right">
-							<label class="control-label" >Vehicle Name:</label>
-						</div>
-						
-						<div class="col-md-2">
-							<input type="text" class="form-control" id="vehicleName" name="vehicleName" readonly="readonly"  />
-						</div>
-						
+                	<div class="col-md-2" align="right">
+								<label class="control-label" >Product Description: </label>
+							</div>
+							<div class="col-md-2">
+							
+								<input type="text" class="form-control" id="description"  placeholder="Note"/>
+							</div>
 				   </div>
 				<!--  -->
 						
@@ -624,21 +633,7 @@ function calgrosstot(){
 							
 								<input type="text" class="form-control" id="discount"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalSpare(); calgrosstot();return false;"/>
 							</div> 
-				
-					
-						
-							<div class="col-md-2" align="right">
-								<label class="control-label" >Product Description: </label>
-							</div>
-							<div class="col-md-2">
 							
-								<input type="text" class="form-control" id="description"  placeholder="Note"/>
-							</div> 
-						</div>
-						
-						
-						
-						<div class="row" style="margin-top:10px;">
 							<div class="col-md-2" align="right">
 								<label class="control-label" > Spare Gross Total: </label>
 							</div>
@@ -646,6 +641,15 @@ function calgrosstot(){
 							
 								<input type="text" class="form-control" id="spareGrossTotal"  placeholder="GrossTotal" style="font-size: 22px;" />
 							</div> 
+					
+						
+						 
+						</div>
+						
+						
+						
+						<div class="row" style="margin-top:10px;">
+							
 						
 						
 						
