@@ -578,7 +578,7 @@ function getSaleItemscredit() {
 				   //                 $(this).jqGrid('footerData', 'set', { grossamt: parseTotal1});
 				                },
 							
-								pager : "#jqGridPager",
+								pager : "#jqGridPager1",
 								
 							});
 
@@ -586,7 +586,7 @@ function getSaleItemscredit() {
 					
 					$('#jqGrid1')
 							.navGrid(
-									'#jqGridPager',
+									'#jqGridPager1',
 									// the buttons to appear on the toolbar of the grid
 									 { edit: true, add: true, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: false },
 									// options for the Edit Dialog
@@ -779,7 +779,7 @@ function getSaleItemsmiss() {
 			//	                    $(this).jqGrid('footerData', 'set', { grossamt: parseTotal1});
 				                },
 							
-								pager : "#jqGridPager",
+								pager : "#jqGridPager2",
 								
 							});
 
@@ -787,7 +787,7 @@ function getSaleItemsmiss() {
 					
 					$('#jqGrid2')
 							.navGrid(
-									'#jqGridPager',
+									'#jqGridPager2',
 									// the buttons to appear on the toolbar of the grid
 									 { edit: true, add: true, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: false },
 									// options for the Edit Dialog

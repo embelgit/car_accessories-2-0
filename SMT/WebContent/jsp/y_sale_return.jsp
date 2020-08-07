@@ -216,7 +216,7 @@
 		<div class="col-sm-12">
 			<div class="table-responsive">
 				<table id="jqGrid1" ></table>
-			    <div id="jqGridPager"></div>
+			    <div id="jqGridPager1"></div>
 			</div>
 		</div>
 	</div>
@@ -285,7 +285,7 @@
 		<div class="col-sm-12">
 			<div class="table-responsive">
 				<table id="jqGrid2" ></table>
-			    <div id="jqGridPager"></div>
+			    <div id="jqGridPager2"></div>
 			</div>
 		</div>
 	</div>

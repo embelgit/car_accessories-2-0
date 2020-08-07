@@ -1585,7 +1585,7 @@ return list;
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
 
-		 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, buyPrice,  billNo, modelName, vat, igst,buyPriceEx  from goodreceivebarrel where billNo='"+billno+"'");
+		 Query query2 = session.createSQLQuery("select itemName, CategoryName, NoOfBarrel, buyPrice,  billNo, modelName, vat, igst,buyPriceEx,TotalLitre  from goodreceivebarrel where billNo='"+billno+"'");
 //		 query2.setParameter("billno", billno);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<GoodsReceiveBarrelHibernate>(0);
@@ -1611,6 +1611,7 @@ return list;
 					reports.setVat(Double.parseDouble(gst));
 				}
 				reports.setBuyPriceEx(Double.parseDouble(object[8].toString()));
+				reports.setTotalLitre(Double.parseDouble(object[9].toString()));
 				catList.add(reports); 
 		
 			}}

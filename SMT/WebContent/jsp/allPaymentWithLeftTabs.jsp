@@ -306,7 +306,7 @@
 					        	   CustomerDetailsBean cust =(CustomerDetailsBean)cList.get(i);
 							%>
 		
-						<option data-value="<%=cust.getCustId()%>"><%=cust.getFirstName() %> <%=cust.getLastName() %> </option>
+						<option data-value="<%=cust.getCustId()%>"><%=cust.getFirstName() %> <%=cust.getMiddleName() %> <%=cust.getLastName() %> </option>
 							<%
 				      			}
 				    		%>

@@ -1099,7 +1099,7 @@ public List<SaleReport> dayCloseReport() {
 		System.out.println(df.format(dateobj));
 		String newDate = df.format(dateobj);
 		 Long k = 0l;
-	 Query query2 = session.createSQLQuery("select s.BillNo, s.BarcodeNo, s.ItemName, s.CategoryName, s.SalePrice, s.totalperitem, s.Discount, s.Quantity from customerbill s where s.Date =:newDate UNION select o.BillNo, o.BarcodeNo, o.ItemName, o.CategoryName, o.SalePrice, o.totalperitem, o.Discount, o.Quantity from otherbill o where o.Date =:newDate UNION select c.BillNo, c.BarcodeNo, c.ItemName, c.CategoryName, c.SalePrice, c.totalperitem, c.Discount, c.Quantity from creditcustomerbill c where c.Date =:newDate   UNION select b.BillNo,COALESCE(sum(b.BarcodeNo),0), b.ItemName, b.CategoryName, b.SalePrice, b.totalperitem, b.Discount , b.Quantity from barreloilbilling b where b.Date =:newDate UNION select sb.BillNo, COALESCE(sum(sb.BarcodeNo),0),sb.service_item, COALESCE(sum(sb.CategoryName),0),sb.service_saleprice, sb.service_totalGrid,sb.service_disc_grid, sb.service_quantity from service_billing sb where sb.Date =:newDate");
+	 Query query2 = session.createSQLQuery("select s.BillNo, s.BarcodeNo, s.ItemName, s.CategoryName, s.SalePrice, s.totalperitem, s.Discount, s.Quantity,s.Gst,s.Igst from customerbill s where s.Date =:newDate UNION select o.BillNo, o.BarcodeNo, o.ItemName, o.CategoryName, o.SalePrice, o.totalperitem, o.Discount, o.Quantity,o.Gst,o.Igst from otherbill o where o.Date =:newDate UNION select c.BillNo, c.BarcodeNo, c.ItemName, c.CategoryName, c.SalePrice, c.totalperitem, c.Discount, c.Quantity,c.Gst,c.Igst from creditcustomerbill c where c.Date =:newDate   UNION select b.BillNo,COALESCE(sum(b.BarcodeNo),0), b.ItemName, b.CategoryName, b.SalePrice, b.totalperitem, b.Discount , b.Quantity,b.Gst,b.Igst from barreloilbilling b where b.Date =:newDate UNION select sb.BillNo, COALESCE(sum(sb.BarcodeNo),0),sb.service_item, COALESCE(sum(sb.CategoryName),0),sb.service_saleprice, sb.service_totalGrid,sb.service_disc_grid, sb.service_quantity,sb.service_gst,sb.service_igst from service_billing sb where sb.Date =:newDate");
 	 query2.setParameter("newDate", newDate);
 	
         List<Object[]> list = query2.list();
@@ -1122,6 +1122,8 @@ public List<SaleReport> dayCloseReport() {
 			reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 			reports.setDiscount(Double.parseDouble(object[6].toString()));
 			reports.setQuantity(Long.parseLong(object[7].toString()));
+			reports.setGst(Double.parseDouble(object[8].toString()));
+			reports.setiGst(Double.parseDouble(object[9].toString()));
 			catList.add(reports); 
 	
 		}}

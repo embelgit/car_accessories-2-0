@@ -497,6 +497,20 @@ function shree(pk_temp_id){
 
 
 function resBill() {
+//    var paymentMode = $('#paymentMode').val();
+ 
+   // var Customername = $('#CustomerId').val();
+    
+ /*   if(paymentMode=="Credit" && Customername=="")
+    {
+    	alert("please select credit customer name");
+    	return;
+    }*/
+  
+    resBill10();
+    
+   }
+function resBill10(){
 	document.getElementById("btnSubmit").disabled = true; 
 	var params= {};
 	var count = jQuery("#list4").jqGrid('getGridParam', 'records');
@@ -651,6 +665,8 @@ function resBill() {
     var paidAmt = $('#paidAmt').val();
     
     var Customername = $('#CustomerId').val();
+    
+   
     
     if(creditdescription == "" || creditdescription == null || creditdescription == undefined){
     	creditdescription="NA";
@@ -857,12 +873,31 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	    	document.getElementById("totalAmount").value = gTotal;
 	    	document.getElementById("spareGrossTotal").value = gTotal;
 	    	document.getElementById("wholeTotal").value = gTotal;
+	    	
+	    	document.getElementById("ServicetotalAmount").value = 0;
+	    	document.getElementById("discountservice").value = 0;
+	    	document.getElementById("grossTotal").value = 0;
+	    	
+	    	document.getElementById("totalAmountOil").value = 0;
+	    	document.getElementById("discountOil").value = 0;
+	    	document.getElementById("grossTotalOil").value = 0;
+	    	
+	    	
     	}
     	else
     	{
 	    	document.getElementById("totalAmount").value = 0;
 	    	document.getElementById("spareGrossTotal").value = 0;
 	    	document.getElementById("wholeTotal").value = 0;
+    
+	    	
+	    	document.getElementById("ServicetotalAmount").value = 0;
+	    	document.getElementById("discountservice").value = 0;
+	    	document.getElementById("grossTotal").value = 0;
+	    	
+	    	document.getElementById("totalAmountOil").value = 0;
+	    	document.getElementById("discountOil").value = 0;
+	    	document.getElementById("grossTotalOil").value = 0;
     	}
     	
     	//MULTIPLE GRID GROSS TOTAL CAHNGES BY SAGAR

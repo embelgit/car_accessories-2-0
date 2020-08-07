@@ -207,6 +207,7 @@
 				<th> Item Name</th>
 				<th>Brand Name</th>
 				<th> No of barrels</th>
+				<th>Total Litre</th>
 				<th> Buy Price</th>
 				<th> Buyprice Ex</th>
 				<th> Tax Percentage</th>
@@ -220,13 +221,13 @@
 		</thead>
 		<tfoot>
 		<tr>	
-		<th colspan="3" style="text-align: right">Total:</th>
+		<th colspan="4" style="text-align: right">Total:</th>
 		<th></th>
 		<th></th>
 		<th></th>
 		<th></th>
 		<th></th>
-		
+
 		</tr>
 		</tfoot>
 	</table>

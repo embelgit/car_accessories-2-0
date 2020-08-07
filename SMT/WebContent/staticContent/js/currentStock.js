@@ -399,19 +399,6 @@ for (i = 0; i < list.options.length; ++i) {
 					            };
 				
 					            pageTotal = api
-				                .column( 3 )
-				                .data()
-				                .reduce( function (a, b) {
-				                    return intVal(a) + intVal(b);
-				                }, 0 );
-				 
-			
-				                $( api.column( 3 ).footer() ).html(
-				                ' '+ parseFloat(pageTotal).toFixed(2));
-				            
-				                console.log( pageTotal);
-				                
-				                pageTotal = api
 				                .column( 4 )
 				                .data()
 				                .reduce( function (a, b) {
@@ -419,8 +406,21 @@ for (i = 0; i < list.options.length; ++i) {
 				                }, 0 );
 				 
 			
-				            $( api.column( 4 ).footer() ).html(
-				                'Rs'+' '+ parseFloat(pageTotal).toFixed(2));
+				                $( api.column( 4 ).footer() ).html(
+				                ' '+ parseFloat(pageTotal).toFixed(2));
+				            
+				                console.log( pageTotal);
+				                
+				                pageTotal = api
+				                .column( 5 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				 
+			
+				            $( api.column( 5 ).footer() ).html(
+				                ' '+' '+ parseFloat(pageTotal).toFixed(2));
 				            
 				            console.log( pageTotal);
 				                
@@ -437,6 +437,7 @@ for (i = 0; i < list.options.length; ++i) {
 	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
 	                      {"data": "modelName", "width": "5%", "defaultContent": ""},
 	                      {"data": "NumberofBarrel", "width": "5%", "defaultContent": ""},
+	                      {"data": "TotalLitre", "width": "5%", "defaultContent": ""},		                     	                      
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
 	                      {"data": "vat", "width": "5%", "defaultContent": ""},
