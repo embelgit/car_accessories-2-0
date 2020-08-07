@@ -127,7 +127,7 @@ function grasstotal(){
 				<div class="container">
 				
 					    <div class="row form-group">	
-					  <label class="col-md-3 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
+					  <label class="col-md-2 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
           					  <div class="col-md-3">
 								<div class="input-group">
 									<span class="input-group-addon">
@@ -168,7 +168,7 @@ function grasstotal(){
 					   
 				
 				  <div class="form-group">
-						<div class="col-sm-3 " align="right">
+						<div class="col-sm-2 " align="right">
 							<label class="control-label" >Vehicle no:</label>
 						</div>
 						
@@ -191,7 +191,7 @@ function grasstotal(){
 			      <div class="row">
 			      
 			        <div class="form-group">
-						<div class="col-sm-3 " align="right">
+						<div class="col-sm-2 " align="right">
 							<label class="control-label" >Barcode no:</label>
 						</div>
 						
@@ -207,35 +207,7 @@ function grasstotal(){
 					     
 					  
 					 
-					  <label class="col-md-2 control-label" align="right" for="customerName">Product Name<sup>*</sup></label>  
-          					  <div class="col-md-3">
-								<div class="input-group">
-									 <span class="input-group-addon">
-										<i class="glyphicon glyphicon-user"></i>
-									</span> 
-					 	
-					 	<%
-								ProductDetailDao cdd1 = new ProductDetailDao();
-							 List cList1 =cdd1.getProductNames();
-							
-							%>
-						<input list="prod_drop" id="productId"  class="form-control"  onchange="getproductgrid();">
-				         <datalist id="prod_drop">
-							
-							<%
-					           for(int i=0;i<cList1.size();i++){
-					        	   ProductRegister cust1 =(ProductRegister)cList1.get(i);
-							%>
-		
-						 <option data-value="<%=cust1.getPkProductId()%>" value="<%=cust1.getItemName() %> => <%=cust1.getModelName()%>  =>  <%=cust1.getCategoryName()%>"> 
-						
-						
-							<%
-				      			}
-				    		%>
-						</datalist>    
-				    </div>
-                </div>
+				
 					 
 					 </div>
 					 
@@ -297,17 +269,37 @@ function grasstotal(){
 	                    <script src="/SMT/staticContent/js/calculator.js"></script>
 						
 						  	<div class="row form-group" >
-							<div class="col-md-3" align="right">
-								<label class="control-label"  >Total Amount: </label>
-							</div>
-							<div class="col-md-3">
-							  <div class="input-group">
-							     <span class="input-group-addon">
-							       Rs
-						         </span>
-								<input type="text" class="form-control" id="totalAmount"  placeholder="Total Amout"   readonly="readonly"/>
-							  </div> 
-							</div>
+						  		  <label class="col-md-2 control-label" align="right" for="customerName">Product Name<sup>*</sup></label>  
+          					  <div class="col-md-3">
+								<div class="input-group">
+									 <span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span> 
+					 	
+					 	<%
+								ProductDetailDao cdd1 = new ProductDetailDao();
+							 List cList1 =cdd1.getProductNames();
+							
+							%>
+						<input list="prod_drop" id="productId"  class="form-control"  onchange="getproductgrid();">
+				         <datalist id="prod_drop">
+							
+							<%
+					           for(int i=0;i<cList1.size();i++){
+					        	   ProductRegister cust1 =(ProductRegister)cList1.get(i);
+							%>
+		
+						 <option data-value="<%=cust1.getPkProductId()%>" value="<%=cust1.getItemName() %> => <%=cust1.getModelName()%>  =>  <%=cust1.getCategoryName()%>"> 
+						
+						
+							<%
+				      			}
+				    		%>
+						</datalist>    
+				    </div>
+                </div>
+						  	
+							
 							
 							<div class="col-md-2" align="right">
 							<label class="control-label" >Description :</label>
@@ -329,10 +321,21 @@ function grasstotal(){
 						
 						
 							<div class="row form-group">
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
+								<label class="control-label"  >Total Amount: </label>
+							</div>
+							<div class="col-md-2">
+							  <div class="input-group">
+							     <span class="input-group-addon">
+							       Rs
+						         </span>
+								<input type="text" class="form-control" id="totalAmount"  placeholder="Total Amout"   readonly="readonly"/>
+							  </div> 
+							</div>
+							<div class="col-md-2" align="right">
 								<label class="control-label"  > Discount: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							 <div class="input-group">
 							   <span class="input-group-addon">
 							     Rs
@@ -340,13 +343,12 @@ function grasstotal(){
 								<input type="text" class="form-control" id="discount"  placeholder="Discount In Rs" autofocus onkeyup="grasstotal(); return false;" />
 							 </div> 
 							</div> 
-						</div>
-							
-							<div class="row form-group" >
-							<div class="col-md-3" align="right">
+						
+						
+							<div class="col-md-2" align="right">
 								<label class="control-label"  > Gross Total: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							 <div class="input-group">
 							    <span class="input-group-addon">
 							      Rs
@@ -361,7 +363,7 @@ function grasstotal(){
 						
 						
  						<div class="row form-group" >
-							<div class="col-md-3" align="right">
+							<div class="col-md-2" align="right">
 								<label class="control-label" > Note : </label>
 							</div>
 							<div class="col-md-3">

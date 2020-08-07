@@ -316,27 +316,29 @@ function calgrosstot(){
 							<div class="col-md-2" align="right">
 								<label class="control-label"  >Total Amount: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							
 								<input type="text" class="form-control" id="totalAmount"  placeholder="Total Amout"  />
 							</div> 
 							<div class="col-md-2" align="right">
 								<label class="control-label" > Discount : </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							
 							<input type="text" class="form-control" id="discount"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalSpare(); calgrosstot();return false;"/>
+							</div> 
+							
+							<div class="col-md-2" align="right">
+								<label class="control-label"  >Spare Gross Total: </label>
+							</div>
+							<div class="col-md-2">
+							
+								<input type="text" class="form-control" id="spareGrossTotal"  placeholder="GrossTotal" style="font-size: 22px;" />
 							</div> 
 							</div>
 						
 						 <div class="row form-group" >
-							<div class="col-md-2" align="right">
-								<label class="control-label"  >Spare Gross Total: </label>
-							</div>
-							<div class="col-md-3">
-							
-								<input type="text" class="form-control" id="spareGrossTotal"  placeholder="GrossTotal" style="font-size: 22px;" />
-							</div>  
+							 
 						
 						
 						 <!-- <div class="col-md-5">
@@ -380,6 +382,13 @@ function calgrosstot(){
 						</datalist>    
 				    </div>
                 </div>
+                <div class="col-md-2" align="right">
+								<label class="control-label" >Service Description: </label>
+							</div>
+							<div class="col-md-3">
+							
+								<input type="text" class="form-control" id="serdescription"  placeholder="Note"/>
+							</div> 
 				</div>
 				
 						
@@ -397,16 +406,10 @@ function calgrosstot(){
 					</div>
 				</div>	
 				
-				<div class="row form-group" >
-							<div class="col-md-2" align="right">
-								<label class="control-label" >Service Description: </label>
-							</div>
-							<div class="col-md-3">
+			
 							
-								<input type="text" class="form-control" id="serdescription"  placeholder="Note"/>
-							</div> 
 						
-						</div>		
+								
 					
 	                      <div class="row form-group" >
 							<div class="col-md-2" align="right">
@@ -481,6 +484,15 @@ function calgrosstot(){
 						</datalist>     
 				    </div>
                </div>
+               
+               <div class="col-md-2" align="right">
+								<label class="control-label" >Oil Description: </label>
+							</div>
+							<div class="col-md-3">
+							
+								<input type="text" class="form-control" id="oildescription"  placeholder="Note"/>
+							</div> 
+						
 					 
 					 </div>
 					 
@@ -497,22 +509,15 @@ function calgrosstot(){
 					</div>
 					</div>
 		
-						 <div class="row form-group" >
-							<div class="col-md-2" align="right">
-								<label class="control-label" >Oil Description: </label>
-							</div>
-							<div class="col-md-3">
+						 
 							
-								<input type="text" class="form-control" id="oildescription"  placeholder="Note"/>
-							</div> 
-						
-						</div>	
+							
 						
 						  	<div class="row form-group">
 							<div class="col-md-2" align="right">
 								<label class="control-label"  >Total Amount: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							  <div class="input-group">
 							     <span class="input-group-addon">
 							       Rs
@@ -524,7 +529,7 @@ function calgrosstot(){
 							<div class="col-md-2" align="right">
 								<label class="control-label"  > Discount: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							 <div class="input-group">
 							   <span class="input-group-addon">
 							     Rs
@@ -532,15 +537,14 @@ function calgrosstot(){
 								<input type="text" class="form-control" id="discountOil"  placeholder="Discount In Rs" autofocus onkeyup="grasstotalOil();calgrosstot(); return false;" />
 							 </div> 
 							</div> 
-					</div>
+					
 						
 							
-				<div class="row ">
-				<div class="form-group">
+			
 							<div class="col-md-2" align="right">
 								<label class="control-label"  > Oil Gross Total: </label>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-2">
 							 <div class="input-group">
 							    <span class="input-group-addon">
 							      Rs
@@ -548,7 +552,10 @@ function calgrosstot(){
 								<input type="text" class="form-control" id="grossTotalOil" placeholder="Gross Total" readonly="readonly">
 							 </div> 
 							</div> 
-					
+						</div>	
+						
+				<div class="row ">
+				<div class="form-group">	
 				<div class="col-md-2" align="right">
 						<label class="control-label" style="font-size: 20px">Gross Total:</label>
 					</div>

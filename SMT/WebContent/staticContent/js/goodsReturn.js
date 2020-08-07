@@ -612,7 +612,7 @@ function getitems() {
 								{
 									name : 'buyPriceEx',
 									width : 100,
-									background: 'aqua',
+									background:'black',
 									
 								},
 								
