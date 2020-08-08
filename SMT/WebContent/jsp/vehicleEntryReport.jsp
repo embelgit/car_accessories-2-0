@@ -147,8 +147,11 @@
 
 <body id="dt_example">
 <div class="container-fluid">
-		<h2 align="center" class="form-heading" style="margin-top: 100px; margin-bottom: 45px;">Total Vehicle Entry Report</h2>
-
+<div class="row">
+			<div align="center" style="margin-top: 75px">
+		<h2 class="form-name style_heading">Total Vehicle Entry Report</h2>
+</div>
+</div>
 
 	<%
 	CarEntryDao dao=new CarEntryDao();
