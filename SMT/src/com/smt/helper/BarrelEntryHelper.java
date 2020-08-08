@@ -460,7 +460,7 @@ public class BarrelEntryHelper {
 			String quantity = request.getParameter("quantity" + i);
 			System.out.println("quantity for oil -  " + quantity);
 			//cust.setQuantity(Long.parseLong(quantity));
-			
+			//
 			cust.setQuantitydouble(Double.parseDouble(quantity));
 			System.out.println("quan set for oil - - "+cust.getQuantitydouble());
 			String salePrice = request.getParameter("salePrice" + i);
