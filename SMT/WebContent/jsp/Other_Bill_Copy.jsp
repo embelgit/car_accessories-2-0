@@ -20,7 +20,7 @@
  		
  		<div class="row">
 			<div align="center" style="margin-top: 75px">
-				  <h2 class="form-name style_heading">Other Bill Copy</h2>
+				  <h2 class="form-name style_heading">Miscellaneous Bill Copy</h2>
 			</div>
 				 	
 		</div>

@@ -629,12 +629,13 @@ function getBillByCustomer(){
 }
 	
 	
+	var custname = $('#creditCustomer').val();
 	
-var creditCustomer = creditCustomer;
+//var creditCustomer = creditCustomer;
 	$("#billNo1").empty();
 	$("#billNo1").append($("<option></option>").attr("value","").text("Select bill"));
 	var params= {};
-	params["creditCustomer"]= creditCustomer;
+	params["creditCustomer"]= custname;
 	params["methodName"] = "getAllBillByCustomer";
 	
 	
@@ -755,6 +756,7 @@ var creditCustomer = creditCustomer;
 	   	 creditCustomer = list.options[i].getAttribute('data-value');
 	    }
 	}
+		var cust = $("#creditCustomer").val();
 			var billNo1 = $("#billNo1").val();
 			
 			$("#totalAmount1").empty();
@@ -766,7 +768,7 @@ var creditCustomer = creditCustomer;
 			
 			params["billNo1"]= billNo1;
 			
-			params["creditCustomer"]= creditCustomer;
+			params["creditCustomer"]= cust;
 			
 			$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 					{

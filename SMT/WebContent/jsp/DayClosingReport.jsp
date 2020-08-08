@@ -78,6 +78,9 @@
 								<th>Quantity</th>
 								<th>Total Amount</th>
 								<th>Discount</th>
+								<th>GST</th>
+								<th>IGST</th>
+								
 							
 
 						</tr>
@@ -87,7 +90,7 @@
 							<tr>
 							    <th colspan="5" style="text-align: right">Total:</th>
 								<th></th><th></th> <th></th><th></th>
-			
+									<th></th><th></th>
 							</tr>
 						</tfoot>
 

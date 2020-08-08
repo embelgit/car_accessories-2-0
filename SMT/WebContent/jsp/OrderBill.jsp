@@ -238,7 +238,11 @@ function grasstotalSpare(){
     	    	  document.getElementById("vehicleName").value = vehname;
     	    	  
     	    	  document.getElementById(ab).style.backgroundColor = "green";
+    	    
     	    	  
+
+    	    	  $("#list5").jqGrid("clearGridData", true).trigger("reloadGrid");  
+    	    	  $("#listOil").jqGrid("clearGridData", true).trigger("reloadGrid");  
     	    	  getitemDataByCarNo();
     	    
     	    	  }

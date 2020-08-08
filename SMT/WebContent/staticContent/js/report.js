@@ -999,6 +999,38 @@ function dayCloseReport(){
 					            		 str = pageTotal.toFixed(0)
 					            );
 					            console.log( pageTotal);
+					            
+			/*		            pageTotal = api
+				                .column( 9 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				 
+				         
+				            // Update footer
+				            $( api.column( 9 ).footer() ).html(
+				              //  'Rs'+' '+pageTotal.toFixed(2)
+				            		 str = pageTotal.toFixed(0)
+				            );
+				            console.log( pageTotal);
+			
+				            
+				            pageTotal = api
+			                .column( 10 )
+			                .data()
+			                .reduce( function (a, b) {
+			                    return intVal(a) + intVal(b);
+			                }, 0 );
+			 
+			         
+			            // Update footer
+			            $( api.column( 10 ).footer() ).html(
+			              //  'Rs'+' '+pageTotal.toFixed(2)
+			            		 str = pageTotal.toFixed(0)
+			            );
+			            console.log( pageTotal);*/
+		
 				
 					        },
 				    	
@@ -1016,7 +1048,8 @@ function dayCloseReport(){
                                {"data": "quantity", "width": "5%","defaultContent": ""},
                                {"data": "totalAmt", "width": "5%","defaultContent": ""},
                                {"data": "discount", "width": "5%","defaultContent": ""},
-	                      
+                               {"data": "gst", "width": "5%","defaultContent": ""},
+                               {"data": "iGst", "width": "5%","defaultContent": ""},
 				           
 				        ],
 				        dom: 'Bfrtip',

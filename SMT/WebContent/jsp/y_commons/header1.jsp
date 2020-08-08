@@ -626,7 +626,7 @@ nav {
 	    
 				
 					            <li><a href="<%=path%>Bill_Copy.jsp"">Customer Bill Copy</a></li>
-								<li><a href="<%=path%>Other_Bill_Copy.jsp">Other Bill Copy</a></li>
+								<li><a href="<%=path%>Other_Bill_Copy.jsp">Miscellaneous Bill Copy</a></li>
 								<li><a href="<%=path%>CreditCustCopy.jsp">Credit Cust Copy</a></li>
 									<li><a href="<%=path%>estimatebillcopy.jsp">Estimate Bill Copy</a></li>				
       </ul>
