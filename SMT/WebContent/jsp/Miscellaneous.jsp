@@ -213,7 +213,56 @@ function grasstotal(){
 					 
 				</div>	
 					   
-					   
+					<div class="row form-group" >
+						  		  <label class="col-md-2 control-label" align="right" for="customerName">Product Name<sup>*</sup></label>  
+          					  <div class="col-md-3">
+								<div class="input-group">
+									 <span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span> 
+					 	
+					 	<%
+								ProductDetailDao cdd1 = new ProductDetailDao();
+							 List cList1 =cdd1.getProductNames();
+							
+							%>
+						<input list="prod_drop" id="productId"  class="form-control"  onchange="getproductgrid();">
+				         <datalist id="prod_drop">
+							
+							<%
+					           for(int i=0;i<cList1.size();i++){
+					        	   ProductRegister cust1 =(ProductRegister)cList1.get(i);
+							%>
+		
+						 <option data-value="<%=cust1.getPkProductId()%>" value="<%=cust1.getItemName() %> => <%=cust1.getModelName()%>  =>  <%=cust1.getCategoryName()%>"> 
+						
+						
+							<%
+				      			}
+				    		%>
+						</datalist>    
+				    </div>
+                </div>
+						  	
+							
+							
+							<div class="col-md-2" align="right">
+							<label class="control-label" >Description :</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="description" placeholder="Description"/>
+						</div>
+							<!-- <div class="col-md-2" align="right">
+							<label class="control-label" >Vehicle No:</label>
+						</div>
+						
+						<div class="col-md-3">
+							<input type="text" class="form-control" id="carNo" name="carNo" placeholder="Vehicle No" />
+						</div>	
+							 -->
+							
+						</div>
+							   
 					   
 		
 		
@@ -268,56 +317,7 @@ function grasstotal(){
 						
 	                    <script src="/SMT/staticContent/js/calculator.js"></script>
 						
-						  	<div class="row form-group" >
-						  		  <label class="col-md-2 control-label" align="right" for="customerName">Product Name<sup>*</sup></label>  
-          					  <div class="col-md-3">
-								<div class="input-group">
-									 <span class="input-group-addon">
-										<i class="glyphicon glyphicon-user"></i>
-									</span> 
-					 	
-					 	<%
-								ProductDetailDao cdd1 = new ProductDetailDao();
-							 List cList1 =cdd1.getProductNames();
-							
-							%>
-						<input list="prod_drop" id="productId"  class="form-control"  onchange="getproductgrid();">
-				         <datalist id="prod_drop">
-							
-							<%
-					           for(int i=0;i<cList1.size();i++){
-					        	   ProductRegister cust1 =(ProductRegister)cList1.get(i);
-							%>
-		
-						 <option data-value="<%=cust1.getPkProductId()%>" value="<%=cust1.getItemName() %> => <%=cust1.getModelName()%>  =>  <%=cust1.getCategoryName()%>"> 
-						
-						
-							<%
-				      			}
-				    		%>
-						</datalist>    
-				    </div>
-                </div>
-						  	
-							
-							
-							<div class="col-md-2" align="right">
-							<label class="control-label" >Description :</label>
-						</div>
-						<div class="col-md-3">
-							<input type="text" class="form-control" id="description" placeholder="Description"/>
-						</div>
-							<!-- <div class="col-md-2" align="right">
-							<label class="control-label" >Vehicle No:</label>
-						</div>
-						
-						<div class="col-md-3">
-							<input type="text" class="form-control" id="carNo" name="carNo" placeholder="Vehicle No" />
-						</div>	
-							 -->
-							
-						</div>
-						
+						  
 						
 						
 							<div class="row form-group">
