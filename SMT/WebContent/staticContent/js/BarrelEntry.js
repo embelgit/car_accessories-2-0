@@ -1624,6 +1624,16 @@ function getProductInGridBillingOil()
 //register oil  in database
 function resotherbill(){
 
+    var paymentMode = $('#paymentMode').val();
+    
+    var Customername = $('#CustomerId').val();
+    
+    if(paymentMode=="Credit" && Customername=="")
+    {
+
+    	return false;
+    }
+	
 	resOtherBill();
 	}
 function resOtherBill(){

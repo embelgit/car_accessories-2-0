@@ -256,7 +256,7 @@
 			$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 			{
  				alert(data);
- 				location.reload();
+ 				location.reload(true);
  			}
  	    	).error(function(jqXHR, textStatus, errorThrown){
  	    		if(textStatus==="timeout") {
@@ -629,13 +629,13 @@ function getBillByCustomer(){
 }
 	
 	
-	var custname = $('#creditCustomer').val();
+//	var custname = $('#creditCustomer').val();
 	
 //var creditCustomer = creditCustomer;
 	$("#billNo1").empty();
 	$("#billNo1").append($("<option></option>").attr("value","").text("Select bill"));
 	var params= {};
-	params["creditCustomer"]= custname;
+	params["creditCustomer"]= creditCustomer;
 	params["methodName"] = "getAllBillByCustomer";
 	
 	
@@ -768,7 +768,7 @@ var creditCustomer = creditCustomer;
 			
 			params["billNo1"]= billNo1;
 			
-			params["creditCustomer"]= cust;
+			params["creditCustomer"]= creditCustomer;
 			
 			$.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 					{

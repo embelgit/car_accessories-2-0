@@ -130,9 +130,8 @@ public class CustomerPaymentHelper {
 			Session session = hbu.getHibernateSession();
 			
 			//Query to get latest paid amount
-			Query query = session
-					.createSQLQuery("SELECT balance ,bill_no from credit_customer_payment WHERE bill_no =:billNo ORDER BY  pk_credit_customer_id  DESC LIMIT 1 ;");
-			query.setParameter("billNo",billNo);
+			Query query = session.createSQLQuery("SELECT balance ,bill_no from credit_customer_payment WHERE bill_no ='"+billNo+"' AND fk_customer_id = '"+customer+"' ORDER BY  pk_credit_customer_id  DESC LIMIT 1");
+//			query.setParameter("billNo",billNo);
 			List<Object[]> list = query.list();
 			
 			System.out.println("Calc total");

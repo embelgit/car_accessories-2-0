@@ -585,12 +585,22 @@ function getProdGrid()
 
 function regEstimateCustbill1(){
 	
-	if(document.custord.CustomerId.value == "")
+	 var Customername = $('#CustomerId').val();
+	    
+	    if(Customername=="")
+	    {
+	    	alert("Please Select Credit Customer Name");
+	    	return false;
+	    }
+	
+	
+	/*if(document.custord.CustomerId.value == "")
 	{
 		alert("Select Customer Name.");
 		return false;
-	}	
-	regEstimateCustbill();
+	}*/	
+	
+	    regEstimateCustbill();
 	}
 
 function regEstimateCustbill(){
@@ -1950,6 +1960,18 @@ function getproductgridEstimate(){
 /////////service billing saving in database//////
 
 function resBillService() {
+	
+	 var Customername = $('#CustomerId').val();
+	    
+	    if(Customername=="")
+	    {
+
+	    	return false;
+	    }
+	    resBillService1();
+}
+function resBillService1() {	
+	
 document.getElementById("btnSubmit").disabled = true; 
 var params= {};
 
@@ -3349,6 +3371,15 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 //register oil  in database
 function resotherbill(){
 
+	var Customername = $('#CustomerId').val();
+    
+    if(Customername=="")
+    {
+
+    	return false;
+    }
+    
+    
 resOtherBill();
 }
 function resOtherBill(){

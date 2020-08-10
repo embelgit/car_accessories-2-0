@@ -144,7 +144,10 @@ public List getAllBillByCreditCustomer(String fkCustomerId) {
 		 String paytype = "y";
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-		Query query = session.createSQLQuery("select s.BillNo, s.Date from customerbill s where  s.Customername = '"+fkCustomerId+"' AND s.paymentMode = '"+cc+"'");
+		System.out.println("fkCustomerId - "+fkCustomerId);	
+		 Query query = session.createSQLQuery("select bill_no,insert_date from credit_customer_payment WHERE fk_customer_id = '"+fkCustomerId+"'");	
+			
+	//	Query query = session.createSQLQuery("select s.BillNo, s.Date from customerbill s where  s.Customername = '"+fkCustomerId+"' AND s.paymentMode = '"+cc+"'");
 	//	query.setParameter("paytype", paytype);
 		list = query.list();
 		System.out.println("in getAllBillByCreditCustomer() dao query size - "+query.list().size());
@@ -204,8 +207,9 @@ public List getTotalAmountByBill(String billNo, String creditCustomer) {
 	 try {
 		 hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-//		Query query = session.createSQLQuery("select GrossTotal , Date from creditcustomerbill  where BillNo='"+billNo+"' AND fkCrediCustId = '"+creditCustomer+"'");
-			Query query = session.createSQLQuery("select GrossTotal , Date from customerbill  where BillNo='"+billNo+"' AND Customername = '"+creditCustomer+"'");		
+		 System.out.println("in ttoal");
+		 Query query = session.createSQLQuery("select total_amount , insert_date from credit_customer_payment where bill_no='"+billNo+"' AND fk_customer_id = '"+creditCustomer+"' ORDER BY  pk_credit_customer_id  DESC LIMIT 1");
+//			Query query = session.createSQLQuery("select GrossTotal , Date from customerbill  where BillNo='"+billNo+"' AND Customername = '"+creditCustomer+"'");		
 		System.out.println("In customerdetailsdao get total");
 		list = query.list();
 		System.out.println("List size in DAO of total = == = -  "+query.list().size());

@@ -43,7 +43,7 @@ import com.smt.bean.SaleReturnBean;
 import com.smt.bean.TallyPurchaseReport;
 import com.smt.dao.CarEntryDao;
 import com.smt.dao.CustomerOrderDao;
-
+import com.smt.dao.CustomerPaymentDao;
 import com.smt.dao.GoodReciveDao;
 import com.smt.dao.ServiceDao;
 import com.smt.dao.StockDao;
@@ -286,6 +286,8 @@ public class CustomerOrderHelper {
 				cust.setCustomername("NA");
 			}
 			
+			String fkRootCustId = request.getParameter("fkRootCustId");
+			System.out.println("fkRootCustId  -  "+fkRootCustId);
 			String kmReading = request.getParameter("kmReading");
 //			cust.setTotalAmt(Double.parseDouble(kmReading));
 
@@ -320,6 +322,7 @@ public class CustomerOrderHelper {
 			cust.setTotalperItem(Double.parseDouble(total));
 
 			String wholeTotal = request.getParameter("wholeTotal");
+			System.out.println("wholeTotal-  "+wholeTotal);
 			cust.setWholeTotal(Double.parseDouble(wholeTotal));
 			
 			String grossTotal = request.getParameter("grossTotal");
@@ -371,7 +374,19 @@ public class CustomerOrderHelper {
 
 			CustomerOrderDao dao = new CustomerOrderDao();
 			dao.registerBill(cust);
-
+			String cc = "Credit";
+			if(paymentMode.equals(cc)) {
+				System.out.println("in if paymentMode.equals(cc) - ");
+				if(i == 0){
+					System.out.println("in i==0 to save crdit amt");
+					CustomerPaymentDao pay=new CustomerPaymentDao();
+					
+					pay.regCreditCustomerPayment(BillNo,wholeTotal,paidAmt,fkRootCustId);
+//					pay.regCreditCustomerPayment(BillNo,grossTotal,paidAmt,fkRootCustId);
+					}
+			}
+			
+			
 			Long pk_temp_id = Long.parseLong(request.getParameter("pk_temp_id" + i));
 			System.out.println("pk_temp_id" + pk_temp_id);
 			dao.updateTabaleStatus(pk_temp_id);

@@ -347,14 +347,14 @@ public class CustomerPaymentDao {
 		Date dateobj = new Date();
 		
 		bean.setInsertDate(dateobj);
-		
+		System.out.println("gross credit pay   - "+grossTotal);
 		bean.setTotalAmount(Double.parseDouble(grossTotal));
-		
+		System.out.println("total set - -  "+bean.getTotalAmount());
 		double grossAmt = Double.parseDouble(grossTotal);
 		double paidRs = Double.parseDouble(paidAmt);
 		
 		double balance = grossAmt - paidRs;
-		
+		System.out.println(" balance  "+balance+" grossAmt  "+grossAmt+"  paidRs  "+paidRs);
 		bean.setBalance(balance);
 		
 		bean.setPaymentType("credit");

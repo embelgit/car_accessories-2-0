@@ -497,15 +497,15 @@ function shree(pk_temp_id){
 
 
 function resBill() {
-//    var paymentMode = $('#paymentMode').val();
+    var paymentMode = $('#paymentMode').val();
  
-   // var Customername = $('#CustomerId').val();
+    var Customername = $('#CustomerId').val();
     
- /*   if(paymentMode=="Credit" && Customername=="")
+    if(paymentMode=="Credit" && Customername=="")
     {
-    	alert("please select credit customer name");
-    	return;
-    }*/
+    	alert("Please Select Credit Customer Name");
+    	return false;
+    }
   
     resBill10();
     
@@ -664,9 +664,19 @@ function resBill10(){
     var creditdescription = $('#creditdescription').val();
     var paidAmt = $('#paidAmt').val();
     
+    var input = document.getElementById('CustomerId'),
+    list = document.getElementById('cust_drop'),
+    i,fkRootCustId,gstTinNo;
+	 for (i = 0; i < list.options.length; ++i) {
+		 if (list.options[i].value === input.value) {
+			 fkRootCustId = list.options[i].getAttribute('data-value');
+	
+			 }
+	     }
     var Customername = $('#CustomerId').val();
-    
+    params["fkRootCustId"] = fkRootCustId;
    
+    
     
     if(creditdescription == "" || creditdescription == null || creditdescription == undefined){
     	creditdescription="NA";
@@ -2186,6 +2196,20 @@ function getproductgrid1(){
 /////////service billing saving in database//////
 
 function resBillService() {
+	
+    var paymentMode = $('#paymentMode').val();
+    
+    var Customername = $('#CustomerId').val();
+    
+    if(paymentMode=="Credit" && Customername=="")
+    {
+
+    	return false;
+    }
+    resBillService1();
+}
+    function resBillService1() {
+	
 	document.getElementById("btnSubmit").disabled = true; 
 	var params= {};
 	
