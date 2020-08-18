@@ -5,7 +5,8 @@ import java.util.Date;
 public class SaleReport {
 
 	private String itemName;
-	private Long quantity;
+	private Double quantity;
+//	private Long quantity;
 	private Double salePrice;
 	private Double grossamt;
 	private Date current_date;
@@ -169,12 +170,19 @@ public class SaleReport {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public Long getQuantity() {
+
+	
+	
+	public Double getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
+	/*
+	 * public Long getQuantity() { return quantity; } public void
+	 * setQuantity(Long quantity) { this.quantity = quantity; }
+	 */
 	public Double getSalePrice() {
 		return salePrice;
 	}

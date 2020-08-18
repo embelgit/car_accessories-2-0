@@ -167,6 +167,8 @@ function regGoodReceive(){
 		}
 	}
 	
+	
+		var supp = $('#supplierId').val();
 	    var billNo = $('#billNo').val();
 	    var contactPerson=$('#contactPerson').val();
 	    var vat=$('#vat').val();
@@ -202,7 +204,7 @@ function regGoodReceive(){
 		params["finalExpenses"] = finalExpenses;
 		params["resolution"] = resolution;
 		params["supplierId"] = supplierId;
-		
+		params["supp"] = supp;
 		
 		params["methodName"] = "regGoodReceive";
 		

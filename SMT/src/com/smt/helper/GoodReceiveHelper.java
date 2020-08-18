@@ -26,6 +26,7 @@ import com.smt.bean.BarcodeReportBean;
 import com.smt.bean.GoodreciveBillBean;
 import com.smt.bean.PreviousGoodReceive;
 import com.smt.bean.PurchaseReport;
+import com.smt.bean.PurchaseReportBean;
 import com.smt.bean.TallyPurchaseReport;
 import com.smt.dao.GoodReciveDao;
 import com.smt.dao.StockDao;
@@ -127,6 +128,10 @@ public class GoodReceiveHelper {
 			String contactPerson = request.getParameter("contactPerson");
 			gd.setContactPerson(contactPerson);
 
+			String supp = request.getParameter("supp");
+			gd.setSupplier(supp);
+			System.out.println("supp = = - =  "+supp);
+			
 			String vat = request.getParameter("vat" + i);
 			gd.setVat(Double.parseDouble(vat));
 			
@@ -676,10 +681,10 @@ public class GoodReceiveHelper {
 						e1.printStackTrace();
 					}
 					
-					 Map<Long,PurchaseReport> map = new HashMap<Long,PurchaseReport>();
+					 Map<Long,PurchaseReportBean> map = new HashMap<Long,PurchaseReportBean>();
 						
 					    GoodReciveDao dao = new GoodReciveDao();
-						List<PurchaseReport> exp1List = dao.caReportBetweenTwoDates(adate,bdate);
+						List<PurchaseReportBean> exp1List = dao.caReportBetweenTwoDates(adate,bdate);
 						
 						return exp1List;
 				}

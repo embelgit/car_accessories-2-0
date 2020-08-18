@@ -256,6 +256,10 @@ public class BarrelEntryHelper {
 			String expence = request.getParameter("expence");
 			gd.setExpence(Double.parseDouble(expence));
 
+			String supp = request.getParameter("supp");
+			gd.setSupplier(supp);
+			System.out.println("supp - "+supp);
+			
 			String txPerexpence = request.getParameter("txPerexpence");
 			gd.setTxPerexpence(Double.parseDouble(txPerexpence));
 

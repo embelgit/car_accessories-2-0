@@ -714,7 +714,7 @@ function regEstimateCustbill(){
 		
 	}
 	
-	 var input = document.getElementById('CustomerId'),
+	 /*var input = document.getElementById('CustomerId'),
      list = document.getElementById('cust_drop'),
      i,fkRootCustId,gstTinNo;
 	 
@@ -724,7 +724,7 @@ function regEstimateCustbill(){
 			 fkRootCustId = list.options[i].getAttribute('data-value');
 			 gstTinNo = list.options[i].getAttribute('myvalue');
 			 }
-	     }
+	     }*/
 	    var input1 = document.getElementById('CustomerId').value;
 	    var totalAmount=$('#spareGrossTotal').val();
 		if(totalAmount=="" || totalAmount == null || totalAmount==undefined){
@@ -816,11 +816,14 @@ function regEstimateCustbill(){
 	    	description="NA";
 		}
 	    
+	    var fkRootCustId=0;
+	    var gstTinNo =0;
 	    
 	    params["note"] = note;
 	    params["gstTinNo"] = gstTinNo;
 	    params["input1"] = input1;
 	    params["fkRootCustId"] = fkRootCustId;
+//	    params["fkRootCustId"] = fkRootCustId;
 	    params["count"] = count;
 		params["totalAmount"] = totalAmount;
 		params["grossTotal"] = grossTotal;

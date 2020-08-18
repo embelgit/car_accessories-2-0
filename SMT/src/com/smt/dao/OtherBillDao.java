@@ -95,7 +95,7 @@ public class OtherBillDao {
 			{
 					hbu = HibernateUtility.getInstance();
 					session = hbu.getHibernateSession();
-					Query query=session.createSQLQuery("select BillNo, pkOtherBillId from otherbill group by BillNo order by BillNo desc;");
+					Query query=session.createSQLQuery("select BillNo, pkOtherBillId,OwnerName from otherbill group by BillNo order by BillNo desc;");
 					list = query.list();
 					billList = new ArrayList<BillCopy>(0);
 					
@@ -103,6 +103,7 @@ public class OtherBillDao {
 				 BillCopy bean = new BillCopy();
 				
 				bean.setBillNo(Long.parseLong(objects[0].toString()));
+				bean.setCustName(objects[2].toString());
 				billList.add(bean);
 				}
 			 }
@@ -149,7 +150,7 @@ public class OtherBillDao {
 					reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 					//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 					reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-					reports.setQuantity(Long.parseLong(object[7].toString()));
+					reports.setQuantity(Double.parseDouble(object[7].toString()));
 					reports.setGst(Double.parseDouble(object[8].toString()));
 					reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 					
@@ -202,7 +203,7 @@ public class OtherBillDao {
 					reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 					//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 					reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-					reports.setQuantity(Long.parseLong(object[7].toString()));
+					reports.setQuantity(Double.parseDouble(object[7].toString()));
 					reports.setGst(Double.parseDouble(object[8].toString()));
 					reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 					
@@ -255,7 +256,7 @@ public class OtherBillDao {
 					reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 					//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 					reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-					reports.setQuantity(Long.parseLong(object[7].toString()));
+					reports.setQuantity(Double.parseDouble(object[7].toString()));
 					reports.setGst(Double.parseDouble(object[8].toString()));
 					reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 					
@@ -308,7 +309,7 @@ public class OtherBillDao {
 					reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 					//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 					reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-					reports.setQuantity(Long.parseLong(object[7].toString()));
+					reports.setQuantity(Double.parseDouble(object[7].toString()));
 					reports.setGst(Double.parseDouble(object[8].toString()));
 					reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 					
@@ -361,7 +362,7 @@ public class OtherBillDao {
 					reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 					//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 					reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-					reports.setQuantity(Long.parseLong(object[7].toString()));
+					reports.setQuantity(Double.parseDouble(object[7].toString()));
 					reports.setGst(Double.parseDouble(object[8].toString()));
 					reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 					
@@ -549,7 +550,7 @@ public class OtherBillDao {
 									reports.setGstLedger("GST");
 								}
 								reports.setItemName(object5[9].toString());
-								reports.setQuantity(Long.parseLong(object5[2].toString()));
+								reports.setQuantity(Double.parseDouble(object5[2].toString()));
 								reports.setSalePrice(Double.parseDouble(object5[7].toString()));
 								
 								double quan = Double.parseDouble(object5[2].toString());
@@ -591,7 +592,7 @@ public class OtherBillDao {
 										reports.setGstLedger("GST");
 									}
 									reports.setItemName(object[9].toString());
-									reports.setQuantity(Long.parseLong(object[2].toString()));
+									reports.setQuantity(Double.parseDouble(object[2].toString()));
 									reports.setSalePrice(Double.parseDouble(object[7].toString()));
 									
 									double quan = Double.parseDouble(object[2].toString());

@@ -244,12 +244,12 @@ public class CarEntryDao {
 			
 			List<CarEntryBean> vehicleList=null;
 			 List<Object[]> list = null;
-			
+			char c = 'Y';
 			try
 			{
 					hbu = HibernateUtility.getInstance();
 					session = hbu.getHibernateSession();
-					Query query=session.createSQLQuery("select pkCarEntryId,Car_No,Owner_Name from carentry");
+					Query query=session.createSQLQuery("select pkCarEntryId,Car_No,Owner_Name from carentry where ActiveYN = '"+c+"'");
 					list = query.list();
 					vehicleList = new ArrayList<CarEntryBean>(0);
 					

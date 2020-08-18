@@ -996,7 +996,7 @@ if (list.options[i].value === input.value) {
 }
 
 
-
+var supp = $('#supplierId1').val();
 
 var billNo = $('#billNo1').val();
 var contactPerson=$('#contactPerson1').val();
@@ -1024,7 +1024,7 @@ var resolution=$('#resolutionOil').val();
 params["billNo"] = billNo;
 params["contactPerson"] = contactPerson;
 params["vat"] = vat;
-
+params["supp"] = supp;
 params["pDate"] = pDate;
 params["count"] = count;
 params["extraDiscount"] = extraDiscount;

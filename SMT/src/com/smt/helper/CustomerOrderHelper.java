@@ -1040,10 +1040,10 @@ public class CustomerOrderHelper {
 			e1.printStackTrace();
 		}
 
-		Map<Long, SaleReport> map = new HashMap<Long, SaleReport>();
+		Map<Long, GstReportBean> map = new HashMap<Long, GstReportBean>();
 
 		CustomerOrderDao dao = new CustomerOrderDao();
-		List<SaleReport> exp1List = dao.caSaleReportBetweenTwoDates(adate, bdate);
+		List<GstReportBean> exp1List = dao.caSaleReportBetweenTwoDates(adate, bdate);
 
 		return exp1List;
 	}
@@ -1225,6 +1225,7 @@ public class CustomerOrderHelper {
 			 * cust.setDiscount(Double.parseDouble(discountservice)); }
 			 */
 			//cust.setDiscount(Double.parseDouble(discountservice));
+			cust.setCategoryName("NA");
 			
 			String billnoo = request.getParameter("bill");
 			System.out.println("bill from ui - "+billnoo);

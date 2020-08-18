@@ -167,7 +167,7 @@
 							</span> <input list="catId_drop1" id="catId1" class="form-control">
 					<datalist id="catId_drop1">
 						<%
-							for(int i=0;i<mainCategoryList.size();i++){
+							for(int i=0;i<mainCategoryList1.size();i++){
 								GoodsReceiveBarrelHibernate category = (GoodsReceiveBarrelHibernate)mainCategoryList1.get(i);
 						%>
 							<option data-value="<%=category.getBillNo()%>" value="<%=category.getBillNo() %>">

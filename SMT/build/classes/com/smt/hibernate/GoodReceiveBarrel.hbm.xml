@@ -165,6 +165,12 @@
 		  -->
 		 
 		 <property
+		name="supplier" 
+		type="java.lang.String" 
+		column="supplier_name"
+		 />	
+		 
+		 <property
 		name="salePrice" 
 		type="java.lang.Double" 
 		column="salePrice"

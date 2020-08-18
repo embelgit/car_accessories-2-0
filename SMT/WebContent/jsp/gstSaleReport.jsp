@@ -162,18 +162,29 @@
 						<thead>
 							<tr>
 							    <th> Sr No</th>
+							    <th>Invoice No</th>
+							    <th>Date</th>
 							    <th> Category Name</th>
 				                <th> Item Name</th>
-				                <th> Hsn/Sac No</th>
+				   <!--              <th> Hsn/Sac No</th> -->
 				                <th> Quantity</th>
-				                <th> Gst</th>
-								<th> Igst</th>
+				                <th>Sale Price</th>
+			 	               <th> Gst 18%</th>
+				                <th> Gst 28%</th>
+								<th> Igst 18%</th>
+								<th> Igst 28%</th>
+					              <th> Gst </th>
+								<th> Igst </th>
+								<th>Tax Amount</th>
+								<th>Discount</th>
+								<th>Total</th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
 								<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> 
-			
+											<th></th><th></th> <th></th><th></th>  
+														<th></th><th></th> <th></th><th></th><th></th>  
 							</tr>
 						</tfoot>
 					</table>

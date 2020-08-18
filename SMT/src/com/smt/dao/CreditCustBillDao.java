@@ -131,7 +131,7 @@ public class CreditCustBillDao {
 						hbu = HibernateUtility.getInstance();
 						session = hbu.getHibernateSession();
 //						Query query=session.createSQLQuery("select c.BillNo, s.first_name, s.aadhar_no from creditcustomerbill c left join customer_details s on c.fkCrediCustId=s.pk_customer_id group by c.BillNo order by c.BillNo desc;");
-						Query query=session.createSQLQuery("select BillNo, OwnerName from customerbill where paymentMode = '"+cc+"' group by BillNo order by BillNo desc;");	
+						Query query=session.createSQLQuery("select BillNo, Customername from customerbill where paymentMode = '"+cc+"' group by BillNo order by BillNo desc;");	
 						list = query.list();
 						billList = new ArrayList<BillCopy>(0);
 						
@@ -234,7 +234,7 @@ public class CreditCustBillDao {
 						reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 						//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 						reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-						reports.setQuantity(Long.parseLong(object[7].toString()));
+						reports.setQuantity(Double.parseDouble(object[7].toString()));
 						//reports.setGst(Double.parseDouble(object[8].toString()));
 						reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 						reports.setFirstName(object[11].toString());
@@ -298,7 +298,7 @@ public class CreditCustBillDao {
 						reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 						//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 						reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-						reports.setQuantity(Long.parseLong(object[7].toString()));
+						reports.setQuantity(Double.parseDouble(object[7].toString()));
 						//reports.setGst(Double.parseDouble(object[8].toString()));
 						reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 						reports.setFirstName(object[11].toString());
@@ -362,7 +362,7 @@ public class CreditCustBillDao {
 						reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 						//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 						reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-						reports.setQuantity(Long.parseLong(object[7].toString()));
+						reports.setQuantity(Double.parseDouble(object[7].toString()));
 						//reports.setGst(Double.parseDouble(object[8].toString()));
 						reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 						reports.setFirstName(object[11].toString());
@@ -426,7 +426,7 @@ public class CreditCustBillDao {
 						reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 						//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 						reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-						reports.setQuantity(Long.parseLong(object[7].toString()));
+						reports.setQuantity(Double.parseDouble(object[7].toString()));
 						//reports.setGst(Double.parseDouble(object[8].toString()));
 						reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 						reports.setFirstName(object[11].toString());
@@ -489,7 +489,7 @@ public class CreditCustBillDao {
 						reports.setSalePrice((double) Math.round(Double.parseDouble(object[4].toString())));
 						//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 						reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-						reports.setQuantity(Long.parseLong(object[7].toString()));
+						reports.setQuantity(Double.parseDouble(object[7].toString()));
 						//reports.setGst(Double.parseDouble(object[8].toString()));
 						reports.setTaxAmount(Double.parseDouble(object[9].toString()));
 						reports.setFirstName(object[11].toString());
@@ -693,7 +693,7 @@ public class CreditCustBillDao {
 									reports.setGstLedger("GST");
 								}
 								reports.setItemName(object5[9].toString());
-								reports.setQuantity(Long.parseLong(object5[2].toString()));
+								reports.setQuantity(Double.parseDouble(object5[2].toString()));
 								reports.setSalePrice(Double.parseDouble(object5[7].toString()));
 								
 								double quan = Double.parseDouble(object5[2].toString());
@@ -736,7 +736,7 @@ public class CreditCustBillDao {
 										reports.setGstLedger("GST");
 									}
 									reports.setItemName(object[9].toString());
-									reports.setQuantity(Long.parseLong(object[2].toString()));
+									reports.setQuantity(Double.parseDouble(object[2].toString()));
 									reports.setSalePrice(Double.parseDouble(object[7].toString()));
 									
 									double quan = Double.parseDouble(object[2].toString());

@@ -38,7 +38,29 @@ public class GstReportBean {
 	private Double netAmount;
 	private String fetchDate;
 	private String hsnsacno;
+	private Double quant;
+	private Long srno;
 	
+	private Double discount;
+	
+	public Double getDiscount() {
+		return discount;
+	}
+	public void setDiscount(Double discount) {
+		this.discount = discount;
+	}
+	public Long getSrno() {
+		return srno;
+	}
+	public void setSrno(Long srno) {
+		this.srno = srno;
+	}
+	public Double getQuant() {
+		return quant;
+	}
+	public void setQuant(Double quant) {
+		this.quant = quant;
+	}
 	public String getItemName() {
 		return itemName;
 	}

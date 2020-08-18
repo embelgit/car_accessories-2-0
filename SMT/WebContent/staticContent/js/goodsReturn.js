@@ -918,7 +918,7 @@ function getitems10() {
 				    	        	
 				                },
 							
-								pager : "#jqGridPager",
+								pager : "#jqGridPager1",
 								
 							});
 
@@ -928,7 +928,7 @@ function getitems10() {
 
 					$('#jqGrid1')
 							.navGrid(
-									'#jqGridPager',
+									'#jqGridPager1',
 									// the buttons to appear on the toolbar of the grid
 									 { edit: true, add: true, del: true, search: true, refresh: true, view: true, position: "left", cloneToTop: false },
 									// options for the Edit Dialog

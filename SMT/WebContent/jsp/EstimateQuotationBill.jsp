@@ -145,35 +145,36 @@ function calgrosstot(){
 					     <label class="col-md-2 control-label" align="right" for="customerName">Customer Name:<sup>*</sup></label>  
           					  <div class="col-md-2">
 								<div class="input-group">
-									<span class="input-group-addon">
+<!-- 									<span class="input-group-addon">
 										<i class="glyphicon glyphicon-user"></i>
-									</span>
+									</span> -->
+									<input type="text" class="form-control" id="CustomerId" placeholder="Enter Customer">	
 						
-							<%
+<%-- 							<%
 								CustomerDetailsDao cdd = new CustomerDetailsDao();
            						List cList =cdd.getAllCustomer();
 							
-							%>
-						<input list="cust_drop" id="CustomerId"  class="form-control">
-				         <datalist id="cust_drop">
+							%> --%>
+<!-- 						<input list="cust_drop" id="CustomerId"  class="form-control">
+				         <datalist id="cust_drop"> -->
 							
-							<%
+<%-- 							<%
 					           for(int i=0;i<cList.size();i++){
 					        	   CustomerDetailsBean cust =(CustomerDetailsBean)cList.get(i);
-							%>
+							%> --%>
 		
-						<option data-value="<%=cust.getCustId()%>" value="<%=cust.getFirstName() %> <%=cust.getLastName() %>" myvalue="<%=cust.getAadhar()%>">
+<%-- 						<option data-value="<%=cust.getCustId()%>" value="<%=cust.getFirstName() %> <%=cust.getLastName() %>" myvalue="<%=cust.getAadhar()%>">
 							<%
 				      			}
 				    		%>
-						</datalist> 
+						</datalist> --%> 
 				    </div>
                 </div>
                 <div class="col-md-2" align="right">
 							<label class="control-label" >Contact No:</label>
 						</div>
 						<div class="col-md-2">
-							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number">
+							<input type="text" class="form-control" id="contactNo" maxlength="10" placeholder="Contact Number">
 						</div>	
 							
 						<div class="col-md-2" align="right">
@@ -586,7 +587,7 @@ function calgrosstot(){
 				<div class="row" style="margin-top:20px;">
 					<div align="center" class="margin-top-50">
 						<button type='button' class="btn btn-success btn-lg bottomButtons btn-md button_hw button_margin_right"  id="btnSubmit" autofocus onclick="regEstimateCustbill1();resBillService();resotherbill();" >Save</button>
-					
+					<!-- resBillService(); -->
 
 					
 						<button type='button' class="btn btn-danger btn-lg bottomButtons btn-md button_hw button_margin_right">Cancel</button>

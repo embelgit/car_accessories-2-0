@@ -412,15 +412,15 @@ public class Controller {
 			return toJson(returnMap);
 	}	
 		
-	//CA Purchase Report Two Date
-		public String caReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException, IOException, JSONException {
+	//CA Purchase Report Two Date   throws FileNotFoundException, IOException, JSONException 
+		public String caReportBetweenTwoDates(HttpServletRequest request, HttpServletResponse response) {
 			GoodReceiveHelper helper = new GoodReceiveHelper();
 			List categories = helper.caReportBetweenTwoDates(request, response);
 			Map<String, List> returnMap = new HashMap<String, List>();
 			returnMap.put("list", categories);
 			System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
-			JSONtoXML abc = new JSONtoXML();
-			abc.shree(returnMap);
+//			JSONtoXML abc = new JSONtoXML();
+//			abc.shree(returnMap);
 
 			return toJson(returnMap);
 	}	
@@ -498,8 +498,8 @@ public class Controller {
 			Map<String, List> returnMap = new HashMap<String, List>();
 			returnMap.put("list", categories);
 			System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
-			JSONtoXML abc = new JSONtoXML();
-			abc.shree(returnMap);
+	//		JSONtoXML abc = new JSONtoXML();
+//			abc.shree(returnMap);
 
 			return toJson(returnMap);
 	}		

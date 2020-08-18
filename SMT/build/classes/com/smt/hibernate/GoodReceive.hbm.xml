@@ -114,6 +114,12 @@
 		
 		
 		<property
+		name="supplier" 
+		type="java.lang.String" 
+		column="supplier_name"
+		 />	
+		
+		<property
 		name="contactPerson" 
 		type="java.lang.String" 
 		column="ContactPerson"

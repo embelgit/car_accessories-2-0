@@ -298,7 +298,7 @@ function openCreditCustomerBilling() {
 		<div class="col-sm-12">
 			<div class="table-responsive">
 				<table id="jqGrid1" ></table>
-			    <div id="jqGridPager"></div>
+			    <div id="jqGridPager1"></div>
 			</div>
 		</div>
 	</div>

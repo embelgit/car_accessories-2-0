@@ -9,6 +9,7 @@ public class PurchaseReportBean {
 	private String catName;
 	private Long quantity;
 	private Double buyPrice;
+	private Double buyPriceEx;
 	private Double salePrice;
 	private Double total;
 	private String billNo;
@@ -23,7 +24,7 @@ public class PurchaseReportBean {
 	private Long oringnalQuantity;
 	private Double igst;
 	private Double taxAmount;
-	
+	private Long srno;
 	private Double fivePercentageGST;
 	private Double twelwePercentageGST;
 	private Double eighteenPercentageGST;
@@ -47,6 +48,19 @@ public class PurchaseReportBean {
 	private Double additionalCost;
 	
 	
+	
+	public Double getBuyPriceEx() {
+		return buyPriceEx;
+	}
+	public void setBuyPriceEx(Double buyPriceEx) {
+		this.buyPriceEx = buyPriceEx;
+	}
+	public Long getSrno() {
+		return srno;
+	}
+	public void setSrno(Long srno) {
+		this.srno = srno;
+	}
 	public Double getFivePercentageSGST() {
 		return fivePercentageSGST;
 	}

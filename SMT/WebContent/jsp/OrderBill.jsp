@@ -931,7 +931,7 @@ function calgrosstot(){
 				</form>
 				</div>
 				</div>
-		 <!-- --------------------------end of regular billing------------------ -->	
+		 <!-- --------------------//------end of regular billing------------------ -->	
 		
 				<!-- <form class="form-horizontal" action="" method="post"  name ="custord1"> -->
 				

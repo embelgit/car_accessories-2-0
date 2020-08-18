@@ -326,7 +326,7 @@ public class GoodReciveDao {
 		 session = hbu.getHibernateSession();
 		 Query query = session.createQuery("from GoodReceive group by billNo");
 		 list = query.list();
-		 System.out.println("get bill no - "+query.list().size());
+		 System.out.println("get bill no frm GoodReceive - "+query.list().size());
 		}
 			catch(RuntimeException e){	
 				Log.error("Error in getAllMainCategories()", e);
@@ -1253,11 +1253,11 @@ public List getBarcode() {
 
 
 	//CA Purchase Report Two Date
-	public List<PurchaseReport> caReportBetweenTwoDates(Date adate, Date bdate) {
+	public List<PurchaseReportBean> caReportBetweenTwoDates(Date adate, Date bdate) {
 		
 		HibernateUtility hbu=null;
 		Session session=null;
-		List<PurchaseReport> catList=null;
+		List<PurchaseReportBean> catList=null;
 		try
 		{
 		 hbu = HibernateUtility.getInstance();
@@ -1265,26 +1265,79 @@ public List getBarcode() {
 		 
 		 Long k = 0l;
 		// Query query2 = session.createQuery("select billNo, carNo, barcodeNo, itemName, categoryName, salePrice, ownerName, contactNo, totalAmt, discount from CustomerBill where current_date=:adate");
-		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst from goodreceive  where Date BETWEEN :adate AND :bdate");
+		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx from goodreceive where Date BETWEEN :adate AND :bdate UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx from goodreceivebarrel where Date BETWEEN :adate AND :bdate");
 		 query2.setParameter("adate", adate);
 		 query2.setParameter("bdate", bdate);
 	        List<Object[]> list = query2.list();
-	        catList= new ArrayList<PurchaseReport>(0);
+	        catList= new ArrayList<PurchaseReportBean>(0);
 			
 			
 			for (Object[] object : list) {
-					
-				PurchaseReport reports = new PurchaseReport();
+				PurchaseReportBean	reports = new PurchaseReportBean();
+//				PurchaseReport reports = new PurchaseReport();
 				k++;
 				reports.setSrno(k);
-				
+				System.out.println("reslt - - "+Arrays.toString(object));
 				reports.setCatName(object[0].toString());
 				reports.setItemName(object[1].toString());
 				reports.setHsnsacno(object[2].toString());
+//				reports.setSalePrice(Double.parseDouble(object[2].toString()));
 				reports.setQuantity(Long.parseLong(object[3].toString()));
-				reports.setVat(Double.parseDouble(object[4].toString()));
-				reports.setIgst(Double.parseDouble(object[5].toString()));
 				
+				Double gst = (Double.parseDouble(object[4].toString()));
+				Double igst = (Double.parseDouble(object[5].toString()));
+				
+				if(gst.equals("18.00"))
+				{
+					reports.setEighteenPercentageGST(Double.parseDouble(object[4].toString()));
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setTwentyEightPercentageSGST(0d);
+					reports.setEighteenPercentageSGST(0d);
+
+				}
+				else if(gst.equals("28.00"))
+				{
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(Double.parseDouble(object[4].toString()));
+					reports.setTwentyEightPercentageSGST(0d);
+					reports.setEighteenPercentageSGST(0d);			
+				}
+				else {
+					reports.setVat(Double.parseDouble(object[4].toString()));					
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setTwentyEightPercentageSGST(0d);
+					reports.setEighteenPercentageSGST(0d);
+				}
+				if(igst.equals("18.00")) {
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setTwentyEightPercentageSGST(0d);
+					reports.setEighteenPercentageSGST(Double.parseDouble(object[5].toString()));
+				}
+				else if(igst.equals("28.00")) {
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setTwentyEightPercentageSGST(Double.parseDouble(object[5].toString()));
+					reports.setEighteenPercentageSGST(0d);
+					
+				}
+				else {
+					reports.setIgst(Double.parseDouble(object[5].toString()));				
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setTwentyEightPercentageSGST(0d);
+					reports.setEighteenPercentageSGST(0d);
+				}
+
+	
+				reports.setBillNo(object[6].toString());
+				reports.setSupplierName(object[7].toString());
+				reports.setTaxAmount(Double.parseDouble(object[8].toString()));
+				reports.setTotal(Double.parseDouble(object[9].toString()));
+				reports.setDate((Date)object[10]);
+				reports.setBuyPrice(Double.parseDouble(object[11].toString()));
+				reports.setBuyPriceEx(Double.parseDouble(object[12].toString()));
 				catList.add(reports); 
 		
 			}}
@@ -1558,7 +1611,7 @@ public List getBillNo1() {
 	 session = hbu.getHibernateSession();
 	 Query query = session.createQuery("from GoodsReceiveBarrelHibernate group by billNo");
 	 list = query.list();
-	 System.out.println("get bill no - "+query.list().size());
+	 System.out.println("get bill no frm GoodsReceiveBarrelHibernate - "+query.list().size());
 	}
 		catch(RuntimeException e){	
 			Log.error("Error in getAllMainCategories()", e);

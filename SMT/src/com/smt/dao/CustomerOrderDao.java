@@ -1121,7 +1121,7 @@ public List<SaleReport> dayCloseReport() {
 			reports.setSalePrice(Double.parseDouble(object[4].toString()));
 			reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 			reports.setDiscount(Double.parseDouble(object[6].toString()));
-			reports.setQuantity(Long.parseLong(object[7].toString()));
+			reports.setQuantity(Double.parseDouble(object[7].toString()));
 			reports.setGst(Double.parseDouble(object[8].toString()));
 			reports.setiGst(Double.parseDouble(object[9].toString()));
 			catList.add(reports); 
@@ -1627,7 +1627,7 @@ public List<SaleReport> singleDateSaleReport(Date adate) {
 				//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 				//reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
 				reports.setHsnSacNo(object[6].toString());
-				reports.setQuantity(Long.parseLong(object[7].toString()));
+				reports.setQuantity(Double.parseDouble(object[7].toString()));
 				reports.setTaxAmount(Double.parseDouble(object[8].toString()));
 				String gst = object[9].toString();
 				String igst = object[10].toString();
@@ -1691,7 +1691,7 @@ public List<SaleReport> twoDateSaleReport(Date adate, Date bdate) {
 			//reports.setTotalAmt(Double.parseDouble(object[5].toString()));
 			reports.setHsnSacNo(object[6].toString());
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
-			reports.setQuantity(Long.parseLong(object[7].toString()));
+			reports.setQuantity(Double.parseDouble(object[7].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[8].toString()));
 			String gst = object[9].toString();
 			String igst = object[10].toString();
@@ -1753,7 +1753,7 @@ public List<SaleReport> categorySaleWise(String catName) {
 			
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[6].toString())));
 			reports.setHsnSacNo(object[6].toString());
-			reports.setQuantity(Long.parseLong(object[7].toString()));
+			reports.setQuantity(Double.parseDouble(object[7].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[8].toString()));
 			String gst = object[9].toString();
 			String igst = object[10].toString();
@@ -1815,7 +1815,7 @@ public List<SaleReport> vehicleSingleDate(Date adate) {
 			//reports.setTotalAmt(Double.parseDouble(object[8].toString()));
 			reports.setHsnSacNo(object[9].toString());
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[9].toString())));
-			reports.setQuantity(Long.parseLong(object[10].toString()));
+			reports.setQuantity(Double.parseDouble(object[10].toString()));
 			reports.setGst(Double.parseDouble(object[11].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[12].toString()));
 			double quan = Double.parseDouble(object[10].toString());
@@ -1871,7 +1871,7 @@ public List<SaleReport> vehicleTwoDate(Date adate, Date bdate) {
 			//reports.setTotalAmt(Double.parseDouble(object[8].toString()));
 			reports.setHsnSacNo(object[9].toString());
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[9].toString())));
-			reports.setQuantity(Long.parseLong(object[10].toString()));
+			reports.setQuantity(Double.parseDouble(object[10].toString()));
 			reports.setGst(Double.parseDouble(object[11].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[12].toString()));
 			double quan = Double.parseDouble(object[10].toString());
@@ -1927,7 +1927,7 @@ public List<SaleReport> categorySaleWiseCustomer(String catId) {
 			//reports.setTotalAmt(Double.parseDouble(object[8].toString()));
 			reports.setHsnSacNo(object[9].toString());
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[9].toString())));
-			reports.setQuantity(Long.parseLong(object[10].toString()));
+			reports.setQuantity(Double.parseDouble(object[10].toString()));
 			reports.setGst(Double.parseDouble(object[11].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[12].toString()));
 			double quan = Double.parseDouble(object[10].toString());
@@ -1983,7 +1983,7 @@ public List<SaleReport> billnowiseVehiclesell(String billNo) {
 			//reports.setTotalAmt(Double.parseDouble(object[8].toString()));
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[9].toString())));
 			reports.setHsnSacNo(object[9].toString());
-			reports.setQuantity(Long.parseLong(object[10].toString()));
+			reports.setQuantity(Double.parseDouble(object[10].toString()));
 			reports.setGst(Double.parseDouble(object[11].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[12].toString()));
 			double quan = Double.parseDouble(object[10].toString());
@@ -2039,7 +2039,7 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 			//reports.setTotalAmt(Double.parseDouble(object[8].toString()));
 			//reports.setDiscount((double) Math.round(Double.parseDouble(object[9].toString())));
 			reports.setHsnSacNo(object[9].toString());
-			reports.setQuantity(Long.parseLong(object[10].toString()));
+			reports.setQuantity(Double.parseDouble(object[10].toString()));
 			reports.setGst(Double.parseDouble(object[11].toString()));
 			reports.setTaxAmount(Double.parseDouble(object[12].toString()));
 			double quan = Double.parseDouble(object[10].toString());
@@ -2060,11 +2060,11 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 }
 
 //CA Sale Report Two Date
-	public List<SaleReport> caSaleReportBetweenTwoDates(Date adate, Date bdate) {
+	public List<GstReportBean> caSaleReportBetweenTwoDates(Date adate, Date bdate) {
 		// TODO Auto-generated method stub
 		HibernateUtility hbu=null;
 		Session session=null;
-		List<SaleReport> catList=null;
+		List<GstReportBean> catList=null;
 		try
 		{
 		 hbu = HibernateUtility.getInstance();
@@ -2072,26 +2072,91 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 		 
 		 Long k = 0l;
 		// Query query2 = session.createQuery("select billNo, carNo, barcodeNo, itemName, categoryName, salePrice, ownerName, contactNo, totalAmt, discount from CustomerBill where current_date=:adate");
-		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from creditcustomerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from otherbill where date BETWEEN :adate AND :bdate");
+//		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from creditcustomerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo from otherbill where date BETWEEN :adate AND :bdate");
+
+	//	 Query query2 = session.createSQLQuery("SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo,BillNo,TaxAmount,TotalAmount,Discount,date from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo,BillNo,TaxAmount,TotalAmount,Discount,date from otherbill where date BETWEEN :adate AND :bdate");		 
+		
+		 Query query2 = session.createSQLQuery("SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from otherbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, service_item, service_quantity, service_gst, service_igst, service_saleprice,BillNo,service_taxAmt,service_totalGrid,Discount,date from  service_billing where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from barreloilbilling where date BETWEEN :adate AND :bdate");		 
+		 
 		 query2.setParameter("adate", adate);
 		 query2.setParameter("bdate", bdate);
 	        List<Object[]> list = query2.list();
-	        catList= new ArrayList<SaleReport>(0);
+	        catList= new ArrayList<GstReportBean>(0);
 			
 			
 			for (Object[] object : list) {
-					
-				SaleReport reports = new SaleReport();
+				GstReportBean reports = new GstReportBean();
+//				SaleReport reports = new SaleReport();
 				k++;
-				reports.setSrNo(k);
-				
-				reports.setCategoryName(object[0].toString());
+				System.out.println("reslt - "+Arrays.toString(object));
+//				reports.setSrNo(k);
+				reports.setSrno(k);
+				reports.setCatName(object[0].toString());
 				reports.setItemName(object[1].toString());
-				reports.setHsnSacNo(object[5].toString());
-				reports.setQuantity(Long.parseLong(object[2].toString()));
-				reports.setGst(Double.parseDouble(object[3].toString()));
-				reports.setiGst(Double.parseDouble(object[4].toString()));
+			//	reports.setHsnSacNo(object[5].toString());
+				reports.setSalePrice(Double.parseDouble(object[5].toString()));
+				reports.setQuant(Double.parseDouble(object[2].toString()));
 				
+				Double gst = (Double.parseDouble(object[3].toString()));
+				Double igst = (Double.parseDouble(object[4].toString()));
+				System.out.println("gst - "+gst+"  igst  -  "+igst);
+				
+				if(gst.equals("18.00"))
+				{
+					reports.setEighteenPercentageGST(Double.parseDouble(object[3].toString()));
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setiGSTTwentyeightPercentage(0d);
+					reports.setiGSTEighteenPercentage(0d);
+					reports.setVat(0d);
+				}
+				else if(gst.equals("28.00"))
+				{
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(Double.parseDouble(object[3].toString()));
+					reports.setiGSTTwentyeightPercentage(0d);
+					reports.setiGSTEighteenPercentage(0d);			
+					reports.setVat(0d);
+				}
+				else {
+					 
+					reports.setVat(Double.parseDouble(object[3].toString()));					
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setiGSTTwentyeightPercentage(0d);
+					reports.setiGSTEighteenPercentage(0d);
+				}
+				if(igst.equals("18.00")) {
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setiGSTTwentyeightPercentage(0d);
+					reports.setiGSTEighteenPercentage(Double.parseDouble(object[4].toString()));
+					reports.setIgst(0d);
+				}
+				else if(igst.equals("28.00")) {
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setiGSTTwentyeightPercentage(Double.parseDouble(object[4].toString()));
+					reports.setiGSTEighteenPercentage(0d);
+					reports.setIgst(0d);
+				}
+				else {
+					reports.setIgst(Double.parseDouble(object[4].toString()));				
+					reports.setEighteenPercentageGST(0d);
+					reports.setTwentyEightPercentageGST(0d);
+					reports.setiGSTTwentyeightPercentage(0d);
+					reports.setiGSTEighteenPercentage(0d);
+				}
+				
+				
+//				reports.setGst(Double.parseDouble(object[3].toString()));
+//				reports.setiGst(Double.parseDouble(object[4].toString()));
+				
+				
+				reports.setBillNo(object[6].toString());
+				reports.setTaxAmount(Double.parseDouble(object[7].toString()));
+				reports.setTotal(Double.parseDouble(object[8].toString()));
+				reports.setDiscount(Double.parseDouble(object[9].toString()));
+				reports.setDate((Date)object[10]);
 				catList.add(reports); 
 		
 			}}
@@ -2271,7 +2336,7 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 							reports.setGstLedger("GST");
 						}
 						reports.setItemName(object5[11].toString());
-						reports.setQuantity(Long.parseLong(object5[2].toString()));
+						reports.setQuantity(Double.parseDouble(object5[2].toString()));
 						reports.setSalePrice(Double.parseDouble(object5[8].toString()));
 						
 						double quan = Double.parseDouble(object5[2].toString());
@@ -2314,7 +2379,7 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 								reports.setGstLedger("GST");
 							}
 							reports.setItemName(object[11].toString());
-							reports.setQuantity(Long.parseLong(object[2].toString()));
+							reports.setQuantity(Double.parseDouble(object[2].toString()));
 							reports.setSalePrice(Double.parseDouble(object[8].toString()));
 							
 							double quan = Double.parseDouble(object[2].toString());

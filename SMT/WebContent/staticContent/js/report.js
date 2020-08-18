@@ -595,13 +595,31 @@ function caReportBetweenTwoDates(){
 				      
 				columns: [  
                           {"data": "srno", "width": "5%","defaultContent": ""},
+	                      {"data": "date", "width": "5%","defaultContent": ""},
+	              
+	                      {"data": "billNo", "width": "5%","defaultContent": ""},
+	                      {"data": "supplierName", "width": "5%","defaultContent": ""},        
 	                      {"data": "catName", "width": "5%","defaultContent": ""},
 	                      {"data": "itemName", "width": "5%","defaultContent": ""},
+	              
 	                      {"data": "hsnsacno", "width": "5%","defaultContent": ""},
 	                      {"data": "quantity", "width": "5%","defaultContent": ""},
-	                      {"data": "vat", "width": "5%","defaultContent": ""},
-	                      {"data": "igst", "width": "5%","defaultContent": ""},
 	                      
+	                      {"data": "buyPrice", "width": "5%","defaultContent": ""},
+	                      {"data": "buyPriceEx", "width": "5%","defaultContent": ""},      
+	                      
+	                      {"data": "eighteenPercentageGST", "width": "5%","defaultContent": ""},
+	                      {"data": "twentyEightPercentageGST", "width": "5%","defaultContent": ""},      
+	                      {"data": "vat", "width": "5%","defaultContent": ""},
+	                      
+	                      {"data": "eighteenPercentageSGST", "width": "5%","defaultContent": ""},
+	                      {"data": "twentyEightPercentageSGST", "width": "5%","defaultContent": ""},
+	                      {"data": "igst", "width": "5%","defaultContent": ""},
+
+
+	                      {"data": "taxAmount", "width": "5%","defaultContent": ""},
+	                      {"data": "total", "width": "5%","defaultContent": ""},
+	  
 				        ]
 				    } );
 				} );
@@ -1556,13 +1574,30 @@ function caSaleReportBetweenTwoDates(){
 				        searching: false,
 				      
 				columns: [  
-                          {"data": "srNo", "width": "5%","defaultContent": ""},
-	                      {"data": "categoryName", "width": "5%","defaultContent": ""},
+                          {"data": "srno", "width": "5%","defaultContent": ""},
+                          {"data": "billNo", "width": "5%","defaultContent": ""},
+                          {"data": "date", "width": "5%","defaultContent": ""},
+	                      {"data": "catName", "width": "5%","defaultContent": ""},
 	                      {"data": "itemName", "width": "5%","defaultContent": ""},
-	                      {"data": "hsnSacNo", "width": "5%","defaultContent": ""},
-	                      {"data": "quantity", "width": "5%","defaultContent": ""},
-	                      {"data": "gst", "width": "5%","defaultContent": ""},
-	                      {"data": "iGst", "width": "5%","defaultContent": ""},
+	//                      {"data": "hsnSacNo", "width": "5%","defaultContent": ""},
+	                      {"data": "quant", "width": "5%","defaultContent": ""},
+	                      {"data": "salePrice", "width": "5%","defaultContent": ""},
+	                      
+	                      {"data": "eighteenPercentageGST", "width": "5%","defaultContent": ""},
+	                      {"data": "twentyEightPercentageGST", "width": "5%","defaultContent": ""},
+	                      
+	                      {"data": "iGSTEighteenPercentage", "width": "5%","defaultContent": ""},
+	                      {"data": "iGSTTwentyeightPercentage", "width": "5%","defaultContent": ""},
+	                      
+
+	                      {"data": "vat", "width": "5%","defaultContent": ""},
+	                      {"data": "igst", "width": "5%","defaultContent": ""},
+	                      
+	                      {"data": "taxAmount", "width": "5%","defaultContent": ""},
+	                      {"data": "discount", "width": "5%","defaultContent": ""},
+	                      
+
+	                      {"data": "total", "width": "5%","defaultContent": ""},
 	                      
 				        ]
 				    } );

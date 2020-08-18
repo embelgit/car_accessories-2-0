@@ -46,9 +46,17 @@ public class GoodsReceiveBarrelHibernate {
 	private Double buyPriceEXTax;
 	private Double buyPriceEx;
 	
-	
+	private String supplier;
 
 	
+	
+	
+	public String getSupplier() {
+		return supplier;
+	}
+	public void setSupplier(String supplier) {
+		this.supplier = supplier;
+	}
 	public Double getBuyPriceEx() {
 		return buyPriceEx;
 	}

@@ -30,6 +30,11 @@
 		$(document).ready(function () {
 			var table=$("#list").dataTable({
 				
+				dom: 'Bfrtip',
+		         buttons: [
+		             'copy', 'csv', 'excel', 'pdf', 'print'
+		         ],
+				
 				 fnRowCallback : function(nRow, aData, iDisplayIndex){
 		                $("th:first", nRow).html(iDisplayIndex +1);
 		               return nRow;

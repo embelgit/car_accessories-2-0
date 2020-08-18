@@ -161,10 +161,14 @@
         column="wholeTotal"
     />	 
     
-    
+	    <property
+		name="categoryName" 
+		type="java.lang.String" 
+		column="CategoryName"
+		 />
 
 
- <property
+		 <property
 		name="totalQuan" 
 		type="java.lang.Double" 
 		column="totalQuan"
