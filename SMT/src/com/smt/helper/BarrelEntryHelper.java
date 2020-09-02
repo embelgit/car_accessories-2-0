@@ -274,6 +274,9 @@ public class BarrelEntryHelper {
 			String supplierId = request.getParameter("supplierId");
 			gd.setSupplierName(Long.parseLong(supplierId));
 
+			String gst1 = request.getParameter("gst1");
+			gd.setGstno(gst1);
+			
 			String pDate = request.getParameter("pDate");
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -536,6 +539,13 @@ public class BarrelEntryHelper {
 			cust.setContactNo(000l);
 			cust.setOwnerName("NA");
 
+			String Customername = request.getParameter("Customername");
+			cust.setCustomername(Customername);
+			String gstNo = request.getParameter("gstNo");			
+			cust.setGstNo(gstNo);
+			
+			System.out.println("ciust - "+Customername+" gstNo -   "+gstNo);
+			
 			
 			String grossTotal = request.getParameter("grossTotal");
 			cust.setGrossamt(Double.parseDouble(grossTotal));

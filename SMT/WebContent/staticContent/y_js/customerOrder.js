@@ -506,6 +506,26 @@ function resBill() {
     	alert("Please Select Credit Customer Name");
     	return false;
     }
+    
+    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
+	var allRowsInGrid1 = $('#list5').getGridParam('data');
+	var AllRows=JSON.stringify(allRowsInGrid1);
+	for (var i = 0; i < count1; i++) 
+	{
+		var quantity1 = allRowsInGrid1[i].quantity;
+		if(quantity1=="" || quantity1==null || quantity1==undefined || quantity1==0){
+			alert("Please enter Quantity in service grid");
+			return false;
+		}
+		
+		var salePrice1 = allRowsInGrid1[i].salePrice;
+		
+		if(salePrice1=="" || salePrice1==null || salePrice1==undefined || salePrice1==0){
+			alert("Please enter Sale Price in service grid");
+			return false;
+		}
+
+	}
   
     resBill10();
     
@@ -2206,6 +2226,26 @@ function resBillService() {
 
     	return false;
     }
+    
+    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
+	var allRowsInGrid1 = $('#list5').getGridParam('data');
+	var AllRows=JSON.stringify(allRowsInGrid1);
+	for (var i = 0; i < count1; i++) 
+	{
+		var quantity1 = allRowsInGrid1[i].quantity;
+		if(quantity1=="" || quantity1==null || quantity1==undefined || quantity1==0){
+	//		alert("Please enter quantity in service grid");
+			return false;
+		}
+		
+		var salePrice1 = allRowsInGrid1[i].salePrice;
+		
+		if(salePrice1=="" || salePrice1==null || salePrice1==undefined || salePrice1==0){
+	//		alert("Please enter sale price in service grid");
+			return false;
+		}
+
+	}
     resBillService1();
 }
     function resBillService1() {
@@ -2222,6 +2262,16 @@ function resBillService() {
 	   var wholeTotal=$('#wholeTotal').val();
 		 var bill = $('#bill').val();
 	   
+		    var Customername = $('#CustomerId').val();
+			if(Customername=="" || Customername==null || Customername==undefined){
+				Customername="NA";
+			}
+		    
+		    var gstNo = $('#gstNo').val();
+			if(gstNo=="" || gstNo==null || gstNo==undefined){
+				gstNo="0";
+			}
+			
 		//var params= {};
 			var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
 			var allRowsInGrid1 = $('#list5').getGridParam('data');
@@ -2236,16 +2286,25 @@ function resBillService() {
 				params["itemName1"+i] = itemName1;
 				
 				var quantity1 = allRowsInGrid1[i].quantity;
+				
+				
 				if(quantity1=="" || quantity1==null || quantity1==undefined){
 					quantity1=0;
 				}
+				
 				params["quantity1"+i] = quantity1;
 				
 				var salePrice1 = allRowsInGrid1[i].salePrice;
+			
+				
+				
 				if(salePrice1=="" || salePrice1==null || salePrice1==undefined){
 					salePrice1=0;
 				}
 				params["salePrice1"+i] = salePrice1;
+				
+				
+				
 				
 				var total1 = allRowsInGrid1[i].total;
 				if(total1=="" || total1==null || total1==undefined){
@@ -2339,7 +2398,8 @@ function resBillService() {
 		params["grossTotal"] = grossTotal;
 		params["carID"] = carID;
 		params["wholeTotal"] = wholeTotal;
-		
+		params["Customername"] = Customername;
+		params["gstNo"]  =gstNo;
 		//
 		
 	

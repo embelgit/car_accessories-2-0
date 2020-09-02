@@ -222,6 +222,60 @@ public class ServiceDao {
 						return list;
 			}	
 			
+			//
+			public List getAllgst(String ProductId) {
+
+
+				System.out.println("into dao supplier : "+ProductId);
+				HibernateUtility hbu = null;
+				Session session =  null;
+				Query query = null;
+				 List list = null;
+				 try {
+					 hbu = HibernateUtility.getInstance();
+					 session = hbu.getHibernateSession();
+					 query = session.createSQLQuery("select supplier_id,pan_no from supplier_details WHERE supplier_id = "+ProductId);
+					 list = query.list(); 
+				} catch (RuntimeException e) {
+					e.printStackTrace();
+				}
+				 
+				 finally
+				 {
+					 if (session!=null) {
+						hbu.closeSession(session);
+					}
+				 }
+				 System.out.println("out of dao - return credit customer List : "+list);
+						return list;
+			}	
+			//
+			public List getAllgstt(String ProductId) {
+
+
+				System.out.println("into dao supplier : "+ProductId);
+				HibernateUtility hbu = null;
+				Session session =  null;
+				Query query = null;
+				 List list = null;
+				 try {
+					 hbu = HibernateUtility.getInstance();
+					 session = hbu.getHibernateSession();
+					 query = session.createSQLQuery("select supplier_id,pan_no from supplier_details WHERE supplier_id = "+ProductId);
+					 list = query.list(); 
+				} catch (RuntimeException e) {
+					e.printStackTrace();
+				}
+				 
+				 finally
+				 {
+					 if (session!=null) {
+						hbu.closeSession(session);
+					}
+				 }
+				 System.out.println("out of dao - return credit customer List : "+list);
+						return list;
+			}	
 			
 			
 			public List getProductNames()

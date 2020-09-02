@@ -1768,7 +1768,32 @@ public class Controller {
 							System.out.println("going out of controller");
 							return xyz;
 						}
-						
+						//
+						public String getgst(HttpServletRequest request, HttpServletResponse response) {
+							String productId = request.getParameter("productId");
+							Long productID = Long.parseLong(productId);
+							System.out.println("in controller customerId : " + productID);
+							ServiceHelper helper = new ServiceHelper();
+							Map map = helper.getgst(productId);
+							Map<String, List> returnMap = new HashMap<String, List>();
+							String xyz = toJson(map);
+							System.out.println(xyz);
+							System.out.println("going out of controller");
+							return xyz;
+						}
+						//
+						public String getgstt(HttpServletRequest request, HttpServletResponse response) {
+							String productId = request.getParameter("productId");
+							Long productID = Long.parseLong(productId);
+							System.out.println("in controller customerId : " + productID);
+							ServiceHelper helper = new ServiceHelper();
+							Map map = helper.getgstt(productId);
+							Map<String, List> returnMap = new HashMap<String, List>();
+							String xyz = toJson(map);
+							System.out.println(xyz);
+							System.out.println("going out of controller");
+							return xyz;
+						}
 
 
 						public String updateProductDetailsService(HttpServletRequest request, HttpServletResponse response) {

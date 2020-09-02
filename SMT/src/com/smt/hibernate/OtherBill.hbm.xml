@@ -37,6 +37,13 @@
 		column="note"
 		/>
 		
+		
+				<property
+		name="Customername" 
+		type="java.lang.String" 
+		column="Customername"
+		/>
+		
 		 <property
 		name="quantity" 
 		type="java.lang.Long" 
@@ -78,11 +85,20 @@
 		type="java.lang.Double" 
 		column="TaxAmount"
 		 />
+		
 		 <property
 		name="hsnSacNo" 
 		type="java.lang.String" 
 		column="HsnSacNo"
 	     />
+		
+		
+		 <property
+		name="gstNo" 
+		type="java.lang.String" 
+		column="gstNo"
+	     />
+	     
 		
 		<property
 		name="totalperItem" 

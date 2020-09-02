@@ -8,6 +8,7 @@
 
 function validateRegGoodReceive(){
 	
+
  			var billNo= $('#billNo').val();
  			var supplierId= $('#supplierId').val();
  			var contactPerson= $('#contactPerson').val();
@@ -167,7 +168,7 @@ function regGoodReceive(){
 		}
 	}
 	
-	
+		var gst= $('#gst').val();	
 		var supp = $('#supplierId').val();
 	    var billNo = $('#billNo').val();
 	    var contactPerson=$('#contactPerson').val();
@@ -195,7 +196,7 @@ function regGoodReceive(){
 		params["billNo"] = billNo;
 		params["contactPerson"] = contactPerson;
 		params["vat"] = vat;
-		
+		params["gst"] = gst;
 		params["pDate"] = pDate;
 		params["count"] = count;
 		params["extraDiscount"] = extraDiscount;
@@ -923,5 +924,45 @@ function getProductList()
  	    		}
  	    	})
 		
+	
+}
+
+//
+
+function getgst(){
+	var params= {};
+	
+	var input = document.getElementById('supplierId'),
+	list = document.getElementById('supplierId_drop'),
+	i,supplierId1;
+	for (i = 0; i < list.options.length; ++i) {
+		if (list.options[i].value === input.value) {
+			supplierId1 = list.options[i].getAttribute('data-value');
+		}
+	}
+	
+	$("#gst").append($("<input/>").attr("value","").text());
+
+
+	params["productId"]= supplierId1;
+	params["methodName"] = "getgst";
+	
+	$.post('/SMT/jsp/utility/controller.jsp',params,function(data){
+		
+		var jsonData = $.parseJSON(data);
+		var catmap = jsonData.list;
+		$.each(jsonData,function(i,v)
+				{
+				  document.getElementById("gst").value = v.panNo;
+
+		      
+				});
+			}).error(function(jqXHR, textStatus, errorThrown){
+				if(textStatus==="timeout") {
+
+				}
+			});
+ 	    	
+
 	
 }

@@ -9,7 +9,44 @@ function calculateTotal()
 	document.getElementById('TotalBarrel').value=TotalBarrel;
 
 }
+//
+function getgst1(){
+	var params= {};
+	
+	var input = document.getElementById('supplierId1'),
+	list = document.getElementById('supplierId_drop'),
+	i,supplierId10;
+	for (i = 0; i < list.options.length; ++i) {
+		if (list.options[i].value === input.value) {
+			supplierId10 = list.options[i].getAttribute('data-value');
+		}
+	}
+	
+	$("#gst1").append($("<input/>").attr("value","").text());
 
+
+	params["productId"]= supplierId10;
+	params["methodName"] = "getgstt";
+	
+	$.post('/SMT/jsp/utility/controller.jsp',params,function(data){
+		
+		var jsonData = $.parseJSON(data);
+		var catmap = jsonData.list;
+		$.each(jsonData,function(i,v)
+				{
+				  document.getElementById("gst1").value = v.panNo;
+
+		      
+				});
+			}).error(function(jqXHR, textStatus, errorThrown){
+				if(textStatus==="timeout") {
+
+				}
+			});
+ 	    	
+
+	
+}
 
 
 function productdel(){
@@ -996,6 +1033,8 @@ if (list.options[i].value === input.value) {
 }
 
 
+var gst1 = $('#gst1').val();
+
 var supp = $('#supplierId1').val();
 
 var billNo = $('#billNo1').val();
@@ -1020,7 +1059,7 @@ if(finalExpenses == ""){
 }
 var resolution=$('#resolutionOil').val();
 
-
+params["gst1"] = gst1;
 params["billNo"] = billNo;
 params["contactPerson"] = contactPerson;
 params["vat"] = vat;
@@ -1634,6 +1673,26 @@ function resotherbill(){
     	return false;
     }
 	
+    var count1 = jQuery("#list5").jqGrid('getGridParam', 'records');
+	var allRowsInGrid1 = $('#list5').getGridParam('data');
+	var AllRows=JSON.stringify(allRowsInGrid1);
+	for (var i = 0; i < count1; i++) 
+	{
+		var quantity1 = allRowsInGrid1[i].quantity;
+		if(quantity1=="" || quantity1==null || quantity1==undefined || quantity1==0){
+	//		alert("Please enter quantity in service grid");
+			return false;
+		}
+		
+		var salePrice1 = allRowsInGrid1[i].salePrice;
+		
+		if(salePrice1=="" || salePrice1==null || salePrice1==undefined || salePrice1==0){
+	//		alert("Please enter sale price in service grid");
+			return false;
+		}
+
+	}
+    
 	resOtherBill();
 	}
 function resOtherBill(){
@@ -1776,6 +1835,18 @@ function resOtherBill(){
 	    var wholeTotal=$('#wholeTotal').val();
 	    var bill=$('#bill').val();
 	    
+	    var Customername = $('#CustomerId').val();
+	    if(Customername=="" || Customername==null || Customername==undefined){
+			Customername="NA";
+		}
+	    var gstNo = $('#gstNo').val();
+	    if(gstNo=="" || gstNo==null || gstNo==undefined){
+			gstNo="0";
+		}
+		
+		params["Customername"] = Customername;
+		params["gstNo"]  =gstNo;
+		
 	    params["bill"] = bill;
 		params["count"] = count;
 		params["totalAmount"] = totalAmount;

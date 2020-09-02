@@ -569,7 +569,7 @@ function getitems() {
 								datatype : "local",
 
 								colNames : [ "itemID","CategoryName", "Item Name",
-										 "Avail Quant", "Return Quant", "BuyPrice","BPExTax",
+										 "Purchase Quant", "Return Quant", "BuyPrice","BPExTax",
 										"GST", "IGST","Total","ContactPerson",
 										"BarcodeNo", "Date" ],
 
@@ -594,7 +594,7 @@ function getitems() {
 
 								{
 									name : "quantity",
-									width : 100,
+									width : 140,
 								// must set editable to true if you want to make the field editable
 								},
 								{
@@ -792,7 +792,7 @@ function getitems10() {
 								datatype : "local",
 
 								colNames : [ "itemID","CategoryName", "Item Name",
-										 "Avail Quant", "Return Quant", "BuyPrice","BPEXTax",
+										 "Purchase Quant", "Return Quant", "BuyPrice","BPEXTax",
 										"GST", "IGST","Total","ContactPerson",
 										"BarcodeNo", "OilPerBarel" ,"Date"],
 
@@ -816,7 +816,7 @@ function getitems10() {
 									name : "noofBarrel",
 			//						name : "quantity",
 			//						name : "totallitre", 
-									width : 100,
+									width : 140,
 								// must set editable to true if you want to make the field editable
 								},
 								{

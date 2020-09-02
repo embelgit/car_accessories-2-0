@@ -1265,7 +1265,7 @@ public List getBarcode() {
 		 
 		 Long k = 0l;
 		// Query query2 = session.createQuery("select billNo, carNo, barcodeNo, itemName, categoryName, salePrice, ownerName, contactNo, totalAmt, discount from CustomerBill where current_date=:adate");
-		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx from goodreceive where Date BETWEEN :adate AND :bdate UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx from goodreceivebarrel where Date BETWEEN :adate AND :bdate");
+		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo from goodreceive where Date BETWEEN :adate AND :bdate UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo from goodreceivebarrel where Date BETWEEN :adate AND :bdate");
 		 query2.setParameter("adate", adate);
 		 query2.setParameter("bdate", bdate);
 	        List<Object[]> list = query2.list();
@@ -1338,6 +1338,7 @@ public List getBarcode() {
 				reports.setDate((Date)object[10]);
 				reports.setBuyPrice(Double.parseDouble(object[11].toString()));
 				reports.setBuyPriceEx(Double.parseDouble(object[12].toString()));
+				reports.setGst(object[13].toString());
 				catList.add(reports); 
 		
 			}}

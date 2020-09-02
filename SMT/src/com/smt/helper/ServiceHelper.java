@@ -29,6 +29,7 @@ import com.smt.hibernate.CustomerBill;
 import com.smt.hibernate.ProductRegister;
 import com.smt.hibernate.ServiceDetail;
 import com.smt.hibernate.Stock;
+import com.smt.hibernate.SupplierDetail;
 import com.smt.utility.HibernateUtility;
 
 public class ServiceHelper {
@@ -164,7 +165,52 @@ public class ServiceHelper {
 					System.out.println("out of helper return map : "+map);
 					return map;
 				}
-				
+				//
+				public Map getgst(String productId) {
+					
+				 	System.out.println("into helper class");
+				 	ServiceDao dao1 = new ServiceDao();
+					List catList = dao1.getAllgst(productId);
+					
+					Map  map =  new HashMap();
+					for(int i=0;i<catList.size();i++)
+					{
+						Object[] o = (Object[])catList.get(i);
+					
+						SupplierDetail bean = new SupplierDetail();
+
+						bean.setSupplierId(Long.parseLong(o[0].toString()));
+						bean.setPanNo(o[1].toString());
+
+						
+						map.put(bean.getSupplierId(),bean);
+					}
+					System.out.println("out of helper return map : "+map);
+					return map;
+				}
+				//
+				public Map getgstt(String productId) {
+					
+				 	System.out.println("into helper class");
+				 	ServiceDao dao1 = new ServiceDao();
+					List catList = dao1.getAllgstt(productId);
+					
+					Map  map =  new HashMap();
+					for(int i=0;i<catList.size();i++)
+					{
+						Object[] o = (Object[])catList.get(i);
+					
+						SupplierDetail bean = new SupplierDetail();
+
+						bean.setSupplierId(Long.parseLong(o[0].toString()));
+						bean.setPanNo(o[1].toString());
+
+						
+						map.put(bean.getSupplierId(),bean);
+					}
+					System.out.println("out of helper return map : "+map);
+					return map;
+				}
 				
 				public void editProductDetail(HttpServletRequest request,
 						HttpServletResponse response) {

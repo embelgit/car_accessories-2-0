@@ -23,6 +23,21 @@
 		column="GrossTotal"
 		 /> 
 		
+		 <property
+		name="gstNo" 
+		type="java.lang.String" 
+		column="gstNo"
+	     />
+	     
+	     <property
+		name="Customername" 
+		type="java.lang.String" 
+		column="Customername"
+		/>
+		
+		
+		
+		
 		<property
 		name="billNo" 
 		type="java.lang.Long" 

@@ -35,8 +35,25 @@ public class serviceHibernate {
 	private Double discountGrid;
 	private Double discountAmt;
 	
+	private String Customername;
+	private String gstNo;
 	
 	
+	
+	
+	
+	public String getCustomername() {
+		return Customername;
+	}
+	public void setCustomername(String customername) {
+		Customername = customername;
+	}
+	public String getGstNo() {
+		return gstNo;
+	}
+	public void setGstNo(String gstNo) {
+		this.gstNo = gstNo;
+	}
 	public String getSerdescription() {
 		return serdescription;
 	}

@@ -32,6 +32,13 @@
 		column="ItemName"
 		length="255" />	
 		
+		
+			<property
+		name="gstno" 
+		type="java.lang.String" 
+		column="gstNo"
+		length="255" />	
+		
 		<property
 		name="hsnsacno" 
 		type="java.lang.String" 

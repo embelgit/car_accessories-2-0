@@ -21,7 +21,7 @@ public class GstReportBean {
 	private Long oringnalQuantity;
 	private Double igst;
 	private Double taxAmount;
-	
+	private String customer;
 	private Double fivePercentageGST;
 	private Double twelwePercentageGST;
 	private Double eighteenPercentageGST;
@@ -41,6 +41,15 @@ public class GstReportBean {
 	private Double quant;
 	private Long srno;
 	
+	
+	
+	
+	public String getCustomer() {
+		return customer;
+	}
+	public void setCustomer(String customer) {
+		this.customer = customer;
+	}
 	private Double discount;
 	
 	public Double getDiscount() {

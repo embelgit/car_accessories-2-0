@@ -47,8 +47,16 @@ public class PurchaseReportBean {
 	private Double twentyEightPercentageSGST;
 	private Double additionalCost;
 	
+	private String gst;
 	
 	
+	
+	public String getGst() {
+		return gst;
+	}
+	public void setGst(String gst) {
+		this.gst = gst;
+	}
 	public Double getBuyPriceEx() {
 		return buyPriceEx;
 	}

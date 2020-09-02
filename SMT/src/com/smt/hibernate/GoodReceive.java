@@ -35,9 +35,20 @@ public class GoodReceive {
 	private Double buyPriceEx;
 	private String supplier;
 	
+	private String gstno;
 	
 	
 	
+	public String getGstno() {
+		return gstno;
+	}
+
+
+	public void setGstno(String gstno) {
+		this.gstno = gstno;
+	}
+
+
 	public String getSupplier() {
 		return supplier;
 	}

@@ -157,6 +157,10 @@ public class GoodReceiveHelper {
 			
 			gd.setPaymentDone("y");
 
+			
+			String gst = request.getParameter("gst");
+			gd.setGstno(gst);
+			
 			String resolution = request.getParameter("resolution");
 			gd.setGrossTotal(Double.parseDouble(resolution));
 

@@ -166,14 +166,18 @@
 							    <th>Date</th>
 							    <th> Category Name</th>
 				                <th> Item Name</th>
+				                <th> Customer Name</th>
+				                <th> GST No</th>
 				   <!--              <th> Hsn/Sac No</th> -->
 				                <th> Quantity</th>
 				                <th>Sale Price</th>
 			 	               <th> Gst 18%</th>
 				                <th> Gst 28%</th>
+				                <th> Gst </th>
+				                
 								<th> Igst 18%</th>
 								<th> Igst 28%</th>
-					              <th> Gst </th>
+					              
 								<th> Igst </th>
 								<th>Tax Amount</th>
 								<th>Discount</th>
@@ -182,6 +186,7 @@
 						</thead>
 						<tfoot>
 							<tr>
+							<th></th><th></th> 
 								<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> 
 											<th></th><th></th> <th></th><th></th>  
 														<th></th><th></th> <th></th><th></th><th></th>  

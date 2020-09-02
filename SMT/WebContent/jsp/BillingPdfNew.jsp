@@ -351,13 +351,13 @@
 		PdfPTable infotable = new PdfPTable(3);
 		infotable.setWidthPercentage(100);
 
-		float[] infoColumnWidths = { 0.3f,0.3f,0.3f };
+		float[] infoColumnWidths = { 0.4f,0.3f,0.3f };
 		infotable.setWidths(infoColumnWidths);
 
 		PdfPCell InfoTable_cell;
 		
 
-		InfoTable_cell = new PdfPCell(new Phrase("\nCustomerName: " +name));
+		InfoTable_cell = new PdfPCell(new Phrase("\nCustomer: " +name));
 		InfoTable_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell.setBorder(Rectangle.NO_BORDER);
 		infotable.addCell(InfoTable_cell);
@@ -393,7 +393,7 @@
 		PdfPTable infotable21 = new PdfPTable(3);
 		infotable21.setWidthPercentage(100);
 
-		float[] infoColumnWidths21 = { 0.3f,0.3f,0.3f };
+		float[] infoColumnWidths21 = { 0.4f,0.3f,0.3f };
 		infotable21.setWidths(infoColumnWidths21);
 
 		PdfPCell InfoTable_cell21;
@@ -405,7 +405,7 @@
 		InfoTable_cell21.setBorder(Rectangle.NO_BORDER);
 		infotable21.addCell(InfoTable_cell21);
 
-		InfoTable_cell21 = new PdfPCell(new Phrase("\nvehicle color: "+vehiclecolor));
+		InfoTable_cell21 = new PdfPCell(new Phrase("\nVehicle color: "+vehiclecolor));
 		InfoTable_cell21.setHorizontalAlignment(Element.ALIGN_LEFT);
 		InfoTable_cell21.setBorder(Rectangle.NO_BORDER);
 		infotable21.addCell(InfoTable_cell21); 

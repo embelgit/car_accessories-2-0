@@ -240,7 +240,7 @@
 								<th> Supplier Name</th>
 							    <th> Category Name</th>
 				                <th> Item Name</th>
-							
+				                <th> GST No</th>
 				                <th> Hsn/Sac No</th>
 				                <th> Quantity</th>
 				               <th>BuyPrice</th>
@@ -259,7 +259,7 @@
 						</thead>
 						<tfoot>
 							<tr>
-								<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th><th></th><th></th><th></th>
+							<th></th>	<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th><th></th><th></th><th></th>
 								<th></th><th></th><th></th><th></th>
 											<th></th><th></th><th></th>
 							</tr>

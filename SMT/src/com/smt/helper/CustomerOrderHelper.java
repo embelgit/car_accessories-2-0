@@ -736,7 +736,7 @@ public class CustomerOrderHelper {
 			bean.setCategoryName(o[2].toString());
 			bean.setItemName(o[3].toString());
 			bean.setBarcodeNo(Long.parseLong(o[4].toString()));
-			bean.setQuantity(Long.parseLong(o[5].toString()));
+			bean.setQuantity(Double.parseDouble(o[5].toString()));
 			String quanty = o[5].toString();
 			String totalAmt = o[8].toString();
 			double salePrice = Double.parseDouble(totalAmt) / Double.parseDouble(quanty);
@@ -770,7 +770,7 @@ public class CustomerOrderHelper {
 			bean.setCategoryName(o[1].toString());
 			bean.setItemName(o[2].toString());
 			bean.setBarcodeNo(Long.parseLong(o[3].toString()));
-			bean.setQuantity(Long.parseLong(o[4].toString()));
+			bean.setQuantity(Double.parseDouble(o[4].toString()));
 			String quanty = o[4].toString();
 			String totalAmt = o[8].toString();
 			double salePrice = Double.parseDouble(totalAmt) / Double.parseDouble(quanty);
@@ -805,7 +805,7 @@ public class CustomerOrderHelper {
 			bean.setCategoryName(o[1].toString());
 			bean.setItemName(o[2].toString());
 			bean.setBarcodeNo(Long.parseLong(o[3].toString()));
-			bean.setQuantity(Long.parseLong(o[4].toString()));
+			bean.setQuantity(Double.parseDouble(o[4].toString()));
 			String quanty = o[4].toString();
 			String totalAmt = o[8].toString();
 			double salePrice = Double.parseDouble(totalAmt) / Double.parseDouble(quanty);
@@ -1227,6 +1227,13 @@ public class CustomerOrderHelper {
 			//cust.setDiscount(Double.parseDouble(discountservice));
 			cust.setCategoryName("NA");
 			
+			
+			String Customername = request.getParameter("Customername");
+			cust.setCustomername(Customername);
+			String gstNo = request.getParameter("gstNo");
+			
+			cust.setGstNo(gstNo);
+			System.out.println("ciust - "+Customername+" gstNo -   "+gstNo);
 			String billnoo = request.getParameter("bill");
 			System.out.println("bill from ui - "+billnoo);
 			

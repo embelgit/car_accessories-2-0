@@ -455,6 +455,20 @@ function openCreditCustomerBilling() {
 				</div>
 		
 
+<div class="row" style="display: none;">
+				<div class="form-group">
+					<div class="col-sm-2 " align="right">
+						<label class="control-label">GST No:</label>
+					</div>
+					<div class="col-sm-3">
+						<div class="input-group">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-hand-right"></i>
+							</span> 
+							<input type="text" id="gst"  name="gst" class="form-control" />
+						</div>
+					</div></div></div>
+
 			<div class="row">
 				<div class="form-group">
 					<div class="col-sm-2 " align="right">
@@ -484,7 +498,7 @@ function openCreditCustomerBilling() {
 								class="glyphicon glyphicon-user"></i>
 							</span> 
 							
-							<input list="supplierId_drop" id="supplierId" class="form-control"  >
+							<input list="supplierId_drop" id="supplierId" class="form-control" onchange="getgst()" >
 						<datalist id="supplierId_drop">
 						<%
 							for(int i =0 ;i<supplierList.size();i++)
@@ -761,6 +775,19 @@ function openCreditCustomerBilling() {
 
 				</div>
 
+<div class="row" style="display: none;">
+				<div class="form-group">
+					<div class="col-sm-2" align="right">
+						<label class="control-label">GST No:<sup style="color: red;">*</sup></label>
+					</div>
+					<div class="col-sm-3">
+						<div class="input-group">
+							<span class="input-group-addon"> <i
+								class="glyphicon glyphicon-hand-right"></i>
+							</span> <input type="text" id="gst1"  name="gst1" class="form-control" />
+						</div>
+					</div></div></div>
+
 			<div class="row">
 				<div class="form-group">
 					<div class="col-sm-2" align="right">
@@ -789,7 +816,7 @@ function openCreditCustomerBilling() {
 								class="glyphicon glyphicon-user"></i>
 							</span> 
 							
-							<input list="supplierId_drop" id="supplierId1" class="form-control"  >
+							<input list="supplierId_drop" id="supplierId1" class="form-control"  onchange="getgst1()">
 						<datalist id="supplierId_drop">
 						<%
 							for(int i =0 ;i<supplierL.size();i++)

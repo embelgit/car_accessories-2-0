@@ -7,7 +7,7 @@ public class SaleReturnBean {
 	private Long pkBillId;
 	private Long catId;
 	private String itemName;
-	private Long quantity;
+	private Double quantity;
 	private Double salePrice;
 	private Double grossamt;
 	private Date current_date;
@@ -42,10 +42,11 @@ public class SaleReturnBean {
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
-	public Long getQuantity() {
+
+	public Double getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(Long quantity) {
+	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
 	}
 	public Double getSalePrice() {

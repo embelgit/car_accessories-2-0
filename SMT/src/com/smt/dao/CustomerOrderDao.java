@@ -1310,7 +1310,7 @@ public List getAllBillNumbers() {
 		session = hbu.getHibernateSession();
 		query = session.createQuery("from CustomerBill where paymentMode = '"+cc+"' AND quantity > 0 group by billNo");
 		list = query.list();
-		
+		System.out.println("size  "+query.list().size());
 	} catch (RuntimeException e) {
 		Log.error("Error in getAllSupplier ", e);
 	}
@@ -2076,7 +2076,7 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 
 	//	 Query query2 = session.createSQLQuery("SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo,BillNo,TaxAmount,TotalAmount,Discount,date from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, HsnSacNo,BillNo,TaxAmount,TotalAmount,Discount,date from otherbill where date BETWEEN :adate AND :bdate");		 
 		
-		 Query query2 = session.createSQLQuery("SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from otherbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, service_item, service_quantity, service_gst, service_igst, service_saleprice,BillNo,service_taxAmt,service_totalGrid,Discount,date from  service_billing where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date from barreloilbilling where date BETWEEN :adate AND :bdate");		 
+		 Query query2 = session.createSQLQuery("SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date,gstNo,OwnerName from customerbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date,gstNo,OwnerName from otherbill where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, service_item, service_quantity, service_gst, service_igst, service_saleprice,BillNo,service_taxAmt,service_totalGrid,Discount,date,gstNo,Customername from service_billing where date BETWEEN :adate AND :bdate UNION SELECT CategoryName, ItemName, Quantity, Gst, Igst, SalePrice,BillNo,TaxAmount,TotalAmount,Discount,date,gstNo,Customername from barreloilbilling where date BETWEEN :adate AND :bdate");		 
 		 
 		 query2.setParameter("adate", adate);
 		 query2.setParameter("bdate", bdate);
@@ -2157,6 +2157,9 @@ public List<SaleReport> barcodewiseVehicleSale(String barcodeVehicle) {
 				reports.setTotal(Double.parseDouble(object[8].toString()));
 				reports.setDiscount(Double.parseDouble(object[9].toString()));
 				reports.setDate((Date)object[10]);
+				reports.setGstNumber(object[11].toString());
+				
+				reports.setCustomer(object[12].toString());
 				catList.add(reports); 
 		
 			}}

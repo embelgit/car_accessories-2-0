@@ -31,11 +31,35 @@ public class OtherBill {
     private Double buyPriceEXTax;
     private String description;
 
+    private String gstNo;
+    
+    private String Customername;
+    
  //   private String vehicle;
 	
     private String note;
     
 	
+
+	public String getCustomername() {
+		return Customername;
+	}
+
+
+	public void setCustomername(String customername) {
+		Customername = customername;
+	}
+
+
+	public String getGstNo() {
+		return gstNo;
+	}
+
+
+	public void setGstNo(String gstNo) {
+		this.gstNo = gstNo;
+	}
+
 
 	public String getNote() {
 		return note;

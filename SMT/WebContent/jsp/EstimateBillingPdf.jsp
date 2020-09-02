@@ -127,7 +127,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/smt_sc", "root", "root");
 		Statement stmt = conn.createStatement();
 	
-		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst,carNo,note from estimatequotationbill where BillNo =" + billno);
+		ResultSet rs = stmt.executeQuery("select ItemName, CategoryName, Quantity, SalePrice,TotalAmount, Discount, GrossTotal ,Date ,totalperitem, TaxAmount,discountAmt,discountGrid,Gst,HsnSacNo,customerName,contactNo,description,Igst,carNo,note,buyPriceEXTax from estimatequotationbill where BillNo =" + billno);
 		
 		Statement stmt2 = conn.createStatement();
 		ResultSet rs2 = stmt2.executeQuery("select service_item,service_hsn,service_quantity,service_saleprice,service_disc_grid,service_discAmt,service_gst,service_igst,service_totalGrid,service_totalAmt,service_taxAmt,discount,serdescription from estimate_service_bill  where BillNo ='"+billno+"'");
@@ -185,6 +185,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		String grossTotal123 = rs.getString("GrossTotal");
 		String note = rs.getString("note");
 		
+		String buyprice = rs.getString("buyPriceEXTax");
 		//String Gst = String.valueOf(rs.getDouble("Gst"));
 		
 		//String vehiclecolor = rs.getString("vehiclecolor");
@@ -229,7 +230,7 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		
 		// End	logo 
      
-		headerTable_cell = new PdfPCell(new Phrase("Bill No : EQB/"+saleDate+"/00" +billno+""));
+		headerTable_cell = new PdfPCell(new Phrase("Estimate Quotation Bill No : EQB/"+saleDate+"/00" +billno+""));
 		headerTable_cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
 		headerTable_cell.setColspan(2);
 		headerTable_cell.setBorder(0);
@@ -527,8 +528,12 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			table_cell.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table.addCell(table_cell);
 
-			String SalePrice = String.valueOf(rs.getDouble("SalePrice"));
-			table_cell = new PdfPCell(new Phrase(SalePrice));
+//			String SalePrice = String.valueOf(rs.getDouble("SalePrice"));
+
+			String SalePrice = String.valueOf(rs.getDouble("buyPriceEXTax"));
+			long taxamtl = Math.round(Double.valueOf(SalePrice));
+			String taxamts = String.valueOf(taxamtl);
+			table_cell = new PdfPCell(new Phrase(taxamts));
 			table_cell.setHorizontalAlignment(Element.ALIGN_LEFT);
 			table_cell.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table.addCell(table_cell);
@@ -1181,13 +1186,13 @@ Long billno = (Long) session.getAttribute("carBillNO");
 		int srno2=1;
 		while (rs1.next()) {
 			
-			 table_cell10 = new PdfPCell(new Phrase(""+srno2, Normalfont12));
+			 table_cell10 = new PdfPCell(new Phrase("\n"+srno2, Normalfont12));
 			table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
 			table_cell10.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table9.addCell(table_cell10);
-			
 			srno2++; 
 			 
+			
 			
 
 			String ItemName1 = rs1.getString("ItemName");
@@ -1203,7 +1208,11 @@ Long billno = (Long) session.getAttribute("carBillNO");
 			table9.addCell(table_cell10);
 
 			String SalePrice1 = String.valueOf(rs1.getDouble("SalePrice"));
-			table_cell10 = new PdfPCell(new Phrase("\n " + SalePrice1));
+			
+			long taxamtl = Math.round(Double.valueOf(SalePrice1));
+			String taxamts = String.valueOf(taxamtl);
+			
+			table_cell10 = new PdfPCell(new Phrase("\n " + taxamts));
 			table_cell10.setHorizontalAlignment(Element.ALIGN_LEFT);
 			table_cell10.setBorder(Rectangle.LEFT | Rectangle.RIGHT);
 			table9.addCell(table_cell10);

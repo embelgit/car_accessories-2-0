@@ -204,7 +204,7 @@
 									<%
 										}
 									%>
-								
+								<!--        <%-- <%=supplier.getCustomername()%> --%> -->
 							</datalist>
 						</div>
 					</div>
@@ -273,7 +273,7 @@
 									<%
 										}
 									%>
-								
+								 <%-- <%=supplier.getOwnerName()%> --%>
 							</datalist>
 						</div>
 					</div>

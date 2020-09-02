@@ -49,6 +49,18 @@
 		/>
 		
 		 <property
+		name="gstNo" 
+		type="java.lang.String" 
+		column="gstNo"
+	     />
+	     
+	     <property
+		name="Customername" 
+		type="java.lang.String" 
+		column="Customername"
+		/>
+		
+		 <property
 		name="discount" 
 		type="java.lang.Double" 
 		column="Discount"

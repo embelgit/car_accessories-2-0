@@ -117,6 +117,8 @@ public class OtherBillHelper {
 	//		double disAmt = Double.parseDouble(discount) / count;
 			cust.setDiscount(Double.parseDouble(discount) );
 			
+			cust.setGstNo("0");
+			cust.setCustomername("NA");
 			
 			String custName = request.getParameter("custName");
 			cust.setOwnerName(custName);
