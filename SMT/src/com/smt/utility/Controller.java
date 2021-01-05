@@ -774,7 +774,7 @@ public class Controller {
 	}
 
 	// update product details
-	public String updateProductDetails(HttpServletRequest request, HttpServletResponse response) {
+	public String updateProductDetails1(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("In controller update Supplier Details");
 		ProductDetailHelper helper = new ProductDetailHelper();
 		helper.editProductDetail(request, response);

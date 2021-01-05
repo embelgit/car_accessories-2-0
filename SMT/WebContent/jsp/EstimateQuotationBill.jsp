@@ -476,7 +476,7 @@ function calgrosstot(){
 						       %>
 							      
 			            
-							     <option data-value="<%=itm.getPkProductId()%>" value="<%=itm.getItemName()%>  =>  <%=itm.getCategoryName()%>">
+							     <option data-value="<%=itm.getPkProductId()%>" value="<%=itm.getItemName()%>  =>  <%=itm.getCategoryName()%>  =>  <%=itm.getModelName()%>">
 							
 						      <%   	
 						      

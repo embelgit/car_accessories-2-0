@@ -797,24 +797,30 @@ Long billno = (Long) session.getAttribute("BillNo");
 	          Session mailSession = Session.getInstance(System.getProperties());
 	          Transport transport = new SMTPTransport(mailSession,new URLName("smtp.gmail.com"));
 	          transport = mailSession.getTransport("smtps");
-	          transport.connect("smtp.gmail.com", 465 ,"embelmessanger@gmail.com","embel@123");
-	          
+//	          transport.connect("smtp.gmail.com", 465 ,"embelmessanger@gmail.com","embel@123");
+	
+	          transport.connect("smtp.gmail.com", 465 ,"prasadbackupacc95@gmail.com","9527454547");
+//	          System.out.println("in mail sys ");
 	          MimeMessage m = new MimeMessage(mailSession); 
-	          m.setFrom(new InternetAddress("embelbackup@gmail.com"));
+//	          m.setFrom(new InternetAddress("embelbackup@gmail.com"));
+	          
+	          m.setFrom(new InternetAddress("bhanage.prasad@gmail.com"));
 	          Address[] toAddr = new InternetAddress[] {
-	          new InternetAddress("embelbackup@gmail.com")
+//	          new InternetAddress("embelbackup@gmail.com")
+	          
+	          new InternetAddress("bhanage.prasad@gmail.com")
 	          };
 	          m.setRecipients(javax.mail.Message.RecipientType.TO, toAddr );
 	          m.setHeader("Content-Type", "multipart/mixed");
 	          m.setSubject("customer Bill");
 	          m.setSentDate(new java.util.Date());
-
+//	          System.out.println("mailing sys  - -  ");
 	          MimeBodyPart messageBodyPart = new MimeBodyPart();
 	          messageBodyPart.setText("");
 	          Multipart multipart = new MimeMultipart();
 	          multipart.addBodyPart(messageBodyPart);
 
-	          
+//	          System.out.println("in mailing - - - - - - - - - -   ");
 	          messageBodyPart = new MimeBodyPart();
 	          DataSource source = new ByteArrayDataSource(baos.toByteArray(), "application/pdf");
 	          messageBodyPart.setDataHandler(new DataHandler(source));

@@ -161,7 +161,7 @@ function grasstotal(){
 							<label class="control-label" >Contact No:</label>
 						</div>
 						<div class="col-md-3">
-							<input type="text" class="form-control" id="contactNo" placeholder="Contact Number"/>
+							<input type="text" class="form-control" id="contactNo" maxlength="10" placeholder="Contact Number"/>
 						</div>	
 					
 					    </div>

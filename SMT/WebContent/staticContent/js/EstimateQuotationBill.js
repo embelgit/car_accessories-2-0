@@ -2801,14 +2801,18 @@ function getProductInGridBillingOil()
 {
 
 var value = document.getElementById("itemName1").value;
-var splitText = value.split(" =>");
+var splitText = value.split("  =>  ");
 var productId1 = splitText[0];
-
+var cat = splitText[1];
+var mod = splitText[2];
 //var carNo = $('#carNo').val();
 
 var params= {};
 
 params["productId"]=productId1;
+params["cat"]=cat;
+params["mod"]=mod;
+
 params["methodName"] ="getProductInGridBillingOiles";
 
 document.getElementById('itemName1').value = null;
@@ -2831,16 +2835,17 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	     var rowdata =$("#listOil").jqGrid('getGridParam','data');
 	     var ids = jQuery("#listOil").jqGrid('getDataIDs');
 	     
-		  var prodName,com,bar;
+		  var prodName,com,bar,mod;
 		  for (var j = 0; j < count; j++) 
 		  {
 			  prodName = rowdata[j].itemName;
 			  com = rowdata[j].categoryName;
+			  mod = rowdata[j].modelName;
 			  //bar = rowdata[j].barcodeNo;
 			 var rowId = ids[j];
 			 var rowData = jQuery('#listOil').jqGrid ('getRowData', rowId);
 			
-			if (prodName == jsonData.offer.itemName && com == jsonData.offer.categoryName) {
+			if (prodName == jsonData.offer.itemName && com == jsonData.offer.categoryName && mod == jsonData.offer.modelName) {
 		    	
 		    	newrow=false;
 				alert("Item Already Inserted !!!");
@@ -2866,7 +2871,7 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 	$("#listOil").jqGrid({
 		datatype: "local",
 		
-		colNames:['pk_temp_id','item_id','CatName','ItemName','HSN/SAC','No.of.barrels','Total litres','Quantity','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
+		colNames:['pk_temp_id','item_id','CatName','ItemName','Brand Name','HSN/SAC','No.of.barrels','Total litres','Quantity','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
 		colModel:[ 
 		          
 		          
@@ -2892,6 +2897,10 @@ $.post('/SMT/jsp/utility/controller.jsp',params,function(data)
 		    {	name:'itemName',
 		    	 width:170,
 				
+			},
+			{
+				name:'modelName',
+				width:140,
 			},
 			 {	name:'hsnsacno',
 		    	 width:100,

@@ -125,11 +125,11 @@ function getProductList1()
 	
 	var input = document.getElementById('itemName1'),
     list = document.getElementById('itemId_drop1'),
-    i,itemName;
+    i,itemName,model;
     for (i = 0; i < list.options.length; ++i) {
     if (list.options[i].value === input.value) {
     	itemName = list.options[i].getAttribute('data-value');
-    	//model = list.options[i].getAttribute('data-value');
+    //	model = list.options[i].getAttribute('data-value');
     	
     }
    }
@@ -166,15 +166,17 @@ function getProductList1()
 		     var ids = jQuery("#jqGrid1").jqGrid('getDataIDs');
 			 
 			
-			  var ori_quantity,offerId;
+			  var ori_quantity,offerId,mod;
 			  for (var j = 0; j < count; j++) 
 			  {
 				offerId = rowdata[j].itemName;
+				mod = rowdata[j].modelName;
+				
 				
 				 var rowId = ids[j];
 				 var rowData = jQuery('#jqGrid1').jqGrid ('getRowData', rowId);
 				
-				if (offerId==jsonData.offer.itemName) {
+				if (offerId==jsonData.offer.itemName && mod==jsonData.offer.modelName) {
 			    	ori_quantity = +rowdata[j].quantity+1;
 			    	alert("Product already entered !");
 			//    	$("#jqGrid").jqGrid("setCell", rowId, "quantity", ori_quantity);
@@ -200,7 +202,7 @@ function getProductList1()
 				$("#jqGrid1").jqGrid({
 					datatype:"local",
 					editurl: 'clientArray',
-					colNames: ["ItemName","Category Name","HSN/SAC","BrandName","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BPETax","BuyPrice","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
+					colNames: ["ItemName","Category Name","Model Name","HSN/SAC","No.of.barrel","oil per litre","Total Litre","Qty In Litres","BPETax","BuyPrice","Total BP","BPExTax","BPIncTax","SalePrice","GST %","IGST %","TAX AMT","Discount %","DisAmt","Total","--S--"],
 
 					colModel: [
 					           { 	
@@ -215,16 +217,17 @@ function getProductList1()
 					        	   
 					           },
 					           {
+					        	   name:  "modelName",
+					        	   width: 120,
+					//        	   hidden: true
+					        	   
+					           },
+					           {
 					        	   name:  "hsnsacno",
 					        	   width: 120,
 					        	   
 					           },
-					           {
-					        	   name:  "modelName",
-					        	   width: 120,
-					        	   hidden: true
-					        	   
-					           },
+					           
 					           {
 					        	   name:  "NumberofBarrel",
 					        	   width: 120,
@@ -460,7 +463,9 @@ function getProductList1()
 		                    		
 		                    			totAmt = quantity * buyPriceEx;
 				                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-		                    		
+				                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
+				                    	
+				                    	
 				                    	if(discount != "0"){
 				                    		
 				                    		discount1 = ((totAmt*discount)/100);
@@ -712,7 +717,8 @@ function getProductList1()
 	                    		
 	                    			totAmt = quantity * buyPriceEx;
 			                    	$("#jqGrid1").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-	                    		
+			                    	$("#jqGrid1").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
+			                    	
 			                    	if(discount != "0"){
 			                    		
 			                    		discount1 = ((totAmt*discount)/100);
@@ -1102,14 +1108,17 @@ function getProductInGridBillingOil()
 {
 	
 	var value = document.getElementById("itemName1").value;
-	var splitText = value.split(" =>");
+	var splitText = value.split(" => ");
 	var productId1 = splitText[0];
-	
+	var mod = splitText[1];
+	var cat = splitText[2];
 	//var carNo = $('#carNo').val();
 	
 	var params= {};
 	
 	params["productId"]=productId1;
+	params["mod"] = mod;
+	params["cat"] = cat;
 	params["methodName"] ="getProductInGridBillingOil";
 	
 	document.getElementById('itemName1').value = null;
@@ -1132,16 +1141,17 @@ function getProductInGridBillingOil()
 		     var rowdata =$("#listOil").jqGrid('getGridParam','data');
 		     var ids = jQuery("#listOil").jqGrid('getDataIDs');
 		     
-			  var prodName,com,bar;
+			  var prodName,com,bar,mod;
 			  for (var j = 0; j < count; j++) 
 			  {
 				  prodName = rowdata[j].itemName;
 				  com = rowdata[j].categoryName;
+				  mod = rowdata[j].modelName;
 				  //bar = rowdata[j].barcodeNo;
 				 var rowId = ids[j];
 				 var rowData = jQuery('#listOil').jqGrid ('getRowData', rowId);
 				
-				if (prodName == jsonData.offer.itemName && com == jsonData.offer.categoryName) {
+				if (prodName == jsonData.offer.itemName && com == jsonData.offer.categoryName && mod == jsonData.offer.modelName) {
 			    	
 			    	newrow=false;
 					alert("Item Already Inserted !!!");
@@ -1167,7 +1177,7 @@ function getProductInGridBillingOil()
 		$("#listOil").jqGrid({
 			datatype: "local",
 			
-			colNames:['pk_temp_id','item_id','CatName','ItemName','HSN/SAC','No.of.barrels','Total litres','Qty in ltr','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
+			colNames:['pk_temp_id','item_id','CatName','ItemName','Brand Name','HSN/SAC','No.of.barrels','Total litres','Qty in ltr','SalePrice',"Total SP","SPExTax",'GST%','IGST%','Tax Amt','Discount','DiscountAmt','Total Amt'],
 			colModel:[ 
 			          
 			          
@@ -1192,6 +1202,10 @@ function getProductInGridBillingOil()
 			           
 			    {	name:'itemName',
 			    	 width:170,
+					
+				},
+				 {	name:'modelName',
+			    	 width:140,
 					
 				},
 				 {	name:'hsnsacno',
@@ -1843,10 +1857,11 @@ function resOtherBill(){
 	    if(gstNo=="" || gstNo==null || gstNo==undefined){
 			gstNo="0";
 		}
-		
+	    var ownerName=$('#ownerName').val();
+	    
 		params["Customername"] = Customername;
 		params["gstNo"]  =gstNo;
-		
+		params["ownerName"] = ownerName;
 	    params["bill"] = bill;
 		params["count"] = count;
 		params["totalAmount"] = totalAmount;

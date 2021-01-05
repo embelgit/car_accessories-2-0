@@ -537,7 +537,8 @@ function getProductList()
 			                    		
 			                    			totAmt = quantity * buyPriceEx;
 					                    	$("#jqGrid").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-			                    		
+					                    	$("#jqGrid").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
+					                    	
 					                    	if(discount != "0"){
 					                    		//discount1 = totAmt-(discount/100);
 					                    		//discAmt=totAmt-discount1
@@ -796,7 +797,8 @@ function getProductList()
 		                    		
 		                    			totAmt = quantity * buyPriceEx;
 				                    	$("#jqGrid").jqGrid("setCell", rowId, "TotalQuan", totAmt.toFixed(2));
-		                    		
+				                    	$("#jqGrid").jqGrid("setCell", rowId, "Total", totAmt.toFixed(2));
+				                    	
 				                    	if(discount != "0"){
 				                    		//discount1 = totAmt-(discount/100);
 				                    		//discAmt=totAmt-discount1

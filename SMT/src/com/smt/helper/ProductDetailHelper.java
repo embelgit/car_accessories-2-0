@@ -183,7 +183,7 @@ public class ProductDetailHelper {
 		 System.out.println("%%%%%%%%%%%%%%%%% Product id :"+productId);
 		long productID =Long.parseLong(productId);
 		ProductRegister det = (ProductRegister) session.get(ProductRegister.class, productID);
-		
+		System.out.println("b4 savig");
 		if (!"".equals(itemName)) {
 			det.setItemName(itemName);
 		} else {

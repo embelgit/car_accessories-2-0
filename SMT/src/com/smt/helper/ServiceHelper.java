@@ -150,15 +150,17 @@ public class ServiceHelper {
 					for(int i=0;i<catList.size();i++)
 					{
 						Object[] o = (Object[])catList.get(i);
-					
-						ServiceBean bean = new ServiceBean();
+						ServiceDetail bean = new ServiceDetail();
+//						ProductRegister bean = new ProductRegister();
 						bean.setItemName(o[0].toString());
-						//String vat = o[1].toString();
+//						String vat = o[1].toString();
 						//bean.setVat(Double.parseDouble(vat));
-						
-						String pkId = o[1].toString();
+
+						bean.setPkProductId(Long.parseLong(o[1].toString()));
+					//	bean.setItemName(o[1].toString());
+				//		String pkId = o[1].toString();
 						bean.setHsnsacno(o[2].toString());
-						bean.setPkProductId(Long.parseLong(pkId));
+//						bean.setModelName(o[3].toString());
 						
 						map.put(bean.getPkProductId(),bean);
 					}

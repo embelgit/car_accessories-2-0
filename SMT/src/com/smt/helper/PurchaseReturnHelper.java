@@ -117,9 +117,9 @@ public class PurchaseReturnHelper {
 	        	/*If ItemName Is Already Exists In Stock Table */ 
 	        	if(ItemId.equals(itemName) && cat.equals(catName)){
 	        		 Long qunty = st.getQuantity();
+	        		Long aa = Long.parseLong(availquantity);
+	        		 
 	        		
-	        		 Long updatequnty = (long) (qunty - Long.parseLong(availquantity));
-	        				 
 	        		
 	        		 HibernateUtility hbu = HibernateUtility.getInstance();
 	        		 Session session = hbu.getHibernateSession();
@@ -128,9 +128,19 @@ public class PurchaseReturnHelper {
 	        		 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 	        		 Date date = new Date();
 	        	
-	        	     Stock updateStock = (Stock) session.get(Stock.class, new Long(PkItemId));	 
+	        	     Stock updateStock = (Stock) session.get(Stock.class, new Long(PkItemId));
+	        	     System.out.println("quant from table  - "+qunty+"  quan from user  - "+aa);
+	        	     if(qunty> aa) {	        		 
+		        		 Long updatequnty = (long) (qunty - Long.parseLong(availquantity));
+		           		 updateStock.setQuantity(updatequnty);
+		        	System.out.println(" (if part) quan set in stock "+updateStock.getQuantity());	 
+	        	     }
+	        	     else {
+	        	    	 updateStock.setQuantity(0l);
+	 		        	System.out.println(" (else part) quan set in stock "+updateStock.getQuantity());	 
+	        	     }
 	        		 updateStock.setUpdateDate(date);
-	        		 updateStock.setQuantity(updatequnty);
+//	        		 updateStock.setQuantity(updatequnty);
 	        		 
 	        		session.saveOrUpdate(updateStock);
 	        		transaction.commit();

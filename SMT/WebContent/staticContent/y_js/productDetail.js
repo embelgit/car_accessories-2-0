@@ -229,23 +229,23 @@ function getAllMAinItem(){
 
 //Update product Details
 
-function updateProduct(){
+/*function updateProduct10(){
 	
 var itemName = $('#itemName').val();
 	
 	if(itemName != null && itemName != "" && itemName != " ")
 		{
-		updateProduct1();
+		updateProducts1();
 		}
 	else{
 			alert("Please Enter Product name");
 		}
 
-}
+}*/
 
 
 
-function updateProduct1(){
+function updateProduct10(){
 
 	
 	document.UpdateProd.btn.disabled = true;
@@ -274,7 +274,7 @@ function updateProduct1(){
 	
 	params["modelName"] = modelName;
 	
-	params["methodName"] = "updateProductDetails";
+	params["methodName"] = "updateProductDetails1";
 
 	$.post('/SMT/jsp/utility/controller.jsp',params,function(data){
 			alert(data);
@@ -299,8 +299,8 @@ function updateProduct1(){
 
 }
 
-/********* get Product Details ************//*
-function getProductDetails(){
+/********* get Product Details ************/
+function getProductDetailsedit(){
 	var params= {};
 	
 	var input = document.getElementById('product'),
@@ -337,7 +337,7 @@ function getProductDetails(){
 				}
 			});
  	    	
-}*/
+}
 
 ////////////////////////////////////////////////////////////////
 
@@ -412,7 +412,8 @@ function getProductDetails(){
 	
 	$("#itemName").append($("<input/>").attr("value","").text());
 	$("#hsnsacno").append($("<input/>").attr("value","").text());
-
+//	$("#modelName").append($("<input/>").attr("value","").text());
+	
 	params["productId"]= fkRootSupId;
 	params["methodName"] = "getProductDetailsToEditService";
 	
@@ -424,7 +425,7 @@ function getProductDetails(){
 				{
 				  document.getElementById("itemName").value = v.itemName;
 			      document.getElementById("hsnsacno").value = v.hsnsacno;
-		      
+	//		      document.getElementById("modelName").value = v.modelName;
 				});
 			}).error(function(jqXHR, textStatus, errorThrown){
 				if(textStatus==="timeout") {

@@ -420,6 +420,7 @@ public List getTotalItemByBillNo(String billNo, String supplierId) {
 		 System.out.println("BillNo :: "+billNo);
 		 System.out.println("supplierId :: "+supplierId);
 		Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.OrignalQuantity, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date, s.Quantity, s.igst,s.buyPriceEx  from goodreceive s where s.BillNo=:billNo And s.FksuppId=:supplierId");
+//		 Query query = session.createSQLQuery("select s.PkGoodRecId,s.CategoryName, s.ItemName, s.OrignalQuantity, s.BuyPrice, s.Vat, s.Total, s.ContactPerson, s.BarcodeNo, s.Date,  s.igst,s.buyPriceEx,a.Quantity as stck,a.ItemName from goodreceive s JOIN stock_details a ON s.ItemName=a.ItemName AND s.CategoryName=a.CategoryName where s.BillNo=:billNo And s.FksuppId=:supplierId");
 		query.setParameter("billNo",billNo);
 		query.setParameter("supplierId",supplierId);
 		list = query.list();

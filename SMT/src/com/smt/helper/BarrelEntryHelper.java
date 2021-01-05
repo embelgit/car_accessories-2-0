@@ -342,12 +342,13 @@ public class BarrelEntryHelper {
 					Stock st = (Stock) stkList2.get(j);
 					String ItemId = st.getItemName();
 					String cat = st.getCatName();
+					String mod = st.getModelName();
 					Long PkItemId = st.getPkStockId();
 					Double totalLitre = st.getTotalLitre();
 					
 
 					/* If ItemName Is Already Exists In Stock Table */
-					if (ItemId.equals(itemName) && cat.equals(catName)) 
+					if (ItemId.equals(itemName) && cat.equals(catName) && mod.equals(modelName)) 
 					{
 						Long qunty = st.getQuantity();
                         double totalLitreStock=st.getTotalLitre();
@@ -402,12 +403,14 @@ public class BarrelEntryHelper {
 	public BarrelEntryBean getProductInGridBillingOil(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String productId = request.getParameter("productId");
-
+		String mod = request.getParameter("mod");
+		String cat = request.getParameter("cat");
+		
 		System.out.println(productId + "productName");
 		Map<Long, BarrelEntryBean> map = new HashMap<Long, BarrelEntryBean>();
 
 		BarrelEntryDao dao = new BarrelEntryDao();
-		List<BarrelEntryBean> catList = dao.getProductInGridBillingOil(productId);
+		List<BarrelEntryBean> catList = dao.getProductInGridBillingOil(productId,mod,cat);
 
 		BarrelEntryBean cs = null;
 		if (catList != null && catList.size() > 0) {
@@ -419,12 +422,14 @@ public class BarrelEntryHelper {
 	public BarrelEntryBean getProductInGridBillingOiles(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String productId = request.getParameter("productId");
-
+		String cat = request.getParameter("cat");
+		String mod= request.getParameter("mod");
+		
 		System.out.println(productId + "productName");
 		Map<Long, BarrelEntryBean> map = new HashMap<Long, BarrelEntryBean>();
 
 		BarrelEntryDao dao = new BarrelEntryDao();
-		List<BarrelEntryBean> catList = dao.getProductInGridBillingOiles(productId);
+		List<BarrelEntryBean> catList = dao.getProductInGridBillingOiles(productId,cat,mod);
 
 		BarrelEntryBean cs = null;
 		if (catList != null && catList.size() > 0) {
@@ -539,8 +544,10 @@ public class BarrelEntryHelper {
 			cust.setContactNo(000l);
 			cust.setOwnerName("NA");
 
+			String ownerName = request.getParameter("ownerName");
+			System.out.println("ownerName   "+ownerName);
 			String Customername = request.getParameter("Customername");
-			cust.setCustomername(Customername);
+			cust.setCustomername(ownerName);
 			String gstNo = request.getParameter("gstNo");			
 			cust.setGstNo(gstNo);
 			

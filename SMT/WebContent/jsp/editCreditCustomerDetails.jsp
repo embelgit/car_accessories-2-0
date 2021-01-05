@@ -116,7 +116,7 @@
            				 </div>
            			</div>
             	
-            	<label class="col-md-2 control-label" for="aadharNo">GSTTIN/UIN No. :<sup>*</sup></label>  
+            	<label class="col-md-2 control-label" for="aadharNo">GSTTIN/UIN No. : </label>  
            	 		<div class="col-md-3">
 						<div class="input-group">
 							<span class="input-group-addon">

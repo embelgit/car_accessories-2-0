@@ -7,17 +7,33 @@
     	var supPay = $("#supPay").val();
     	var paymentType = $('#paymentType').val();
     	var paymentMode = $('#paymentMode').val();
-    	
+
+    	if(document.spmt.supplier.value == "")
+    	{
+    		alert("Please select Supplier Name");
+    		return false;
+    	}
+
+    	if(document.spmt.billNo.value == "")
+    	{
+    		alert("Please select Bill number");
+    		return false;
+    	}
+    	if(document.spmt.personname.value == "")
+	    	{
+	    		alert("Please enter Accountant name");
+	    		return false; 
+	    	} 
     	if(+supPay > +balanceAmount ){
     		alert("Supplier Payment Amount Should Be Less Than Balance Amount");
     		return false;
     	}
 	
-    	if(document.spmt.supplier.value == "")
+    	if(document.spmt.supPay.value == "")
     	{
-    		alert("Please select Supplier Name");
+    		alert("Please Enter Supplier Payment  amount");
     		return false;
-    	}	
+    	}    		
 
     	if(paymentMode == "selected" && paymentMode == null && paymentType == " " && paymentType == "selected")
     	{
@@ -26,16 +42,7 @@
     	}
     	
     	
-    	if(document.spmt.billNo.value == "")
-    	{
-    		alert("Please select Bill number");
-    		return false;
-    	}
-    	if(document.spmt.supPay.value == "")
-    	{
-    		alert("Please Enter Supplier Payment  amount");
-    		return false;
-    	}
+
     	var letterNumber = /^[0-9]+([.][0-9]+)?$/;
 			 if(document.spmt.supPay.value.match(letterNumber))
 			 { 
@@ -136,9 +143,29 @@
    */
 
   function customerPaymentValidation() {
+	  
+	  
+	  
   	var creditCustomer = $("#creditCustomer").val();
   	var creditCustBillNo = $("#billNo1").val();
+  	
+  	if(creditCustomer=="" || creditCustomer==null || creditCustomer==undefined){
+  		alert("Please select Customer");
+  		return false;
+  	}
+  	if(creditCustBillNo=="" || creditCustBillNo==null || creditCustBillNo==undefined){
+  		alert("Please select Bill no");
+  		return false;
+  	}
+  	
+  	
   	var creditCustAccName = $("#personname1").val();
+  	
+  	if(creditCustAccName=="" || creditCustAccName==null || creditCustAccName==undefined){
+  		alert("Please enter Accountant name");
+  		return false;
+  	}
+  	
   	var creditCustPaymentMode = $("#paymentMode1").val();
   	
   	var creditCustPaymentType = $("#paymentType1").val();
@@ -424,6 +451,8 @@
 		} else {
 			alert("please Select Expenditure Name");
 		}
+		
+		
 	}
 
   
@@ -441,7 +470,14 @@ function addExpense(){
 	  			var contactNumber = $('#contactNumber').val();
 	  			var accountantName = $('#accountantName').val();
 	  			
-	  		
+	  			if(expCredit=="" || expCredit==null || expCredit==undefined){
+	  				alert("please enter credit amount");
+	  				return false;
+	  			}
+	  			if(expDebit=="" || expDebit==null || expDebit==undefined){
+	  				alert("please enter debit amount");
+	  				return false;
+	  			}
 				
 				 var input = document.getElementById('expenseName'),
 				     list = document.getElementById('exp_drop'),

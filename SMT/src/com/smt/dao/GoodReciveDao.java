@@ -417,18 +417,20 @@ public List getBarcode() {
 
 
 
-	public List<PurchaseReportBean> singleDatePurchase(Date adate) {
+	public List<PurchaseReportBean> singleDatePurchase(String adate) {
 		
 		HibernateUtility hbu=null;
 		Session session=null;
 		List<PurchaseReportBean> catList=null;
+		System.out.println("date - "+adate);
 		try
 		{
 			Long k = 0l;
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-		 Query query2 = session.createSQLQuery("select g.Date, s.supplier_name, g.BillNo, s.pan_no, g.ItemName, g.BuyPrice, g.OrignalQuantity, g.vat, g.igst, g.HsnSacNo from goodreceive g left join supplier_details s on g.FksuppId = s.supplier_id  where date=:adate");
-		 query2.setParameter("adate", adate);
+	//	 Query query2 = session.createSQLQuery("select g.Date, s.supplier_name, g.BillNo, s.pan_no, g.ItemName, g.BuyPrice, g.OrignalQuantity, g.vat, g.igst, g.HsnSacNo,buyPriceEx from goodreceive g left join supplier_details s on g.FksuppId = s.supplier_id  where date='"+adate+"'");
+		 Query query2 = session.createSQLQuery("select Date, supplier_name, BillNo, gstNo, ItemName, BuyPrice, OrignalQuantity, vat, igst, HsnSacNo, buyPriceEx from goodreceive where Date='"+adate+"' UNION select Date, supplier_name, BillNo, gstNo, ItemName, BuyPrice, OrignalQuantity, vat, igst, HsnSacNo, buyPriceEx from goodreceivebarrel where Date='"+adate+"'");
+		 //	 query2.setParameter("adate", adate);
 	        List<Object[]> list = query2.list();
 	        catList= new ArrayList<PurchaseReportBean>(0);
 			
@@ -436,6 +438,7 @@ public List getBarcode() {
 			for (Object[] object : list) {
 			k++;		
 			PurchaseReportBean reports = new PurchaseReportBean();
+			System.out.println("result -  "+Arrays.toString(object));
 				reports.setSerialnumber(k);
 				reports.setFetchDate(object[0].toString());
 				reports.setSupplierName(object[1].toString());
@@ -445,7 +448,7 @@ public List getBarcode() {
 				reports.setBuyPrice(Double.parseDouble(object[5].toString()));
 				reports.setQuantity(Long.parseLong(object[6].toString()));
 				reports.setHsnsacno(object[9].toString());
-				
+				reports.setBuyPriceEx(Double.parseDouble(object[10].toString()));
 				
 				Double qunti = Double.parseDouble(object[6].toString());
 				Double byPrice = Double.parseDouble(object[5].toString());
@@ -588,8 +591,8 @@ public List getBarcode() {
 
 	
 
-	public List<PurchaseReportBean> purchaseReportBetweenTwoDates(Date adate,
-			Date bdate) {
+	public List<PurchaseReportBean> purchaseReportBetweenTwoDates(String adate,
+			String bdate) {
 		
 		HibernateUtility hbu=null;
 		Session session=null;
@@ -598,9 +601,11 @@ public List getBarcode() {
 		{   Long k = 0l;
 			hbu = HibernateUtility.getInstance();
 		 session = hbu.getHibernateSession();
-		 Query query2 = session.createSQLQuery("select g.Date, s.supplier_name, g.BillNo, s.pan_no, g.ItemName, g.BuyPrice, g.OrignalQuantity, g.vat, g.igst, g.HsnSacNo, g.FinalExpense from goodreceive g left join supplier_details s on g.FksuppId = s.supplier_id where date BETWEEN :adate AND :bdate");
-		 query2.setParameter("adate", adate);
-		 query2.setParameter("bdate", bdate);
+	//	 Query query2 = session.createSQLQuery("select g.Date, s.supplier_name, g.BillNo, s.pan_no, g.ItemName, g.BuyPrice, g.OrignalQuantity, g.vat, g.igst, g.HsnSacNo, g.FinalExpense from goodreceive g left join supplier_details s on g.FksuppId = s.supplier_id where date BETWEEN :adate AND :bdate");
+		 Query query2 = session.createSQLQuery("select Date, supplier_name, BillNo, gstNo, ItemName, BuyPrice, OrignalQuantity, vat, igst, HsnSacNo, FinalExpense,buyPriceEx from goodreceive  where date BETWEEN  '"+adate+"' AND '"+bdate+"' UNION select Date, supplier_name, BillNo, gstNo, ItemName, BuyPrice, OrignalQuantity, vat, igst, HsnSacNo, FinalExpense,buyPriceEx from goodreceivebarrel  where date BETWEEN  '"+adate+"' AND '"+bdate+"'");	
+		 
+//		 query2.setParameter("adate", adate);
+//		 query2.setParameter("bdate", bdate);
 		 List<Object[]> list = query2.list();
 	        catList= new ArrayList<PurchaseReportBean>(0);
 			
@@ -608,7 +613,8 @@ public List getBarcode() {
 			for (Object[] object : list) {
 			k++;		
 			PurchaseReportBean reports = new PurchaseReportBean();
-				reports.setSerialnumber(k);
+System.out.println("reslt - -  "+Arrays.toString(object));
+			reports.setSerialnumber(k);
 				reports.setFetchDate(object[0].toString());
 				reports.setSupplierName(object[1].toString());
 				reports.setBillNo(object[2].toString());
@@ -618,7 +624,7 @@ public List getBarcode() {
 				reports.setQuantity(Long.parseLong(object[6].toString()));
 				reports.setHsnsacno(object[9].toString());
 				reports.setAdditionalCost(Double.parseDouble(object[10].toString()));
-				
+				reports.setBuyPriceEx(Double.parseDouble(object[11].toString()));
 				
 				Double qunti = Double.parseDouble(object[6].toString());
 				Double byPrice = Double.parseDouble(object[5].toString());
@@ -1265,7 +1271,7 @@ public List getBarcode() {
 		 
 		 Long k = 0l;
 		// Query query2 = session.createQuery("select billNo, carNo, barcodeNo, itemName, categoryName, salePrice, ownerName, contactNo, totalAmt, discount from CustomerBill where current_date=:adate");
-		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo from goodreceive where Date BETWEEN :adate AND :bdate UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo from goodreceivebarrel where Date BETWEEN :adate AND :bdate");
+		 Query query2 = session.createSQLQuery("select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo,Expences from goodreceive where Date BETWEEN :adate AND :bdate UNION select CategoryName, ItemName, HsnSacNo, OrignalQuantity, Vat, igst,BillNo,supplier_name,TaxAmount,Total,Date,BuyPrice,buyPriceEx,gstNo,Expences from goodreceivebarrel where Date BETWEEN :adate AND :bdate");
 		 query2.setParameter("adate", adate);
 		 query2.setParameter("bdate", bdate);
 	        List<Object[]> list = query2.list();
@@ -1339,6 +1345,7 @@ public List getBarcode() {
 				reports.setBuyPrice(Double.parseDouble(object[11].toString()));
 				reports.setBuyPriceEx(Double.parseDouble(object[12].toString()));
 				reports.setGst(object[13].toString());
+				reports.setExpence(Double.parseDouble(object[14].toString()));
 				catList.add(reports); 
 		
 			}}

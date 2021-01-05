@@ -212,12 +212,13 @@ public class BarrelEntryDao {
 	//////////Billing product grid oil////////////
 	
 	
-	public List<BarrelEntryBean> getProductInGridBillingOil(String productId) {
+	public List<BarrelEntryBean> getProductInGridBillingOil(String productId,String mod,String cat) {
 		// TODO Auto-generated method stub
 		
 		HibernateUtility hbu=null;
 		Session session=null;
-		
+		System.out.println("mod"+mod);
+		System.out.println("cat"+cat);
 		List<BarrelEntryBean> itemlist=null;
 		try
 		{
@@ -230,8 +231,10 @@ public class BarrelEntryDao {
 //		 Query query=session.createSQLQuery("SELECT ItemName,PkGoodRecId, CategoryName ,hsnsacno, vat, igst,salePrice,TotalLitre,NoOfBarrel FROM goodreceivebarrel WHERE ItemName ='"+productId+"' AND NoOfBarrel > '0'");
 	
 		 
-		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+" ' AND s.totalLitre > '0'");
-		 List<Object[]> list = query.list();
+		       // Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity,g.modelName FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+"' AND s.totalLitre > '0'");
+		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity,g.modelName FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName AND g.modelName=s.modelName AND g.CategoryName=s.CategoryName WHERE s.ItemName ='"+productId+"' AND s.modelName= '"+mod+"' AND s.CategoryName = '"+cat+"' AND s.totalLitre > '0'");
+		        
+		        List<Object[]> list = query.list();
 
 			 itemlist = new ArrayList<BarrelEntryBean>(0);
 		     for (Object[] objects : list) {
@@ -253,7 +256,7 @@ public class BarrelEntryDao {
 			 bean.setTaxAmt(0d);
 			 bean.setTotalLitre(Double.parseDouble(objects[7].toString()));
 			 bean.setNumberofBarrel(Double.parseDouble(objects[8].toString()));
-
+			 bean.setModelName(objects[9].toString());
 			 
 			 itemlist.add(bean);
 		     }
@@ -269,7 +272,7 @@ public class BarrelEntryDao {
 		return itemlist;
 		}
 	//
-	public List<BarrelEntryBean> getProductInGridBillingOiles(String productId) {
+	public List<BarrelEntryBean> getProductInGridBillingOiles(String productId,String cat,String mod) {
 		// TODO Auto-generated method stub
 		
 		HibernateUtility hbu=null;
@@ -287,8 +290,9 @@ public class BarrelEntryDao {
 //		 Query query=session.createSQLQuery("SELECT ItemName,PkGoodRecId, CategoryName ,hsnsacno, vat, igst,salePrice,TotalLitre,NoOfBarrel FROM goodreceivebarrel WHERE ItemName ='"+productId+"' AND NoOfBarrel > '0'");
 	
 		 
-		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+" ' ");
-		 List<Object[]> list = query.list();
+//		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity,g.modelName FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName WHERE s.ItemName ='"+productId+" ' ");
+		        Query query=session.createSQLQuery("SELECT g.ItemName,g.PkGoodRecId, g.CategoryName ,g.hsnsacno, g.vat, g.igst,g.salePrice,s.totalLitre,s.Quantity,g.modelName FROM goodreceivebarrel g JOIN stock_details s on g.ItemName = s.ItemName AND g.CategoryName=s.CategoryName AND g.modelName=s.modelName WHERE s.ItemName ='"+productId+"' AND s.CategoryName='"+cat+"' AND s.modelName='"+mod+"'");
+		        List<Object[]> list = query.list();
 
 			 itemlist = new ArrayList<BarrelEntryBean>(0);
 		     for (Object[] objects : list) {
@@ -310,7 +314,7 @@ public class BarrelEntryDao {
 			 bean.setTaxAmt(0d);
 			 bean.setTotalLitre(Double.parseDouble(objects[7].toString()));
 			 bean.setNumberofBarrel(Double.parseDouble(objects[8].toString()));
-
+			 bean.setModelName(objects[9].toString());
 			 
 			 itemlist.add(bean);
 		     }

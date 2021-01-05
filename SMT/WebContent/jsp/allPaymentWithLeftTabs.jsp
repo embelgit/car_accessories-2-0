@@ -132,7 +132,7 @@
 						  
 	 <div class="row form-group">
 				
-				<label class="col-md-3 control-label" for="paymentMode"> Payment Mode<sup>*</sup></label>  
+				<label class="col-md-3 control-label" for="paymentMode"> Payment Mode</label>  
 	           		<div class="col-md-3">
 							<div class="input-group">
 								<span class="input-group-addon">
@@ -196,7 +196,7 @@
 			          
 			     <div class="form-group">
 				
-				  <label class="col-md-3 control-label" for="paymentMode"> Payment Type<sup>*</sup></label>  
+				  <label class="col-md-3 control-label" for="paymentMode"> Payment Type </label>  
 	           		<div class="col-md-3">
 							<div class="input-group">
 								<span class="input-group-addon">
@@ -243,7 +243,7 @@
 											<div id="card_no" class="form-group">
 												
 												<div class="col-md-3 col-md-offset-3 first">	
-													<input class="form-control" type="text" name="cardNum" id="cardNum" placeholder="Card No." />  
+													<input class="form-control" type="text" name="cardNum" id="cardNum"  maxlength="16" placeholder="Card No." />  
 												</div>
 												
 											</div>
@@ -782,7 +782,7 @@
 							<span class="input-group-addon">
 								<i class="glyphicon glyphicon-earphone"></i>
 							</span>
-             					 <input id="contactNumber" name="contactNumber" placeholder="Contact Number" class="form-control input-md" type="text" >
+             					 <input id="contactNumber" name="contactNumber" placeholder="Contact Number" maxlength="10" class="form-control input-md" type="text" >
            				 </div>
 					</div>
 					

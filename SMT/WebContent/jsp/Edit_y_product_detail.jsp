@@ -129,7 +129,7 @@
 							
 										%>
 							
-										<input list="sup_drop" id="product" onchange="getProductDetails()" class="form-control">
+										<input list="sup_drop" id="product" onchange="getProductDetailsedit()" class="form-control">
 										
 										<datalist id="sup_drop">
 											<%
@@ -146,7 +146,7 @@
 							  </div>
 							  
 							   <div class="col-sm-2 " align="right">
-					    	  <label class="control-label">New Product Name:<sup style="color: red">*</sup></label>
+					    	  <label class="control-label">New Product Name: </label>
 						</div>
 						
 						<div class="col-sm-3">
@@ -199,7 +199,7 @@
 			
 			<div class="row buttons_margin_top">
 					<div align="center">
-					  <input type="button" onclick="updateProduct()" id="btn" value="Save" class="btn btn-lg btn-success btn-md button_hw button_margin_right"/>
+					  <input type="button" onclick="updateProduct10()" id="btn" value="Save" class="btn btn-lg btn-success btn-md button_hw button_margin_right"/>
 					  <input type="reset" value="Cancel" class="btn btn-lg btn-danger btn-md button_hw button_margin_right"/>
 					   <input type="button" onclick="backProduct()" id="btn" value="Back" class="btn btn-lg btn-primary btn-md button_hw button_margin_right"/>
 					</div>

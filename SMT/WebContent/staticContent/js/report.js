@@ -193,6 +193,18 @@ function singleDatePurchase(){
 					            );
 					            console.log( pageTotal);
 				
+					            pageTotal = api
+				                .column( 20 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				            // Update footer
+				            $( api.column( 20 ).footer() ).html(
+				              parseFloat(pageTotal).toFixed(2)
+				            );
+				            console.log( pageTotal);
+				            
 					        },
 				    	
 					        "sPaginationType": "full_numbers",
@@ -208,6 +220,7 @@ function singleDatePurchase(){
 	                      {data: "GstTinNo", "width": "5%", "defaultContent": ""},
 	                      {data: "itemName", "width": "5%", "defaultContent": ""},
 	                      {data: "hsnsacno", "width": "5%", "defaultContent": ""},
+	                      {data: "buyPriceEx", "width": "5%", "defaultContent": ""},
 	                      {data: "buyPrice", "width": "5%", "defaultContent": ""},
 	                      {data: "quantity", "width": "5%", "defaultContent": ""},
 	                      {data: "total", "width": "5%", "defaultContent": ""},
@@ -495,6 +508,18 @@ function purchaseReportBetweenTwoDates(){
 					            );
 					            console.log( pageTotal);
 				
+					            pageTotal = api
+				                .column( 25 )
+				                .data()
+				                .reduce( function (a, b) {
+				                    return intVal(a) + intVal(b);
+				                }, 0 );
+				            // Update footer
+				            $( api.column( 25 ).footer() ).html(
+				              parseFloat(pageTotal).toFixed(2)
+				            );
+				            console.log( pageTotal);
+			
 					        },
 				    	
 				    	
@@ -512,6 +537,7 @@ function purchaseReportBetweenTwoDates(){
 	                      {"data": "GstTinNo", "width": "5%", "defaultContent": ""},
 	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
 	                      {"data": "hsnsacno", "width": "5%", "defaultContent": ""},
+	                      {"data": "buyPriceEx", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
 	                      {"data": "quantity", "width": "5%", "defaultContent": ""},
 	                      {"data": "total", "width": "5%", "defaultContent": ""},
@@ -620,6 +646,8 @@ function caReportBetweenTwoDates(){
 
 
 	                      {"data": "taxAmount", "width": "5%","defaultContent": ""},
+	                      {"data": "expence", "width": "5%","defaultContent": ""},
+	                      
 	                      {"data": "total", "width": "5%","defaultContent": ""},
 	  
 				        ]
@@ -1411,7 +1439,7 @@ function gstsaleReportBetweenTwoDates(){
 	                      {"data": "itemName", "width": "5%", "defaultContent": ""},
 	                      {"data": "hsnsacno", "width": "5%", "defaultContent": ""},
 	                      {"data": "buyPrice", "width": "5%", "defaultContent": ""},
-	                      {"data": "quantity", "width": "5%", "defaultContent": ""},
+	                      {"data": "quant", "width": "5%", "defaultContent": ""},
 	                      {"data": "total", "width": "5%", "defaultContent": ""},
 	                      {"data": "fivePercentageGST", "width": "5%", "defaultContent": ""},
 	  		              {"data": "twelwePercentageGST", "width": "5%", "defaultContent": ""},

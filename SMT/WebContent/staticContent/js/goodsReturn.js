@@ -522,7 +522,7 @@ function getAllBills2()
 			})
 
 }
-
+//po regular
 function getitems() {
 	
 	
@@ -571,7 +571,7 @@ function getitems() {
 								colNames : [ "itemID","CategoryName", "Item Name",
 										 "Purchase Quant", "Return Quant", "BuyPrice","BPExTax",
 										"GST", "IGST","Total","ContactPerson",
-										"BarcodeNo", "Date" ],
+										"BarcodeNo", "Date"],
 
 								colModel : [ 
 									
@@ -646,7 +646,12 @@ function getitems() {
 									name : 'ondate',
 									width : 150,
 									
-								}
+								},
+								/*{
+									name : 'stock',
+									width : 150,
+									
+								}*/
 
 								],
 

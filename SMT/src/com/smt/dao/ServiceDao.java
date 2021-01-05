@@ -207,6 +207,7 @@ public class ServiceDao {
 					 hbu = HibernateUtility.getInstance();
 					 session = hbu.getHibernateSession();
 					 query = session.createSQLQuery("select ItemName,pkProductNameId, HsnSacNo from service_detail where pkProductNameId ="+ProductId);
+		//			 query = session.createSQLQuery("select pkProductNameId,ProductName, HsnSacNo,modelName from product_reg where pkProductNameId ="+ProductId);				
 					 list = query.list(); 
 				} catch (RuntimeException e) {
 					e.printStackTrace();

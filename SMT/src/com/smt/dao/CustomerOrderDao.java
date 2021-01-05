@@ -1180,7 +1180,7 @@ public List getSaleItemByBillNocc(String billNo) {
 //			query.setParameter("billNo",billNo);
 			
 			list = query.list();
-			System.out.println("sizze - "+query.list().size()); 
+			System.out.println("sizze   credit   - "+query.list().size()); 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1380,8 +1380,8 @@ public List getAllBillNumberscredit() {
 
 
 
-public List<GstReportBean> gstSaleReportBetweenTwoDates(Date adate,
-		Date bdate) {
+public List<GstReportBean> gstSaleReportBetweenTwoDates(String adate,
+		String bdate) {
 	
 	HibernateUtility hbu=null;
 	Session session=null;
@@ -1389,25 +1389,30 @@ public List<GstReportBean> gstSaleReportBetweenTwoDates(Date adate,
 	try
 	{   Long k = 0l;
 		hbu = HibernateUtility.getInstance();
-	 session = hbu.getHibernateSession();
-	 Query query2 = session.createSQLQuery("select Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from creditcustomerbill where date BETWEEN :adate AND :bdate UNION SELECT Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from customerbill where date BETWEEN :adate AND :bdate UNION SELECT Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from otherbill where date BETWEEN :adate AND :bdate");
-	 query2.setParameter("adate", adate);
-	 query2.setParameter("bdate", bdate);
+	 session = hbu.getHibernateSession();/////CategoryName, totalperitem, ,  TaxAmount, 
+//	 Query query2 = session.createSQLQuery("select Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from creditcustomerbill where date BETWEEN :adate AND :bdate UNION SELECT Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from customerbill where date BETWEEN :adate AND :bdate UNION SELECT Date, BillNo, ItemName, SalePrice, Quantity, Gst, Igst, HsnSacNo from otherbill where date BETWEEN :adate AND :bdate");
+	 Query query2 = session.createSQLQuery("select Date,BillNo,  ItemName, SalePrice,Quantity,Gst, Igst ,HsnSacNo from customerbill where Date between '"+adate+"' AND '"+bdate+"' UNION select Date,BillNo,  ItemName, SalePrice,Quantity,Gst, Igst ,HsnSacNo from otherbill where Date between '"+adate+"' AND '"+bdate+"' UNION select Date,BillNo,  ItemName, SalePrice,Quantity,Gst, Igst ,HsnSacNo from barreloilbilling  where Date  between '"+adate+"' AND '"+bdate+"' UNION select Date, BillNo, service_item, service_saleprice,service_quantity,service_gst, service_igst, service_hsn  from service_billing  where Date  between '"+adate+"' AND '"+bdate+"'");
+	 
+//	 query2.setParameter("adate", adate);
+//	 query2.setParameter("bdate", bdate);
 	 List<Object[]> list = query2.list();
         catList= new ArrayList<GstReportBean>(0);
 		
 		
 		for (Object[] object : list) {
 		k++;		
+		
 		GstReportBean reports = new GstReportBean();
-			reports.setSerialnumber(k);
+		System.out.println("rslt -  "+Arrays.toString(object));	
+		reports.setSerialnumber(k);
 			reports.setFetchDate(object[0].toString());
 			//reports.setSupplierName(object[1].toString());
 			reports.setBillNo(object[1].toString());
 			//reports.setGstTinNo(object[3].toString());
 			reports.setItemName(object[2].toString());
 			reports.setBuyPrice(Double.parseDouble(object[3].toString()));
-			reports.setQuantity(Long.parseLong(object[4].toString()));
+	//		reports.setQuantity(Long.parseLong(object[4].toString()));
+			reports.setQuant(Double.parseDouble(object[4].toString()));
 			reports.setHsnsacno(object[7].toString());
 			
 			
@@ -1607,7 +1612,9 @@ public List<SaleReport> singleDateSaleReport(Date adate) {
 			
 		 Long k = 0l;
 		 Query query2 = session.createSQLQuery("select s.BillNo, s.BarcodeNo, s.ItemName, s.CategoryName, s.SalePrice, s.totalperitem, s.HsnSacNo, s.Quantity, s.TaxAmount, s.Gst, s.Igst from customerbill s where s.Date =:adate UNION select o.BillNo, o.BarcodeNo, o.ItemName, o.CategoryName, o.SalePrice, o.totalperitem, o.HsnSacNo, o.Quantity, o.TaxAmount, o.Gst, o.Igst from otherbill o where o.Date =:adate UNION select c.BillNo, c.BarcodeNo, c.ItemName, c.CategoryName, c.SalePrice, c.totalperitem, c.HsnSacNo, c.Quantity, c.TaxAmount, c.Gst, c.Igst from creditcustomerbill c where c.Date =:adate");
-		 query2.setParameter("adate", adate);
+	
+
+	//	 query2.setParameter("adate", adate);
 		
 		 
 	        List<Object[]> list = query2.list();

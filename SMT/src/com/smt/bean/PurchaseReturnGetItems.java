@@ -28,8 +28,16 @@ public class PurchaseReturnGetItems {
     
 	private Double buyPriceEx;
 	
+	private Long stock;
 	
 	
+	
+	public Long getStock() {
+		return stock;
+	}
+	public void setStock(Long stock) {
+		this.stock = stock;
+	}
 	public Double getBuyPriceEx() {
 		return buyPriceEx;
 	}

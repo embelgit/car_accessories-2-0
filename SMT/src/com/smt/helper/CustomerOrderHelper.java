@@ -610,19 +610,22 @@ public class CustomerOrderHelper {
 	public List singleDatePurchase(HttpServletRequest request, HttpServletResponse response) {
 
 		String fDate = request.getParameter("fDate");
+		System.out.println("fDate -  "+fDate);
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 		Date adate = null;
 		try {
 			adate = format.parse(fDate);
+			System.out.println("adate -  "+adate);
 		} catch (ParseException e1) {
 
 			e1.printStackTrace();
+//			Purchase CA report /-- Gst No column and Total Expense value column are missing
 		}
 		Map<Long, PurchaseReportBean> map = new HashMap<Long, PurchaseReportBean>();
 
 		GoodReciveDao dao = new GoodReciveDao();
-		List<PurchaseReportBean> exp1List = dao.singleDatePurchase(adate);
+		List<PurchaseReportBean> exp1List = dao.singleDatePurchase(fDate);
 
 		return exp1List;
 	}
@@ -646,7 +649,7 @@ public class CustomerOrderHelper {
 		Map<Long, PurchaseReportBean> map = new HashMap<Long, PurchaseReportBean>();
 
 		GoodReciveDao dao = new GoodReciveDao();
-		List<PurchaseReportBean> exp1List = dao.purchaseReportBetweenTwoDates(adate, bdate);
+		List<PurchaseReportBean> exp1List = dao.purchaseReportBetweenTwoDates(fisDate, endDate);
 
 		return exp1List;
 	}
@@ -764,7 +767,7 @@ public class CustomerOrderHelper {
 		for (int i = 0; i < list.size(); i++) {
 			Object[] o = (Object[]) list.get(i);
 			SaleReturnBean bean = new SaleReturnBean();
-			System.out.println("reslt - "+Arrays.toString(o));
+			System.out.println("reslt credit - "+Arrays.toString(o));
 			bean.setPkBillId(Long.parseLong(o[0].toString()));
 //			bean.setCarNo(o[1].toString());
 			bean.setCategoryName(o[1].toString());
@@ -772,10 +775,13 @@ public class CustomerOrderHelper {
 			bean.setBarcodeNo(Long.parseLong(o[3].toString()));
 			bean.setQuantity(Double.parseDouble(o[4].toString()));
 			String quanty = o[4].toString();
-			String totalAmt = o[8].toString();
+			String totalAmt = o[6].toString();
+			System.out.println("total -   "+totalAmt);
 			double salePrice = Double.parseDouble(totalAmt) / Double.parseDouble(quanty);
+			
 			bean.setSalePrice(salePrice);
 //			bean.setContactNo(Long.parseLong(o[7].toString()));
+			System.out.println("sale pr  "+bean.getSalePrice());
 			bean.setTotalAmt(Double.parseDouble(o[6].toString()));
 			bean.setDiscount(Double.parseDouble(o[7].toString()));
 			bean.setGrossamt(Double.parseDouble(o[8].toString()));
@@ -783,7 +789,7 @@ public class CustomerOrderHelper {
 			Long editQuan = 0l;
 			bean.setEditQuantity(editQuan);
 			/* bean.setTotalAmt(Double.parseDouble(o[0].toString())); */
-			System.out.println("***************" + o[0]);
+			System.out.println("* id   " + o[0]);
 			map.put(bean.getPkBillId(), bean);
 		}
 		return map;
@@ -807,9 +813,10 @@ public class CustomerOrderHelper {
 			bean.setBarcodeNo(Long.parseLong(o[3].toString()));
 			bean.setQuantity(Double.parseDouble(o[4].toString()));
 			String quanty = o[4].toString();
-			String totalAmt = o[8].toString();
+			String totalAmt = o[6].toString();
 			double salePrice = Double.parseDouble(totalAmt) / Double.parseDouble(quanty);
 			bean.setSalePrice(salePrice);
+			System.out.println("sale pr - "+bean.getSalePrice());
 //			bean.setContactNo(Long.parseLong(o[7].toString()));
 			bean.setTotalAmt(Double.parseDouble(o[6].toString()));
 			bean.setDiscount(Double.parseDouble(o[7].toString()));
@@ -872,7 +879,7 @@ public class CustomerOrderHelper {
 		Map<Long, GstReportBean> map = new HashMap<Long, GstReportBean>();
 
 		CustomerOrderDao dao = new CustomerOrderDao();
-		List<GstReportBean> exp1List = dao.gstSaleReportBetweenTwoDates(adate, bdate);
+		List<GstReportBean> exp1List = dao.gstSaleReportBetweenTwoDates(fisDate, endDate);
 
 		return exp1List;
 	}
@@ -1227,9 +1234,11 @@ public class CustomerOrderHelper {
 			//cust.setDiscount(Double.parseDouble(discountservice));
 			cust.setCategoryName("NA");
 			
+			String ownerName = request.getParameter("ownerName");
+			//cust.setOwnerName(ownerName);
 			
 			String Customername = request.getParameter("Customername");
-			cust.setCustomername(Customername);
+			cust.setCustomername(ownerName);
 			String gstNo = request.getParameter("gstNo");
 			
 			cust.setGstNo(gstNo);

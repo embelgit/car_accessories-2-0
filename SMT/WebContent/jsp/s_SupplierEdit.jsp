@@ -143,7 +143,7 @@ window.location="s_supplier_detail.jsp";
 						<div class="input-group">
 							<span class="input-group-addon"> <i
 								class="glyphicon glyphicon-hand-right"></i>
-							</span> <input type="text" id="pin" name="pin" class="form-control" placeholder="Pin Code" />
+							</span> <input type="text" id="pin" name="pin" class="form-control" placeholder="Pin Code" maxlength="6"/>
 						</div>
 					</div>
 
@@ -194,7 +194,7 @@ window.location="s_supplier_detail.jsp";
 							<span class="input-group-addon"> <i
 								class="glyphicon glyphicon-phone"></i>
 							</span> 
-							<input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Mobile No" />
+							<input type="text" id="mobileno" name="mobileno" class="form-control" placeholder="Mobile No" maxlength="10" />
 						</div>
 					</div>
 					

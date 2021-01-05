@@ -83,7 +83,8 @@
 				                <th> GSTTIN No</th>
 				                <th> Item Name</th>
 				                <th> Hsn/Sac No</th>
-				                <th> Item Rate</th>
+				                <th> BuyPriceEX </th>
+				                <th> Buy Price</th>
 				                <th> Quantity</th>
 				                <th> Amount</th>
 				                <th >GST& SGST 5% Amount</th>
@@ -101,7 +102,7 @@
 						<tfoot>
 							<tr>
 								 <th colspan="7" style="text-align: right">Total:</th>
-								<th></th><th></th> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th><th></th> <th></th> <th></th> <th></th>
+								<th></th><th></th><th></th> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th> <th></th><th></th> <th></th> <th></th> <th></th>
 			
 			
 							</tr>
@@ -159,7 +160,8 @@
 				                <th> GSTTIN No</th>
 				                <th> Item Name</th>
 				                <th> Hsn/Sac No</th>
-				                <th> Item Rate</th>
+				                <th> BuyPriceEX</th>
+				                <th> Buy Price</th>
 				                <th> Quantity</th>
 				                <th> Amount</th>
 				                <th> Additional Cost</th>
@@ -182,7 +184,7 @@
 						<tfoot>
 							<tr>
 								 <th colspan="7" style="text-align: right">Total:</th>
-								<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th> <th></th> <th></th><th></th> <th></th> <th></th><th></th> <th></th><th></th> <th></th> <th></th> 
+							<th></th>	<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th> <th></th> <th></th><th></th> <th></th> <th></th><th></th> <th></th><th></th> <th></th> <th></th> 
 			
 			
 							</tr>
@@ -253,13 +255,14 @@
 										<th> Igst</th>
 
 									<th> Tax Amount</th>
+									<th>Total Expenses</th>
 										<th> Total</th>			
 										
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
-							<th></th>	<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th><th></th><th></th><th></th>
+							<th></th><th></th>	<th></th><th></th> <th></th><th></th>  <th></th> <th></th> <th></th> <th></th><th></th><th></th><th></th>
 								<th></th><th></th><th></th><th></th>
 											<th></th><th></th><th></th>
 							</tr>
