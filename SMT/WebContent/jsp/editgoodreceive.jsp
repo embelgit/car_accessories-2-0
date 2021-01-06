@@ -1,6 +1,8 @@
 
 <%@page import="com.smt.helper.BarrelEntryHelper"%>
 <%@page import="com.smt.dao.ProductDetailDao"%>
+<%@page import="com.smt.dao.SupplierDetailDao"%>
+
 <%@page import="com.smt.hibernate.SupplierDetail"%>
 <%@page import="com.smt.helper.SupplierDetailHelper"%>
 <%@page import="com.smt.helper.ProductDetailHelper"%>
@@ -236,92 +238,7 @@ function openCreditCustomerBilling() {
 	
 }
 </script>
-<script type="text/javascript">
-	    function dupbill(){
-			
-	        <%
-				CategoryDao catHelper = new CategoryDao();
-		   		List catList = catHelper.getAllbillnoreg();
-			%>
-			var catName = $('#billNo').val();
-    //		var UpCatName = catName.toUpperCase();
-    		var duplicate;
-    		//alert(catList.size());
-			<%
-				for(int i=0;i<catList.size();i++){
-					GoodReceive category = (GoodReceive)catList.get(i);
-    		%>
-    		
-    		    var valuee ="<%=category.getBillNo()%>";
-//    		    var UpValue = value.toUpperCase();
-				if(catName == valuee)
-					{
-					alert("Bill No Already Exist..!!!");
-					location.reload();
-					return false;
-		//					duplicate = "found";
-							/* document.cat.btn.disabled = true;	
-							alert("Category Name Already Exist..!!!");
-			 				document.cat.reset();
-		 					document.cat.btn.disabled = false;
-							return false; */
-					}
-				
-		    <%
-				}
-    		%>
-    		
-    		
-    		
-/*     		if(duplicate == "found"){
-    			document.cat.btn.disabled = true;	
-				alert("Category Name Already Exist..!!!");
- 			//	document.cat.reset();
-			//	document.cat.btn.disabled = false;
-    			location.reload();
-				return false;
-    		} */
-   
-		}
-</script>
-<script type="text/javascript">
-function editt(){
-	window.location = "editgoodreceive.jsp";
-}
-</script>
-<script type="text/javascript">
-	    function dupbill1(){
-			
-	        <%
-				CategoryDao catHelperr = new CategoryDao();
-		   		List catListt = catHelperr.getAllbillnoreg1();
-			%>
-			var catName = $('#billNo1').val();
 
- //   		var duplicate;
-
-			<%
-				for(int i=0;i<catListt.size();i++){
-					GoodsReceiveBarrelHibernate category = (GoodsReceiveBarrelHibernate)catListt.get(i);
-    		%>
-    		
-    		    var valuee ="<%=category.getBillNo()%>";
-
-				if(catName == valuee)
-					{
-					alert("Bill No Already Exist..!!!");
-					location.reload();
-					return false;
-
-					}
-				
-		    <%
-				}
-    		%>
-    		
-   
-		}
-</script>
 
 
          <script src="/SMT/staticContent/js/jquery-1.12.3.min.js"></script>
@@ -333,7 +250,8 @@ function editt(){
 	     <script src="/SMT/staticContent/js/jqueryUi.js"></script>
 	     <script src="/SMT/staticContent/y_js/jquery.jqgrid.min.js"></script>
         
-	     <script src="/SMT/staticContent/y_js/newgoodsreceived.js"></script>
+<!--  	     <script src="/SMT/staticContent/y_js/newgoodsreceived.js"></script> -->
+	     <script src="/SMT/staticContent/js/editgoodreceive.js"></script>
 	    <script src="/SMT/staticContent/js/BarrelEntry.js"></script>  
 	 
 	
@@ -342,7 +260,7 @@ function editt(){
 
 		<div class="row header_margin_top">
 			<div align="center">
-				<h2 class="form-name style_heading">Purchase Goods Received</h2>
+				<h2 class="form-name style_heading">Edit Goods Received</h2>
 			</div>
 		</div>
 
@@ -405,7 +323,7 @@ function editt(){
 		</div>
 		<!---------------------------------++++++++++------Cash and Credit Radio---------++++++++++-----------------------------> 
 				
-	<div class=" " id="my_styles" >
+	<!-- <div class=" " id="my_styles" >
 	<div class="textalign center" align="center">
 			
    			 <label>
@@ -419,13 +337,13 @@ function editt(){
             
         		
        </div>		
-	 </div>
+	 </div> -->
 	              	
 <!-- --------------------------------------------------end----------------------------------- -->
 <div id="CashCustDetail">
 		<form action="goods" method="post" name="good" class="form-horizontal" style="margin-top:1%" >
 		
-		<div class="row">
+<%-- 		<div class="row">
 					<div class="col-md-6 col-sm-12 col-xs-12 col-xl-4 col-lg-4"></div>
 					
 
@@ -458,7 +376,7 @@ function editt(){
 
 					</div>
 
-				</div>
+				</div> --%>
 		
 
 <div class="row" style="display: none;">
@@ -481,16 +399,31 @@ function editt(){
 						<label class="control-label">Bill No:<sup style="color: red;">*</sup></label>
 					</div>
 					<div class="col-sm-3">
+							<%
+							SupplierDetailDao poHelper = new SupplierDetailDao();
+							List supplierList = poHelper.getAllbill();
+						%>
+
 						<div class="input-group">
 							<span class="input-group-addon"> <i
-								class="glyphicon glyphicon-hand-right"></i>
+								class="glyphicon glyphicon-user"></i>
 							</span> 
-							<input type="text" id="billNo" id="jander" name="billNo"
-								autofocus="autofocus" class="form-control" placeholder="Bill No"  onchange="dupbill()"/>
-						</div>
+							
+							<input list="bill_drop" id="billId" class="form-control" onchange="getBillForEditGoodReceive();" >
+						<datalist id="bill_drop">
+						<%
+							for(int i =0 ;i<supplierList.size();i++)
+								{
+								GoodReceive supplier = (GoodReceive)supplierList.get(i);
+						%>
+							<option data-value="<%=supplier.getBillNo()%>" value="<%=supplier.getBillNo()%>"> 
+						<%   	
+								}	
+						%>
+						</datalist>
 					</div>
-
-					<div class="col-sm-2" align="right">
+</div>
+<%-- 					<div class="col-sm-2" align="right">
 						<label class="control-label">Supplier Name:<sup style="color: red;">*</sup> </label>
 					</div>
 					<div class="col-sm-3">
@@ -518,11 +451,11 @@ function editt(){
 						</datalist>
 							
 						</div>
-					</div>
+					</div> --%>
 				</div>
 			</div>
 
-			<div class="row">
+<%-- 			<div class="row">
 				<div class="form-group">
 					<div class="col-sm-2 " align="right">
 						<label class="control-label">Contact Person:<sup style="color: red;">*</sup></label>
@@ -588,10 +521,10 @@ function editt(){
 					</div>
 					 -->
 				</div>
-			</div>
+			</div> --%>
 
 			
-			<div class="row">
+<%-- 			<div class="row">
 				<div class="form-group">
 					<div class="col-sm-2 " align="right">
 						<label class="control-label">Item List:<sup style="color: red;">*</sup></label>
@@ -629,7 +562,7 @@ function editt(){
 
 					
 				</div>
-			</div>
+			</div> --%>
 
 			<div class="row">
 					<div class="col-sm-10 col-sm-offset-1">
@@ -639,8 +572,9 @@ function editt(){
 						</div>
 					</div>
 				</div>
-				
-			<div class="row ">
+<br><br>	
+			
+		<!-- 	<div class="row ">
 				<div class="form-group">
 				     <div class="col-sm-2 " align="right">
 						<label class="control-label">Discount:</label>
@@ -689,12 +623,12 @@ function editt(){
 					</div>
 
 				</div>
-			</div>
+			</div> -->
 			
 			
 			<div class="row row_margin">
 				<div class="form-group">
-				     <div class="col-sm-2 " align="right">
+				     <!-- <div class="col-sm-2 " align="right">
 						<label class="control-label">Final Expenses:</label>
 					</div>
 
@@ -706,7 +640,7 @@ function editt(){
 								class="text-border form-control" 
 								style="background-color: rgba(251, 243, 0, 0.27)" id="jander" />
 						</div>
-					</div>
+					</div> -->
 				
 				
 					
@@ -728,9 +662,8 @@ function editt(){
 
 			<div class="row buttons_margin_top">
 			<div align="center">
-    			<input type="button" class="btn btn-lg btn-success btn-md button_hw button_margin_right" name="btnSubmit" id="btnSubmit" onclick="validateRegGoodReceive()" value="Save" /> 
+    			<input type="button" class="btn btn-lg btn-success btn-md button_hw button_margin_right" name="btnSubmit" id="btnSubmit" onclick="regGoodReceive()" value="Update" /> 
 				<input type="reset" value="Cancel" onclick="reset()" class="btn btn-lg btn-danger btn-md button_hw button_margin_right"/>
-  			<input type="button" class="btn btn-lg btn-success btn-md button_hw button_margin_right" name="btnedit" id="btnedit" onclick="editt()" value="Edit" /> 				
 				<!-- <input type="button" onclick="window.location.href='http://localhost:8080/SMT/jsp/supplierAccountDetails.jsp'" 
 				value="Fill Supplier Payement" class="btn btn-lg btn-primary btn-md" />  -->
 			
@@ -741,7 +674,8 @@ function editt(){
 	   
 	   </div>
 	  <!-------------------  barrel oil purchase  ------------------------------------->
-	  <div id="CreditCustDetail">
+
+<%-- 	  <div id="CreditCustDetail">
 	  <form action="goods1" method="post" name="good1" class="form-horizontal" style="margin-top:1%" >
 	  
 	  
@@ -1052,7 +986,7 @@ function editt(){
 		</div>	 
 				
 </form>
-</div>
+</div> --%>
 	  
 	  <!-- -----------------end of oil barrel------------------ -->
 	   

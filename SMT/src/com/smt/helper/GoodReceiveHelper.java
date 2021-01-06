@@ -749,4 +749,195 @@ public class GoodReceiveHelper {
 					return dao.getBillNo1();
 				}
 
+				
+				//update po
+				
+				public void updateGoodReceive(HttpServletRequest request, HttpServletResponse response) {
+
+					
+					 GoodReciveDao dao3=new GoodReciveDao(); 
+					  List listtxid=dao3.getSupplierPaymentTxid();
+					  
+					 
+
+
+
+					Integer count = Integer.parseInt(request.getParameter("count"));
+					System.out.println("c111111   - " + count);
+
+					for (int i = 0; i < count; i++) {
+
+						HttpSession session3 = request.getSession();
+		//				GoodReciveDao data = new GoodReciveDao();
+		//				List stkList = data.getLastBarcodeNo();
+
+
+						String itemName = request.getParameter("itemName" + i);
+						String catName = request.getParameter("catName" + i);
+						String quantity = request.getParameter("quantity" + i);
+
+						String buyPrice = request.getParameter("buyPrice" + i);
+						String buyPriceEx = request.getParameter("buyPriceEx" + i);
+						String buyPriceExTax = request.getParameter("buyPriceExTax" + i);
+						String TotalQuan = request.getParameter("TotalQuan" + i);
+						System.out.println("Total Quan- "+TotalQuan);
+						String salePrice = request.getParameter("salePrice" + i);
+						String discount = request.getParameter("discount" + i);
+						String hsnsacno = request.getParameter("hsnsacno" + i);
+						String Total = request.getParameter("Total" + i);
+						String billNo = request.getParameter("billNo");
+						String contactPerson = request.getParameter("contactPerson");
+						System.out.println("billNo  = = - =  "+billNo);
+						
+						String vat = request.getParameter("vat" + i);
+
+						
+						String igst = request.getParameter("igst" + i);
+
+						
+						String gstamt = request.getParameter("gstamt" + i);
+
+						
+						String actualprice = request.getParameter("actualprice" + i);
+						
+						String originalquantity = request.getParameter("originalquantity" + i);
+						
+						System.out.println("actual price - "+actualprice);
+						
+						Long quan = Long.parseLong(quantity);
+						Long oriquan = Long.parseLong(originalquantity);
+						Long qq = 0l;
+
+						String q = "";
+						if(quan > oriquan) {
+							
+							qq = quan - oriquan;
+							q="add";
+							System.out.println("when quan is greater than ori quan -  qq -  "+qq);
+							System.out.println("stock should be added by quan -  "+qq+"  &  "+q);		
+						}
+						else {
+							qq =  oriquan - quan;
+
+							q="minus";
+							System.out.println("when quan is lessert than ori quan -  qq -  "+qq);
+							System.out.println("stock should be minus by quan -  "+qq+"  &  "+q);
+							
+						}
+						
+//						gd.setPaymentDone("y");
+
+						
+						
+						String resolution = request.getParameter("resolution");
+
+
+//						System.out.println(""+gd.get);	
+
+						
+
+						GoodReciveDao dao = new GoodReciveDao();
+						List stkList = dao.getAllgoodreceive(billNo);
+						
+
+						/* If Stock Is Empty */
+							
+
+							for (int k = 0; k < stkList.size(); k++) {
+								GoodReceive st = (GoodReceive) stkList.get(k);
+								String ItemId = st.getItemName();
+								String cat = st.getCatName();
+
+								/* If ItemName Is Already Exists In Stock Table */
+								if (ItemId.equals(itemName) && cat.equals(catName)) {
+						             Long pkid = st.getPkGoodRecId();
+									
+										HibernateUtility hbu = HibernateUtility.getInstance();
+										Session session = hbu.getHibernateSession();
+										Transaction transaction = session.beginTransaction();
+
+										DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+										Date date = new Date();
+
+										GoodReceive gd = (GoodReceive) session.get(GoodReceive.class,new Long(pkid));
+							
+										gd.setQuantity(Long.parseLong(quantity));
+										gd.setOringnalQuantity(Long.parseLong(quantity));
+										gd.setBuyPrice(Double.parseDouble(buyPrice));
+										gd.setBuyPriceEx(Double.parseDouble(buyPriceEx));
+										
+										gd.setBuyPriceEXTax(Double.parseDouble(buyPriceExTax));
+										System.out.println("Total Quan- "+TotalQuan);
+										gd.setTotalQuan(Double.parseDouble(TotalQuan));
+										gd.setSalePrice(Double.parseDouble(salePrice));
+										gd.setDiscount(Double.parseDouble(discount));
+										System.out.println("discount set- "+gd.getDiscount());
+										gd.setHsnsacno(hsnsacno);
+										gd.setTotal(Double.parseDouble(Total));
+//										gd.setBillNo(billNo);
+//										gd.setContactPerson(contactPerson);
+										System.out.println("billNo  = = - =  "+billNo);
+										gd.setVat(Double.parseDouble(vat));
+										gd.setIgst(Double.parseDouble(igst));
+										gd.setTaxAmount(Double.parseDouble(gstamt));
+										gd.setGrossTotal(Double.parseDouble(resolution));
+										
+										session.saveOrUpdate(gd);
+										transaction.commit();
+										break;
+								}
+							}
+						
+						// End Barcode code
+						
+						StockDao dao1 = new StockDao();
+						List stkList2 = dao1.getAllStockEntry();
+						
+						int quant = Integer.parseInt(quantity);
+
+						/* If Stock Is Empty */
+							
+
+							for (int j = 0; j < stkList2.size(); j++) {
+
+								Stock st = (Stock) stkList2.get(j);
+								String ItemId = st.getItemName();
+								String cat = st.getCatName();
+								Long PkItemId = st.getPkStockId();
+
+								/* If ItemName Is Already Exists In Stock Table */
+								if (ItemId.equals(itemName) && cat.equals(catName)) {
+									Long qunty = st.getQuantity();
+									Long pkid = st.getPkStockId();
+									System.out.println("if item and cat name equals than pkid is -  "+pkid);
+									Long updatequnty = 0l;
+									if(q.equals("add")) {
+									updatequnty = (long) (qunty + qq);
+									}
+									else {
+									updatequnty = (long) (qunty - qq);
+									}
+									System.out.println("quan from stock is - "+qunty+" quan to be addd/minus - "+qq+"  updates quan -  "+updatequnty);
+									HibernateUtility hbu = HibernateUtility.getInstance();
+									Session session = hbu.getHibernateSession();
+									Transaction transaction = session.beginTransaction();
+
+									DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+									Date date = new Date();
+
+									Stock updateStock = (Stock) session.get(Stock.class,new Long(pkid));
+								//	updateStock.setUpdateDate(date);
+									updateStock.setQuantity(updatequnty);
+
+									session.saveOrUpdate(updateStock);
+									transaction.commit();
+									break;
+								}
+
+							}
+
+						
+
+					}
+				}
 }

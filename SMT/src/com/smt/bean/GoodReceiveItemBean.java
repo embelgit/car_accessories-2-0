@@ -1,7 +1,7 @@
 package com.smt.bean;
 
 public class GoodReceiveItemBean {
-	
+	private Long pkid;
 	private String itemName;
 	private String catName;
 	private double vat;
@@ -19,10 +19,85 @@ public class GoodReceiveItemBean {
 	private Double buyPriceIncTax;
 	private Double gstamt;
 
+	private Double expence;
+	private Double grossTotal;
+	private Double taxAmount;
+	private Double buyPriceEXTax;
+	private Double total;
+	private Long originalquantity;
+	private Double extraDiscount;
+	private String paymentDone;
+	private Double txPerexpence;
+	private Double finalExpenses;
+
 	
 	
-	
-	
+	public Long getOriginalquantity() {
+		return originalquantity;
+	}
+	public void setOriginalquantity(Long originalquantity) {
+		this.originalquantity = originalquantity;
+	}
+	public Double getExpence() {
+		return expence;
+	}
+	public void setExpence(Double expence) {
+		this.expence = expence;
+	}
+	public Double getGrossTotal() {
+		return grossTotal;
+	}
+	public void setGrossTotal(Double grossTotal) {
+		this.grossTotal = grossTotal;
+	}
+	public Double getTaxAmount() {
+		return taxAmount;
+	}
+	public void setTaxAmount(Double taxAmount) {
+		this.taxAmount = taxAmount;
+	}
+	public Double getBuyPriceEXTax() {
+		return buyPriceEXTax;
+	}
+	public void setBuyPriceEXTax(Double buyPriceEXTax) {
+		this.buyPriceEXTax = buyPriceEXTax;
+	}
+	public Double getTotal() {
+		return total;
+	}
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+	public Double getExtraDiscount() {
+		return extraDiscount;
+	}
+	public void setExtraDiscount(Double extraDiscount) {
+		this.extraDiscount = extraDiscount;
+	}
+	public String getPaymentDone() {
+		return paymentDone;
+	}
+	public void setPaymentDone(String paymentDone) {
+		this.paymentDone = paymentDone;
+	}
+	public Double getTxPerexpence() {
+		return txPerexpence;
+	}
+	public void setTxPerexpence(Double txPerexpence) {
+		this.txPerexpence = txPerexpence;
+	}
+	public Double getFinalExpenses() {
+		return finalExpenses;
+	}
+	public void setFinalExpenses(Double finalExpenses) {
+		this.finalExpenses = finalExpenses;
+	}
+	public Long getPkid() {
+		return pkid;
+	}
+	public void setPkid(Long pkid) {
+		this.pkid = pkid;
+	}
 	public Double getBuyPriceEx() {
 		return buyPriceEx;
 	}

@@ -91,6 +91,33 @@ public class SupplierDetailDao {
 		return list;
 	}
 	
+	//
+	public List getAllbill(){
+		
+		HibernateUtility hbu = null;
+		Session session =  null;
+		Query query = null;
+		List list = null;
+		try {
+			hbu = HibernateUtility.getInstance();
+			session = hbu.getHibernateSession();
+			query = session.createQuery("from GoodReceive GROUP BY billNo");
+			list = query.list();
+			
+		} catch (RuntimeException e) {
+			Log.error("Error in getAllSupplier ", e);
+		}
+		finally
+		{
+			if (session!=null) {
+				hbu.closeSession(session);
+			}
+		}
+		
+		return list;
+	}
+	
+	
 		public List getSupplierWiseSaleReport(){
 			HibernateUtility hbu = null;
 			Session session =  null;

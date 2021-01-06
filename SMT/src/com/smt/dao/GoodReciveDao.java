@@ -1683,6 +1683,32 @@ return list;
 		return catList;
 	}
 
+	//
 	
+	public List getAllgoodreceive(String bill)
+	{
+		com.smt.utility.HibernateUtility hbu=null;
+		Session session=null;
+		List list=null;
+		System.out.println("billno in dao -  "+bill);
+		try{
+		 hbu = HibernateUtility.getInstance();
+		 session = hbu.getHibernateSession();
+		 Query query = session.createQuery("from GoodReceive where billNo = '"+bill+"'");
+		 System.out.println("to update good receive for customer bill qury size - "+query.list().size());
+		 list = query.list();
+		}
+			catch(Exception e){	
+				e.printStackTrace();
+		}
+			finally
+			{
+					if(session!=null){
+					hbu.closeSession(session);
+				}
+			}
+		
+	return list;
+	}
 	
 }

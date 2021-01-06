@@ -1,6 +1,7 @@
 package com.smt.dao;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -9,6 +10,7 @@ import org.hibernate.Transaction;
 import org.jfree.util.Log;
 
 import com.smt.bean.BarrelEntryBean;
+import com.smt.bean.GoodReceiveItemBean;
 import com.smt.bean.ItemList;
 import com.smt.bean.ProductNameBean;
 import com.smt.bean.UpdateProductDetails;
@@ -485,4 +487,42 @@ public void doProductRegister(ProductRegister pdreg) {
 	return itemList;
   }
    
+    
+    
+    //
+    public List getAllProductDetailbybill(String bill)
+    {
+ 	   
+ 	   HibernateUtility hbu = null;
+ 	   Session session = null;
+ 	   Query query = null ;
+ 	   List<Object[]> list = null;
+ 	   List<GoodReceiveItemBean> proList = null;
+ 	   
+ 	   try {
+ 		
+ 		   hbu = HibernateUtility.getInstance();
+ 		   session = hbu.getHibernateSession();
+ 		   query = session.createSQLQuery("select PkGoodRecId,ContactPerson,Vat,ItemName,CategoryName,Quantity,BuyPrice,discount,Total,Expences,GrossTotal,igst,TaxAmount,salePrice,buyPriceEXTax,buyPriceEx,HsnSacNo from goodreceive WHERE BillNo = '"+bill+"'");
+ 		   list = query.list();
+  		   System.out.println("lst - "+list.size()+" qry size -  "+query.list().size());
+ 		   
+ 		   
+ 		   
+ 	   } catch(RuntimeException e){
+			
+		Log.error("Error in getAllBillDetailsForEdit",e);
+	   }finally{
+	 		if(session!=null){
+				 
+				hbu.closeSession(session);
+			}			
+		}
+ 	return list;
+ 	   
+ 	   
+    }
+    
+    
+    
 }

@@ -4,6 +4,7 @@ package com.smt.helper;
 import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -120,8 +121,59 @@ public class ProductDetailHelper {
 		bean.setGstamt(0d);
 		return bean;
 	}
+//
+	public Map getDetailsBybills(HttpServletRequest request,HttpServletResponse response) {
 
+		// TODO Auto-generated method stub
+		
+		String bill = request.getParameter("bill");
+		System.out.println("bil  "+bill);
+		ProductDetailDao dao = new ProductDetailDao();
+		
+		
+		List list1 = dao.getAllProductDetailbybill(bill);
+		
+		System.out.println("lst sze in  helper -  "+list1.size());
+	
+		Map map1 = new HashMap();
 
+		if( list1 != null && list1.size() > 0)
+		{
+			for (int i = 0; i < list1.size(); i++) 
+		{
+				Object[] o = (Object[]) list1.get(i);
+				
+		  GoodReceiveItemBean bean  = new GoodReceiveItemBean();
+		  System.out.println("rslt - "+Arrays.toString(o));
+		  	bean.setPkid(Long.parseLong(o[0].toString()));
+		  	bean.setVat(Double.parseDouble(o[2].toString()));
+			bean.setItemName(o[3].toString());
+			bean.setCatName(o[4].toString());
+			bean.setHsnsacno(o[16].toString());
+			bean.setQuantity(Long.parseLong(o[5].toString()));
+			bean.setOriginalquantity(Long.parseLong(o[5].toString()));
+			bean.setBuyPrice(Double.parseDouble(o[6].toString()));
+			bean.setDiscount(Double.parseDouble(o[7].toString()));
+			bean.setTotal(Double.parseDouble(o[8].toString()));
+			bean.setExpence(Double.parseDouble(o[9].toString()));
+			bean.setGrossTotal(Double.parseDouble(o[10].toString()));
+			bean.setIgst(Double.parseDouble(o[11].toString()));
+			bean.setTaxAmount(Double.parseDouble(o[12].toString()));
+			bean.setSalePrice(Double.parseDouble(o[13].toString()));
+			bean.setTotalQuan(0d);
+			bean.setBuyPriceEx(Double.parseDouble(o[15].toString()));
+			bean.setBuyPriceExTax(Double.parseDouble(o[14].toString()));
+			bean.setBuyPriceIncTax(0d);
+			bean.setGstamt(Double.parseDouble(o[12].toString()));
+		  
+			map1.put(bean.getPkid(), bean);
+			}
+		}
+		
+		return map1;
+	}
+
+	
     //get all main product Name
 	public List getAllMAinItem(HttpServletRequest request,
 			HttpServletResponse response) {

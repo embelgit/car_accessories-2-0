@@ -70,7 +70,16 @@ public class Controller {
 		return toJson("Data Added Successfully");
 
 	}
+//
+	
+	public String updateGoodReceive(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("IN CONTROLLER Regular");
+		GoodReceiveHelper Helper = new GoodReceiveHelper();
+		Helper.updateGoodReceive(request, response);
+		return toJson("Data Updated Successfully");
 
+	}
+	
 	// get item from tempData table
 	public String getItemDetailByCarNo(HttpServletRequest request, HttpServletResponse response) {
 
@@ -740,7 +749,34 @@ public class Controller {
 		System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
 		return toJson(returnMap);
 	}
-
+//
+	public String getProductInGridbill(HttpServletRequest request, HttpServletResponse response) {
+		ProductDetailHelper helper = new ProductDetailHelper();
+//		GoodReceiveItemBean customer = helper.getDetailsBybills(request, response);
+	
+//		Map customer = helper.getDetailsBybills(request, response);
+//		Map<String, GoodReceiveItemBean> returnMap = new HashMap<String, GoodReceiveItemBean>();
+//		returnMap.put("offer - ", (GoodReceiveItemBean) customer);
+//		String aa = toJson(customer);
+//		System.out.println(" - - -  "+aa);
+//		System.out.println("$$$$$$$$$$$$$$$$" + returnMap);
+//		return toJson(returnMap);
+//		return toJson(aa);
+		/*
+		List categories = helper.getDetailsBybills(request, response);
+		Map<String, List> returnMap = new HashMap<String, List>();
+		returnMap.put("list", categories);
+		String ss = toJson(returnMap);
+		System.out.println("rslt cntl -  "+ss);
+		System.out.println("$$$$$$$$$$$$$$$$ - -  " + returnMap);
+		return toJson(returnMap);*/
+		
+		Map items = helper.getDetailsBybills(request, response);
+		String xyz = toJson(items);
+		System.out.println("Value of map item which we have sent to Json  -  "+xyz);
+		return xyz;
+	}
+	
 	/* Bill copy Generation */
 	public String CustBillCOPY(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println("Start In regProfarmaDetail Controller");
